@@ -16,6 +16,8 @@
 		658332D81F06E2ED0034FF65 /* CInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 658332D61F06E2ED0034FF65 /* CInterface.h */; };
 		658332D91F06E2ED0034FF65 /* CInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 658332D71F06E2ED0034FF65 /* CInterface.mm */; };
 		658332F61F06F2830034FF65 /* Zapic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658332F51F06F2830034FF65 /* Zapic.swift */; };
+		65EBE5C51F0AAFF300DA4E90 /* ZapicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EBE5C41F0AAFF300DA4E90 /* ZapicView.swift */; };
+		65EBE5C71F0AB8A600DA4E90 /* ZapicViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EBE5C61F0AB8A600DA4E90 /* ZapicViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,8 @@
 		658332D61F06E2ED0034FF65 /* CInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CInterface.h; sourceTree = "<group>"; };
 		658332D71F06E2ED0034FF65 /* CInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CInterface.mm; sourceTree = "<group>"; };
 		658332F51F06F2830034FF65 /* Zapic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zapic.swift; sourceTree = "<group>"; };
+		65EBE5C41F0AAFF300DA4E90 /* ZapicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicView.swift; sourceTree = "<group>"; };
+		65EBE5C61F0AB8A600DA4E90 /* ZapicViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 				658332BF1F06E16E0034FF65 /* ZapicSDKiOS.h */,
 				650161B71F0703DD00B8FA77 /* GameCenterHelper.swift */,
 				650161BC1F0814EA00B8FA77 /* ApiClient.swift */,
+				65EBE5C41F0AAFF300DA4E90 /* ZapicView.swift */,
 			);
 			path = ZapicSDKiOS;
 			sourceTree = "<group>";
@@ -100,6 +105,7 @@
 			children = (
 				658332CA1F06E16E0034FF65 /* ZapicSDKiOSTests.swift */,
 				658332CC1F06E16E0034FF65 /* Info.plist */,
+				65EBE5C61F0AB8A600DA4E90 /* ZapicViewTests.swift */,
 			);
 			path = ZapicSDKiOSTests;
 			sourceTree = "<group>";
@@ -218,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65EBE5C51F0AAFF300DA4E90 /* ZapicView.swift in Sources */,
 				650161B81F0703DD00B8FA77 /* GameCenterHelper.swift in Sources */,
 				658332D91F06E2ED0034FF65 /* CInterface.mm in Sources */,
 				650161B61F07003E00B8FA77 /* TokenManager.swift in Sources */,
@@ -230,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65EBE5C71F0AB8A600DA4E90 /* ZapicViewTests.swift in Sources */,
 				658332CB1F06E16E0034FF65 /* ZapicSDKiOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
