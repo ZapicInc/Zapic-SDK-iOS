@@ -12,6 +12,7 @@ import Foundation
 public class Zapic: NSObject{
     
     private static let tokenManager = TokenManager()
+    private static let zapicView = ZapicView()
     
     public static func connect(){
         print("Zapic initializing...")
@@ -19,6 +20,10 @@ public class Zapic: NSObject{
         if(tokenManager.hasValidToken()){
             print("Welcome back to Zapic")
             //TODO Show Zapic notification menu
+            
+            zapicView.setToken(token: tokenManager.token)
+            zapicView.show()
+
         }
         else{
             GameCenterHelper.generateSignature(completion: {(signature:String) in
@@ -28,6 +33,10 @@ public class Zapic: NSObject{
                     print("Received token: \(token)")
                     
                     tokenManager.updateToken(newToken: token)
+                    
+                    zapicView.setToken(token: token)
+                    zapicView.show()
+
                 })
             })
         }
