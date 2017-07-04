@@ -1,12 +1,13 @@
 //
 //  Swift.swift
-//  ZapicSDKiOS
+//  Zapic
 //
 //  Created by Daniel Sarfati on 6/30/17.
 //  Copyright © 2017 Zapic. All rights reserved.
 //
 
 import Foundation
+//import NotificationBannerSwift
 
 @objc(Zapic)
 public class Zapic: NSObject{
@@ -16,6 +17,9 @@ public class Zapic: NSObject{
     
     public static func connect(){
         print("Zapic initializing...")
+        
+//        let banner = NotificationBanner(title: "Welcome", subtitle: "Subtitle", style: .success)
+//        banner.show()
         
         if(tokenManager.hasValidToken()){
             print("Welcome back to Zapic")

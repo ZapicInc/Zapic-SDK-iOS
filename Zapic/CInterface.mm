@@ -1,6 +1,6 @@
 //
 //  CInterface.m
-//  ZapicSDKiOS
+//  Zapic
 //
 //  Created by Daniel Sarfati on 6/30/17.
 //  Copyright © 2017 Zapic. All rights reserved.
@@ -8,8 +8,7 @@
 
 //#import "CInterface.h"
 #import <Foundation/Foundation.h>
-//#import "ZapicSDKiOS-Swift.h"
-#import <ZapicSDKiOS/ZapicSDKiOS-Swift.h>
+#import <Zapic/Zapic-Swift.h>
 
 extern "C" {
     

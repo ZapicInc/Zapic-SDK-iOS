@@ -1,6 +1,6 @@
 //
 //  ZapicPanel.swift
-//  ZapicSDKiOS
+//  Zapic
 //
 //  Created by Daniel Sarfati on 7/3/17.
 //  Copyright © 2017 Zapic. All rights reserved.
@@ -24,7 +24,7 @@ class ZapicView: UIViewController, WKUIDelegate {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func loadView() {

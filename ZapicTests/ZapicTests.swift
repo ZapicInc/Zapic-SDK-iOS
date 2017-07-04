@@ -1,15 +1,15 @@
 //
-//  ZapicSDKiOSTests.swift
-//  ZapicSDKiOSTests
+//  ZapicTests.swift
+//  ZapicTests
 //
 //  Created by Daniel Sarfati on 6/30/17.
 //  Copyright © 2017 Zapic. All rights reserved.
 //
 
 import XCTest
-@testable import ZapicSDKiOS
+@testable import Zapic
 
-class ZapicSDKiOSTests: XCTestCase {
+class ZapicTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

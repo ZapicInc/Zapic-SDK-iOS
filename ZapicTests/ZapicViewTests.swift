@@ -1,13 +1,13 @@
 //
 //  ZapicViewTests.swift
-//  ZapicSDKiOS
+//  Zapic
 //
 //  Created by Daniel Sarfati on 7/3/17.
 //  Copyright © 2017 Zapic. All rights reserved.
 //
 
 import XCTest
-@testable import ZapicSDKiOS
+@testable import Zapic
 
 class ZapicViewTests: XCTestCase {
     
