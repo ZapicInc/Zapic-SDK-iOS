@@ -1,6 +1,6 @@
 //
 //  TokenManager.swift
-//  ZapicSDKiOS
+//  Zapic
 //
 //  Created by Daniel Sarfati on 6/30/17.
 //  Copyright © 2017 Zapic. All rights reserved.
