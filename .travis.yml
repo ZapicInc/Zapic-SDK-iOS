@@ -1,3 +1,5 @@
 language: swift
+osx_image: xcode 8.3
 xcode_workspace: Zapic.xcworkspace
-xcode_scheme: ZapicTests
+xcode_scheme: Zapic
+xcode_sdk: iphonesimulator10.3
