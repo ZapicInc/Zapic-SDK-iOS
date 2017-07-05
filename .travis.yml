@@ -2,5 +2,6 @@ language: objective-c
 osx_image: xcode8.3
 
 script:
+- set -o pipefail
 - xcodebuild -version
 - xcodebuild -showsdks
