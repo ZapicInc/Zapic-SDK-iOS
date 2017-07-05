@@ -1,2 +1,3 @@
 language: swift
 xcode_workspace: Zapic.xcworkspace
+xcode_scheme: ZapicTests
