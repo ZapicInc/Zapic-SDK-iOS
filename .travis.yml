@@ -6,3 +6,4 @@ script:
 - xcodebuild -version
 - xcodebuild -showsdks
 - xcodebuild -workspace Zapic.xcworkspace -scheme Zapic -destination 'OS=10.3.1,name=iPhone 7'  ENABLE_TESTABILITY=YES test | xcpretty
+- pod lib lint
