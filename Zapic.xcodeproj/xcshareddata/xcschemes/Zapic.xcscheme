@@ -61,8 +61,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "658332C41F06E16E0034FF65"
-               BuildableName = "ZapicTests.xctest"
-               BlueprintName = "ZapicTests"
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
                ReferencedContainer = "container:Zapic.xcodeproj">
             </BuildableReference>
          </TestableReference>
