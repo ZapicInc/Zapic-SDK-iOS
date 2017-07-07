@@ -7,4 +7,4 @@ excluded:
 - Tests
 
 disabled_rules:
-- file_length
+- line_length
