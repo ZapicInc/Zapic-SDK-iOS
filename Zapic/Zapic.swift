@@ -7,42 +7,51 @@
 //
 
 import Foundation
-//import NotificationBannerSwift
+import NotificationBannerSwift
 
 @objc(Zapic)
 public class Zapic: NSObject{
     
-    private static let tokenManager = TokenManager()
+    private static let tokenManager = TokenManager(bundleId: Bundle.main.bundleIdentifier!)
     private static let zapicView = ZapicView()
+    private static var hasConnected = false
     
     public static func connect(){
+        
+        if(hasConnected){
+            print("Zapic already connected")
+            return
+        }
+        
+        hasConnected = true
+        
         print("Zapic initializing...")
         
-//        let banner = NotificationBanner(title: "Welcome", subtitle: "Subtitle", style: .success)
-//        banner.show()
-        
         if(tokenManager.hasValidToken()){
-            print("Welcome back to Zapic")
-            //TODO Show Zapic notification menu
             
-            zapicView.setToken(token: tokenManager.token)
-            zapicView.show()
-
+            print("Welcome back to Zapic")
+            print("Using token \(tokenManager.token)")
+            
+            self.showBanner()
         }
         else{
             GameCenterHelper.generateSignature(completion: {(signature:String) in
                 print(signature)
                 
-                ApiClient.GetToken(signature:signature, completion: {(token:String) in
-                    print("Received token: \(token)")
+                ApiClient.GetToken(signature:signature, completion: {(body:[String:Any]) in
                     
-                    tokenManager.updateToken(newToken: token)
+                    print("Received token: \(body)")
                     
-                    zapicView.setToken(token: token)
-                    zapicView.show()
-
+                    if let token = body["Token"] as? String{
+                        tokenManager.updateToken(newToken: token )
+                    }
                 })
             })
         }
+    }
+    
+    static func showBanner(){
+        let banner = NotificationBanner(title: "Welcome back!", style: .success)
+        banner.show()
     }
 }

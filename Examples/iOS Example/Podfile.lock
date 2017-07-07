@@ -1,0 +1,25 @@
+PODS:
+  - MarqueeLabel/Swift (3.1.0)
+  - NotificationBannerSwift (1.4.0):
+    - MarqueeLabel/Swift
+    - SnapKit (~> 3.2)
+  - SnapKit (3.2.0)
+  - Zapic (0.1.0):
+    - NotificationBannerSwift (~> 1.4.0)
+
+DEPENDENCIES:
+  - Zapic (from `../../`)
+
+EXTERNAL SOURCES:
+  Zapic:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  MarqueeLabel: 061d04687ee5485ac035b45c8e292274a87afe01
+  NotificationBannerSwift: b2a81c9f0f816851686ca2e802058afd65676adc
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  Zapic: c45f9ae1c30e0350b57876631d5dcd1ad903be44
+
+PODFILE CHECKSUM: 5c15280a09dc7e9e63cb71df1be31566635aa59b
+
+COCOAPODS: 1.2.1

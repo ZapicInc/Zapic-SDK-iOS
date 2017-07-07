@@ -27,8 +27,7 @@ class GameCenterHelper{
                 
             }
             else{
-                print("Game Center failed to login")
-                //TODO: Add specific messages for known error codes
+                print(gameCenterError.localizedDescription)
             }
         }
     }
@@ -38,7 +37,8 @@ class GameCenterHelper{
         
         player.generateIdentityVerificationSignature { (publicKeyUrl:URL!, signature:Data!, salt:Data!, timestamp:UInt64, error:Error!) -> Void in
             
-            if(error != nil){
+            if let err = error {
+                print(err.localizedDescription)
                 print("Error generating verification signature");
                 return; //some sort of error, can't authenticate right now
             }

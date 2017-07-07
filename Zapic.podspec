@@ -9,10 +9,11 @@ Pod::Spec.new do |s|
     s.source       = { :git => 'https://github.com/ZapicInc/Zapic-SDK-iOS.git', :tag => s.version.to_s }
 
     s.platform     = :ios
-    s.ios.deployment_target = '8.0'
+    s.ios.deployment_target = '9.0'
 
     s.source_files = "Zapic", "Zapic/**/*.{h,m,swift}"
     s.public_header_files = "Zapic/*.h"
 
     s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3' }
+    s.dependency 'NotificationBannerSwift', '~> 1.4.0'
 end

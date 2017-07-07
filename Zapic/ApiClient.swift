@@ -10,9 +10,9 @@ import Foundation
 
 class ApiClient{
     
-    static let TOKEN_URL = URL(string: "https://functionapp20170627104002.azurewebsites.net/api/api/v1/game-center/token?code=TnpUHz3/pyRhQJZmrVaXsVHmW3Qaramk8dSaCZwmYojRRGOzdVG47g==")
+    static let TOKEN_URL = URL(string: "http://api.zapic.com/v1/game-center/token")
     
-    static func GetToken(signature:String, completion: @escaping (String) -> Void){
+    static func GetToken(signature:String, completion: @escaping ([String:Any]) -> Void){
         
         var request = URLRequest(url: TOKEN_URL!)
         request.httpMethod = "POST"
@@ -33,8 +33,10 @@ class ApiClient{
                 print("response code = \(httpResponse.statusCode)")
                 
                 if(httpResponse.statusCode == 200){
-                    if let resultStr = String(data: data!, encoding: .utf8){
-                        completion(resultStr)
+                    if let body = deserialize(bodyData: data!){
+                        completion(body)
+//                    if let resultStr = String(data: data!, encoding: .utf8){
+//                        completion(resultStr)
                     }
                 }
             }
@@ -42,5 +44,12 @@ class ApiClient{
         
         //Run the task
         task.resume()
+    }
+    
+    private static func deserialize(bodyData:Data) -> [String:Any]?{
+        guard let json = try? JSONSerialization.jsonObject(with: bodyData, options: []), let payload = json as? [String: Any] else {
+            return nil
+        }
+        return payload
     }
 }

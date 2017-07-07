@@ -1,0 +1,33 @@
+{
+  "name": "Zapic",
+  "version": "0.1.0",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "homepage": "https://zapic.com",
+  "summary": "Client SDK to connect iOS apps to the Zapic platform.",
+  "authors": {
+    "Daniel Sarfati": "daniel@zapic.com"
+  },
+  "source": {
+    "git": "https://github.com/ZapicInc/Zapic-SDK-iOS.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": [
+    "Zapic",
+    "Zapic/**/*.{h,m,swift}"
+  ],
+  "public_header_files": "Zapic/*.h",
+  "pod_target_xcconfig": {
+    "SWIFT_VERSION": "3"
+  },
+  "dependencies": {
+    "NotificationBannerSwift": [
+      "~> 1.4.0"
+    ]
+  }
+}

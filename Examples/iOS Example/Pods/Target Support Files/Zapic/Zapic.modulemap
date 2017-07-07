@@ -1,0 +1,6 @@
+framework module Zapic {
+  umbrella header "Zapic-umbrella.h"
+
+  export *
+  module * { export * }
+}
