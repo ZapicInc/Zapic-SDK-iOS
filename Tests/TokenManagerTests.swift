@@ -27,7 +27,7 @@ class TokenManagerTests: XCTestCase {
     
     func testValidToken() {
         
-        let validToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2FwaS56YXBpYy5jb20iLCJhdWQiOiIwOmNvbS56YXBpYy5kZW1vIiwic3ViIjoiZGUwZGZmN2ItMzFmMi00NWU3LTg0MTctMTIzNjU4YTNlOTg5IiwiZXhwIjo5NDUxNzI3OTksImlhdCI6OTQzOTYzMTk5fQ.fr5ppJUIttCegqqBl7TTnJCscV74fxV4rf9Fh4UGbLA"
+        let validToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL2FwaS56YXBpYy5jb20iLCJhdWQiOiIyOmNvbS56YXBpYy5kZW1vIiwic3ViIjoiZGUwZGZmN2ItMzFmMi00NWU3LTg0MTctMTIzNjU4YTNlOTg5IiwiZXhwIjo5NDUxNzI3OTksImlhdCI6OTQzOTYzMTk5fQ.vp38gsf-YqrPHOt2gXb2Ju5iOA5WIM6bbGRB9BitgXM"
         
         tokenMgr.updateToken(newToken: validToken)
         
