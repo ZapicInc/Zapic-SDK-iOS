@@ -8,6 +8,7 @@
 
 import Foundation
 import GameKit
+import PromiseKit
 
 class GameCenterHelper {
     static func generateSignature(completion: @escaping (String) -> Void) {

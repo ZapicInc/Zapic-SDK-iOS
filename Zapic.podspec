@@ -13,7 +13,9 @@ Pod::Spec.new do |s|
 
     s.source_files = "Zapic", "Zapic/**/*.{h,m,swift}"
     s.public_header_files = "Zapic/*.h"
+    s.resource_bundles = { 'Zapic' => 'Zapic/ZapicAssets.xcassets'}
 
     s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3' }
     s.dependency 'NotificationBannerSwift'
+    s.dependency 'PromiseKit', '~> 4.0'
 end

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A1F202F3F930B1D7A28F8B544A84F600"
+               BlueprintIdentifier = "FFE8E5EA4A9FDEB810FEBAC90EBADA8F"
                BuildableName = "Pods_Zapic.framework"
                BlueprintName = "Pods-Zapic"
                ReferencedContainer = "container:Pods/Pods.xcodeproj">

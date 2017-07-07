@@ -3,9 +3,21 @@ PODS:
   - NotificationBannerSwift (1.4.0):
     - MarqueeLabel/Swift
     - SnapKit (~> 3.2)
+  - PromiseKit (4.2.2):
+    - PromiseKit/Foundation (= 4.2.2)
+    - PromiseKit/QuartzCore (= 4.2.2)
+    - PromiseKit/UIKit (= 4.2.2)
+  - PromiseKit/CorePromise (4.2.2)
+  - PromiseKit/Foundation (4.2.2):
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (4.2.2):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (4.2.2):
+    - PromiseKit/CorePromise
   - SnapKit (3.2.0)
   - Zapic (0.1.0):
-    - NotificationBannerSwift (~> 1.4.0)
+    - NotificationBannerSwift
+    - PromiseKit (~> 4.0)
 
 DEPENDENCIES:
   - Zapic (from `../../`)
@@ -17,8 +29,9 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   MarqueeLabel: 061d04687ee5485ac035b45c8e292274a87afe01
   NotificationBannerSwift: b2a81c9f0f816851686ca2e802058afd65676adc
+  PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  Zapic: c45f9ae1c30e0350b57876631d5dcd1ad903be44
+  Zapic: 7f7735d36c54a9e2c9fb589f4e864caa909e5c4f
 
 PODFILE CHECKSUM: 5c15280a09dc7e9e63cb71df1be31566635aa59b
 

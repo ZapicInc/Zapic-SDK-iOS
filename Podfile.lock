@@ -3,16 +3,29 @@ PODS:
   - NotificationBannerSwift (1.4.0):
     - MarqueeLabel/Swift
     - SnapKit (~> 3.2)
+  - PromiseKit (4.2.2):
+    - PromiseKit/Foundation (= 4.2.2)
+    - PromiseKit/QuartzCore (= 4.2.2)
+    - PromiseKit/UIKit (= 4.2.2)
+  - PromiseKit/CorePromise (4.2.2)
+  - PromiseKit/Foundation (4.2.2):
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (4.2.2):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (4.2.2):
+    - PromiseKit/CorePromise
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
   - NotificationBannerSwift
+  - PromiseKit (~> 4.0)
 
 SPEC CHECKSUMS:
   MarqueeLabel: 061d04687ee5485ac035b45c8e292274a87afe01
   NotificationBannerSwift: b2a81c9f0f816851686ca2e802058afd65676adc
+  PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: b8b93f3a93f7912525e4b86d47d767abf9ae292a
+PODFILE CHECKSUM: 62e03f9ba112cdfb128bdbd3a0a69711d10e2000
 
 COCOAPODS: 1.2.1

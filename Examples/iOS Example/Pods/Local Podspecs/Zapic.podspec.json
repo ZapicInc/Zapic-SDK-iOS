@@ -22,12 +22,18 @@
     "Zapic/**/*.{h,m,swift}"
   ],
   "public_header_files": "Zapic/*.h",
+  "resource_bundles": {
+    "Zapic": "Zapic/ZapicAssets.xcassets"
+  },
   "pod_target_xcconfig": {
     "SWIFT_VERSION": "3"
   },
   "dependencies": {
     "NotificationBannerSwift": [
-      "~> 1.4.0"
+
+    ],
+    "PromiseKit": [
+      "~> 4.0"
     ]
   }
 }

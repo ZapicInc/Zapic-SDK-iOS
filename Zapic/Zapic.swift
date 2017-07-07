@@ -33,6 +33,7 @@ public class Zapic: NSObject {
             print("Using token \(tokenManager.token)")
 
             self.showBanner()
+
         } else {
             GameCenterHelper.generateSignature(completion: {(signature: String) in
                 print(signature)
@@ -50,7 +51,9 @@ public class Zapic: NSObject {
     }
 
     static func showBanner() {
-        let banner = NotificationBanner(title: "Welcome back!", style: .success)
+
+        let banner = NotificationBanner(customView: WelcomeBannerView())
+
         banner.show()
     }
 }
