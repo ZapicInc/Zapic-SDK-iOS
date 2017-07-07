@@ -13,20 +13,20 @@ import WebKit
 import UIKit
 import WebKit
 class ZapicView: UIViewController, WKUIDelegate {
-    
+
     var webView: WKWebView!
-    
-    init(){
+
+    init() {
         super.init(nibName:nil, bundle:nil)
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
-       
+
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func loadView() {
         print("Zapic loadView")
         webView.uiDelegate = self
@@ -36,19 +36,19 @@ class ZapicView: UIViewController, WKUIDelegate {
     override func viewDidLoad() {
         print("Zapic viewDidLoad")
         super.viewDidLoad()
-        
+
         let myURL = URL(string: "https://www.zapic.com")
         let myRequest = URLRequest(url: myURL!)
         webView.load(myRequest)
     }
-    
-    func show(){
+
+    func show() {
         print("Zapic show")
-        
+
          UIApplication.shared.keyWindow?.rootViewController?.present(self, animated: true, completion: nil)
     }
-    
-    func setToken(token:String){
+
+    func setToken(token: String) {
         webView.evaluateJavaScript("setToken('\(token)')")
     }
 }

@@ -1,0 +1,10 @@
+included:
+- Zapic
+
+excluded:
+- Examples
+- Pods
+- Tests
+
+disabled_rules:
+- file_length
