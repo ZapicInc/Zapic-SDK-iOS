@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
     s.public_header_files = "Zapic/*.h"
 
     s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3' }
-    s.dependency 'NotificationBannerSwift', '~> 1.4.0'
+    s.dependency 'NotificationBannerSwift'
 end
