@@ -5,5 +5,6 @@ script:
 - set -o pipefail
 - xcodebuild -version
 - xcodebuild -showsdks
+- swiftlint
 - xcodebuild -workspace Zapic.xcworkspace -scheme Zapic -destination 'OS=10.3.1,name=iPhone 7'  ENABLE_TESTABILITY=YES test | xcpretty
 - pod lib lint
