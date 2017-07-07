@@ -32,8 +32,11 @@
     "NotificationBannerSwift": [
 
     ],
-    "PromiseKit": [
-      "~> 4.0"
+    "RxSwift": [
+      "~> 3.0"
+    ],
+    "RxCocoa": [
+      "~> 3.0"
     ]
   }
 }

@@ -17,5 +17,6 @@ Pod::Spec.new do |s|
 
     s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3' }
     s.dependency 'NotificationBannerSwift'
-    s.dependency 'PromiseKit', '~> 4.0'
+    s.dependency 'RxSwift',    '~> 3.0'
+    s.dependency 'RxCocoa',    '~> 3.0'
 end

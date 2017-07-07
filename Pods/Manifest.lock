@@ -3,29 +3,23 @@ PODS:
   - NotificationBannerSwift (1.4.0):
     - MarqueeLabel/Swift
     - SnapKit (~> 3.2)
-  - PromiseKit (4.2.2):
-    - PromiseKit/Foundation (= 4.2.2)
-    - PromiseKit/QuartzCore (= 4.2.2)
-    - PromiseKit/UIKit (= 4.2.2)
-  - PromiseKit/CorePromise (4.2.2)
-  - PromiseKit/Foundation (4.2.2):
-    - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.2.2):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.2.2):
-    - PromiseKit/CorePromise
+  - RxCocoa (3.5.0):
+    - RxSwift (~> 3.4)
+  - RxSwift (3.5.0)
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
   - NotificationBannerSwift
-  - PromiseKit (~> 4.0)
+  - RxCocoa (~> 3.0)
+  - RxSwift (~> 3.0)
 
 SPEC CHECKSUMS:
   MarqueeLabel: 061d04687ee5485ac035b45c8e292274a87afe01
   NotificationBannerSwift: b2a81c9f0f816851686ca2e802058afd65676adc
-  PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
+  RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
+  RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 62e03f9ba112cdfb128bdbd3a0a69711d10e2000
+PODFILE CHECKSUM: 03377d66d2003beba87dad4ac3b53e220fea0815
 
 COCOAPODS: 1.2.1

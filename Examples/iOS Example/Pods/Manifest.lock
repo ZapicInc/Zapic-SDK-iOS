@@ -3,21 +3,14 @@ PODS:
   - NotificationBannerSwift (1.4.0):
     - MarqueeLabel/Swift
     - SnapKit (~> 3.2)
-  - PromiseKit (4.2.2):
-    - PromiseKit/Foundation (= 4.2.2)
-    - PromiseKit/QuartzCore (= 4.2.2)
-    - PromiseKit/UIKit (= 4.2.2)
-  - PromiseKit/CorePromise (4.2.2)
-  - PromiseKit/Foundation (4.2.2):
-    - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.2.2):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.2.2):
-    - PromiseKit/CorePromise
+  - RxCocoa (3.5.0):
+    - RxSwift (~> 3.4)
+  - RxSwift (3.5.0)
   - SnapKit (3.2.0)
   - Zapic (0.1.0):
     - NotificationBannerSwift
-    - PromiseKit (~> 4.0)
+    - RxCocoa (~> 3.0)
+    - RxSwift (~> 3.0)
 
 DEPENDENCIES:
   - Zapic (from `../../`)
@@ -29,9 +22,10 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   MarqueeLabel: 061d04687ee5485ac035b45c8e292274a87afe01
   NotificationBannerSwift: b2a81c9f0f816851686ca2e802058afd65676adc
-  PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
+  RxCocoa: a0a09f45d0e5b48ecb6a4a7b4b4c89c88d3f633f
+  RxSwift: 18ee9d78b45edb3b0b7e79916b47a116e6dbc842
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  Zapic: 7f7735d36c54a9e2c9fb589f4e864caa909e5c4f
+  Zapic: 8b5e71250b62f4796c0ebfca602364b83d0a4586
 
 PODFILE CHECKSUM: 5c15280a09dc7e9e63cb71df1be31566635aa59b
 
