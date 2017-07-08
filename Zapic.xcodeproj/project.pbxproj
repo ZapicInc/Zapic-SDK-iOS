@@ -475,8 +475,6 @@
 					"-framework",
 					"\"NotificationBannerSwift\"",
 					"-framework",
-					"\"PromiseKit\"",
-					"-framework",
 					"\"SnapKit\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zapic.zapic;
@@ -508,8 +506,6 @@
 					"\"MarqueeLabel\"",
 					"-framework",
 					"\"NotificationBannerSwift\"",
-					"-framework",
-					"\"PromiseKit\"",
 					"-framework",
 					"\"SnapKit\"",
 				);

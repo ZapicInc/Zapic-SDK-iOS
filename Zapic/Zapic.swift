@@ -53,7 +53,7 @@ public class Zapic: NSObject {
     static func showBanner() {
 
         let banner = NotificationBanner(customView: WelcomeBannerView())
-
+//        banner.autoDismiss = false
         banner.show()
     }
 }

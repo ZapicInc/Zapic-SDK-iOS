@@ -18,10 +18,16 @@ class WelcomeBannerView: UIView {
     init() {
 
         super.init(frame: .zero)
+        
         backgroundColor = UIColor.white.withAlphaComponent(0.9)
-
-        //Add the zapic bar across the top
-        self.layer.insertSublayer(colorBar, at: 0)
+        
+        self.addSubview(colorBar)
+        
+        colorBar.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.right.equalToSuperview()
+            make.left.equalToSuperview()
+        }
 
         //Text
         let title = UILabel()
@@ -54,10 +60,6 @@ class WelcomeBannerView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    override func layoutSubviews() {
-        colorBar.frame.size.width = self.frame.width
-    }
 }
 
 class ZapicImages {
@@ -74,17 +76,24 @@ class ZapicColor {
 
 }
 
-class ColorBar: CAGradientLayer {
+class ColorBar: UIView {
 
-    override init() {
-        super.init()
-        self.frame = CGRect(x: 0, y: 0, width: 320, height: 8)
-        self.colors = [ZapicColor.blue.cgColor, ZapicColor.green.cgColor, ZapicColor.blue.cgColor, ZapicColor.green.cgColor]
-        self.startPoint = CGPoint(x: 1, y: 0)
-        self.endPoint =  CGPoint.zero
-        self.locations = [-2.0, -1.0, 0.0, 1]
+    let gradient = CAGradientLayer ()
+
+    init() {
+        super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 8))
+        self.layer.insertSublayer(gradient, at: 0)
+        gradient.frame = CGRect(x: 0, y: 0, width: 320, height: 8)
+        gradient.colors = [ZapicColor.blue.cgColor, ZapicColor.green.cgColor, ZapicColor.blue.cgColor, ZapicColor.green.cgColor]
+        gradient.startPoint = CGPoint(x: 1, y: 0)
+        gradient.endPoint =  CGPoint.zero
+        gradient.locations = [-2.0, -1.0, 0.0, 1]
 
         animate()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     private func animate() {
@@ -92,10 +101,10 @@ class ColorBar: CAGradientLayer {
         animation.toValue = [0.0, 1.0, 2.0, 3.0]
         animation.duration = 3.0
         animation.repeatCount = Float.infinity
-        self.add(animation, forKey: nil)
+        gradient.add(animation, forKey: nil)
     }
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func layoutSubviews() {
+        gradient.frame.size.width = self.frame.width
     }
 }
