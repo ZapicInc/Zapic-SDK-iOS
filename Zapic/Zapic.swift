@@ -8,6 +8,7 @@
 
 import Foundation
 import NotificationBannerSwift
+import RxSwift
 
 @objc(Zapic)
 public class Zapic: NSObject {
@@ -15,6 +16,7 @@ public class Zapic: NSObject {
     private static let tokenManager = TokenManager(bundleId: Bundle.main.bundleIdentifier!)
     private static let zapicView = ZapicView()
     private static var hasConnected = false
+    private static let disposeBag = DisposeBag()
 
     public static func connect() {
 
@@ -35,25 +37,22 @@ public class Zapic: NSObject {
             self.showBanner()
 
         } else {
-            GameCenterHelper.generateSignature(completion: {(signature: String) in
-                print(signature)
-
-                ApiClient.getToken(signature:signature, completion: {(body: [String:Any]) in
-
-                    print("Received token: \(body)")
-
-                    if let token = body["Token"] as? String {
-                        tokenManager.updateToken(newToken: token )
-                    }
+            GameCenterHelper.generateSignature()
+                .flatMap {ApiClient.getToken(signature: $0)}
+                .map {$0["Token"] as? String ?? ""}
+                .subscribe(onNext: {
+                    tokenManager.updateToken(newToken: $0)
+                }, onError: { _ in
+                    tokenManager.clearToken()
                 })
-            })
+                .addDisposableTo(disposeBag)
         }
     }
 
     static func showBanner() {
 
         let banner = NotificationBanner(customView: WelcomeBannerView())
-//        banner.autoDismiss = false
+        //        banner.autoDismiss = false
         banner.show()
     }
 }

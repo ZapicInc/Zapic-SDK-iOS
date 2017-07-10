@@ -18,11 +18,11 @@ class WelcomeBannerView: UIView {
     init() {
 
         super.init(frame: .zero)
-        
+
         backgroundColor = UIColor.white.withAlphaComponent(0.9)
-        
+
         self.addSubview(colorBar)
-        
+
         colorBar.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.right.equalToSuperview()

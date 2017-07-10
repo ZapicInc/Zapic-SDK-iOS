@@ -7,42 +7,50 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+enum ZapicError: Error {
+    case unknownError
+    //    case connectionError
+    //    case invalidCredentials
+    //    case invalidRequest
+    //    case notFound
+    //    case invalidResponse
+    //    case serverError
+    //    case serverUnavailable
+    //    case timeOut
+    //    case unsuppotedURL
+}
 
 class ApiClient {
 
     static let TokenUrl = URL(string: "http://api.zapic.com/v1/game-center/token")
 
-    static func getToken(signature: String, completion: @escaping ([String:Any]) -> Void) {
+    static func getToken(signature: [String:Any]) -> Observable<[String:Any]> {
 
         var request = URLRequest(url: TokenUrl!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField:"Content-Type")
-        request.httpBody = signature.data(using: .utf8)
+        request.httpBody = serialize(data: signature)
 
-        let session = URLSession.shared
+        return URLSession.shared.rx.response(request: request).flatMap { (response: HTTPURLResponse, data: Data) -> Observable<[String:Any]> in
 
-        let task = session.dataTask(with:request, completionHandler: { (data, response, error) in
-            if let error = error {
-                print(error)
+            if 200 == response.statusCode,
+                let json: [String:Any] = deserialize(bodyData: data) {
+                return Observable.just(json)
+            } else {
+                return Observable.error(ZapicError.unknownError)
             }
+        }
+    }
 
-            if let response = response as? HTTPURLResponse {
-                print("url = \(response.url!)")
-                print("response = \(response)")
-                print("response code = \(response.statusCode)")
+    private static func serialize(data: [String:Any]) -> Data? {
+        if let jsonData = try? JSONSerialization.data(withJSONObject: data, options:.prettyPrinted) {
 
-                if response.statusCode == 200 {
-                    if let body = deserialize(bodyData: data!) {
-                        completion(body)
-                        //                    if let resultStr = String(data: data!, encoding: .utf8){
-                        //                        completion(resultStr)
-                    }
-                }
-            }
-        })
-
-        //Run the task
-        task.resume()
+            return String(data: jsonData, encoding: .utf8)?.data(using: .utf8)
+        }
+        return nil
     }
 
     private static func deserialize(bodyData: Data) -> [String:Any]? {

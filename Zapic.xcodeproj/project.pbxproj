@@ -23,6 +23,7 @@
 		657323031F0DBDF20030390F /* ZapicViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657322FD1F0DBDEB0030390F /* ZapicViewTests.swift */; };
 		658332C61F06E16E0034FF65 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 658332BC1F06E16E0034FF65 /* Zapic.framework */; };
 		65F170A01F0EAACE0024EDE8 /* TokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F1709F1F0EAACE0024EDE8 /* TokenManagerTests.swift */; };
+		D43EB38717FA102A39236A40 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC252CA92294B8926B0796F4 /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F19A637CD0B3AA8D87107EA /* Pods-Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.release.xcconfig"; sourceTree = "<group>"; };
+		1BDE5F1D8A8770098DEAB13E /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tests/Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		4CC4A94680813E68354DCBFE /* Pods_Zapic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Zapic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		651C579A1F0B65F500D217EA /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiClient.swift; path = Zapic/ApiClient.swift; sourceTree = SOURCE_ROOT; };
 		651C579B1F0B65F500D217EA /* CInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CInterface.h; path = Zapic/CInterface.h; sourceTree = SOURCE_ROOT; };
@@ -51,6 +54,7 @@
 		657322FB1F0DBDEB0030390F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Tests/Info.plist; sourceTree = "<group>"; };
 		657322FC1F0DBDEB0030390F /* ZapicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZapicTests.swift; path = Tests/ZapicTests.swift; sourceTree = "<group>"; };
 		657322FD1F0DBDEB0030390F /* ZapicViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZapicViewTests.swift; path = Tests/ZapicViewTests.swift; sourceTree = "<group>"; };
+		6575D24E1F13365F00F82B1F /* Pods_Zapic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Zapic.framework; path = "../../Library/Developer/Xcode/DerivedData/Zapic-gamyvtxdtwpkpsdkznghhaunkteb/Build/Products/Debug-iphonesimulator/Pods_Zapic.framework"; sourceTree = "<group>"; };
 		658332BC1F06E16E0034FF65 /* Zapic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zapic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		658332C51F06E16E0034FF65 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65F1709F1F0EAACE0024EDE8 /* TokenManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenManagerTests.swift; path = Tests/TokenManagerTests.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				658332C61F06E16E0034FF65 /* Zapic.framework in Frameworks */,
+				D43EB38717FA102A39236A40 /* Pods_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +92,8 @@
 			children = (
 				766EFDFEE899C46AE25B5285 /* Pods-Zapic.debug.xcconfig */,
 				D0AEA3F6F4B1DD5AF6957CEF /* Pods-Zapic.release.xcconfig */,
+				1BDE5F1D8A8770098DEAB13E /* Pods-Tests.debug.xcconfig */,
+				0F19A637CD0B3AA8D87107EA /* Pods-Tests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -94,6 +101,7 @@
 		561FE5C3968C1A297C76828B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6575D24E1F13365F00F82B1F /* Pods_Zapic.framework */,
 				7AA35D8FF2CE863D51962B1C /* Pods_ZapicSDKiOS.framework */,
 				6B4DF28B17999A5F85BD0E12 /* Pods_ZapicSDKiOSTests.framework */,
 				4CC4A94680813E68354DCBFE /* Pods_Zapic.framework */,
@@ -193,9 +201,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 658332D31F06E16E0034FF65 /* Build configuration list for PBXNativeTarget "Tests" */;
 			buildPhases = (
+				7C0DE2B9D98B07CD4BF6461F /* [CP] Check Pods Manifest.lock */,
 				658332C11F06E16E0034FF65 /* Sources */,
 				658332C21F06E16E0034FF65 /* Frameworks */,
 				658332C31F06E16E0034FF65 /* Resources */,
+				935ADA17AE5788F288CFC7D3 /* [CP] Embed Pods Frameworks */,
+				BDAB4B14D4694C1039F6382E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -282,6 +293,36 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
+		7C0DE2B9D98B07CD4BF6461F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		935ADA17AE5788F288CFC7D3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AD2323C6FD7BC0753B4E859F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -295,6 +336,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Zapic/Pods-Zapic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDAB4B14D4694C1039F6382E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tests/Pods-Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F308621C5AD3F1FE4F04E632 /* [CP] Check Pods Manifest.lock */ = {
@@ -518,6 +574,7 @@
 		};
 		658332D41F06E16E0034FF65 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BDE5F1D8A8770098DEAB13E /* Pods-Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 24QXGCES3E;
@@ -531,6 +588,7 @@
 		};
 		658332D51F06E16E0034FF65 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F19A637CD0B3AA8D87107EA /* Pods-Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 24QXGCES3E;

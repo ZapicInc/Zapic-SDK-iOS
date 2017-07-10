@@ -8,59 +8,72 @@
 
 import Foundation
 import GameKit
+import RxSwift
 
 class GameCenterHelper {
-    static func generateSignature(completion: @escaping (String) -> Void) {
+    static func generateSignature() -> Observable<[String:Any]> {
 
-        let localPlayer = GKLocalPlayer.localPlayer()
+        return gcAuth().flatMap { player in generateIdentityInfo(player: player) }
+    }
 
-        localPlayer.authenticateHandler = {(gameCenterVC: UIViewController!, gameCenterError: Error!) -> Void in
+    private static func gcAuth() -> Observable<GKLocalPlayer> {
 
-            if gameCenterVC != nil {
-                print("Zapic - show VC")
+        return Observable.create { observable in
 
-                UIApplication.shared.keyWindow?.rootViewController?.present(gameCenterVC, animated: true, completion: nil)
-            } else if localPlayer.isAuthenticated {
-                print("Authentication with Game Center success")
-                self.generateIdentityInfo(completion:completion)
+            let localPlayer = GKLocalPlayer.localPlayer()
 
-            } else {
-                print(gameCenterError.localizedDescription)
+            localPlayer.authenticateHandler = {(gameCenterVC: UIViewController!, gameCenterError: Error!) -> Void in
+
+                if let gameCenterError = gameCenterError {
+                    observable.onError(gameCenterError)
+                }
+
+                if gameCenterVC != nil {
+                    print("Zapic - show VC")
+
+                    UIApplication.shared.keyWindow?.rootViewController?.present(gameCenterVC, animated: true, completion: nil)
+
+                } else if localPlayer.isAuthenticated {
+
+                    print("Authentication with Game Center success")
+
+                    observable.onNext(localPlayer)
+                    observable.onCompleted()
+                }
             }
+            return Disposables.create()
         }
     }
 
-    static func generateIdentityInfo(completion: @escaping (String) -> Void) {
-        let player = GKLocalPlayer.localPlayer()
+    private static func generateIdentityInfo(player: GKLocalPlayer) -> Observable<[String:Any]> {
+        return Observable.create { observable in
 
-        player.generateIdentityVerificationSignature { (publicKeyUrl: URL!, signature: Data!, salt: Data!, timestamp: UInt64, error: Error!) -> Void in
+            player.generateIdentityVerificationSignature { (publicKeyUrl: URL!, signature: Data!, salt: Data!, timestamp: UInt64, error: Error!) -> Void in
 
-            if let err = error {
-                print(err.localizedDescription)
-                print("Error generating verification signature")
-                return; //some sort of error, can't authenticate right now
+                if let err = error {
+                    observable.onError(err)
+                    print(err.localizedDescription)
+                    print("Error generating verification signature")
+                }
+
+                let signatureStr = signature.base64EncodedString()
+
+                let saltStr = salt.base64EncodedString()
+
+                let timestampStr = String(timestamp)
+
+                let dict = ["playerId": player.playerID ?? "",
+                            "bundleId": Bundle.main.bundleIdentifier ?? "",
+                            "publicKeyUrl": publicKeyUrl.absoluteString,
+                            "signature": signatureStr,
+                            "timestamp": timestampStr,
+                            "salt": saltStr
+                ]
+
+                observable.onNext(dict)
+                observable.onCompleted()
             }
-
-            let signatureStr = signature.base64EncodedString()
-
-            let saltStr = salt.base64EncodedString()
-
-            let timestampStr = String(timestamp)
-
-            let dict = ["playerId": player.playerID,
-                        "bundleId": Bundle.main.bundleIdentifier,
-                        "publicKeyUrl": publicKeyUrl.absoluteString,
-                        "signature": signatureStr,
-                        "timestamp": timestampStr,
-                        "salt": saltStr
-            ]
-
-            if let jsonData = try? JSONSerialization.data(withJSONObject: dict, options:.prettyPrinted) {
-
-                let jsonStr = String(data: jsonData, encoding: .utf8)
-
-                completion(jsonStr!)
-            }
+            return Disposables.create()
         }
     }
 }
