@@ -9,42 +9,12 @@
 import Foundation
 import WebKit
 
-class OfflineView: UIView {
-    
+class OfflineView: ZapicView {
+
     init() {
-        
-        super.init(frame: .zero)
-        
-        backgroundColor = ZapicColors.background
-        
-        //Zapic icon
-        let img = ZapicImages.image(name: "ZapicLogo")
-        let imageView = UIImageView(image: img)
-        imageView.contentMode = .scaleAspectFit
-        
-        self.addSubview(imageView)
-        
-        let iconSize = 128
-        
-        imageView.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-100)
-            make.height.equalTo(iconSize)
-            make.width.equalTo(iconSize)
-        }
-        
-        //Offline text
-        let loading = UILabel()
-        loading.font = UIFont.systemFont(ofSize: 22)
-        loading.text = "Could Not Connect"
-        loading.textAlignment = .center
-        loading.textColor = ZapicColors.primaryText
-        self.addSubview(loading)
-        loading.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(imageView.snp.bottom)
-        }
-        
+
+        super.init("Could Not Connect")
+
         //Offline text
         let details = UILabel()
         details.font = UIFont.systemFont(ofSize: 18)
@@ -57,11 +27,11 @@ class OfflineView: UIView {
         details.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(50)
             make.right.equalToSuperview().offset(-50)
-            make.top.equalTo(loading.snp.bottom).offset(10)
+            make.top.equalTo(title.snp.bottom).offset(10)
         }
-        
+
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

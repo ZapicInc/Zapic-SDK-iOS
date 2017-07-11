@@ -16,6 +16,8 @@ class ZapicController: UIViewController {
     let webView: ZapicWebView
     let loading = LoadingView()
     let bag = DisposeBag()
+    
+    private var closeSub:Disposable?;
 
     init(_ tokenManager: TokenManager) {
         webView = ZapicWebView(tokenManager:tokenManager)
@@ -31,14 +33,32 @@ class ZapicController: UIViewController {
         view = loading
 
         //Wait for the webview to load, then show it
-        self.webView.appLoaded.filter {$0 == WebViewStatus.loaded}.subscribe {_ in
-            self.view = self.webView
-            }.addDisposableTo(bag)
-        
+        self.webView.appLoaded.filter {$0 == WebViewStatus.loaded}.subscribe(onNext:{_ in
+            self.showView(view: self.webView)
+            }).addDisposableTo(bag)
+
         //If the webview fails to load, show the offline menu
-        self.webView.appLoaded.filter {$0 == WebViewStatus.offline}.subscribe {_ in
-            self.view = OfflineView()
-            }.addDisposableTo(bag)
+        self.webView.appLoaded.filter {$0 == WebViewStatus.offline}.subscribe(onNext:{_ in
+             self.showView(view: OfflineView())
+            }).addDisposableTo(bag)
+    }
+    
+    private func showView(view:UIView){
+        
+        //Close any previous subscriptions
+        if let closeSub = closeSub{
+            closeSub.dispose()
+            self.closeSub = nil
+        }
+        
+        if let zapicView = view as? ZapicView{
+            self.closeSub = zapicView.closeSub.subscribe(onNext:{_ in
+                //Close this view controller
+                self.dismiss(animated: true, completion: nil)
+            })
+        }
+        
+        self.view = view
     }
 
     override func viewDidLoad() {

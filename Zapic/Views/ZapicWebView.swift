@@ -32,7 +32,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, WKNavigationDelegate {
         tokenManager = tManager
 
         super.init(frame: .zero, configuration: config)
-        
+
         super.navigationDelegate = self
 
         events["getToken"]=self.onTokenRequest(data:)
@@ -61,7 +61,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, WKNavigationDelegate {
             handler(message.body)
         }
     }
-    
+
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         appLoaded.onNext(.offline)
         appLoaded.onCompleted()
