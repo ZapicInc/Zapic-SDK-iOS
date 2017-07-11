@@ -70,12 +70,6 @@ class ZapicImages {
     }
 }
 
-class ZapicColor {
-    static let blue = UIColor(red:0.00, green:0.87, blue:0.68, alpha:1.0)
-    static let green = UIColor(red:0.00, green:0.52, blue:0.89, alpha:1.0)
-
-}
-
 class ColorBar: UIView {
 
     let gradient = CAGradientLayer ()
@@ -84,7 +78,7 @@ class ColorBar: UIView {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 8))
         self.layer.insertSublayer(gradient, at: 0)
         gradient.frame = CGRect(x: 0, y: 0, width: 320, height: 8)
-        gradient.colors = [ZapicColor.blue.cgColor, ZapicColor.green.cgColor, ZapicColor.blue.cgColor, ZapicColor.green.cgColor]
+        gradient.colors = [ZapicColors.blue.cgColor, ZapicColors.green.cgColor, ZapicColors.blue.cgColor, ZapicColors.green.cgColor]
         gradient.startPoint = CGPoint(x: 1, y: 0)
         gradient.endPoint =  CGPoint.zero
         gradient.locations = [-2.0, -1.0, 0.0, 1]

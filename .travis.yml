@@ -3,6 +3,7 @@ osx_image: xcode8.3
 
 script:
 - set -o pipefail
+- open -b com.apple.iphonesimulator
 - xcodebuild -version
 - xcodebuild -showsdks
 - swiftlint

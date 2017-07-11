@@ -14,7 +14,7 @@ import RxSwift
 public class Zapic: NSObject {
 
     private static let tokenManager = TokenManager(bundleId: Bundle.main.bundleIdentifier!)
-    private static let zapicView = ZapicView()
+    private static let zapicController = ZapicController(tokenManager)
     private static var hasConnected = false
     private static let disposeBag = DisposeBag()
 
@@ -47,12 +47,12 @@ public class Zapic: NSObject {
                 })
                 .addDisposableTo(disposeBag)
         }
+        zapicController.show()
     }
 
     static func showBanner() {
 
         let banner = NotificationBanner(customView: WelcomeBannerView())
-        //        banner.autoDismiss = false
         banner.show()
     }
 }
