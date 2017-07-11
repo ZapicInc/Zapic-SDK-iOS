@@ -47,7 +47,13 @@ public class Zapic: NSObject {
                 })
                 .addDisposableTo(disposeBag)
         }
-        zapicController.show()
+        showWebView()
+    }
+
+    static func showWebView() {
+        print("Zapic show")
+
+        UIApplication.shared.keyWindow?.rootViewController?.present(zapicController, animated: true, completion: nil)
     }
 
     static func showBanner() {

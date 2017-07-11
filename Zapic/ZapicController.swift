@@ -31,19 +31,18 @@ class ZapicController: UIViewController {
         view = loading
 
         //Wait for the webview to load, then show it
-        self.webView.appLoaded.filter {$0 == true}.subscribe {_ in
+        self.webView.appLoaded.filter {$0 == WebViewStatus.loaded}.subscribe {_ in
             self.view = self.webView
-        }.addDisposableTo(bag)
+            }.addDisposableTo(bag)
+        
+        //If the webview fails to load, show the offline menu
+        self.webView.appLoaded.filter {$0 == WebViewStatus.offline}.subscribe {_ in
+            self.view = OfflineView()
+            }.addDisposableTo(bag)
     }
 
     override func viewDidLoad() {
         //Create hidden WV
         webView.load()
-    }
-
-    func show() {
-        print("Zapic show")
-
-        UIApplication.shared.keyWindow?.rootViewController?.present(self, animated: true, completion: nil)
     }
 }

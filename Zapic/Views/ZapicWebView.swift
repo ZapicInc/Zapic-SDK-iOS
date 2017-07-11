@@ -10,13 +10,19 @@ import Foundation
 import WebKit
 import RxSwift
 
-class ZapicWebView: WKWebView, WKScriptMessageHandler {
+enum WebViewStatus {
+    case loading
+    case loaded
+    case offline
+}
+
+class ZapicWebView: WKWebView, WKScriptMessageHandler, WKNavigationDelegate {
 
     private var events: [String: (Any) -> Void] = [String: (Any) -> Void]()
 
     private let appUrl = "http://localhost:5000"
     private let tokenManager: TokenManager
-    let appLoaded = BehaviorSubject<Bool>(value:false)
+    let appLoaded = BehaviorSubject<WebViewStatus>(value:.loading)
 
     init(tokenManager tManager: TokenManager) {
         let config = WKWebViewConfiguration()
@@ -26,6 +32,8 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler {
         tokenManager = tManager
 
         super.init(frame: .zero, configuration: config)
+        
+        super.navigationDelegate = self
 
         events["getToken"]=self.onTokenRequest(data:)
         events["appReady"]=self.onAppReady(data:)
@@ -40,8 +48,9 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler {
     }
 
     func load() {
+        print("Loading Zapic application")
         if let myURL = URL(string: appUrl) {
-            super.load(URLRequest(url: myURL))
+            super.load(URLRequest(url: myURL, timeoutInterval:30))
         }
     }
 
@@ -51,6 +60,11 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler {
         if let handler = events[message.name] {
             handler(message.body)
         }
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        appLoaded.onNext(.offline)
+        appLoaded.onCompleted()
     }
 
     private func dispatchToJS(_ event: String, payload data: Any) {
@@ -80,7 +94,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler {
     }
 
     private func onAppReady(data:Any) {
-        appLoaded.onNext(true)
+        appLoaded.onNext(.loaded)
         appLoaded.onCompleted()
     }
 }

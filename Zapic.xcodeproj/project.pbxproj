@@ -24,6 +24,7 @@
 		657323011F0DBDF20030390F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 657322FB1F0DBDEB0030390F /* Info.plist */; };
 		657323021F0DBDF20030390F /* ZapicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657322FC1F0DBDEB0030390F /* ZapicTests.swift */; };
 		658332C61F06E16E0034FF65 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 658332BC1F06E16E0034FF65 /* Zapic.framework */; };
+		65DECB421F154049002123AA /* OfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DECB411F154049002123AA /* OfflineView.swift */; };
 		65F170A01F0EAACE0024EDE8 /* TokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F1709F1F0EAACE0024EDE8 /* TokenManagerTests.swift */; };
 		D43EB38717FA102A39236A40 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC252CA92294B8926B0796F4 /* Pods_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,7 @@
 		6575D24E1F13365F00F82B1F /* Pods_Zapic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Zapic.framework; path = "../../Library/Developer/Xcode/DerivedData/Zapic-gamyvtxdtwpkpsdkznghhaunkteb/Build/Products/Debug-iphonesimulator/Pods_Zapic.framework"; sourceTree = "<group>"; };
 		658332BC1F06E16E0034FF65 /* Zapic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zapic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		658332C51F06E16E0034FF65 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65DECB411F154049002123AA /* OfflineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineView.swift; path = Zapic/Views/OfflineView.swift; sourceTree = SOURCE_ROOT; };
 		65F1709F1F0EAACE0024EDE8 /* TokenManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenManagerTests.swift; path = Tests/TokenManagerTests.swift; sourceTree = "<group>"; };
 		766EFDFEE899C46AE25B5285 /* Pods-Zapic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zapic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Zapic/Pods-Zapic.debug.xcconfig"; sourceTree = "<group>"; };
 		BC252CA92294B8926B0796F4 /* Pods_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +118,7 @@
 			children = (
 				650FBBCC1F1481EC00E798B7 /* ZapicWebView.swift */,
 				650FBBCE1F1482B800E798B7 /* LoadingView.swift */,
+				65DECB411F154049002123AA /* OfflineView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				651C57A61F0B65F500D217EA /* GameCenterHelper.swift in Sources */,
 				651C57A81F0B65F500D217EA /* TokenManager.swift in Sources */,
 				650FBBC81F13E5D000E798B7 /* ZapicColors.swift in Sources */,
+				65DECB421F154049002123AA /* OfflineView.swift in Sources */,
 				6536E2091F100C5D00B07F00 /* WelcomeBanner.swift in Sources */,
 				651C57A91F0B65F500D217EA /* Zapic.swift in Sources */,
 			);

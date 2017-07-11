@@ -22,9 +22,7 @@
     "Zapic/**/*.{h,m,swift}"
   ],
   "public_header_files": "Zapic/*.h",
-  "resource_bundles": {
-    "Zapic": "Zapic/ZapicAssets.xcassets"
-  },
+  "resources": "Zapic/ZapicAssets.xcassets",
   "pod_target_xcconfig": {
     "SWIFT_VERSION": "3"
   },
