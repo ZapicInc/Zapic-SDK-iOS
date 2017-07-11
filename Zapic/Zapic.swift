@@ -21,7 +21,7 @@ public class Zapic: NSObject {
     public static func connect() {
 
         if hasConnected {
-            print("Zapic already connected")
+            print("Zapic already connected, skipping")
             return
         }
 
@@ -47,16 +47,15 @@ public class Zapic: NSObject {
                 })
                 .addDisposableTo(disposeBag)
         }
-        showWebView()
     }
 
-    static func showWebView() {
+    public static func showMainView() {
         print("Zapic show")
 
         UIApplication.shared.keyWindow?.rootViewController?.present(zapicController, animated: true, completion: nil)
     }
 
-    static func showBanner() {
+    private static func showBanner() {
 
         let banner = NotificationBanner(customView: WelcomeBannerView())
         banner.show()

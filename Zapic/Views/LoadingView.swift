@@ -12,7 +12,7 @@ import WebKit
 class LoadingView: ZapicView {
 
     init() {
-        super.init("abc")
+        super.init("Loading...")
     }
 
     required init?(coder aDecoder: NSCoder) {

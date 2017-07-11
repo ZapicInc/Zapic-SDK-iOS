@@ -29,7 +29,7 @@ class GameCenterHelper {
                 }
 
                 if gameCenterVC != nil {
-                    print("Zapic - show VC")
+                    print("Zapic - showing GameCenter View")
 
                     UIApplication.shared.keyWindow?.rootViewController?.present(gameCenterVC, animated: true, completion: nil)
 

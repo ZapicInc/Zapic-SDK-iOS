@@ -36,6 +36,8 @@ class ApiClient {
 
         return URLSession.shared.rx.response(request: request).flatMap { (response: HTTPURLResponse, data: Data) -> Observable<[String:Any]> in
 
+            print("Received Token API Response \(response.statusCode)")
+
             if 200 == response.statusCode,
                 let json: [String:Any] = ZapicUtils.deserialize(bodyData: data) {
                 return Observable.just(json)

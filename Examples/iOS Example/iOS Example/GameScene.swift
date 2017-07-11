@@ -8,11 +8,13 @@
 
 import SpriteKit
 import GameplayKit
+import Zapic
 
 class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    private var button: SKNode?
     
     override func didMove(to view: SKView) {
         
@@ -35,55 +37,78 @@ class GameScene: SKScene {
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
         }
-    }
-    
-    
-    func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
         
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+        self.button = self.childNode(withName: "//zapicButton")
+        
+//        let zapicColor = UIColor(red:0.00, green:0.69, blue:0.79, alpha:1.0)
+//        //Create a zapic button
+//        button = SKSpriteNode(color: zapicColor, size: CGSize(width: 200, height: 144))
+//        // Put it in the center of the scene
+//        button.position = CGPoint(x:self.frame.midX, y:self.frame.midY - 200);
+//        
+//        let zapicLogo = SKLabelNode()
+//        zapicLogo.
+//        
+//        self.addChild(button)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        let touch = touches.first
+        let touchLocation = touch!.location(in: self)
+        // Check if the location of the touch is within the button's bounds
+        if button!.contains(touchLocation) {
+            print("Showing zapic from GameScene!")
+            Zapic.showMainView()
+        }
     }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
     
-    
-    override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
-    }
+//    func touchDown(atPoint pos : CGPoint) {
+//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
+//            n.position = pos
+//            n.strokeColor = SKColor.green
+//            self.addChild(n)
+//        }
+//    }
+//    
+//    func touchMoved(toPoint pos : CGPoint) {
+//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
+//            n.position = pos
+//            n.strokeColor = SKColor.blue
+//            self.addChild(n)
+//        }
+//    }
+//    
+//    func touchUp(atPoint pos : CGPoint) {
+//        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
+//            n.position = pos
+//            n.strokeColor = SKColor.red
+//            self.addChild(n)
+//        }
+//    }
+//    
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if let label = self.label {
+//            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
+//        }
+//        
+//        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+//    }
+//    
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+//    }
+//    
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+//    }
+//    
+//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+//    }
+//    
+//    
+//    override func update(_ currentTime: TimeInterval) {
+//        // Called before each frame is rendered
+//    }
 }

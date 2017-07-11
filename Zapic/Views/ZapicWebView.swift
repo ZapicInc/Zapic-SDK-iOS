@@ -20,6 +20,9 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, WKNavigationDelegate {
 
     private var events: [String: (Any) -> Void] = [String: (Any) -> Void]()
 
+    //Flag indicating if the view is ready to be shown
+    public private(set) var isReady: Bool = false
+
     private let appUrl = "http://localhost:5000"
     private let tokenManager: TokenManager
     let appLoaded = BehaviorSubject<WebViewStatus>(value:.loading)
@@ -63,8 +66,8 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, WKNavigationDelegate {
     }
 
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        print("Error loading Zapic webview")
         appLoaded.onNext(.offline)
-        appLoaded.onCompleted()
     }
 
     private func dispatchToJS(_ event: String, payload data: Any) {
@@ -94,6 +97,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, WKNavigationDelegate {
     }
 
     private func onAppReady(data:Any) {
+        isReady = true
         appLoaded.onNext(.loaded)
         appLoaded.onCompleted()
     }
