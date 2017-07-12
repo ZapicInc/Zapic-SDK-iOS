@@ -555,7 +555,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zapic.zapic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -587,7 +587,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zapic.zapic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
