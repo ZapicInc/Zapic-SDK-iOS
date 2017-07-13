@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import NotificationBannerSwift
+import NotificationBanner
 import RxSwift
 
 @objc(Zapic)

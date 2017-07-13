@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		651624581F16DE2D00932E26 /* TokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651624561F16DE2D00932E26 /* TokenManagerTests.swift */; };
-		651624591F16DE2D00932E26 /* ZapicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651624571F16DE2D00932E26 /* ZapicTests.swift */; };
 		651AEDAB1F16C49900986F05 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651AEDA11F16C49900986F05 /* Zapic.framework */; };
 		651AEDB01F16C49900986F05 /* ZapicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDAF1F16C49900986F05 /* ZapicTests.swift */; };
 		651AEDB21F16C49900986F05 /* Zapic.h in Headers */ = {isa = PBXBuildFile; fileRef = 651AEDA41F16C49900986F05 /* Zapic.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -39,8 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		651624561F16DE2D00932E26 /* TokenManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenManagerTests.swift; sourceTree = "<group>"; };
-		651624571F16DE2D00932E26 /* ZapicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicTests.swift; sourceTree = "<group>"; };
 		651AEDA11F16C49900986F05 /* Zapic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zapic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		651AEDA41F16C49900986F05 /* Zapic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zapic.h; sourceTree = "<group>"; };
 		651AEDA51F16C49900986F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +53,9 @@
 		651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ZapicAssets.xcassets; sourceTree = "<group>"; };
 		651AEDC41F16C4CE00986F05 /* ZapicColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicColors.swift; sourceTree = "<group>"; };
 		651AEDC51F16C4CE00986F05 /* ZapicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicController.swift; sourceTree = "<group>"; };
+		651AEDD21F16C7AD00986F05 /* MarqueeLabelSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarqueeLabelSwift.framework; path = Carthage/Build/iOS/MarqueeLabelSwift.framework; sourceTree = "<group>"; };
+		651AEDD31F16C7AD00986F05 /* NotificationBanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationBanner.framework; path = Carthage/Build/iOS/NotificationBanner.framework; sourceTree = "<group>"; };
+		651AEDD41F16C7AD00986F05 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		651AEDD91F16C80600986F05 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingView.swift; path = Views/LoadingView.swift; sourceTree = "<group>"; };
 		651AEDDA1F16C80600986F05 /* OfflineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineView.swift; path = Views/OfflineView.swift; sourceTree = "<group>"; };
 		651AEDDB1F16C80600986F05 /* ZapicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZapicView.swift; path = Views/ZapicView.swift; sourceTree = "<group>"; };
@@ -124,8 +123,6 @@
 		651AEDAE1F16C49900986F05 /* ZapicTests */ = {
 			isa = PBXGroup;
 			children = (
-				651624561F16DE2D00932E26 /* TokenManagerTests.swift */,
-				651624571F16DE2D00932E26 /* ZapicTests.swift */,
 				651AEDAF1F16C49900986F05 /* ZapicTests.swift */,
 				651AEDB11F16C49900986F05 /* Info.plist */,
 			);
@@ -135,6 +132,9 @@
 		651AEDD11F16C7AD00986F05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				651AEDD21F16C7AD00986F05 /* MarqueeLabelSwift.framework */,
+				651AEDD31F16C7AD00986F05 /* NotificationBanner.framework */,
+				651AEDD41F16C7AD00986F05 /* SnapKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -305,8 +305,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				651AEDB01F16C49900986F05 /* ZapicTests.swift in Sources */,
-				651624591F16DE2D00932E26 /* ZapicTests.swift in Sources */,
-				651624581F16DE2D00932E26 /* TokenManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
