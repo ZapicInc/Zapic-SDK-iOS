@@ -58,7 +58,7 @@ class ZapicView: UIView {
 
         closeButton.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(10)
-            make.top.equalToSuperview().offset(20)
+            make.top.equalToSuperview()
         }
         
         bindToViewModel()
