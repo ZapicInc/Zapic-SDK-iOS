@@ -36,7 +36,9 @@ class TokenManager {
     }
 
     func updateToken(newToken: String) {
-
+        
+        print("Updating token")
+        
         if isValidToken(token: newToken) {
             setToken(newToken: newToken)
         } else {
@@ -53,7 +55,6 @@ class TokenManager {
     func clearToken() {
         UserDefaults.standard.setValue("", forKey: ZapicKey.Token)
         token = ""
-
     }
 
     private func isValidToken(token: String) -> Bool {

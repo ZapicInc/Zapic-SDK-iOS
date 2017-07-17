@@ -57,7 +57,6 @@ class GameScene: SKScene {
         let touchLocation = touch!.location(in: self)
         // Check if the location of the touch is within the button's bounds
         if button!.contains(touchLocation) {
-            print("Showing zapic from GameScene!")
             Zapic.showMainView()
         }
     }

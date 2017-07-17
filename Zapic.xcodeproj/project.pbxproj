@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		651624581F16DE2D00932E26 /* TokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651624561F16DE2D00932E26 /* TokenManagerTests.swift */; };
-		651624591F16DE2D00932E26 /* ZapicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651624571F16DE2D00932E26 /* ZapicTests.swift */; };
 		651AEDAB1F16C49900986F05 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651AEDA11F16C49900986F05 /* Zapic.framework */; };
-		651AEDB01F16C49900986F05 /* ZapicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDAF1F16C49900986F05 /* ZapicTests.swift */; };
 		651AEDB21F16C49900986F05 /* Zapic.h in Headers */ = {isa = PBXBuildFile; fileRef = 651AEDA41F16C49900986F05 /* Zapic.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		651AEDC61F16C4CE00986F05 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDBB1F16C4CE00986F05 /* ApiClient.swift */; };
 		651AEDC71F16C4CE00986F05 /* CInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 651AEDBC1F16C4CE00986F05 /* CInterface.h */; };
@@ -26,6 +24,8 @@
 		651AEDDE1F16C80600986F05 /* OfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDDA1F16C80600986F05 /* OfflineView.swift */; };
 		651AEDDF1F16C80600986F05 /* ZapicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDDB1F16C80600986F05 /* ZapicView.swift */; };
 		651AEDE01F16C80600986F05 /* ZapicWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDDC1F16C80600986F05 /* ZapicWebView.swift */; };
+		65AC48D91F1A8ABC0026E101 /* ZapicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC48D81F1A8ABC0026E101 /* ZapicViewModel.swift */; };
+		65AC48DB1F1D40CD0026E101 /* ZapicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC48DA1F1D40CD0026E101 /* ZapicTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,12 +40,10 @@
 
 /* Begin PBXFileReference section */
 		651624561F16DE2D00932E26 /* TokenManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenManagerTests.swift; sourceTree = "<group>"; };
-		651624571F16DE2D00932E26 /* ZapicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicTests.swift; sourceTree = "<group>"; };
 		651AEDA11F16C49900986F05 /* Zapic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zapic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		651AEDA41F16C49900986F05 /* Zapic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zapic.h; sourceTree = "<group>"; };
 		651AEDA51F16C49900986F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		651AEDAA1F16C49900986F05 /* ZapicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		651AEDAF1F16C49900986F05 /* ZapicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapicTests.swift; sourceTree = "<group>"; };
 		651AEDB11F16C49900986F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		651AEDBB1F16C4CE00986F05 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		651AEDBC1F16C4CE00986F05 /* CInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CInterface.h; sourceTree = "<group>"; };
@@ -61,6 +59,8 @@
 		651AEDDA1F16C80600986F05 /* OfflineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineView.swift; path = Views/OfflineView.swift; sourceTree = "<group>"; };
 		651AEDDB1F16C80600986F05 /* ZapicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZapicView.swift; path = Views/ZapicView.swift; sourceTree = "<group>"; };
 		651AEDDC1F16C80600986F05 /* ZapicWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZapicWebView.swift; path = Views/ZapicWebView.swift; sourceTree = "<group>"; };
+		65AC48D81F1A8ABC0026E101 /* ZapicViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicViewModel.swift; sourceTree = "<group>"; };
+		65AC48DA1F1D40CD0026E101 /* ZapicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,14 +109,15 @@
 				651AEDBC1F16C4CE00986F05 /* CInterface.h */,
 				651AEDBD1F16C4CE00986F05 /* CInterface.mm */,
 				651AEDBE1F16C4CE00986F05 /* GameCenterHelper.swift */,
+				651AEDA51F16C49900986F05 /* Info.plist */,
 				651AEDBF1F16C4CE00986F05 /* TokenManager.swift */,
 				651AEDC11F16C4CE00986F05 /* WelcomeBanner.swift */,
+				651AEDA41F16C49900986F05 /* Zapic.h */,
 				651AEDC21F16C4CE00986F05 /* Zapic.swift */,
 				651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */,
 				651AEDC41F16C4CE00986F05 /* ZapicColors.swift */,
 				651AEDC51F16C4CE00986F05 /* ZapicController.swift */,
-				651AEDA41F16C49900986F05 /* Zapic.h */,
-				651AEDA51F16C49900986F05 /* Info.plist */,
+				65AC48D81F1A8ABC0026E101 /* ZapicViewModel.swift */,
 			);
 			path = Zapic;
 			sourceTree = "<group>";
@@ -124,9 +125,8 @@
 		651AEDAE1F16C49900986F05 /* ZapicTests */ = {
 			isa = PBXGroup;
 			children = (
+				65AC48DA1F1D40CD0026E101 /* ZapicTests.swift */,
 				651624561F16DE2D00932E26 /* TokenManagerTests.swift */,
-				651624571F16DE2D00932E26 /* ZapicTests.swift */,
-				651AEDAF1F16C49900986F05 /* ZapicTests.swift */,
 				651AEDB11F16C49900986F05 /* Info.plist */,
 			);
 			path = ZapicTests;
@@ -293,6 +293,7 @@
 				651AEDE01F16C80600986F05 /* ZapicWebView.swift in Sources */,
 				651AEDD01F16C4CE00986F05 /* ZapicController.swift in Sources */,
 				651AEDCA1F16C4CE00986F05 /* TokenManager.swift in Sources */,
+				65AC48D91F1A8ABC0026E101 /* ZapicViewModel.swift in Sources */,
 				651AEDC61F16C4CE00986F05 /* ApiClient.swift in Sources */,
 				651AEDCF1F16C4CE00986F05 /* ZapicColors.swift in Sources */,
 				651AEDC81F16C4CE00986F05 /* CInterface.mm in Sources */,
@@ -304,8 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				651AEDB01F16C49900986F05 /* ZapicTests.swift in Sources */,
-				651624591F16DE2D00932E26 /* ZapicTests.swift in Sources */,
+				65AC48DB1F1D40CD0026E101 /* ZapicTests.swift in Sources */,
 				651624581F16DE2D00932E26 /* TokenManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

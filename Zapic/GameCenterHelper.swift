@@ -47,6 +47,8 @@ class GameCenterHelper {
 
     private static func generateIdentityInfo(player: GKLocalPlayer) -> Observable<[String:Any]> {
         return Observable.create { observable in
+            
+            print("Generating identity signature")
 
             player.generateIdentityVerificationSignature { (publicKeyUrl: URL!, signature: Data!, salt: Data!, timestamp: UInt64, error: Error!) -> Void in
 
@@ -55,6 +57,8 @@ class GameCenterHelper {
                     print(err.localizedDescription)
                     print("Error generating verification signature")
                 }
+                
+                print("Generated identity signature")
 
                 let signatureStr = signature.base64EncodedString()
 

@@ -34,7 +34,7 @@ class GameViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        Zapic.connect()
+//        Zapic.connect()
     }
 
     override var shouldAutorotate: Bool {

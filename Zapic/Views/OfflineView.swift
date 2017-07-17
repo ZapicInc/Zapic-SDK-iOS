@@ -11,9 +11,9 @@ import WebKit
 
 class OfflineView: ZapicView {
 
-    init() {
+    init(_ viewModel:ZapicViewModel) {
 
-        super.init("Could Not Connect")
+        super.init(viewModel, text: "Could Not Connect")
 
         //Offline text
         let details = UILabel()
@@ -29,7 +29,6 @@ class OfflineView: ZapicView {
             make.right.equalToSuperview().offset(-50)
             make.top.equalTo(title.snp.bottom).offset(10)
         }
-
     }
 
     required init?(coder aDecoder: NSCoder) {

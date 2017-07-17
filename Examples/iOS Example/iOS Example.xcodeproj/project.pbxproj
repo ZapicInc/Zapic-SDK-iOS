@@ -82,8 +82,6 @@
 		6576C56D1F1949E70075E226 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = ../../Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		6576C56F1F1949EF0075E226 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		6576C5711F194A180075E226 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		6576C5741F194A440075E226 /* MarqueeLabelSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = MarqueeLabelSwift.framework.dSYM; path = ../../Carthage/Build/iOS/MarqueeLabelSwift.framework.dSYM; sourceTree = "<group>"; };
-		6576C5751F194A440075E226 /* NotificationBanner.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = NotificationBanner.framework.dSYM; path = ../../Carthage/Build/iOS/NotificationBanner.framework.dSYM; sourceTree = "<group>"; };
 		6576C5761F194A440075E226 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		6576C5791F194A4C0075E226 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = ../../Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,8 +104,6 @@
 		651624291F16DA9F00932E26 = {
 			isa = PBXGroup;
 			children = (
-				6576C5741F194A440075E226 /* MarqueeLabelSwift.framework.dSYM */,
-				6576C5751F194A440075E226 /* NotificationBanner.framework.dSYM */,
 				6576C55C1F1949240075E226 /* Zapic.xcodeproj */,
 				651624341F16DA9F00932E26 /* iOS Example */,
 				651624331F16DA9F00932E26 /* Products */,
