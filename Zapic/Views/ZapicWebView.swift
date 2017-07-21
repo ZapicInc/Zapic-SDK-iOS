@@ -29,8 +29,11 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, WKNavigationDelegate {
         
         self.viewModel = viewModel
         
-        events = ["onAppReady",
-                  "onPageReady"]
+        events = ["onAppLoaded",
+                  "onAppReady",
+                  "onPageReady",
+                  "onPageClosing",
+                  "onPageClosed"]
         
         super.init(frame: .zero, configuration: config)
         
@@ -49,7 +52,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, WKNavigationDelegate {
     
     private func bindToViewModel(){
         viewModel.jsCommands.subscribe(onNext:{ event in
-            self.dispatchToJS(event:event)
+            self.dispatchToJS(event)
         }).addDisposableTo(bag)
     }
     
@@ -85,56 +88,19 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, WKNavigationDelegate {
         viewModel.receiveEvent(event)
     }
     
-    private func dispatchToJS(event:WebEvent) {
+    private func dispatchToJS(_ function:WebFunction) {
         
-        print("Dispatching JS event \(event.type)")
+        print("Dispatching JS event \(function.function)")
         
-        if let payload = ZapicUtils.serialize(data: event.payload),
-            let content = String(data: payload, encoding: String.Encoding.utf8) {
-            
-            let msg = "{'type':'\(event.type)','payload':'\(content)'}"
-            
-            super.evaluateJavaScript("zapicDispatch(\(msg))") { (result, error) in
-                
-                if let error = error {
-                    print("JS Error \(error)")
-                    self.viewModel.setStatus(status:.error)
-                } else if let result = result {
-                    print("JS Result \(result)")
-                }
+        let js = "zapic.\(function.function)"
+        
+        super.evaluateJavaScript(js) { (result, error) in
+            if let error = error {
+                print("JS Error \(error)")
+                self.viewModel.setStatus(status:.error)
+            } else if let result = result {
+                print("JS Result \(result)")
             }
         }
     }
-
-    
-//    private func dispatchToJS(_ event: String, payload data: Any) {
-//
-//        if let payload = ZapicUtils.serialize(data: data),
-//            let content = String(data: payload, encoding: String.Encoding.utf8) {
-//
-//            let msg = "{'type':'\(event)','payload':'\(content)'}"
-//
-//            super.evaluateJavaScript("zapicDispatch(\(msg))") { (result, error) in
-//
-//                if let error = error {
-//                    print("JS Error \(error)")
-//                } else if let result = result {
-//                    print("JS Result \(result)")
-//                }
-//            }
-//        }
-//    }
-//
-//    private func sendToken() {
-//        dispatchToJS("setToken", payload: "ABC")//tokenManager.token)
-//    }
-//
-//    private func onTokenRequest(data:Any) {
-//        sendToken()
-//    }
-//
-//    private func onAppReady(data:Any) {
-//        isReady = true
-//        viewModel.setStatus(status: .ready)
-//    }
 }

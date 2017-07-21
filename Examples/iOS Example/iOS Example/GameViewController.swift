@@ -9,7 +9,6 @@
 import UIKit
 import SpriteKit
 import GameplayKit
-import Zapic
 
 class GameViewController: UIViewController {
 
@@ -34,7 +33,6 @@ class GameViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        Zapic.connect()
     }
 
     override var shouldAutorotate: Bool {

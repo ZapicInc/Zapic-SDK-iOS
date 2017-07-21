@@ -32,7 +32,7 @@ class ApiClient {
         var request = URLRequest(url: TokenUrl!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField:"Content-Type")
-        request.httpBody = ZapicUtils.serialize(data: signature)
+        request.httpBody = ZapicUtils.serialize(data: signature)?.data(using: .utf8)
 
         return URLSession.shared.rx.response(request: request).flatMap { (response: HTTPURLResponse, data: Data) -> Observable<[String:Any]> in
 
@@ -50,16 +50,17 @@ class ApiClient {
 
 class ZapicUtils {
 
-    static func serialize(data: Any) -> Data? {
-
-        if let dataStr = data as? String {
-            return (dataStr).data(using: .utf8)
-        }
-
+    static func serialize(data: Any) -> String? {
+        
+        switch data {
+        case is Dictionary<String,Any>:
         if let jsonData = try? JSONSerialization.data(withJSONObject: data, options:.prettyPrinted) {
-
-            return String(data: jsonData, encoding: .utf8)?.data(using: .utf8)
+            return String(data: jsonData, encoding: .utf8)
+            }
+        default:
+            return String(describing:data)
         }
+
         return nil
     }
 

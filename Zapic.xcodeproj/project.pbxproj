@@ -104,20 +104,20 @@
 		651AEDA31F16C49900986F05 /* Zapic */ = {
 			isa = PBXGroup;
 			children = (
-				651AEDD81F16C7F600986F05 /* Views */,
-				651AEDBB1F16C4CE00986F05 /* ApiClient.swift */,
 				651AEDBC1F16C4CE00986F05 /* CInterface.h */,
+				651AEDA41F16C49900986F05 /* Zapic.h */,
 				651AEDBD1F16C4CE00986F05 /* CInterface.mm */,
-				651AEDBE1F16C4CE00986F05 /* GameCenterHelper.swift */,
 				651AEDA51F16C49900986F05 /* Info.plist */,
+				651AEDBB1F16C4CE00986F05 /* ApiClient.swift */,
+				651AEDBE1F16C4CE00986F05 /* GameCenterHelper.swift */,
 				651AEDBF1F16C4CE00986F05 /* TokenManager.swift */,
 				651AEDC11F16C4CE00986F05 /* WelcomeBanner.swift */,
-				651AEDA41F16C49900986F05 /* Zapic.h */,
 				651AEDC21F16C4CE00986F05 /* Zapic.swift */,
-				651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */,
 				651AEDC41F16C4CE00986F05 /* ZapicColors.swift */,
 				651AEDC51F16C4CE00986F05 /* ZapicController.swift */,
 				65AC48D81F1A8ABC0026E101 /* ZapicViewModel.swift */,
+				651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */,
+				651AEDD81F16C7F600986F05 /* Views */,
 			);
 			path = Zapic;
 			sourceTree = "<group>";

@@ -9,32 +9,11 @@
 import Foundation
 import RxSwift
 
-class WebEvent{
-    
-    let type:String
-    let payload:Any
-    
-    init(type:String,payload:Any){
-        self.type = type
-        self.payload = payload
-    }
-}
-
-enum WebViewStatus {
-    case loading
-    case ready
-    case error
-}
-
-enum CurrentView {
-    case loading
-    case offline
-    case webView
-}
-
 class ZapicViewModel{
     
     let close = PublishSubject<Void>()
+    
+    var webSecret:UInt32 = 0
     
     /**
      The current view that should be displayed
@@ -44,7 +23,7 @@ class ZapicViewModel{
     /**
      Events that should be set to a JS client
      */
-    let jsCommands = PublishSubject<WebEvent>()
+    let jsCommands = PublishSubject<WebFunction>()
     
     let tokenManager:TokenManager
     
@@ -75,12 +54,60 @@ class ZapicViewModel{
         print("Received \(event.type) event")
         
         switch event.type {
+        case "onAppLoaded":
+            webSecret = arc4random_uniform(UInt32.max)
+            jsCommands.onNext(WebFunction(function: "initialize(\(webSecret), 1)"))
         case "onAppReady":
-            jsCommands.onNext(WebEvent(type: "setAuthToken", payload: tokenManager.token))
-            jsCommands.onNext(WebEvent(type: "openPage", payload: "/profile"))
+            jsCommands.onNext(WebFunction(function: "login(\(webSecret),'\(tokenManager.token)')"))
+            jsCommands.onNext(WebFunction(function: "open(\(webSecret),'default')"))
         case "onPageReady":
-            viewStream.onNext(.webView)
-        default:break
+//            if let reqSecret = event.payload as? Int {
+                viewStream.onNext(.webView)
+//            }
+        case "onPageClosing":
+            if let callbackId = event.payload as? Int {
+                close.onNext()
+                jsCommands.onNext(WebFunction(function:"callback(\(webSecret), \(callbackId), true)"))
+            }
+        case "onPageClosed":
+            //Do nothing
+            print("Page closed")
+        default:
+            print("Unhandled event \(event.type)")
+            break
         }
     }
 }
+
+class WebEvent{
+    
+    let type:String
+    let payload:Any
+    
+    init(type:String,payload:Any){
+        self.type = type
+        self.payload = payload
+    }
+}
+
+class WebFunction{
+    
+    let function:String
+    
+    init(function:String){
+        self.function = function
+    }
+}
+
+enum WebViewStatus {
+    case loading
+    case ready
+    case error
+}
+
+enum CurrentView {
+    case loading
+    case offline
+    case webView
+}
+

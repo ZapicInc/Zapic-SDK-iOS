@@ -49,7 +49,6 @@ class ZapicController: UIViewController {
             switch view {
             case .loading:
                 self.view = self.loading
-//                webView.load()
             case .offline:
                 self.view = self.offline
             case .webView:
@@ -62,6 +61,10 @@ class ZapicController: UIViewController {
     override func viewDidLoad() {
         print("Zapic viewDidLoad")
         view = loading
+    }
+    
+    deinit {
+        print("MyViewController deinit called")
     }
     
     override func viewWillAppear(_ animated: Bool) {
