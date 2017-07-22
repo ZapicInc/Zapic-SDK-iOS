@@ -11,7 +11,7 @@ import RxSwift
 
 class ZapicViewModel{
     
-    let close = PublishSubject<Void>()
+    let viewStatus = PublishSubject<ViewStatus>()
     
     var webSecret:UInt32 = 0
     
@@ -33,8 +33,13 @@ class ZapicViewModel{
     
     func closeWindow(){
         print("Zapic window closing")
-        close.onNext()
+        viewStatus.onNext(.close)
         viewStream.onNext(.loading)
+    }
+    
+    func openWindow(){
+        print("Zapic window opening")
+        viewStatus.onNext(.open)
     }
     
     func setStatus(status:WebViewStatus){
@@ -66,7 +71,7 @@ class ZapicViewModel{
 //            }
         case "onPageClosing":
             if let callbackId = event.payload as? Int {
-                close.onNext()
+                viewStatus.onNext(.close)
                 jsCommands.onNext(WebFunction(function:"callback(\(webSecret), \(callbackId), true)"))
             }
         case "onPageClosed":
@@ -103,6 +108,11 @@ enum WebViewStatus {
     case loading
     case ready
     case error
+}
+
+enum ViewStatus{
+    case open
+    case close
 }
 
 enum CurrentView {

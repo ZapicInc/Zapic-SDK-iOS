@@ -28,12 +28,17 @@ class ZapicCore{
     
     private let tokenManager: TokenManager
     private let viewModel: ZapicViewModel
-    private let mainController: UIViewController
+    private let apiClient:ApiClient
     private let zapicController: ZapicController
     private var hasConnected = false
     private let bag = DisposeBag()
+    private let mainController: UIViewController
     
     init(){
+        tokenManager = TokenManager(bundleId: Bundle.main.bundleIdentifier!)
+        viewModel = ZapicViewModel(tokenManager: tokenManager)
+        zapicController = ZapicController(viewModel)
+        apiClient = ApiClient(tokenManager: tokenManager)
         
         if let ctrl = UIApplication.shared.delegate?.window??.rootViewController {
             mainController = ctrl
@@ -41,10 +46,6 @@ class ZapicCore{
         else {
             fatalError("RootViewController not found, ensure")
         }
-        
-        tokenManager = TokenManager(bundleId: Bundle.main.bundleIdentifier!)
-        viewModel = ZapicViewModel(tokenManager: tokenManager)
-        zapicController = ZapicController(viewModel)
     }
     
     func connect() {
@@ -56,7 +57,10 @@ class ZapicCore{
         
         hasConnected = true
         
-        print("Zapic connecting...")
+        print("Zapic connecting")
+        
+        //Debug only. Turn this on to simulate the complete workflow
+//        tokenManager.clearToken()
         
         if tokenManager.hasValidToken() {
             
@@ -64,13 +68,15 @@ class ZapicCore{
             print("Using token \(tokenManager.token)")
             
             self.showBanner()
+            self.connected()
             
         } else {
             GameCenterHelper.generateSignature()
-                .flatMap {ApiClient.getToken(signature: $0)}
+                .flatMap {self.apiClient.getToken(signature: $0)}
                 .map {$0["Token"] as? String ?? ""}
                 .subscribe(onNext: {
                     self.tokenManager.updateToken(newToken: $0)
+                    self.connected()
                 }, onError: { _ in
                     self.tokenManager.clearToken()
                 })
@@ -78,10 +84,15 @@ class ZapicCore{
         }
     }
     
+    private func connected(){
+        print("Zapic connected")
+        
+       apiClient.sendActivity(Activity(.appStarted)).subscribe().addDisposableTo(bag)
+    }
+    
     func showMainView() {
         print("Showing main Zapic window")
-        
-        mainController.present(zapicController, animated: true, completion: nil)
+        viewModel.openWindow()
     }
     
     func showBanner() {
@@ -89,5 +100,3 @@ class ZapicCore{
         banner.show(on: mainController)
     }
 }
-
-//            self.dismiss(animated: true, completion: nil)

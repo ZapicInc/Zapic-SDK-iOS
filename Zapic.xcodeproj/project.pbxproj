@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650116041F230C6000CED7B2 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650116031F230C6000CED7B2 /* Activity.swift */; };
+		650116061F23141300CED7B2 /* ZapicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650116051F23141300CED7B2 /* ZapicUtils.swift */; };
 		651624581F16DE2D00932E26 /* TokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651624561F16DE2D00932E26 /* TokenManagerTests.swift */; };
 		651AEDAB1F16C49900986F05 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651AEDA11F16C49900986F05 /* Zapic.framework */; };
 		651AEDB21F16C49900986F05 /* Zapic.h in Headers */ = {isa = PBXBuildFile; fileRef = 651AEDA41F16C49900986F05 /* Zapic.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		650116031F230C6000CED7B2 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		650116051F23141300CED7B2 /* ZapicUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicUtils.swift; sourceTree = "<group>"; };
 		651624561F16DE2D00932E26 /* TokenManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenManagerTests.swift; sourceTree = "<group>"; };
 		651AEDA11F16C49900986F05 /* Zapic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zapic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		651AEDA41F16C49900986F05 /* Zapic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zapic.h; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				651AEDA41F16C49900986F05 /* Zapic.h */,
 				651AEDBD1F16C4CE00986F05 /* CInterface.mm */,
 				651AEDA51F16C49900986F05 /* Info.plist */,
+				650116031F230C6000CED7B2 /* Activity.swift */,
 				651AEDBB1F16C4CE00986F05 /* ApiClient.swift */,
 				651AEDBE1F16C4CE00986F05 /* GameCenterHelper.swift */,
 				651AEDBF1F16C4CE00986F05 /* TokenManager.swift */,
@@ -115,6 +120,7 @@
 				651AEDC21F16C4CE00986F05 /* Zapic.swift */,
 				651AEDC41F16C4CE00986F05 /* ZapicColors.swift */,
 				651AEDC51F16C4CE00986F05 /* ZapicController.swift */,
+				650116051F23141300CED7B2 /* ZapicUtils.swift */,
 				65AC48D81F1A8ABC0026E101 /* ZapicViewModel.swift */,
 				651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */,
 				651AEDD81F16C7F600986F05 /* Views */,
@@ -287,8 +293,10 @@
 			files = (
 				651AEDDE1F16C80600986F05 /* OfflineView.swift in Sources */,
 				651AEDDF1F16C80600986F05 /* ZapicView.swift in Sources */,
+				650116041F230C6000CED7B2 /* Activity.swift in Sources */,
 				651AEDC91F16C4CE00986F05 /* GameCenterHelper.swift in Sources */,
 				651AEDCD1F16C4CE00986F05 /* Zapic.swift in Sources */,
+				650116061F23141300CED7B2 /* ZapicUtils.swift in Sources */,
 				651AEDCC1F16C4CE00986F05 /* WelcomeBanner.swift in Sources */,
 				651AEDE01F16C80600986F05 /* ZapicWebView.swift in Sources */,
 				651AEDD01F16C4CE00986F05 /* ZapicController.swift in Sources */,

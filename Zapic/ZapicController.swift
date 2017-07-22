@@ -14,11 +14,12 @@ import RxCocoa
 
 class ZapicController: UIViewController {
     
-    let webView: ZapicWebView
-    let loading:LoadingView
-    let offline:OfflineView
-    let bag = DisposeBag()
-    let viewModel: ZapicViewModel
+    private let webView: ZapicWebView
+    private let loading:LoadingView
+    private let offline:OfflineView
+    private let bag = DisposeBag()
+    private let viewModel: ZapicViewModel
+    private let mainController: UIViewController
     
     private var closeSub: Disposable?
     
@@ -27,6 +28,14 @@ class ZapicController: UIViewController {
         webView = ZapicWebView(viewModel)
         loading = LoadingView(viewModel)
         offline = OfflineView(viewModel)
+        
+        if let ctrl = UIApplication.shared.delegate?.window??.rootViewController {
+            mainController = ctrl
+        }
+        else {
+            fatalError("RootViewController not found, ensure")
+        }
+
         
         super.init(nibName:nil, bundle:nil)
         
@@ -40,8 +49,14 @@ class ZapicController: UIViewController {
     func bindToViewModel(){
         
         //Close window event
-        viewModel.close.subscribe(onNext:{
-            self.dismiss(animated: true, completion: nil)
+        viewModel.viewStatus.subscribe(onNext:{ status in
+            
+            if status == .open{
+                 self.mainController.present(self, animated: true, completion: nil)
+            }
+            else{
+                self.dismiss(animated: true, completion: nil)
+            }
         }).addDisposableTo(bag)
         
         //App status event
@@ -61,10 +76,6 @@ class ZapicController: UIViewController {
     override func viewDidLoad() {
         print("Zapic viewDidLoad")
         view = loading
-    }
-    
-    deinit {
-        print("MyViewController deinit called")
     }
     
     override func viewWillAppear(_ animated: Bool) {

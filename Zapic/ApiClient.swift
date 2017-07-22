@@ -13,7 +13,7 @@ import RxCocoa
 enum ZapicError: Error {
     case unknownError
     //    case connectionError
-    //    case invalidCredentials
+        case invalidCredentials
     //    case invalidRequest
     //    case notFound
     //    case invalidResponse
@@ -24,51 +24,55 @@ enum ZapicError: Error {
 }
 
 class ApiClient {
+    
+    let apiVersion = "v1"
+    
+    let urlPrefix:String
+    
+    let tokenManager:TokenManager
+    
+    init(tokenManager: TokenManager) {
+        urlPrefix = "http://api.zapic.com/\(apiVersion)/"
+        self.tokenManager = tokenManager
+    }
 
-    static let TokenUrl = URL(string: "http://api.zapic.com/v1/game-center/token")
+    func getToken(signature: [String:Any]) -> Observable<[String:Any]> {
 
-    static func getToken(signature: [String:Any]) -> Observable<[String:Any]> {
-
-        var request = URLRequest(url: TokenUrl!)
+        return createRequest(url: "game-center/token", http: "POST", body: signature, token: false)
+    }
+    
+    func sendActivity(_ activity: Activity) -> Observable<[String:Any]> {
+        return createRequest(url: "profile/activities", http: "POST", body: activity, token: true)
+    }
+    
+    private func createRequest(url:String,http:String,body:Any,token:Bool) -> Observable<[String:Any]> {
+        
+        if token && !tokenManager.hasValidToken() {
+            print("Invalid api token, unable to send request")
+            return Observable.error(ZapicError.invalidCredentials)
+        }
+        
+        var request = URLRequest(url: URL(string: urlPrefix + url)!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField:"Content-Type")
-        request.httpBody = ZapicUtils.serialize(data: signature)?.data(using: .utf8)
-
-        return URLSession.shared.rx.response(request: request).flatMap { (response: HTTPURLResponse, data: Data) -> Observable<[String:Any]> in
-
-            print("Received Token API Response \(response.statusCode)")
-
+        request.httpBody = ZapicUtils.serialize(data: body)?.data(using: .utf8)
+        
+        if token{
+            request.addValue("Bearer \(tokenManager.token)", forHTTPHeaderField: "Authorization")
+        }
+        
+        print("Sending HTTP request to \(url)")
+        
+        return URLSession.shared.rx.response(request: request).map { (response: HTTPURLResponse, data: Data) in
+            
+            print("Received API Response \(response.statusCode) from \(url)")
+            
             if 200 == response.statusCode,
                 let json: [String:Any] = ZapicUtils.deserialize(bodyData: data) {
-                return Observable.just(json)
+                return json
             } else {
-                return Observable.error(ZapicError.unknownError)
+                throw ZapicError.unknownError
             }
         }
-    }
-}
-
-class ZapicUtils {
-
-    static func serialize(data: Any) -> String? {
-        
-        switch data {
-        case is Dictionary<String,Any>:
-        if let jsonData = try? JSONSerialization.data(withJSONObject: data, options:.prettyPrinted) {
-            return String(data: jsonData, encoding: .utf8)
-            }
-        default:
-            return String(describing:data)
-        }
-
-        return nil
-    }
-
-    static func deserialize(bodyData: Data) -> [String:Any]? {
-        guard let json = try? JSONSerialization.jsonObject(with: bodyData, options: []),
-            let payload = json as? [String: Any] else {
-                return nil
-        }
-        return payload
     }
 }
