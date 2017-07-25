@@ -9,6 +9,7 @@
 import Foundation
 
 enum ActivityType {
+    case unknown
     case appStarted
 }
 
