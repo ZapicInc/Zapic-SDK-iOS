@@ -14,7 +14,7 @@ enum ActivityType {
 }
 
 
-class Activity{
+struct Activity{
     let type:ActivityType
     let timeStamp = Date()
     

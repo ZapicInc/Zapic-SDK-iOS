@@ -84,7 +84,7 @@ class ZapicViewModel{
     }
 }
 
-class WebEvent{
+struct WebEvent{
     
     let type:String
     let payload:Any
@@ -95,7 +95,7 @@ class WebEvent{
     }
 }
 
-class WebFunction{
+struct WebFunction{
     
     let function:String
     

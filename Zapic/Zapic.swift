@@ -31,11 +31,12 @@ class ZapicCore{
     private let apiClient:ApiClient
     private let zapicController: ZapicController
     private var hasConnected = false
+    private var storage = UserDefaultsStorage()
     private let bag = DisposeBag()
     private let mainController: UIViewController
     
     init(){
-        tokenManager = TokenManager(bundleId: Bundle.main.bundleIdentifier!)
+        tokenManager = TokenManager(bundleId: Bundle.main.bundleIdentifier!,storage: storage)
         viewModel = ZapicViewModel(tokenManager: tokenManager)
         zapicController = ZapicController(viewModel)
         apiClient = ApiClient(tokenManager: tokenManager)
@@ -75,7 +76,7 @@ class ZapicCore{
                 .flatMap {self.apiClient.getToken(signature: $0)}
                 .map {$0["Token"] as? String ?? ""}
                 .subscribe(onNext: {
-                    self.tokenManager.updateToken(newToken: $0)
+                    self.tokenManager.updateToken($0)
                     self.connected()
                 }, onError: { _ in
                     self.tokenManager.clearToken()

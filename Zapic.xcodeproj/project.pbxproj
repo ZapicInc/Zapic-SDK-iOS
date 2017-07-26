@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		650116041F230C6000CED7B2 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650116031F230C6000CED7B2 /* Activity.swift */; };
 		650116061F23141300CED7B2 /* ZapicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650116051F23141300CED7B2 /* ZapicUtils.swift */; };
-		651624581F16DE2D00932E26 /* TokenManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651624561F16DE2D00932E26 /* TokenManagerTests.swift */; };
-		651AEDAB1F16C49900986F05 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651AEDA11F16C49900986F05 /* Zapic.framework */; };
 		651AEDB21F16C49900986F05 /* Zapic.h in Headers */ = {isa = PBXBuildFile; fileRef = 651AEDA41F16C49900986F05 /* Zapic.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		651AEDC61F16C4CE00986F05 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDBB1F16C4CE00986F05 /* ApiClient.swift */; };
 		651AEDC71F16C4CE00986F05 /* CInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 651AEDBC1F16C4CE00986F05 /* CInterface.h */; };
@@ -26,12 +24,28 @@
 		651AEDDE1F16C80600986F05 /* OfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDDA1F16C80600986F05 /* OfflineView.swift */; };
 		651AEDDF1F16C80600986F05 /* ZapicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDDB1F16C80600986F05 /* ZapicView.swift */; };
 		651AEDE01F16C80600986F05 /* ZapicWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDDC1F16C80600986F05 /* ZapicWebView.swift */; };
+		654BF0A21F27F1DD00E0B9BC /* NotificationBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0A11F27F1DD00E0B9BC /* NotificationBanner.framework */; };
+		654BF0A51F27F1E100E0B9BC /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0A31F27F1E100E0B9BC /* RxCocoa.framework */; };
+		654BF0A61F27F1E100E0B9BC /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0A41F27F1E100E0B9BC /* RxSwift.framework */; };
+		654BF0A81F27F1E600E0B9BC /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0A71F27F1E600E0B9BC /* SnapKit.framework */; };
+		654BF0AA1F27F21D00E0B9BC /* MarqueeLabelSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0A91F27F21D00E0B9BC /* MarqueeLabelSwift.framework */; };
+		654BF0B41F27F48700E0B9BC /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651AEDA11F16C49900986F05 /* Zapic.framework */; };
+		654BF0DF1F27FA6E00E0B9BC /* MarqueeLabelSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0A91F27F21D00E0B9BC /* MarqueeLabelSwift.framework */; };
+		654BF0E01F27FA6E00E0B9BC /* NotificationBanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0A11F27F1DD00E0B9BC /* NotificationBanner.framework */; };
+		654BF0E11F27FA6E00E0B9BC /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0A31F27F1E100E0B9BC /* RxCocoa.framework */; };
+		654BF0E21F27FA6E00E0B9BC /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0A41F27F1E100E0B9BC /* RxSwift.framework */; };
+		654BF0E31F27FA6E00E0B9BC /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0A71F27F1E600E0B9BC /* SnapKit.framework */; };
+		654BF0E61F27FA6E00E0B9BC /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0E41F27FA6E00E0B9BC /* Nimble.framework */; };
+		654BF0E71F27FA6E00E0B9BC /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0E51F27FA6E00E0B9BC /* Quick.framework */; };
+		654BF0E91F27FB9400E0B9BC /* ZapicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC48DA1F1D40CD0026E101 /* ZapicTests.swift */; };
+		654BF0EA1F27FB9700E0B9BC /* TokenManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651624561F16DE2D00932E26 /* TokenManagerSpec.swift */; };
+		654BF0EC1F28054300E0B9BC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF0EB1F28054300E0B9BC /* Storage.swift */; };
+		654BF0EE1F2806C700E0B9BC /* MemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF0ED1F2806C700E0B9BC /* MemoryStorage.swift */; };
 		65AC48D91F1A8ABC0026E101 /* ZapicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC48D81F1A8ABC0026E101 /* ZapicViewModel.swift */; };
-		65AC48DB1F1D40CD0026E101 /* ZapicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC48DA1F1D40CD0026E101 /* ZapicTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		651AEDAC1F16C49900986F05 /* PBXContainerItemProxy */ = {
+		654BF0B51F27F48700E0B9BC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 651AED981F16C49900986F05 /* Project object */;
 			proxyType = 1;
@@ -43,11 +57,10 @@
 /* Begin PBXFileReference section */
 		650116031F230C6000CED7B2 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		650116051F23141300CED7B2 /* ZapicUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicUtils.swift; sourceTree = "<group>"; };
-		651624561F16DE2D00932E26 /* TokenManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenManagerTests.swift; sourceTree = "<group>"; };
+		651624561F16DE2D00932E26 /* TokenManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenManagerSpec.swift; sourceTree = "<group>"; };
 		651AEDA11F16C49900986F05 /* Zapic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zapic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		651AEDA41F16C49900986F05 /* Zapic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zapic.h; sourceTree = "<group>"; };
 		651AEDA51F16C49900986F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		651AEDAA1F16C49900986F05 /* ZapicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		651AEDB11F16C49900986F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		651AEDBB1F16C4CE00986F05 /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		651AEDBC1F16C4CE00986F05 /* CInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CInterface.h; sourceTree = "<group>"; };
@@ -63,6 +76,16 @@
 		651AEDDA1F16C80600986F05 /* OfflineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfflineView.swift; path = Views/OfflineView.swift; sourceTree = "<group>"; };
 		651AEDDB1F16C80600986F05 /* ZapicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZapicView.swift; path = Views/ZapicView.swift; sourceTree = "<group>"; };
 		651AEDDC1F16C80600986F05 /* ZapicWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZapicWebView.swift; path = Views/ZapicWebView.swift; sourceTree = "<group>"; };
+		654BF0A11F27F1DD00E0B9BC /* NotificationBanner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationBanner.framework; path = Carthage/Build/iOS/NotificationBanner.framework; sourceTree = "<group>"; };
+		654BF0A31F27F1E100E0B9BC /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		654BF0A41F27F1E100E0B9BC /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		654BF0A71F27F1E600E0B9BC /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		654BF0A91F27F21D00E0B9BC /* MarqueeLabelSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarqueeLabelSwift.framework; path = Carthage/Build/iOS/MarqueeLabelSwift.framework; sourceTree = "<group>"; };
+		654BF0AF1F27F48700E0B9BC /* ZapicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		654BF0E41F27FA6E00E0B9BC /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		654BF0E51F27FA6E00E0B9BC /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		654BF0EB1F28054300E0B9BC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		654BF0ED1F2806C700E0B9BC /* MemoryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryStorage.swift; sourceTree = "<group>"; };
 		65AC48D81F1A8ABC0026E101 /* ZapicViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicViewModel.swift; sourceTree = "<group>"; };
 		65AC48DA1F1D40CD0026E101 /* ZapicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,14 +95,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				654BF0AA1F27F21D00E0B9BC /* MarqueeLabelSwift.framework in Frameworks */,
+				654BF0A21F27F1DD00E0B9BC /* NotificationBanner.framework in Frameworks */,
+				654BF0A51F27F1E100E0B9BC /* RxCocoa.framework in Frameworks */,
+				654BF0A61F27F1E100E0B9BC /* RxSwift.framework in Frameworks */,
+				654BF0A81F27F1E600E0B9BC /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		651AEDA71F16C49900986F05 /* Frameworks */ = {
+		654BF0AC1F27F48700E0B9BC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				651AEDAB1F16C49900986F05 /* Zapic.framework in Frameworks */,
+				654BF0E61F27FA6E00E0B9BC /* Nimble.framework in Frameworks */,
+				654BF0E71F27FA6E00E0B9BC /* Quick.framework in Frameworks */,
+				654BF0DF1F27FA6E00E0B9BC /* MarqueeLabelSwift.framework in Frameworks */,
+				654BF0E01F27FA6E00E0B9BC /* NotificationBanner.framework in Frameworks */,
+				654BF0E11F27FA6E00E0B9BC /* RxCocoa.framework in Frameworks */,
+				654BF0E21F27FA6E00E0B9BC /* RxSwift.framework in Frameworks */,
+				654BF0E31F27FA6E00E0B9BC /* SnapKit.framework in Frameworks */,
+				654BF0B41F27F48700E0B9BC /* Zapic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				651AEDA11F16C49900986F05 /* Zapic.framework */,
-				651AEDAA1F16C49900986F05 /* ZapicTests.xctest */,
+				654BF0AF1F27F48700E0B9BC /* ZapicTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,6 +150,7 @@
 				650116031F230C6000CED7B2 /* Activity.swift */,
 				651AEDBB1F16C4CE00986F05 /* ApiClient.swift */,
 				651AEDBE1F16C4CE00986F05 /* GameCenterHelper.swift */,
+				654BF0EB1F28054300E0B9BC /* Storage.swift */,
 				651AEDBF1F16C4CE00986F05 /* TokenManager.swift */,
 				651AEDC11F16C4CE00986F05 /* WelcomeBanner.swift */,
 				651AEDC21F16C4CE00986F05 /* Zapic.swift */,
@@ -132,8 +168,9 @@
 			isa = PBXGroup;
 			children = (
 				65AC48DA1F1D40CD0026E101 /* ZapicTests.swift */,
-				651624561F16DE2D00932E26 /* TokenManagerTests.swift */,
+				651624561F16DE2D00932E26 /* TokenManagerSpec.swift */,
 				651AEDB11F16C49900986F05 /* Info.plist */,
+				654BF0ED1F2806C700E0B9BC /* MemoryStorage.swift */,
 			);
 			path = ZapicTests;
 			sourceTree = "<group>";
@@ -141,6 +178,13 @@
 		651AEDD11F16C7AD00986F05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				654BF0E41F27FA6E00E0B9BC /* Nimble.framework */,
+				654BF0E51F27FA6E00E0B9BC /* Quick.framework */,
+				654BF0A91F27F21D00E0B9BC /* MarqueeLabelSwift.framework */,
+				654BF0A71F27F1E600E0B9BC /* SnapKit.framework */,
+				654BF0A31F27F1E100E0B9BC /* RxCocoa.framework */,
+				654BF0A41F27F1E100E0B9BC /* RxSwift.framework */,
+				654BF0A11F27F1DD00E0B9BC /* NotificationBanner.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -190,22 +234,23 @@
 			productReference = 651AEDA11F16C49900986F05 /* Zapic.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		651AEDA91F16C49900986F05 /* ZapicTests */ = {
+		654BF0AE1F27F48700E0B9BC /* ZapicTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 651AEDB81F16C49900986F05 /* Build configuration list for PBXNativeTarget "ZapicTests" */;
+			buildConfigurationList = 654BF0B71F27F48700E0B9BC /* Build configuration list for PBXNativeTarget "ZapicTests" */;
 			buildPhases = (
-				651AEDA61F16C49900986F05 /* Sources */,
-				651AEDA71F16C49900986F05 /* Frameworks */,
-				651AEDA81F16C49900986F05 /* Resources */,
+				654BF0AB1F27F48700E0B9BC /* Sources */,
+				654BF0AC1F27F48700E0B9BC /* Frameworks */,
+				654BF0AD1F27F48700E0B9BC /* Resources */,
+				654BF0E81F27FAA000E0B9BC /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				651AEDAD1F16C49900986F05 /* PBXTargetDependency */,
+				654BF0B61F27F48700E0B9BC /* PBXTargetDependency */,
 			);
 			name = ZapicTests;
 			productName = ZapicTests;
-			productReference = 651AEDAA1F16C49900986F05 /* ZapicTests.xctest */;
+			productReference = 654BF0AF1F27F48700E0B9BC /* ZapicTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -224,7 +269,7 @@
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
-					651AEDA91F16C49900986F05 = {
+					654BF0AE1F27F48700E0B9BC = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 24QXGCES3E;
 						ProvisioningStyle = Automatic;
@@ -244,7 +289,7 @@
 			projectRoot = "";
 			targets = (
 				651AEDA01F16C49900986F05 /* Zapic */,
-				651AEDA91F16C49900986F05 /* ZapicTests */,
+				654BF0AE1F27F48700E0B9BC /* ZapicTests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,7 +303,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		651AEDA81F16C49900986F05 /* Resources */ = {
+		654BF0AD1F27F48700E0B9BC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -284,6 +329,26 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		654BF0E81F27FAA000E0B9BC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Quick.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MarqueeLabelSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NotificationBanner.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -298,6 +363,7 @@
 				651AEDCD1F16C4CE00986F05 /* Zapic.swift in Sources */,
 				650116061F23141300CED7B2 /* ZapicUtils.swift in Sources */,
 				651AEDCC1F16C4CE00986F05 /* WelcomeBanner.swift in Sources */,
+				654BF0EC1F28054300E0B9BC /* Storage.swift in Sources */,
 				651AEDE01F16C80600986F05 /* ZapicWebView.swift in Sources */,
 				651AEDD01F16C4CE00986F05 /* ZapicController.swift in Sources */,
 				651AEDCA1F16C4CE00986F05 /* TokenManager.swift in Sources */,
@@ -309,22 +375,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		651AEDA61F16C49900986F05 /* Sources */ = {
+		654BF0AB1F27F48700E0B9BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65AC48DB1F1D40CD0026E101 /* ZapicTests.swift in Sources */,
-				651624581F16DE2D00932E26 /* TokenManagerTests.swift in Sources */,
+				654BF0EE1F2806C700E0B9BC /* MemoryStorage.swift in Sources */,
+				654BF0E91F27FB9400E0B9BC /* ZapicTests.swift in Sources */,
+				654BF0EA1F27FB9700E0B9BC /* TokenManagerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		651AEDAD1F16C49900986F05 /* PBXTargetDependency */ = {
+		654BF0B61F27F48700E0B9BC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 651AEDA01F16C49900986F05 /* Zapic */;
-			targetProxy = 651AEDAC1F16C49900986F05 /* PBXContainerItemProxy */;
+			targetProxy = 654BF0B51F27F48700E0B9BC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -480,11 +547,14 @@
 			};
 			name = Release;
 		};
-		651AEDB91F16C49900986F05 /* Debug */ = {
+		654BF0B81F27F48700E0B9BC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 24QXGCES3E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ZapicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zapic.ZapicTests;
@@ -493,11 +563,14 @@
 			};
 			name = Debug;
 		};
-		651AEDBA1F16C49900986F05 /* Release */ = {
+		654BF0B91F27F48700E0B9BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 24QXGCES3E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SRCROOT)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ZapicTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zapic.ZapicTests;
@@ -527,14 +600,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		651AEDB81F16C49900986F05 /* Build configuration list for PBXNativeTarget "ZapicTests" */ = {
+		654BF0B71F27F48700E0B9BC /* Build configuration list for PBXNativeTarget "ZapicTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				651AEDB91F16C49900986F05 /* Debug */,
-				651AEDBA1F16C49900986F05 /* Release */,
+				654BF0B81F27F48700E0B9BC /* Debug */,
+				654BF0B91F27F48700E0B9BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

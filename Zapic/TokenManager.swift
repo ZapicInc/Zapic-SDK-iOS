@@ -18,15 +18,18 @@ class TokenManager {
 
     private(set) var token = ""
 
-    private var bundleId: String
+    private let bundleId: String
+    
+    private let storage:StorageProtocol
 
-    init(bundleId: String) {
+    init(bundleId: String, storage:StorageProtocol) {
+        self.storage = storage
         self.bundleId = bundleId
         self.loadToken()
     }
 
     private func loadToken() {
-        if let loadedToken = UserDefaults.standard.string(forKey: ZapicKey.Token) {
+        if let loadedToken = storage.string(forKey: ZapicKey.Token) {
             token = loadedToken
         }
     }
@@ -35,7 +38,7 @@ class TokenManager {
         return !token.isEmpty
     }
 
-    func updateToken(newToken: String) {
+    func updateToken(_ newToken: String) {
         
         print("Updating token")
         
@@ -47,13 +50,13 @@ class TokenManager {
     }
 
     private func setToken(newToken: String) {
-        UserDefaults.standard.setValue(newToken, forKey: ZapicKey.Token)
+        storage.setValue(newToken, forKey: ZapicKey.Token)
         token = newToken
 
     }
 
     func clearToken() {
-        UserDefaults.standard.setValue("", forKey: ZapicKey.Token)
+        storage.removeObject(forKey: ZapicKey.Token)
         token = ""
     }
 
@@ -117,7 +120,6 @@ extension String {
         }
 
         if let data = Data(base64Encoded: base64Str, options: []) {
-            //            let str = String(data: data, encoding: String.Encoding.utf8) {
             return data
         }
         return nil
