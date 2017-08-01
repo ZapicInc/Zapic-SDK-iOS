@@ -63,14 +63,29 @@ class ZapicViewModel{
             webSecret = arc4random_uniform(UInt32.max)
             jsCommands.onNext(WebFunction(function: "initialize(\(webSecret), 1)"))
         case "onAppReady":
-            jsCommands.onNext(WebFunction(function: "login(\(webSecret),'\(tokenManager.token)')"))
-            jsCommands.onNext(WebFunction(function: "open(\(webSecret),'default')"))
+            if let reqSecret = event.payload as? UInt32,
+                reqSecret == self.webSecret {
+                
+                jsCommands.onNext(WebFunction(function: "login(\(webSecret),'\(tokenManager.token)')"))
+                jsCommands.onNext(WebFunction(function: "open(\(webSecret),'default')"))
+            }
+            else{
+                print("Error processing onPageReady")
+            }
         case "onPageReady":
-//            if let reqSecret = event.payload as? Int {
+            if let reqSecret = event.payload as? UInt32,
+                reqSecret == self.webSecret {
                 viewStream.onNext(.webView)
-//            }
+            }
+            else{
+                print("Error processing onPageReady")
+            }
         case "onPageClosing":
-            if let callbackId = event.payload as? Int {
+            if let reqSecret = event.payload as? UInt32,
+                reqSecret == self.webSecret {
+                
+                //TODO: Change this to event.payload[1] when this works
+                let callbackId = 1
                 viewStatus.onNext(.close)
                 jsCommands.onNext(WebFunction(function:"callback(\(webSecret), \(callbackId), true)"))
             }
