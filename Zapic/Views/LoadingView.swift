@@ -11,8 +11,8 @@ import WebKit
 
 class LoadingView: ZapicView {
 
-    init(_ viewModel:ZapicViewModel) {
-        super.init(viewModel, text: "Loading...")
+    init() {
+        super.init(text: "Loading...")
     }
 
     required init?(coder aDecoder: NSCoder) {

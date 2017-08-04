@@ -9,82 +9,73 @@
 import Foundation
 import UIKit
 import WebKit
-import RxSwift
-import RxCocoa
 
-class ZapicController: UIViewController {
-    
-    private let webView: ZapicWebView
-    private let loading:LoadingView
-    private let offline:OfflineView
-    private let bag = DisposeBag()
-    private let viewModel: ZapicViewModel
-    private let mainController: UIViewController
-    
-    private var closeSub: Disposable?
-    
-    init(_ viewModel: ZapicViewModel){
-        self.viewModel = viewModel
-        webView = ZapicWebView(viewModel)
-        loading = LoadingView(viewModel)
-        offline = OfflineView(viewModel)
-        
-        if let ctrl = UIApplication.shared.delegate?.window??.rootViewController {
-            mainController = ctrl
-        }
-        else {
-            fatalError("RootViewController not found, ensure")
-        }
+class ZapicController: UIViewController, ZapicViewControllerDelegate {
 
-        
-        super.init(nibName:nil, bundle:nil)
-        
-        bindToViewModel()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func bindToViewModel(){
-        
-        //Close window event
-        viewModel.viewStatus.subscribe(onNext:{ status in
-            
-            if status == .open{
-                 self.mainController.present(self, animated: true, completion: nil)
-            }
-            else{
-                self.dismiss(animated: true, completion: nil)
-            }
-        }).addDisposableTo(bag)
-        
-        //App status event
-        viewModel.viewStream.subscribe(onNext: { view in
-            switch view {
-            case .loading:
-                self.view = self.loading
-            case .offline:
-                self.view = self.offline
-            case .webView:
-                self.view = self.webView
-            }
+  let webView: ZapicWebView
+  private let loading: LoadingView
+  private let offline: OfflineView
+  private let mainController: UIViewController
 
-        }).addDisposableTo(bag)
+  init() {
+    webView = ZapicWebView()
+    loading = LoadingView()
+    offline = OfflineView()
+
+    if let ctrl = UIApplication.shared.delegate?.window??.rootViewController {
+      mainController = ctrl
+    } else {
+      fatalError("RootViewController not found, ensure this is called at the correct time")
     }
-    
-    override func viewDidLoad() {
-        print("Zapic viewDidLoad")
-        view = loading
+
+    super.init(nibName:nil, bundle:nil)
+
+    loading.controllerDelegate = self
+    offline.controllerDelegate = self
+    webView.controllerDelegate = self
+
+    //Trick to keep the webview up and running
+    mainController.view.addSubview(self.webView)
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  func show(view zapicView: ZapicViews) {
+
+    if webView.isPageReady {
+      view = webView
+    } else if webView.status == .error {
+      view = offline
+    } else {
+      //Reset the view to loading
+      view = loading
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("Zapic viewWillAppear")
-        view = loading
-        webView.load()
+
+    //Trigger the web to update
+    webView.dispatchToJS(type: .openPage, payload: zapicView.rawValue)
+
+    //Show the ui
+    self.mainController.present(self, animated: true, completion: nil)
+  }
+
+  func closePage() {
+    self.dismiss(animated: true) {
+      self.webView.dispatchToJS(type: .closePage, payload:"")
     }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
+  }
+
+  func onPageReady() {
+    ZLog.info("Page is ready to be shown to the user")
+    view = webView
+  }
+
+  func onAppError(error: Error) {
+    view = offline
+  }
+
+  override var prefersStatusBarHidden: Bool {
+    return true
+  }
 }

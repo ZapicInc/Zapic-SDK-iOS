@@ -17,12 +17,6 @@
 		651624461F16DA9F00932E26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651624441F16DA9F00932E26 /* LaunchScreen.storyboard */; };
 		6576C5651F1949760075E226 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6576C5621F1949240075E226 /* Zapic.framework */; };
 		6576C5661F1949760075E226 /* Zapic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6576C5621F1949240075E226 /* Zapic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6576C5721F194A180075E226 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6576C5711F194A180075E226 /* RxCocoa.framework */; };
-		6576C5731F194A180075E226 /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6576C5711F194A180075E226 /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6576C5771F194A440075E226 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6576C5761F194A440075E226 /* RxSwift.framework */; };
-		6576C5781F194A440075E226 /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6576C5761F194A440075E226 /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6576C57A1F194A4C0075E226 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6576C5791F194A4C0075E226 /* SnapKit.framework */; };
-		6576C57B1F194A4C0075E226 /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6576C5791F194A4C0075E226 /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,10 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6576C5731F194A180075E226 /* RxCocoa.framework in Embed Frameworks */,
 				6576C5661F1949760075E226 /* Zapic.framework in Embed Frameworks */,
-				6576C5781F194A440075E226 /* RxSwift.framework in Embed Frameworks */,
-				6576C57B1F194A4C0075E226 /* SnapKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -78,12 +69,6 @@
 		651624451F16DA9F00932E26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		651624471F16DA9F00932E26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6576C55C1F1949240075E226 /* Zapic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Zapic.xcodeproj; path = ../../Zapic.xcodeproj; sourceTree = "<group>"; };
-		6576C56B1F1949DD0075E226 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		6576C56D1F1949E70075E226 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = ../../Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
-		6576C56F1F1949EF0075E226 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		6576C5711F194A180075E226 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = ../../Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
-		6576C5761F194A440075E226 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = ../../Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		6576C5791F194A4C0075E226 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = ../../Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,10 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6576C5721F194A180075E226 /* RxCocoa.framework in Frameworks */,
 				6576C5651F1949760075E226 /* Zapic.framework in Frameworks */,
-				6576C5771F194A440075E226 /* RxSwift.framework in Frameworks */,
-				6576C57A1F194A4C0075E226 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,12 +129,6 @@
 		6576C56A1F1949DD0075E226 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6576C5761F194A440075E226 /* RxSwift.framework */,
-				6576C5791F194A4C0075E226 /* SnapKit.framework */,
-				6576C5711F194A180075E226 /* RxCocoa.framework */,
-				6576C56F1F1949EF0075E226 /* RxCocoa.framework */,
-				6576C56D1F1949E70075E226 /* SnapKit.framework */,
-				6576C56B1F1949DD0075E226 /* RxSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -396,6 +372,7 @@
 				DEVELOPMENT_TEAM = 24QXGCES3E;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../../Carthage/Build/iOS";
 				INFOPLIST_FILE = "iOS Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zapic.iOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -411,6 +388,7 @@
 				DEVELOPMENT_TEAM = 24QXGCES3E;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../../Carthage/Build/iOS";
 				INFOPLIST_FILE = "iOS Example/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zapic.iOS-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";

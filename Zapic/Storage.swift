@@ -9,16 +9,16 @@
 import Foundation
 
 protocol StorageProtocol {
-    
+
     func string(forKey key: String) -> String?
-    
+
     func setValue(_ value: Any?, forKey key: String)
-    
+
     func removeObject(forKey key: String)
 }
 
-class UserDefaultsStorage : StorageProtocol{
-    
+class UserDefaultsStorage: StorageProtocol {
+
     func setValue(_ value: Any?, forKey key: String) {
         UserDefaults.standard.setValue(value, forKey:key)
     }
@@ -26,8 +26,8 @@ class UserDefaultsStorage : StorageProtocol{
     func string(forKey key: String) -> String? {
         return UserDefaults.standard.string(forKey: key)
     }
-    
-    func removeObject(forKey key: String){
+
+    func removeObject(forKey key: String) {
         UserDefaults.standard.removeObject(forKey: key)
     }
 }

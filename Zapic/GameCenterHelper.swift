@@ -8,76 +8,102 @@
 
 import Foundation
 import GameKit
-import RxSwift
 
 class GameCenterHelper {
-    static func generateSignature() -> Observable<[String:Any]> {
 
-        return gcAuth().flatMap { player in generateIdentityInfo(player: player) }
-    }
+  ///  Generates the current player's GameCenter signature
+  ///
+  /// - Parameter completionHandler: Callback when the signature has been generated
+  static func generateSignature(completionHandler: @escaping ([String:Any]?, Error?) -> Void) {
+    gameCenterAuthenticate { (player, error) in
+      guard error == nil else {
+        ZLog.error("Error authenticaing player")
+        completionHandler(nil, error)
+        return
+      }
 
-    private static func gcAuth() -> Observable<GKLocalPlayer> {
+      guard let localPlayer = player else {
+        ZLog.error("Error authenticaing player")
+        completionHandler(nil, ZapicError.invalidPlayer)
+        return
+      }
 
-        return Observable.create { observable in
+      //Generate the identity info once the player is authenticated with GameCenter
+      generateIdentityInfo(player: localPlayer) { (signature, error) in
 
-            let localPlayer = GKLocalPlayer.localPlayer()
-
-            localPlayer.authenticateHandler = {(gameCenterVC: UIViewController!, gameCenterError: Error!) -> Void in
-
-                if let gameCenterError = gameCenterError {
-                    observable.onError(gameCenterError)
-                }
-
-                if gameCenterVC != nil {
-                    print("Zapic - showing GameCenter View")
-
-                    UIApplication.shared.keyWindow?.rootViewController?.present(gameCenterVC, animated: true, completion: nil)
-
-                } else if localPlayer.isAuthenticated {
-
-                    print("Authentication with Game Center success")
-
-                    observable.onNext(localPlayer)
-                    observable.onCompleted()
-                }
-            }
-            return Disposables.create()
+        guard error == nil else {
+          completionHandler(nil, error)
+          return
         }
-    }
 
-    private static func generateIdentityInfo(player: GKLocalPlayer) -> Observable<[String:Any]> {
-        return Observable.create { observable in
-            
-            print("Generating identity signature")
-
-            player.generateIdentityVerificationSignature { (publicKeyUrl: URL!, signature: Data!, salt: Data!, timestamp: UInt64, error: Error!) -> Void in
-
-                if let err = error {
-                    observable.onError(err)
-                    print(err.localizedDescription)
-                    print("Error generating verification signature")
-                }
-                
-                print("Generated identity signature")
-
-                let signatureStr = signature.base64EncodedString()
-
-                let saltStr = salt.base64EncodedString()
-
-                let timestampStr = String(timestamp)
-
-                let dict = ["playerId": player.playerID ?? "",
-                            "bundleId": Bundle.main.bundleIdentifier ?? "",
-                            "publicKeyUrl": publicKeyUrl.absoluteString,
-                            "signature": signatureStr,
-                            "timestamp": timestampStr,
-                            "salt": saltStr
-                ]
-
-                observable.onNext(dict)
-                observable.onCompleted()
-            }
-            return Disposables.create()
+        guard signature != nil else {
+          completionHandler(nil, ZapicError.invalidAuthSignature)
+          return
         }
+
+        completionHandler(signature, nil)
+      }
     }
+  }
+
+  private static func gameCenterAuthenticate(completionHandler:@escaping (GKLocalPlayer?, Error?) -> Void) {
+
+    let localPlayer = GKLocalPlayer.localPlayer()
+
+    if localPlayer.isAuthenticated {
+      completionHandler(localPlayer, nil)
+      return
+    }
+
+    localPlayer.authenticateHandler = {(gameCenterVC: UIViewController!, gameCenterError: Error!) -> Void in
+
+      guard gameCenterError == nil else {
+        completionHandler(nil, gameCenterError)
+        return
+      }
+
+      if gameCenterVC != nil {
+        ZLog.info("Zapic - showing GameCenter View")
+
+        UIApplication.shared.keyWindow?.rootViewController?.present(gameCenterVC, animated: true, completion: nil)
+      }
+
+      if localPlayer.isAuthenticated {
+        ZLog.info("Authentication with Game Center success")
+
+        completionHandler(localPlayer, nil)
+      }
+    }
+  }
+
+  private static func generateIdentityInfo(player: GKLocalPlayer, completionHandler: @escaping ([String:Any]?, Error?) -> Void) {
+    ZLog.debug("Generating identity signature")
+
+    player.generateIdentityVerificationSignature { (publicKeyUrl: URL!, signature: Data!, salt: Data!, timestamp: UInt64, error: Error!) -> Void in
+
+      guard error == nil else {
+        ZLog.error("Error generating verification signature")
+        completionHandler(nil, error)
+        return
+      }
+
+      ZLog.debug("Generated identity signature")
+
+      let signatureStr = signature.base64EncodedString()
+
+      let saltStr = salt.base64EncodedString()
+
+      let timestampStr = String(timestamp)
+
+      let dict = ["playerId": player.playerID ?? "",
+                  "bundleId": Bundle.main.bundleIdentifier ?? "",
+                  "publicKeyUrl": publicKeyUrl.absoluteString,
+                  "signature": signatureStr,
+                  "timestamp": timestampStr,
+                  "salt": saltStr
+      ]
+
+      completionHandler(dict, nil)
+    }
+  }
 }

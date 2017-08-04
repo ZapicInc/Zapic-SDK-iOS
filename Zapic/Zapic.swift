@@ -7,97 +7,162 @@
 //
 
 import Foundation
-import NotificationBanner
-import RxSwift
+
+public enum ZapicViews: String {
+  case main = "default"
+  case profile
+  case achievements
+}
+
+enum ZapicError: Error {
+  case unknownError
+  case invalidCredentials
+  case reservedEventId
+  case invalidPlayer
+  case invalidAuthSignature
+  //    case connectionError
+  //    case invalidRequest
+  //    case notFound
+  //    case invalidResponse
+  //    case serverError
+  //    case serverUnavailable
+  //    case timeOut
+  //    case unsuppotedURL
+}
 
 @objc(Zapic)
 public class Zapic: NSObject {
-    
-    private static let core = ZapicCore()
-    
-    public static func connect() {
-        core.connect()
+
+  private static let core = ZapicCore()
+
+  public static func start(version: String) {
+    core.start(version: version)
+  }
+
+  public static func submitEvent(eventId: String, value: Int) throws {
+    try core.submitEvent(eventId: eventId, value: value)
+  }
+
+  public static func submitEvent(eventId: String) throws {
+    try core.submitEvent(eventId: eventId, value: nil)
+  }
+
+  public static func show(viewName: String) {
+    guard let view = ZapicViews(rawValue: viewName) else {
+      ZLog.error("Invalid view name \(viewName)")
+      return
     }
-    
-    public static func showMainView() {
-        core.showMainView()
-    }
+    show(view:view)
+  }
+
+  public static func show(view: ZapicViews) {
+    core.show(view: view)
+  }
 }
 
-class ZapicCore{
-    
-    private let tokenManager: TokenManager
-    private let viewModel: ZapicViewModel
-    private let apiClient:ApiClient
-    private let zapicController: ZapicController
-    private var hasConnected = false
-    private var storage = UserDefaultsStorage()
-    private let bag = DisposeBag()
-    private let mainController: UIViewController
-    
-    init(){
-        tokenManager = TokenManager(bundleId: Bundle.main.bundleIdentifier!,storage: storage)
-        viewModel = ZapicViewModel(tokenManager: tokenManager)
-        zapicController = ZapicController(viewModel)
-        apiClient = ApiClient(tokenManager: tokenManager)
-        
-        if let ctrl = UIApplication.shared.delegate?.window??.rootViewController {
-            mainController = ctrl
-        }
-        else {
-            fatalError("RootViewController not found, ensure")
-        }
+class ZapicCore: ZapicDelegate {
+
+  private var webClient: ZapicWebClient
+  private let zapicController: ZapicController
+  private var hasStarted = false
+
+  /// Current retry attempt number. Resets when load is sucessful
+  private var retryAttempt = 0
+
+  //  private var storage = UserDefaultsStorage()
+
+  init() {
+    if ZLog.isEnabled {
+      ZLog.info("Logging is enabled. Disable via ZLog.isEnabled.")
     }
-    
-    func connect() {
-        
-        if hasConnected {
-            print("Zapic already connected, skipping")
-            return
-        }
-        
-        hasConnected = true
-        
-        print("Zapic connecting")
-        
-        //Debug only. Turn this on to simulate the complete workflow
-//        tokenManager.clearToken()
-        
-        if tokenManager.hasValidToken() {
-            
-            print("Welcome back to Zapic")
-            print("Using token \(tokenManager.token)")
-            
-            self.showBanner()
-            self.connected()
-            
-        } else {
-            GameCenterHelper.generateSignature()
-                .flatMap {self.apiClient.getToken(signature: $0)}
-                .map {$0["Token"] as? String ?? ""}
-                .subscribe(onNext: {
-                    self.tokenManager.updateToken($0)
-                    self.connected()
-                }, onError: { _ in
-                    self.tokenManager.clearToken()
-                })
-                .addDisposableTo(bag)
-        }
+
+    zapicController = ZapicController()
+    webClient = zapicController.webView
+    webClient.zapicDelegate = self
+  }
+
+  init(webClient: ZapicWebClient) {
+    zapicController = ZapicController()
+    self.webClient = webClient
+    self.webClient.zapicDelegate = self
+  }
+
+  func start(version: String) {
+    if hasStarted {
+      ZLog.warn("Zapic already started. Start should only be called once.")
+      return
     }
-    
-    private func connected(){
-        print("Zapic connected")
-        
-       apiClient.sendActivity(Activity(.appStarted)).subscribe().addDisposableTo(bag)
+
+    ZLog.info("Zapic starting. App version \(version)")
+
+    hasStarted = true
+
+    webClient.load()
+  }
+
+  func submitEvent(eventId: String, value: Int? = nil) throws {
+    //Guard against reserved app ids
+    if ZapicEvents(rawValue: eventId) != nil {
+      throw ZapicError.reservedEventId
     }
-    
-    func showMainView() {
-        print("Showing main Zapic window")
-        viewModel.openWindow()
+    return submitEventUnchecked(eventId:eventId, value:value)
+  }
+
+  private func submitEventUnchecked(eventId: String, value: Int? = nil) {
+    webClient.submitEvent(eventId: eventId, timestamp: Date(), value: value)
+  }
+
+  func show(view: ZapicViews) {
+    ZLog.info("Show \(view.rawValue)")
+    zapicController.show(view:view)
+  }
+
+  func getVerificationSignature() {
+    ZLog.info("Getting verification signature")
+
+    GameCenterHelper.generateSignature { (signature, _) in
+
+      if let sig = signature {
+        self.webClient.dispatchToJS(type: .setSignature, payload: sig)
+      } else {
+        self.webClient.dispatchToJS(type: .setSignature, payload: "Error with Game Center", isError:true)
+      }
     }
-    
-    func showBanner() {
-        let banner = NotificationBanner(customView: WelcomeBannerView())
-        banner.show(on: mainController)
+  }
+
+  /// Trigger when a banner should be shown
+  func showBanner(title: String, subTitle: String?, icon: UIImage?) {
+
+    let banner = Banner(title: title, subtitle:subTitle, icon:icon)
+
+    banner.dismissesOnTap = true
+    banner.show(duration: 3.0)
+  }
+
+  func onAppReady() {
+    retryAttempt = 0
+    webClient.resendFailedEvents()
+    submitEventUnchecked(eventId: ZapicEvents.appStarted.rawValue)
+  }
+
+  func onAppError(error: Error) {
+    let base: Double = 5
+    //Max delay (s)
+    let maxDelay: Double = 20 * 60
+
+    retryAttempt += 1
+
+    let delay = max(1, drand48() * min(maxDelay, base * pow(2.0, Double(retryAttempt))))
+
+    ZLog.debug("Retrying load in \(delay) sec")
+
+    //Attempt to load the web client again after a delay
+    DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+      self.webClient.load()
     }
+  }
+}
+
+enum ZapicEvents: String {
+  case appStarted = "APP_STARTED"
 }

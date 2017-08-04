@@ -11,14 +11,14 @@ env:
   global:
   - POD_LINT = "NO"
 
-cache:
-  directories:
-    - Carthage
+# cache:
+#   directories:
+#     - Carthage
 
-before_install:
+# before_install:
   # - brew update
   # - brew outdated carthage || brew upgrade carthage
-  - carthage bootstrap --no-use-binaries --platform iOS --cache-builds
+  # - carthage bootstrap --no-use-binaries --platform iOS --cache-builds
 
 script:
 - set -o pipefail
@@ -31,5 +31,5 @@ script:
       pod lib lint;
   fi
     
-- xcodebuild -workspace Zapic.xcworkspace -scheme Zapic -destination 'OS=10.3.1,name=iPhone 7'  ENABLE_TESTABILITY=YES test | xcpretty
-#- xcodebuild -workspace Zapic.xcworkspace -scheme Zapic -destination 'OS=10.3.1,name=iPhone 7' build | xcpretty
+#- xcodebuild -workspace Zapic.xcworkspace -scheme Zapic -destination 'OS=10.3.1,name=iPhone 7'  ENABLE_TESTABILITY=YES test | xcpretty
+- xcodebuild -workspace Zapic.xcworkspace -scheme Zapic -destination 'OS=10.3.1,name=iPhone 7' build | xcpretty
