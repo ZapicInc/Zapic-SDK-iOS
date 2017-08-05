@@ -8,7 +8,8 @@
 
 import Foundation
 
-public class ZLog {
+@objc(ZLog)
+public class ZLog: NSObject {
 
   public static var isEnabled = false
 
