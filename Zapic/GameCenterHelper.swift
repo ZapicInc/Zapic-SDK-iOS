@@ -96,6 +96,7 @@ class GameCenterHelper {
       let timestampStr = String(timestamp)
 
       let dict = ["playerId": player.playerID ?? "",
+                  "displayName": player.displayName ?? "",
                   "bundleId": Bundle.main.bundleIdentifier ?? "",
                   "publicKeyUrl": publicKeyUrl.absoluteString,
                   "signature": signatureStr,
