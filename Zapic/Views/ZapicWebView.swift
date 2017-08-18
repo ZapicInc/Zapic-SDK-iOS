@@ -28,6 +28,7 @@ enum WebEvent: String {
   case showBanner = "sdk/SHOW_BANNER"
   case pageReady = "sdk/PAGE_READY"
   case closePageRequest = "sdk/CLOSE_PAGE_REQUESTED"
+  case getContacts = "sdk/GET_CONTACTS"
 }
 
 enum WebFunction: String {
@@ -35,6 +36,7 @@ enum WebFunction: String {
   case submitEvent = "sdk/SUBMIT_EVENT"
   case openPage = "sdk/OPEN_PAGE"
   case closePage = "sdk/CLOSE_PAGE"
+  case setContacts = "sdk/SET_CONTACTS"
 }
 
 struct Event {
@@ -64,6 +66,9 @@ protocol ZapicDelegate : class {
 
   /// Trigger when a banner should be shown
   func showBanner(title: String, subTitle: String?, icon: UIImage?)
+
+  /// Triggers retrieving all contacts from the device
+  func getContacts()
 }
 
 protocol ZapicViewControllerDelegate : class {
@@ -170,6 +175,9 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
     switch type {
     case .getSignature:
       zapicDelegate?.getVerificationSignature()
+      break
+    case .getContacts:
+      zapicDelegate?.getContacts()
       break
     case .appReady:
       status = .ready

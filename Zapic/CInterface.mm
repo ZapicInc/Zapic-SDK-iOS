@@ -21,10 +21,10 @@ extern "C" {
   }
   
   void z_submitEventWithValue(char* eventId, int value){
-    [Zapic submitEventWithEventId:[NSString stringWithUTF8String:eventId] value:value error:nil];
+    [Zapic submitEventWithEventId:[NSString stringWithUTF8String:eventId] value:value];
   }
   
   void z_submitEvent(char* eventId){
-    [Zapic submitEventWithEventId:[NSString stringWithUTF8String:eventId] error:nil];
+    [Zapic submitEventWithEventId:[NSString stringWithUTF8String:eventId]];
   }
 }

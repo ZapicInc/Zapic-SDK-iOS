@@ -22,6 +22,8 @@
 		654BF0E91F27FB9400E0B9BC /* ZapicSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC48DA1F1D40CD0026E101 /* ZapicSpec.swift */; };
 		654BF0EC1F28054300E0B9BC /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF0EB1F28054300E0B9BC /* Storage.swift */; };
 		654BF0EE1F2806C700E0B9BC /* MemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654BF0ED1F2806C700E0B9BC /* MemoryStorage.swift */; };
+		654E3D711F47400700FCD261 /* ZapicCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E3D701F47400700FCD261 /* ZapicCore.swift */; };
+		654E3D731F4743D200FCD261 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E3D721F4743D200FCD261 /* ContactManager.swift */; };
 		65E050CB1F326DCB005985F6 /* ZLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050CA1F326DCB005985F6 /* ZLog.swift */; };
 		65E050D41F331201005985F6 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050D01F331201005985F6 /* LoadingView.swift */; };
 		65E050D51F331201005985F6 /* OfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050D11F331201005985F6 /* OfflineView.swift */; };
@@ -62,6 +64,8 @@
 		654BF0E51F27FA6E00E0B9BC /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		654BF0EB1F28054300E0B9BC /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		654BF0ED1F2806C700E0B9BC /* MemoryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryStorage.swift; sourceTree = "<group>"; };
+		654E3D701F47400700FCD261 /* ZapicCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicCore.swift; sourceTree = "<group>"; };
+		654E3D721F4743D200FCD261 /* ContactManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		65AC48DA1F1D40CD0026E101 /* ZapicSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicSpec.swift; sourceTree = "<group>"; };
 		65E050CA1F326DCB005985F6 /* ZLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLog.swift; sourceTree = "<group>"; };
 		65E050D01F331201005985F6 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
@@ -122,9 +126,11 @@
 				651AEDA41F16C49900986F05 /* Zapic.h */,
 				651AEDBD1F16C4CE00986F05 /* CInterface.mm */,
 				651AEDA51F16C49900986F05 /* Info.plist */,
+				654E3D721F4743D200FCD261 /* ContactManager.swift */,
 				654BF0EB1F28054300E0B9BC /* Storage.swift */,
 				651AEDC21F16C4CE00986F05 /* Zapic.swift */,
 				651AEDC51F16C4CE00986F05 /* ZapicController.swift */,
+				654E3D701F47400700FCD261 /* ZapicCore.swift */,
 				651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */,
 				65E050CE1F3310D0005985F6 /* Utilities */,
 				651AEDD81F16C7F600986F05 /* Views */,
@@ -320,11 +326,13 @@
 			files = (
 				651AEDC91F16C4CE00986F05 /* GameCenterHelper.swift in Sources */,
 				65E050D51F331201005985F6 /* OfflineView.swift in Sources */,
+				654E3D711F47400700FCD261 /* ZapicCore.swift in Sources */,
 				65E050DF1F33150C005985F6 /* Banner.swift in Sources */,
 				65E050D71F331201005985F6 /* ZapicWebView.swift in Sources */,
 				651AEDCD1F16C4CE00986F05 /* Zapic.swift in Sources */,
 				65E050D41F331201005985F6 /* LoadingView.swift in Sources */,
 				65E050CB1F326DCB005985F6 /* ZLog.swift in Sources */,
+				654E3D731F4743D200FCD261 /* ContactManager.swift in Sources */,
 				65E050E01F33150C005985F6 /* BannerContent.swift in Sources */,
 				650116061F23141300CED7B2 /* ZapicUtils.swift in Sources */,
 				654BF0EC1F28054300E0B9BC /* Storage.swift in Sources */,
