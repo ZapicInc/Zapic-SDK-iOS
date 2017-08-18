@@ -13,7 +13,7 @@
 extern "C" {
   
   void z_start(char* version){
-    [Zapic startWithVersion:[NSString stringWithUTF8String:version]];
+    [Zapic start:[NSString stringWithUTF8String:version]];
   }
   
   void z_show(char* viewName){

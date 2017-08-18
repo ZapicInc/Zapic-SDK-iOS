@@ -48,5 +48,6 @@ class GameScene: SKScene {
         if button!.contains(touchLocation) {
             Zapic.show(view: .main)
         }
+      Zapic.submitEvent(eventId: "Event123", value: 34)
     }
 }

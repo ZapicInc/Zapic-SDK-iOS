@@ -35,7 +35,7 @@ public class Zapic: NSObject {
 
   private static let core = ZapicCore()
 
-  public static func start(version: String) {
+  public static func start(_ version: String) {
     core.start(version: version)
   }
 
