@@ -86,7 +86,7 @@ enum WebClientStatus {
 
 class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, ZapicWebClient {
 
-  private let appUrl = "https://client.zapic.net"
+  private let appUrl: String
 
   private let events: [String]
 
@@ -101,6 +101,14 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
   weak var controllerDelegate: ZapicViewControllerDelegate?
 
   init() {
+
+    if let clientUrl = UserDefaults.standard.string(forKey: "ZAPIC_URL"), !clientUrl.isEmpty {
+      appUrl = clientUrl
+    } else {
+      appUrl = "https://client.zapic.net"
+    }
+
+    ZLog.info("Loading webclient from \(appUrl)")
 
     let config = WKWebViewConfiguration()
     let controller = WKUserContentController()

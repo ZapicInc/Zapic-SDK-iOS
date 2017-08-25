@@ -61,7 +61,7 @@ class ZapicController: UIViewController, ZapicViewControllerDelegate {
   }
 
   func closePage() {
-    self.dismiss(animated: true) {
+    self.closeView {
       self.webView.dispatchToJS(type: .closePage, payload:"")
     }
   }
@@ -77,5 +77,15 @@ class ZapicController: UIViewController, ZapicViewControllerDelegate {
 
   override var prefersStatusBarHidden: Bool {
     return true
+  }
+
+  private func closeView(completion: (() -> Void)?) {
+    super.dismiss(animated: true, completion: completion)
+  }
+
+  override func dismiss(animated flag: Bool, completion: (() -> Void)?) {
+    if self.presentedViewController != nil {
+      super.dismiss(animated: flag, completion: completion)
+    }
   }
 }
