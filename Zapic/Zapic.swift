@@ -21,28 +21,60 @@ enum ZapicError: Error {
   case invalidAuthSignature
 }
 
-enum ZapicEvents: String {
-  case appStarted = "APP_STARTED"
+enum EventType: String {
+  case unknown = "Unknown"
+  case appStarted = "AppStarted"
+  case gameplay = "Gameplay"
 }
+
+//// public enum EventType
+//{
+//  Unknown,
+//
+//  /// <summary>Event when the app opens</summary>
+//  AppStarted,
+//
+//  /// <summary>In game events, from the game developer.</summary>
+//  Gameplay,
+//}
+//
+///// <summary>Type of event.</summary>
+//[JsonProperty("type", Order = 1)]
+//[Required]
+//public EventType? EventType { get; set; }
+//
+///// <summary>Collection of parameters [Key, Value]</summary>
+//[JsonProperty("params", Order = 1)]
+//[Required]
+//public Dictionary<string, object> Parameters { get; set; }
 
 @objc(Zapic)
 public class Zapic: NSObject {
 
   private static let core = ZapicCore()
 
-  public static func start(_ version: String) {
+  @objc public static var playerId: UUID? {
+    return core.playerId
+  }
+
+  @objc public static func start(_ version: String) {
     core.start(version: version)
   }
 
-  public static func submitEvent(eventId: String, value: Int) {
-    core.submitEvent(eventId: eventId, value: value)
+  @objc public static func submitEvent(json: Data) {
+    guard let params = ZapicUtils.deserialize(bodyData: json) else {
+      ZLog.error("Unable to deserialize event from json data")
+      return
+    }
+
+    core.submitEvent(eventType: .gameplay, params: params)
   }
 
-  public static func submitEvent(eventId: String) {
-    core.submitEvent(eventId: eventId, value: nil)
+  @objc public static func submitEvent(_ params: [String:Any]) {
+    core.submitEvent(eventType: .gameplay, params: params)
   }
 
-  public static func show(viewName: String) {
+  @objc public static func show(viewName: String) {
     guard let view = ZapicViews(rawValue: viewName) else {
       ZLog.error("Invalid view name \(viewName)")
       return

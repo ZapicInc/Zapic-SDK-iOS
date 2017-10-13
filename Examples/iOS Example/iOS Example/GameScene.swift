@@ -48,6 +48,12 @@ class GameScene: SKScene {
         if button!.contains(touchLocation) {
             Zapic.show(view: .main)
         }
-        Zapic.submitEvent(eventId: "Event123", value: 34)
+      Zapic.submitEvent(["Event123": 34,"Score":22])
+      
+      guard let idString = Zapic.playerId?.uuidString else {
+        return
+      }
+      //Update the label to show the player's id
+      self.label?.text = "Hello player \(idString)"
     }
 }

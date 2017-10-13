@@ -133,14 +133,14 @@ class Banner: UIView {
     updateConstraintsIfNeeded()
   }
 
-  internal func didTap(_ recognizer: UITapGestureRecognizer) {
+  @objc internal func didTap(_ recognizer: UITapGestureRecognizer) {
     if dismissesOnTap {
       dismiss()
     }
     didTapBlock?()
   }
 
-  internal func didSwipe(_ recognizer: UISwipeGestureRecognizer) {
+  @objc internal func didSwipe(_ recognizer: UISwipeGestureRecognizer) {
     if dismissesOnSwipe {
       dismiss()
     }

@@ -11,7 +11,7 @@ import WebKit
 
 protocol ZapicWebClient {
   var zapicDelegate: ZapicDelegate? { get set }
-  func submitEvent(eventId: String, timestamp: Date, value: Int?)
+  func submitEvent(eventType: EventType, params: [String: Any])
   func dispatchToJS(type: WebFunction, payload:Any)
   func dispatchToJS(type: WebFunction, payload:Any, isError: Bool)
 
@@ -29,6 +29,7 @@ enum WebEvent: String {
   case pageReady = "sdk/PAGE_READY"
   case closePageRequest = "sdk/CLOSE_PAGE_REQUESTED"
   case getContacts = "sdk/GET_CONTACTS"
+  case setPlayerId = "sdk/SET_PLAYERID"
 }
 
 enum WebFunction: String {
@@ -69,6 +70,9 @@ protocol ZapicDelegate : class {
 
   /// Triggers retrieving all contacts from the device
   func getContacts()
+
+  /// Trigger when the player id is received for the user
+  func setPlayerId(playerId: UUID)
 }
 
 protocol ZapicViewControllerDelegate : class {
@@ -191,28 +195,16 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
       status = .ready
       zapicDelegate?.onAppReady()
       break
+    case .setPlayerId:
+      receivePlayerId(json)
+      break
     case .pageReady:
       isPageReady = true
       controllerDelegate?.onPageReady()
       break
     case .showBanner:
-
-      guard let msg = json["payload"] as? [String:Any] else {
-        ZLog.warn("Received invalid ShowBanner payload")
-        return
-      }
-
-      guard let title = msg["title"] as? String else {
-        ZLog.warn("ShowBanner title is required")
-        return
-      }
-
-      let icon: UIImage? = decode(base64:msg["icon"] as? String)
-
-      let subTitle = msg["subtitle"] as? String
-
-      zapicDelegate?.showBanner(title: title, subTitle: subTitle, icon: icon)
-
+      receiveBanner(json)
+      break
     case .closePageRequest:
       controllerDelegate?.closePage()
       break
@@ -231,6 +223,41 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
       ZLog.warn("Invalid base64 string")
       return nil
     }
+  }
+
+  // MARK: - Receive Messages
+
+  private func receiveBanner(_ json: [String:Any]) {
+    guard let msg = json["payload"] as? [String:Any] else {
+      ZLog.warn("Received invalid ShowBanner payload")
+      return
+    }
+
+    guard let title = msg["title"] as? String else {
+      ZLog.warn("ShowBanner title is required")
+      return
+    }
+
+    let icon: UIImage? = decode(base64:msg["icon"] as? String)
+
+    let subTitle = msg["subtitle"] as? String
+
+    zapicDelegate?.showBanner(title: title, subTitle: subTitle, icon: icon)
+  }
+
+  private func receivePlayerId(_ json: [String: Any]) {
+
+    guard let msg = json["payload"] as? [String:Any] else {
+      ZLog.warn("Received invalid SetPlayerId payload")
+      return
+    }
+
+    guard let playerId = msg["playerId"] as? UUID else {
+      ZLog.warn("ShowBanner title is required")
+      return
+    }
+
+    zapicDelegate?.setPlayerId(playerId: playerId)
   }
 
   // MARK: - Events
@@ -275,7 +302,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
     }
   }
 
-  func submitEvent(eventId: String, timestamp: Date, value: Int? = nil) {
+  func submitEvent(eventType: EventType, params: [String:Any]) {
 
     if status != .ready {
       ZLog.info("Web client is not ready to accept events")
@@ -284,11 +311,9 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
 
     ZLog.debug("Submitting event to web client")
 
-    var msg: [String:Any] = ["eventId": eventId, "timestamp": timestamp.iso8601]
-
-    if let v = value {
-      msg["value"] = v
-    }
+    let msg: [String:Any] = ["type": eventType.rawValue,
+                             "params": params,
+                             "timestamp": Date().iso8601]
 
     dispatchToJS(type:.submitEvent, payload: msg)
   }

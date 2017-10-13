@@ -43,7 +43,6 @@ class GameViewController: UIViewController {
     })
     
     self.present(ac, animated: true, completion: nil)
-    
   }
   
   override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {

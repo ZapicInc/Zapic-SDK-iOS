@@ -66,7 +66,7 @@ class ZapicView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  func closeButtonAction(sender: UIButton!) {
+  @objc func closeButtonAction(sender: UIButton!) {
     ZLog.debug("Close button tapped")
     controllerDelegate?.closePage()
   }

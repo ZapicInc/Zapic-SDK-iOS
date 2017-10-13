@@ -14,9 +14,12 @@ class ZapicCore: ZapicDelegate {
   private let zapicController: ZapicController
   private let contactManager = ContactManager()
   private var hasStarted = false
+  private var appVersion = ""
 
   /// Current retry attempt number. Resets when load is sucessful
   private var retryAttempt = 0
+
+  @objc public private(set) var playerId: UUID?
 
   init() {
     if ZLog.isEnabled {
@@ -43,6 +46,7 @@ class ZapicCore: ZapicDelegate {
     ZLog.info("Zapic starting. App version \(version)")
 
     hasStarted = true
+    appVersion = version
 
     webClient.load()
   }
@@ -58,16 +62,13 @@ class ZapicCore: ZapicDelegate {
     }
   }
 
-  func submitEvent(eventId: String, value: Int? = nil) {
-    //Guard against reserved app ids
-    if ZapicEvents(rawValue: eventId) != nil {
-      ZLog.error("Event id \(eventId) is reserved, please choose a new id")
-    }
-    return submitEventUnchecked(eventId:eventId, value:value)
+  func setPlayerId(playerId: UUID) {
+    self.playerId = playerId
   }
 
-  private func submitEventUnchecked(eventId: String, value: Int? = nil) {
-    webClient.submitEvent(eventId: eventId, timestamp: Date(), value: value)
+  func submitEvent(eventType: EventType, params: [String: Any]) {
+
+     webClient.submitEvent(eventType: eventType, params: params)
   }
 
   func show(view: ZapicViews) {
@@ -100,7 +101,7 @@ class ZapicCore: ZapicDelegate {
   func onAppReady() {
     retryAttempt = 0
     webClient.resendFailedEvents()
-    submitEventUnchecked(eventId: ZapicEvents.appStarted.rawValue)
+    submitEvent(eventType: .appStarted, params: ["version": appVersion])
   }
 
   func onAppError(error: Error) {
