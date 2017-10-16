@@ -349,4 +349,18 @@ extension ZapicWebView: WKNavigationDelegate {
     self.onAppError(error: error)
   }
 
+  func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    guard let scheme = navigationAction.request.url?.scheme else {
+      decisionHandler(.cancel)
+      return
+    }
+
+    if scheme.starts(with: "itms") {
+      UIApplication.shared.openURL(navigationAction.request.url!)
+      decisionHandler(.cancel)
+      return
+    }
+
+     decisionHandler(.allow)
+  }
 }

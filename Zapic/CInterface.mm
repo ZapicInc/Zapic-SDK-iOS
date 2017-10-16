@@ -40,12 +40,12 @@ extern "C" {
     [Zapic showWithViewName:CreateNSString(viewName)];
   }
   
-  void z_submitEventWithValue(char* data){
+  void z_submitEventWithParams(char* data){
     [Zapic submitEventWithJson:[CreateNSString(data) dataUsingEncoding:NSUTF8StringEncoding]];
   }
   
   /// Returns the unique player id
-  const char* zPlayerId(){
+  const char* z_playerId(){
     
     NSUUID* uid = [Zapic playerId];
     
