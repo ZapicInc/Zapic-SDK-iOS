@@ -20,8 +20,6 @@ class ColorBar: UIView {
     gradient.startPoint = CGPoint(x: 1, y: 0)
     gradient.endPoint =  CGPoint.zero
     gradient.locations = [-2.0, -1.0, 0.0, 1]
-
-//    animate()
   }
 
   required init?(coder aDecoder: NSCoder) {

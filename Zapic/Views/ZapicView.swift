@@ -31,7 +31,7 @@ class ZapicView: UIView {
 
     self.addSubview(icon)
 
-    let iconSize: CGFloat = 128
+    let iconSize: CGFloat = 64
     icon.translatesAutoresizingMaskIntoConstraints = false
     icon.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     icon.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant:-100).isActive = true
@@ -53,6 +53,8 @@ class ZapicView: UIView {
     //Close button
     let closeButton = UIButton()
     closeButton.setTitle("Done", for: .normal)
+    closeButton.setTitleColor(ZapicColors.primaryText, for: .normal)
+
     closeButton.addTarget(self, action: #selector(closeButtonAction), for: .touchUpInside)
 
     self.addSubview(closeButton)
@@ -67,7 +69,7 @@ class ZapicView: UIView {
   }
 
   @objc func closeButtonAction(sender: UIButton!) {
-    ZLog.debug("Close button tapped")
+    ZLog.info("Close button tapped")
     controllerDelegate?.closePage()
   }
 }

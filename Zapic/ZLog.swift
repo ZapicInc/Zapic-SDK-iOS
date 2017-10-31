@@ -8,6 +8,17 @@
 
 import Foundation
 
+public enum ZLogLevel: String {
+  case error = "💩"
+  case warn = "❗️"
+  case info = "📣"
+}
+
+public enum ZLogSource: String {
+  case sdk = "SDK"
+  case web = "Web"
+}
+
 @objc(ZLog)
 public class ZLog: NSObject {
 
@@ -19,26 +30,26 @@ public class ZLog: NSObject {
     return dateFormatter
   }
 
-  static func error(_ message: String) {
-    log(message: message, icon: "💩")
+  static func error(_ message: String, source: ZLogSource = .sdk ) {
+    writeLog(message: message, level: .error, source: source)
   }
 
-  static func warn(_ message: String) {
-    log(message: message, icon: "❗️")
+  static func warn(_ message: String, source: ZLogSource = .sdk) {
+    writeLog(message: message, level: .warn, source: source)
   }
 
-  static func info(_ message: String) {
-    log(message: message, icon: "📣")
+  static func info(_ message: String, source: ZLogSource = .sdk) {
+    writeLog(message: message, level: .info, source: source)
   }
 
-  static func debug(_ message: String) {
-    log(message: message, icon: "🐞")
+  static func log(_ message: String, level: ZLogLevel, source: ZLogSource = .sdk) {
+    writeLog(message:message, level: level, source: source)
   }
 
-  private static func log(message: String, icon: String) {
+  private static func writeLog(message: String, level: ZLogLevel, source: ZLogSource) {
     #if DEBUG
       if isEnabled {
-        print("\(icon) [Zapic][\(dateFormatter.string(from: Date()))] : \(message)")
+        print("\(level.rawValue) [Zapic][\(source.rawValue)][\(dateFormatter.string(from: Date()))] : \(message)")
       }
     #endif
   }

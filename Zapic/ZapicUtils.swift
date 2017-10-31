@@ -31,4 +31,17 @@ class ZapicUtils {
         }
         return payload
     }
+
+    static func formatString(message: String, args: [String]?) -> String {
+
+      guard let args = args else {
+        return message
+      }
+
+      if args.count == 0 {
+        return message
+      }
+
+      return message.replaceSubstrings(string:"%s", args: args)
+    }
 }

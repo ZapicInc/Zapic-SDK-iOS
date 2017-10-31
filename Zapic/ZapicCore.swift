@@ -113,7 +113,7 @@ class ZapicCore: ZapicDelegate {
 
     let delay = max(1, drand48() * min(maxDelay, base * pow(2.0, Double(retryAttempt))))
 
-    ZLog.debug("Retrying load in \(delay) sec")
+    ZLog.info("Retrying load in \(delay) sec")
 
     //Attempt to load the web client again after a delay
     DispatchQueue.main.asyncAfter(deadline: .now() + delay) {

@@ -77,7 +77,7 @@ class GameCenterHelper {
   }
 
   private static func generateIdentityInfo(player: GKLocalPlayer, completionHandler: @escaping ([String:Any]?, Error?) -> Void) {
-    ZLog.debug("Generating identity signature")
+    ZLog.info("Generating identity signature")
 
     player.generateIdentityVerificationSignature { (publicKeyUrl: URL!, signature: Data!, salt: Data!, timestamp: UInt64, error: Error!) -> Void in
 
@@ -87,7 +87,7 @@ class GameCenterHelper {
         return
       }
 
-      ZLog.debug("Generated identity signature")
+      ZLog.info("Generated identity signature")
 
       let signatureStr = signature.base64EncodedString()
 

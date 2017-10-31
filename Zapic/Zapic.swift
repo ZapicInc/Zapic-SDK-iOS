@@ -9,7 +9,7 @@
 import Foundation
 
 public enum ZapicViews: String {
-  case main = "default"
+  case main
   case profile
   case achievements
 }

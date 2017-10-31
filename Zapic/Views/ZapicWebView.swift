@@ -9,35 +9,25 @@
 import Foundation
 import WebKit
 
-protocol ZapicWebClient {
-  var zapicDelegate: ZapicDelegate? { get set }
-  func submitEvent(eventType: EventType, params: [String: Any])
-  func dispatchToJS(type: WebFunction, payload:Any)
-  func dispatchToJS(type: WebFunction, payload:Any, isError: Bool)
-
-  /// Load the web client
-  func load()
-
-  /// Attempt to resend all events that we unable to send
-  func resendFailedEvents()
-}
-
+// Events sent from the web client to the SDK
 enum WebEvent: String {
-  case getSignature = "sdk/GET_VERIFICATION_SIGNATURE"
-  case appReady = "sdk/APP_READY"
-  case showBanner = "sdk/SHOW_BANNER"
-  case pageReady = "sdk/PAGE_READY"
-  case closePageRequest = "sdk/CLOSE_PAGE_REQUESTED"
-  case getContacts = "sdk/GET_CONTACTS"
-  case setPlayerId = "sdk/SET_PLAYERID"
+  case login = "LOGIN"
+  case appLoaded = "APP_LOADED"
+  case appStarted = "APP_STARTED"
+  case showBanner = "SHOW_BANNER"
+  case pageReady = "PAGE_READY"
+  case closePageRequest = "CLOSE_PAGE_REQUESTED"
+  case getContacts = "GET_CONTACTS"
+  case loggedIn = "LOGGED_IN"
 }
 
+// Events sent from the SDK to the web client
 enum WebFunction: String {
-  case setSignature = "sdk/SET_VERIFICATION_SIGNATURE"
-  case submitEvent = "sdk/SUBMIT_EVENT"
-  case openPage = "sdk/OPEN_PAGE"
-  case closePage = "sdk/CLOSE_PAGE"
-  case setContacts = "sdk/SET_CONTACTS"
+  case setSignature = "LOGIN_WITH_GAME_CENTER"
+  case submitEvent = "SUBMIT_EVENT"
+  case openPage = "OPEN_PAGE"
+  case closePage = "CLOSE_PAGE"
+  case setContacts = "SET_CONTACTS"
 }
 
 struct Event {
@@ -50,29 +40,6 @@ struct Event {
     self.payload = payload
     self.isError = isError
   }
-}
-
-protocol ZapicDelegate : class {
-
-  /// Triggers the generation of the
-  /// Game Center verification signature
-  func getVerificationSignature()
-
-  /// Trigger when the web client is ready for
-  /// the native client to call it
-  func onAppReady()
-
-  /// Trigger when the web client has an error
-  func onAppError(error: Error)
-
-  /// Trigger when a banner should be shown
-  func showBanner(title: String, subTitle: String?, icon: UIImage?)
-
-  /// Triggers retrieving all contacts from the device
-  func getContacts()
-
-  /// Trigger when the player id is received for the user
-  func setPlayerId(playerId: UUID)
 }
 
 protocol ZapicViewControllerDelegate : class {
@@ -118,7 +85,10 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
     let controller = WKUserContentController()
     config.userContentController = controller
 
-    events = ["dispatch"]
+    events = ["dispatch", "console"]
+
+    let userScript = WKUserScript(source: injectedScript, injectionTime: .atDocumentStart, forMainFrameOnly: true)
+    controller.addUserScript(userScript)
 
     super.init(frame: .zero, configuration: config)
 
@@ -142,12 +112,12 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
   func load() {
 
     if status == .ready {
-      ZLog.debug("Web application is already ready")
+      ZLog.info("Web application is already ready")
       return
     }
 
     if status == .loading {
-      ZLog.debug("Web application is already loading")
+      ZLog.info("Web application is already loading")
       return
     }
 
@@ -172,6 +142,59 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
   /// Receive messages from JS code
   func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
 
+    let methodName = message.name
+
+    switch methodName {
+    case "dispatch":
+      handleDispatch(message)
+      break
+    case "console":
+      handleConsole(message)
+    default:
+      ZLog.warn("Received a message to unknown method: \(methodName)")
+    }
+  }
+
+  private func handleConsole(_ message: WKScriptMessage) {
+
+    guard let json = message.body as? [String: Any] else {
+      ZLog.warn("Received invalid message format")
+      return
+    }
+
+    guard let levelStr = json["level"] as? String else {
+      ZLog.warn("Received invalid console message")
+      return
+    }
+
+    guard let message = json["message"] as? [String] else {
+      ZLog.warn("Received invalid console message")
+      return
+    }
+
+    var level = ZLogLevel.info
+
+    switch levelStr.uppercased() {
+    case "ERROR":
+      level = ZLogLevel.error
+    case "WARN":
+      level = ZLogLevel.warn
+    case "INFO":
+      fallthrough
+    default:
+      level = ZLogLevel.info
+    }
+
+    let text = message[0]
+    let args = Array(message[2...])
+
+    let msg = text.replaceSubstrings(string: "%s", args: args)
+
+    ZLog.log(msg, level: level, source: .web)
+  }
+
+  private func handleDispatch(_ message: WKScriptMessage) {
+
     guard let json = message.body as? [String: Any] else {
       ZLog.warn("Received invalid message format")
       return
@@ -185,18 +208,18 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
     ZLog.info("Received from JS: \(type) ")
 
     switch type {
-    case .getSignature:
+    case .login:
       zapicDelegate?.getVerificationSignature()
       break
     case .getContacts:
       zapicDelegate?.getContacts()
       break
-    case .appReady:
+    case .appStarted:
       status = .ready
       zapicDelegate?.onAppReady()
       break
-    case .setPlayerId:
-      receivePlayerId(json)
+    case .loggedIn:
+      loggedIn(json)
       break
     case .pageReady:
       isPageReady = true
@@ -207,6 +230,9 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
       break
     case .closePageRequest:
       controllerDelegate?.closePage()
+      break
+    default:
+      ZLog.warn("Unhandled message type \(type)")
       break
     }
   }
@@ -245,15 +271,20 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
     zapicDelegate?.showBanner(title: title, subTitle: subTitle, icon: icon)
   }
 
-  private func receivePlayerId(_ json: [String: Any]) {
+  private func loggedIn(_ json: [String: Any]) {
 
     guard let msg = json["payload"] as? [String:Any] else {
       ZLog.warn("Received invalid SetPlayerId payload")
       return
     }
 
-    guard let playerId = msg["playerId"] as? UUID else {
-      ZLog.warn("ShowBanner title is required")
+    guard let playerIdString = msg["userId"] as? String else {
+      ZLog.warn("Invalid/missing value for userId, must be a string")
+      return
+    }
+
+    guard let playerId = playerIdString.asUUID() else {
+      ZLog.warn("Could not convert userId to a valid UUID")
       return
     }
 
@@ -297,7 +328,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
       if let error = error {
         ZLog.error("JS Error \(error)")
       } else if let result = result {
-        ZLog.debug("JS Result \(result)")
+        ZLog.info("JS Result \(result)")
       }
     }
   }
@@ -309,7 +340,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
       return
     }
 
-    ZLog.debug("Submitting event to web client")
+    ZLog.info("Submitting event to web client")
 
     let msg: [String:Any] = ["type": eventType.rawValue,
                              "params": params,
@@ -320,7 +351,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
 
   /// Attempt to resend all events that we unable to send
   func resendFailedEvents() {
-    ZLog.debug("Started resending \(eventQueue.count) events")
+    ZLog.info("Started resending \(eventQueue.count) events")
 
     while eventQueue.count > 0 {
 
@@ -332,7 +363,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
       dispatchToJS(type: event.type, payload: event.payload, isError: event.isError)
     }
 
-    ZLog.debug("Finished resending events")
+    ZLog.info("Finished resending events")
 
   }
 }
