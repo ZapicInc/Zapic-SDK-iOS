@@ -22,7 +22,7 @@ public enum ZLogSource: String {
 @objc(ZLog)
 public class ZLog: NSObject {
 
-  public static var isEnabled = false
+  @objc public static var isEnabled = true
 
   private static var dateFormatter: DateFormatter {
     let dateFormatter: DateFormatter = DateFormatter()

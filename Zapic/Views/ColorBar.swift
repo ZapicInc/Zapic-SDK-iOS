@@ -17,7 +17,7 @@ class ColorBar: UIView {
     backgroundColor = .red
     self.layer.insertSublayer(gradient, at: 0)
     gradient.colors = [ZapicColors.blue.cgColor, ZapicColors.green.cgColor, ZapicColors.blue.cgColor, ZapicColors.green.cgColor]
-    gradient.startPoint = CGPoint(x: 1, y: 0)
+    gradient.startPoint = CGPoint(x: 1.1, y: 0)
     gradient.endPoint =  CGPoint.zero
     gradient.locations = [-2.0, -1.0, 0.0, 1]
   }

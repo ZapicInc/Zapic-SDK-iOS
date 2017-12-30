@@ -27,27 +27,6 @@ enum EventType: String {
   case gameplay = "Gameplay"
 }
 
-//// public enum EventType
-//{
-//  Unknown,
-//
-//  /// <summary>Event when the app opens</summary>
-//  AppStarted,
-//
-//  /// <summary>In game events, from the game developer.</summary>
-//  Gameplay,
-//}
-//
-///// <summary>Type of event.</summary>
-//[JsonProperty("type", Order = 1)]
-//[Required]
-//public EventType? EventType { get; set; }
-//
-///// <summary>Collection of parameters [Key, Value]</summary>
-//[JsonProperty("params", Order = 1)]
-//[Required]
-//public Dictionary<string, object> Parameters { get; set; }
-
 @objc(Zapic)
 public class Zapic: NSObject {
 

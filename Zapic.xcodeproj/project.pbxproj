@@ -150,6 +150,7 @@
 				651AEDA41F16C49900986F05 /* Zapic.h */,
 				651AEDBD1F16C4CE00986F05 /* CInterface.mm */,
 				651AEDA51F16C49900986F05 /* Info.plist */,
+				65FD63171F97E40C00C5CC8D /* InjectedJS.swift */,
 				654E3D721F4743D200FCD261 /* ContactManager.swift */,
 				651AEDC21F16C4CE00986F05 /* Zapic.swift */,
 				651AEDC51F16C4CE00986F05 /* ZapicController.swift */,
@@ -159,7 +160,6 @@
 				651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */,
 				65E050CE1F3310D0005985F6 /* Utilities */,
 				651AEDD81F16C7F600986F05 /* Views */,
-				65FD63171F97E40C00C5CC8D /* InjectedJS.swift */,
 			);
 			path = Zapic;
 			sourceTree = "<group>";

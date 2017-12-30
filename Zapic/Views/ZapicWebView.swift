@@ -12,7 +12,7 @@ import WebKit
 // Events sent from the web client to the SDK
 enum WebEvent: String {
   case login = "LOGIN"
-  case appLoaded = "APP_LOADED"
+  //case appLoaded = "APP_LOADED"
   case appStarted = "APP_STARTED"
   case showBanner = "SHOW_BANNER"
   case pageReady = "PAGE_READY"
@@ -57,7 +57,7 @@ enum WebClientStatus {
 
 class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, ZapicWebClient {
 
-  private let appUrl: String
+  private let appUrl: String = ZapicUtils.appUrl()
 
   private let events: [String]
 
@@ -72,12 +72,6 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
   weak var controllerDelegate: ZapicViewControllerDelegate?
 
   init() {
-
-    if let clientUrl = UserDefaults.standard.string(forKey: "ZAPIC_URL"), !clientUrl.isEmpty {
-      appUrl = clientUrl
-    } else {
-      appUrl = "https://client.zapic.net"
-    }
 
     ZLog.info("Loading webclient from \(appUrl)")
 
@@ -200,8 +194,13 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
       return
     }
 
-    guard let type = WebEvent(rawValue:(json["type"] as? String)!) else {
-      ZLog.warn("Received unknown message type")
+    guard let typeValue = json["type"] as? String else {
+      ZLog.warn("Received message with missing message type")
+      return
+    }
+
+    guard let type = WebEvent(rawValue: typeValue) else {
+      ZLog.warn("Received unknown message type \(typeValue)")
       return
     }
 
@@ -308,7 +307,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
       return
     }
 
-    ZLog.info("Dispatching JS event \(type)")
+    ZLog.info("Dispatching JS event \(type.rawValue)")
 
     var msg = ["type": type.rawValue, "payload": payload]
 
@@ -322,7 +321,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
 
     let js = "zapic.dispatch(\(json))"
 
-    //    ZLog.debug("Dispatching \(js)")
+    ZLog.info("Dispatching \(js)")
 
     super.evaluateJavaScript(js) { (result, error) in
       if let error = error {
