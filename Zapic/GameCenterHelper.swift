@@ -14,7 +14,7 @@ class GameCenterHelper {
   ///  Generates the current player's GameCenter signature
   ///
   /// - Parameter completionHandler: Callback when the signature has been generated
-  static func generateSignature(completionHandler: @escaping ([String:Any]?, Error?) -> Void) {
+  static func generateSignature(completionHandler: @escaping ([String: Any]?, Error?) -> Void) {
     gameCenterAuthenticate { (player, error) in
       guard error == nil else {
         ZLog.error("Error authenticaing player")
@@ -76,7 +76,7 @@ class GameCenterHelper {
     }
   }
 
-  private static func generateIdentityInfo(player: GKLocalPlayer, completionHandler: @escaping ([String:Any]?, Error?) -> Void) {
+  private static func generateIdentityInfo(player: GKLocalPlayer, completionHandler: @escaping ([String: Any]?, Error?) -> Void) {
     ZLog.info("Generating identity signature")
 
     player.generateIdentityVerificationSignature { (publicKeyUrl: URL!, signature: Data!, salt: Data!, timestamp: UInt64, error: Error!) -> Void in

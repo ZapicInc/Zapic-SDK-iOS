@@ -69,7 +69,7 @@ class MessageBannerView: ZapicBanner {
 
   init(_ text: String, icon: UIImage?) {
 
-    super.init(icon:icon)
+    super.init(icon: icon)
 
     let label = UILabel()
     label.font = UIFont.systemFont(ofSize: 16)
@@ -94,7 +94,7 @@ class NotificationBannerView: ZapicBanner {
 
   init(title: String, text: String, icon: UIImage?) {
 
-    super.init(contentRightPadding:20, icon:icon)
+    super.init(contentRightPadding: 20, icon: icon)
 
     //Title
     let titleLabel = UILabel()

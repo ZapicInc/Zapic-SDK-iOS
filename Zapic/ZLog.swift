@@ -43,7 +43,7 @@ public class ZLog: NSObject {
   }
 
   static func log(_ message: String, level: ZLogLevel, source: ZLogSource = .sdk) {
-    writeLog(message:message, level: level, source: source)
+    writeLog(message: message, level: level, source: source)
   }
 
   private static func writeLog(message: String, level: ZLogLevel, source: ZLogSource) {

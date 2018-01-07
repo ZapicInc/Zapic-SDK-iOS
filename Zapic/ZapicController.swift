@@ -28,7 +28,7 @@ class ZapicController: UIViewController, ZapicViewControllerDelegate {
       fatalError("RootViewController not found, ensure this is called at the correct time")
     }
 
-    super.init(nibName:nil, bundle:nil)
+    super.init(nibName: nil, bundle: nil)
 
     loading.controllerDelegate = self
     offline.controllerDelegate = self
@@ -62,7 +62,7 @@ class ZapicController: UIViewController, ZapicViewControllerDelegate {
 
   func closePage() {
     self.closeView {
-      self.webView.dispatchToJS(type: .closePage, payload:"")
+      self.webView.dispatchToJS(type: .closePage, payload: "")
     }
   }
 

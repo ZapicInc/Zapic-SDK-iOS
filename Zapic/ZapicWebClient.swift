@@ -11,8 +11,8 @@ import Foundation
 protocol ZapicWebClient {
   var zapicDelegate: ZapicDelegate? { get set }
   func submitEvent(eventType: EventType, params: [String: Any])
-  func dispatchToJS(type: WebFunction, payload:Any)
-  func dispatchToJS(type: WebFunction, payload:Any, isError: Bool)
+  func dispatchToJS(type: WebFunction, payload: Any)
+  func dispatchToJS(type: WebFunction, payload: Any, isError: Bool)
 
   /// Load the web client
   func load()

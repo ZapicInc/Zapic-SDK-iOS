@@ -49,7 +49,7 @@ public class Zapic: NSObject {
     core.submitEvent(eventType: .gameplay, params: params)
   }
 
-  @objc public static func submitEvent(_ params: [String:Any]) {
+  @objc public static func submitEvent(_ params: [String: Any]) {
     core.submitEvent(eventType: .gameplay, params: params)
   }
 
@@ -58,7 +58,7 @@ public class Zapic: NSObject {
       ZLog.error("Invalid view name \(viewName)")
       return
     }
-    show(view:view)
+    show(view: view)
   }
 
   public static func show(view: ZapicViews) {

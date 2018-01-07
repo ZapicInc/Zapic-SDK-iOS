@@ -96,9 +96,9 @@ class Banner: UIView {
     self.didTapBlock = didTapBlock
 
     if let subText = subtitle {
-      bannerContent = NotificationBannerView(title: title, text: subText, icon:icon)
+      bannerContent = NotificationBannerView(title: title, text: subText, icon: icon)
     } else {
-      bannerContent = MessageBannerView(title, icon:icon)
+      bannerContent = MessageBannerView(title, icon: icon)
     }
 
     super.init(frame: CGRect.zero)

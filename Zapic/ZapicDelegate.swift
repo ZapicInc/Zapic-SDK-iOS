@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ZapicDelegate : class {
+protocol ZapicDelegate: class {
 
   /// Triggers the generation of the
   /// Game Center verification signature

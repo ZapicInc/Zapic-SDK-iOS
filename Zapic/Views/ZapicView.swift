@@ -34,7 +34,7 @@ class ZapicView: UIView {
     let iconSize: CGFloat = 64
     icon.translatesAutoresizingMaskIntoConstraints = false
     icon.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-    icon.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant:-100).isActive = true
+    icon.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -100).isActive = true
     icon.heightAnchor.constraint(equalToConstant: iconSize).isActive = true
     icon.widthAnchor.constraint(equalToConstant: iconSize).isActive = true
 

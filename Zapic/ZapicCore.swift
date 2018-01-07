@@ -57,7 +57,7 @@ class ZapicCore: ZapicDelegate {
       if let contacts = contacts {
         self.webClient.dispatchToJS(type: .setContacts, payload: contacts)
       } else {
-        self.webClient.dispatchToJS(type: .setContacts, payload: "Unable to get contacts", isError:true)
+        self.webClient.dispatchToJS(type: .setContacts, payload: "Unable to get contacts", isError: true)
       }
     }
   }
@@ -73,7 +73,7 @@ class ZapicCore: ZapicDelegate {
 
   func show(view: ZapicViews) {
     ZLog.info("Show \(view.rawValue)")
-    zapicController.show(view:view)
+    zapicController.show(view: view)
   }
 
   func getVerificationSignature() {
@@ -84,7 +84,7 @@ class ZapicCore: ZapicDelegate {
       if let sig = signature {
         self.webClient.dispatchToJS(type: .setSignature, payload: sig)
       } else {
-        self.webClient.dispatchToJS(type: .setSignature, payload: "Error with Game Center", isError:true)
+        self.webClient.dispatchToJS(type: .setSignature, payload: "Error with Game Center", isError: true)
       }
     }
   }
@@ -92,7 +92,7 @@ class ZapicCore: ZapicDelegate {
   /// Trigger when a banner should be shown
   func showBanner(title: String, subTitle: String?, icon: UIImage?) {
 
-    let banner = Banner(title: title, subtitle:subTitle, icon:icon)
+    let banner = Banner(title: title, subtitle: subTitle, icon: icon)
 
     banner.dismissesOnTap = true
     banner.show(duration: 3.0)

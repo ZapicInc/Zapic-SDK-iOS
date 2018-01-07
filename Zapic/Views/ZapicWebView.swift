@@ -42,7 +42,7 @@ struct Event {
   }
 }
 
-protocol ZapicViewControllerDelegate : class {
+protocol ZapicViewControllerDelegate: class {
   func onPageReady()
   func onAppError(error: Error)
   func closePage()
@@ -124,12 +124,12 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
       return
     }
 
-    super.load(URLRequest(url: myURL, timeoutInterval:30))
+    super.load(URLRequest(url: myURL, timeoutInterval: 30))
   }
 
   func onAppError(error: Error) {
     status = .error
-    controllerDelegate?.onAppError(error:error)
+    controllerDelegate?.onAppError(error: error)
     zapicDelegate?.onAppError(error: error)
   }
 
@@ -141,7 +141,6 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
     switch methodName {
     case "dispatch":
       handleDispatch(message)
-      break
     case "console":
       handleConsole(message)
     default:
@@ -173,8 +172,6 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
       level = ZLogLevel.error
     case "WARN":
       level = ZLogLevel.warn
-    case "INFO":
-      fallthrough
     default:
       level = ZLogLevel.info
     }
@@ -204,35 +201,32 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
       return
     }
 
+    handleMessage(type: type, json: json)
+  }
+
+  private func handleMessage(type: WebEvent, json: [String: Any]) {
+
     ZLog.info("Received from JS: \(type) ")
 
     switch type {
     case .login:
       zapicDelegate?.getVerificationSignature()
-      break
     case .getContacts:
       zapicDelegate?.getContacts()
-      break
     case .appStarted:
       status = .ready
       zapicDelegate?.onAppReady()
-      break
     case .loggedIn:
       loggedIn(json)
-      break
     case .pageReady:
       isPageReady = true
       controllerDelegate?.onPageReady()
-      break
     case .showBanner:
       receiveBanner(json)
-      break
     case .closePageRequest:
       controllerDelegate?.closePage()
-      break
     default:
       ZLog.warn("Unhandled message type \(type)")
-      break
     }
   }
 
@@ -252,8 +246,8 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
 
   // MARK: - Receive Messages
 
-  private func receiveBanner(_ json: [String:Any]) {
-    guard let msg = json["payload"] as? [String:Any] else {
+  private func receiveBanner(_ json: [String: Any]) {
+    guard let msg = json["payload"] as? [String: Any] else {
       ZLog.warn("Received invalid ShowBanner payload")
       return
     }
@@ -263,7 +257,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
       return
     }
 
-    let icon: UIImage? = decode(base64:msg["icon"] as? String)
+    let icon: UIImage? = decode(base64: msg["icon"] as? String)
 
     let subTitle = msg["subtitle"] as? String
 
@@ -272,7 +266,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
 
   private func loggedIn(_ json: [String: Any]) {
 
-    guard let msg = json["payload"] as? [String:Any] else {
+    guard let msg = json["payload"] as? [String: Any] else {
       ZLog.warn("Received invalid SetPlayerId payload")
       return
     }
@@ -292,11 +286,11 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
 
   // MARK: - Events
 
-  func dispatchToJS(type: WebFunction, payload:Any) {
+  func dispatchToJS(type: WebFunction, payload: Any) {
     dispatchToJS(type: type, payload: payload, isError: false)
   }
 
-  func dispatchToJS(type: WebFunction, payload:Any, isError: Bool) {
+  func dispatchToJS(type: WebFunction, payload: Any, isError: Bool) {
 
     //Ensure setSignature is the only method that can be sent before
     //the app is ready
@@ -332,7 +326,7 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
     }
   }
 
-  func submitEvent(eventType: EventType, params: [String:Any]) {
+  func submitEvent(eventType: EventType, params: [String: Any]) {
 
     if status != .ready {
       ZLog.info("Web client is not ready to accept events")
@@ -341,11 +335,11 @@ class ZapicWebView: WKWebView, WKScriptMessageHandler, UIScrollViewDelegate, Zap
 
     ZLog.info("Submitting event to web client")
 
-    let msg: [String:Any] = ["type": eventType.rawValue,
+    let msg: [String: Any] = ["type": eventType.rawValue,
                              "params": params,
                              "timestamp": Date().iso8601]
 
-    dispatchToJS(type:.submitEvent, payload: msg)
+    dispatchToJS(type: .submitEvent, payload: msg)
   }
 
   /// Attempt to resend all events that we unable to send

@@ -33,7 +33,7 @@ class ContactManager {
 
   let contactStore = CNContactStore()
 
-  func getContacts(completionHandler: @escaping (_ contacts: [[String:Any]]?) -> Void) {
+  func getContacts(completionHandler: @escaping (_ contacts: [[String: Any]]?) -> Void) {
 
     requestForAccess { (accessGranted) -> Void in
       if accessGranted {
@@ -108,7 +108,7 @@ class ContactManager {
     return results
   }
 
-  private func processContacts(_ input: [CNContact]) -> [[String:Any]] {
+  private func processContacts(_ input: [CNContact]) -> [[String: Any]] {
     var contacts = [[String: Any]]()
     for contact in input {
 
@@ -123,7 +123,7 @@ class ContactManager {
         emailAddresses.append(String(email.value))
       }
 
-      let dict: [String:Any] =
+      let dict: [String: Any] =
                  ["first": contact.givenName,
                   "last": contact.familyName,
                   "emails": emailAddresses,
