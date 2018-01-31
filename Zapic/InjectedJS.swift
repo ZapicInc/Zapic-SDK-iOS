@@ -12,12 +12,12 @@ internal let injectedScript = """
 window.zapic = {
   environment: 'webview',
   version: 1,
-  onLoaded: (action$, publishAction) => {
-    window.zapic.dispatch = (action) => {
+  onLoaded: function(action$, publishAction) {
+    window.zapic.dispatch = function(action) {
       publishAction(action)
     }
 
-    action$.subscribe(action => {
+    action$.subscribe(function(action) {
         window.webkit.messageHandlers.dispatch.postMessage(action)
     })
   }

@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import WebKit
 
 class GameViewController: UIViewController {
   
@@ -40,6 +41,11 @@ class GameViewController: UIViewController {
     ac.addAction(UIAlertAction(title: "OK", style: .default) { [unowned self, ac] _ in
       let url = ac.textFields![0]
       UserDefaults.standard.set(url.text, forKey: "ZAPIC_URL")
+      
+      let date = NSDate(timeIntervalSince1970: 0)
+      
+      WKWebsiteDataStore.default().removeData(ofTypes: WKWebsiteDataStore.allWebsiteDataTypes(), modifiedSince: date as Date, completionHandler:{ })
+
     })
     
     self.present(ac, animated: true, completion: nil)
