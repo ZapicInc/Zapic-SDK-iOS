@@ -13,7 +13,12 @@ import Contacts
 
 internal class ZapicViewController: UIViewController, ZapicViewControllerDelegate {
 
+  ///Queue of gameplay events
   internal var eventQueue = Queue<Event>()
+
+  ///The currently queued Open Page event
+  internal var queuedPageEvent: Event?
+
   let contactStore = CNContactStore()
   let webView: ZapicWebView
   private let loading: LoadingView
@@ -74,6 +79,8 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
     ZLog.info("Zapic starting. App version \(appVersion)")
 
     loadWebApp()
+
+    submitEvent(eventType: .appStarted, params: ["version": appVersion])
   }
 
   private func loadWebApp() {

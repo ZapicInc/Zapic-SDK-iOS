@@ -12,7 +12,6 @@ extension ZapicViewController: MessageController {
 
   func onAppReady() {
     resendFailedEvents()
-    submitEvent(eventType: .appStarted, params: ["version": appVersion])
   }
 
   func send(type: WebFunction, payload: Any) {
@@ -24,9 +23,25 @@ extension ZapicViewController: MessageController {
     //Ensure setSignature is the only method that can be sent before
     //the app is ready
     if !(status == .appReady || status == .pageReady) && type != .setSignature {
-      ZLog.info("Web client is not ready to run JS. Adding to queue")
 
-      eventQueue.enqueue(Event(type: type, payload: payload, isError: isError))
+      let event = Event(type: type, payload: payload, isError: isError)
+
+      if type == .submitEvent {
+
+        ZLog.info("Web client is not ready to run JS. Adding to queue")
+
+        eventQueue.enqueue(event)
+
+        if eventQueue.count > 1000 {
+          eventQueue.dequeue()
+        }
+      } else if type == .openPage {
+        //Overried the previous open page event
+        self.queuedPageEvent = event
+      } else if type == .closePage {
+        //Clear the open page event
+        self.queuedPageEvent = nil
+      }
       return
     }
 
@@ -57,11 +72,6 @@ extension ZapicViewController: MessageController {
 
   func submitEvent(eventType: EventType, params: [String: Any]) {
 
-    if !(status == .appReady || status == .pageReady) {
-      ZLog.info("Web client is not ready to accept events")
-      return
-    }
-
     ZLog.info("Submitting event to web client")
 
     let msg: [String: Any] = ["type": eventType.rawValue,
@@ -73,6 +83,12 @@ extension ZapicViewController: MessageController {
 
   /// Attempt to resend all events that we unable to send
   func resendFailedEvents() {
+
+    if let pageEvent = queuedPageEvent {
+      ZLog.info("Resending page open event")
+      send(type: pageEvent.type, payload: pageEvent.payload, isError: pageEvent.isError)
+    }
+
     ZLog.info("Started resending \(eventQueue.count) events")
 
     while eventQueue.count > 0 {

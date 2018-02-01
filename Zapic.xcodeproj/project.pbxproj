@@ -156,8 +156,8 @@
 				651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */,
 				6553A3E4202142720082B7B8 /* API */,
 				6553A3E32021418F0082B7B8 /* Common */,
-				6553A3E120213FB40082B7B8 /* Models */,
 				6553A3E2202141600082B7B8 /* Controllers */,
+				6553A3E120213FB40082B7B8 /* Models */,
 			);
 			path = Zapic;
 			sourceTree = "<group>";
