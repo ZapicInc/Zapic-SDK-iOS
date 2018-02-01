@@ -9,23 +9,20 @@
 /* Begin PBXBuildFile section */
 		650116061F23141300CED7B2 /* ZapicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650116051F23141300CED7B2 /* ZapicUtils.swift */; };
 		651AEDB21F16C49900986F05 /* Zapic.h in Headers */ = {isa = PBXBuildFile; fileRef = 651AEDA41F16C49900986F05 /* Zapic.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		651AEDC71F16C4CE00986F05 /* CInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 651AEDBC1F16C4CE00986F05 /* CInterface.h */; };
 		651AEDC81F16C4CE00986F05 /* CInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDBD1F16C4CE00986F05 /* CInterface.mm */; };
-		651AEDC91F16C4CE00986F05 /* GameCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDBE1F16C4CE00986F05 /* GameCenterHelper.swift */; };
 		651AEDCD1F16C4CE00986F05 /* Zapic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDC21F16C4CE00986F05 /* Zapic.swift */; };
 		651AEDCE1F16C4CE00986F05 /* ZapicAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */; };
 		651AEDCF1F16C4CE00986F05 /* ZapicColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDC41F16C4CE00986F05 /* ZapicColors.swift */; };
-		651AEDD01F16C4CE00986F05 /* ZapicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDC51F16C4CE00986F05 /* ZapicController.swift */; };
-		6543B5DF1F96C35500D3767A /* ZapicDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543B5DE1F96C35500D3767A /* ZapicDelegate.swift */; };
-		6543B5E11F96C43F00D3767A /* ZapicWebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543B5E01F96C43F00D3767A /* ZapicWebClient.swift */; };
+		651AEDD01F16C4CE00986F05 /* ZapicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDC51F16C4CE00986F05 /* ZapicViewController.swift */; };
+		6543B5DF1F96C35500D3767A /* ControllerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543B5DE1F96C35500D3767A /* ControllerProtocols.swift */; };
+		6543B5E11F96C43F00D3767A /* WebApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543B5E01F96C43F00D3767A /* WebApp.swift */; };
 		654BF0B41F27F48700E0B9BC /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651AEDA11F16C49900986F05 /* Zapic.framework */; };
 		654BF0E61F27FA6E00E0B9BC /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0E41F27FA6E00E0B9BC /* Nimble.framework */; };
 		654BF0E71F27FA6E00E0B9BC /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0E51F27FA6E00E0B9BC /* Quick.framework */; };
 		654BF0E91F27FB9400E0B9BC /* ZapicSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC48DA1F1D40CD0026E101 /* ZapicSpec.swift */; };
-		654E3D711F47400700FCD261 /* ZapicCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E3D701F47400700FCD261 /* ZapicCore.swift */; };
-		654E3D731F4743D200FCD261 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E3D721F4743D200FCD261 /* ContactManager.swift */; };
 		6551B0DA1FA44B44003CE65F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6551B0D91FA44B44003CE65F /* StringExtensions.swift */; };
 		6551B0DC1FA44BD9003CE65F /* StringExtensionsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6551B0DB1FA44BD9003CE65F /* StringExtensionsSpec.swift */; };
+		6553A3EC202242070082B7B8 /* GameCenterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6553A3EB202242070082B7B8 /* GameCenterController.swift */; };
 		6578105D1F8F50D900684DD7 /* ZapicUtilsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6578105C1F8F50D900684DD7 /* ZapicUtilsSpec.swift */; };
 		65DA7F931F908E6F00C28025 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 654BF0E41F27FA6E00E0B9BC /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65DA7F941F908E6F00C28025 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 654BF0E51F27FA6E00E0B9BC /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -39,6 +36,11 @@
 		65E050E21F331553005985F6 /* ColorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050E11F331553005985F6 /* ColorBar.swift */; };
 		65E050E41F336E0E005985F6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050E31F336E0E005985F6 /* Extensions.swift */; };
 		65E050E61F33BAE4005985F6 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050E51F33BAE4005985F6 /* Queue.swift */; };
+		65E2B3CC2022460F0044DCA6 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2B3CB2022460F0044DCA6 /* MessageController.swift */; };
+		65E2B3CE20224B620044DCA6 /* BannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2B3CD20224B620044DCA6 /* BannerController.swift */; };
+		65E2B3D0202264CB0044DCA6 /* ZapicContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2B3CF202264CB0044DCA6 /* ZapicContact.swift */; };
+		65E2B3D2202265060044DCA6 /* ContactsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2B3D1202265060044DCA6 /* ContactsController.swift */; };
+		65E2B3D420226B590044DCA6 /* ScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2B3D320226B590044DCA6 /* ScriptMessageHandler.swift */; };
 		65FD63181F97E40C00C5CC8D /* InjectedJS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD63171F97E40C00C5CC8D /* InjectedJS.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,22 +74,19 @@
 		651AEDA41F16C49900986F05 /* Zapic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zapic.h; sourceTree = "<group>"; };
 		651AEDA51F16C49900986F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		651AEDB11F16C49900986F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		651AEDBC1F16C4CE00986F05 /* CInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CInterface.h; sourceTree = "<group>"; };
 		651AEDBD1F16C4CE00986F05 /* CInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CInterface.mm; sourceTree = "<group>"; };
-		651AEDBE1F16C4CE00986F05 /* GameCenterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCenterHelper.swift; sourceTree = "<group>"; };
 		651AEDC21F16C4CE00986F05 /* Zapic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zapic.swift; sourceTree = "<group>"; };
 		651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ZapicAssets.xcassets; sourceTree = "<group>"; };
-		651AEDC41F16C4CE00986F05 /* ZapicColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZapicColors.swift; path = ../ZapicColors.swift; sourceTree = "<group>"; };
-		651AEDC51F16C4CE00986F05 /* ZapicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicController.swift; sourceTree = "<group>"; };
-		6543B5DE1F96C35500D3767A /* ZapicDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapicDelegate.swift; sourceTree = "<group>"; };
-		6543B5E01F96C43F00D3767A /* ZapicWebClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapicWebClient.swift; sourceTree = "<group>"; };
+		651AEDC41F16C4CE00986F05 /* ZapicColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicColors.swift; sourceTree = "<group>"; };
+		651AEDC51F16C4CE00986F05 /* ZapicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicViewController.swift; sourceTree = "<group>"; };
+		6543B5DE1F96C35500D3767A /* ControllerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerProtocols.swift; sourceTree = "<group>"; };
+		6543B5E01F96C43F00D3767A /* WebApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebApp.swift; sourceTree = "<group>"; };
 		654BF0AF1F27F48700E0B9BC /* ZapicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		654BF0E41F27FA6E00E0B9BC /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		654BF0E51F27FA6E00E0B9BC /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
-		654E3D701F47400700FCD261 /* ZapicCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicCore.swift; sourceTree = "<group>"; };
-		654E3D721F4743D200FCD261 /* ContactManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		6551B0D91FA44B44003CE65F /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		6551B0DB1FA44BD9003CE65F /* StringExtensionsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsSpec.swift; sourceTree = "<group>"; };
+		6553A3EB202242070082B7B8 /* GameCenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenterController.swift; sourceTree = "<group>"; };
 		6578105C1F8F50D900684DD7 /* ZapicUtilsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapicUtilsSpec.swift; sourceTree = "<group>"; };
 		65AC48DA1F1D40CD0026E101 /* ZapicSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicSpec.swift; sourceTree = "<group>"; };
 		65E050CA1F326DCB005985F6 /* ZLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLog.swift; sourceTree = "<group>"; };
@@ -95,11 +94,16 @@
 		65E050D11F331201005985F6 /* OfflineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineView.swift; sourceTree = "<group>"; };
 		65E050D21F331201005985F6 /* ZapicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicView.swift; sourceTree = "<group>"; };
 		65E050D31F331201005985F6 /* ZapicWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicWebView.swift; sourceTree = "<group>"; };
-		65E050DD1F33150C005985F6 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Banner.swift; path = Zapic/Banner.swift; sourceTree = SOURCE_ROOT; };
-		65E050DE1F33150C005985F6 /* BannerContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerContent.swift; path = Zapic/BannerContent.swift; sourceTree = SOURCE_ROOT; };
+		65E050DD1F33150C005985F6 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Banner.swift; path = Zapic/Controllers/Components/Banner.swift; sourceTree = SOURCE_ROOT; };
+		65E050DE1F33150C005985F6 /* BannerContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerContent.swift; path = Zapic/Controllers/Components/BannerContent.swift; sourceTree = SOURCE_ROOT; };
 		65E050E11F331553005985F6 /* ColorBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorBar.swift; sourceTree = "<group>"; };
 		65E050E31F336E0E005985F6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		65E050E51F33BAE4005985F6 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		65E2B3CB2022460F0044DCA6 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
+		65E2B3CD20224B620044DCA6 /* BannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerController.swift; sourceTree = "<group>"; };
+		65E2B3CF202264CB0044DCA6 /* ZapicContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapicContact.swift; sourceTree = "<group>"; };
+		65E2B3D1202265060044DCA6 /* ContactsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsController.swift; sourceTree = "<group>"; };
+		65E2B3D320226B590044DCA6 /* ScriptMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptMessageHandler.swift; sourceTree = "<group>"; };
 		65FD63171F97E40C00C5CC8D /* InjectedJS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedJS.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,20 +150,14 @@
 		651AEDA31F16C49900986F05 /* Zapic */ = {
 			isa = PBXGroup;
 			children = (
-				651AEDBC1F16C4CE00986F05 /* CInterface.h */,
-				651AEDA41F16C49900986F05 /* Zapic.h */,
-				651AEDBD1F16C4CE00986F05 /* CInterface.mm */,
 				651AEDA51F16C49900986F05 /* Info.plist */,
-				65FD63171F97E40C00C5CC8D /* InjectedJS.swift */,
-				654E3D721F4743D200FCD261 /* ContactManager.swift */,
-				651AEDC21F16C4CE00986F05 /* Zapic.swift */,
-				651AEDC51F16C4CE00986F05 /* ZapicController.swift */,
-				654E3D701F47400700FCD261 /* ZapicCore.swift */,
-				6543B5DE1F96C35500D3767A /* ZapicDelegate.swift */,
-				6543B5E01F96C43F00D3767A /* ZapicWebClient.swift */,
+				6543B5DE1F96C35500D3767A /* ControllerProtocols.swift */,
+				6543B5E01F96C43F00D3767A /* WebApp.swift */,
 				651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */,
-				65E050CE1F3310D0005985F6 /* Utilities */,
-				651AEDD81F16C7F600986F05 /* Views */,
+				6553A3E4202142720082B7B8 /* API */,
+				6553A3E32021418F0082B7B8 /* Common */,
+				6553A3E120213FB40082B7B8 /* Models */,
+				6553A3E2202141600082B7B8 /* Controllers */,
 			);
 			path = Zapic;
 			sourceTree = "<group>";
@@ -184,40 +182,88 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		651AEDD81F16C7F600986F05 /* Views */ = {
+		6553A3E120213FB40082B7B8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				65E050E11F331553005985F6 /* ColorBar.swift */,
-				65E050D01F331201005985F6 /* LoadingView.swift */,
-				65E050D11F331201005985F6 /* OfflineView.swift */,
-				651AEDC41F16C4CE00986F05 /* ZapicColors.swift */,
-				65E050D21F331201005985F6 /* ZapicView.swift */,
-				65E050D31F331201005985F6 /* ZapicWebView.swift */,
-				65E050D81F331454005985F6 /* Banners */,
+				65E2B3CF202264CB0044DCA6 /* ZapicContact.swift */,
 			);
-			path = Views;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		65E050CE1F3310D0005985F6 /* Utilities */ = {
+		6553A3E2202141600082B7B8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				651AEDBE1F16C4CE00986F05 /* GameCenterHelper.swift */,
+				65E2B3CD20224B620044DCA6 /* BannerController.swift */,
+				65E2B3D1202265060044DCA6 /* ContactsController.swift */,
+				6553A3EB202242070082B7B8 /* GameCenterController.swift */,
+				65E2B3CB2022460F0044DCA6 /* MessageController.swift */,
+				65E2B3D320226B590044DCA6 /* ScriptMessageHandler.swift */,
+				651AEDC51F16C4CE00986F05 /* ZapicViewController.swift */,
+				65E2B3DD202278170044DCA6 /* Components */,
+				6553A3E6202148EF0082B7B8 /* Views */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		6553A3E32021418F0082B7B8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				651AEDC41F16C4CE00986F05 /* ZapicColors.swift */,
 				650116051F23141300CED7B2 /* ZapicUtils.swift */,
 				65E050CA1F326DCB005985F6 /* ZLog.swift */,
 				65E050E31F336E0E005985F6 /* Extensions.swift */,
 				65E050E51F33BAE4005985F6 /* Queue.swift */,
 				6551B0D91FA44B44003CE65F /* StringExtensions.swift */,
 			);
-			name = Utilities;
+			path = Common;
 			sourceTree = "<group>";
 		};
-		65E050D81F331454005985F6 /* Banners */ = {
+		6553A3E4202142720082B7B8 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				651AEDA41F16C49900986F05 /* Zapic.h */,
+				651AEDBD1F16C4CE00986F05 /* CInterface.mm */,
+				651AEDC21F16C4CE00986F05 /* Zapic.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		6553A3E5202142D60082B7B8 /* Webview */ = {
+			isa = PBXGroup;
+			children = (
+				65E050D31F331201005985F6 /* ZapicWebView.swift */,
+				65FD63171F97E40C00C5CC8D /* InjectedJS.swift */,
+			);
+			path = Webview;
+			sourceTree = "<group>";
+		};
+		6553A3E6202148EF0082B7B8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6553A3E7202148F80082B7B8 /* Loading */,
+				6553A3E5202142D60082B7B8 /* Webview */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6553A3E7202148F80082B7B8 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				65E050D01F331201005985F6 /* LoadingView.swift */,
+				65E050D11F331201005985F6 /* OfflineView.swift */,
+				65E050D21F331201005985F6 /* ZapicView.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		65E2B3DD202278170044DCA6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				65E050E11F331553005985F6 /* ColorBar.swift */,
 				65E050DD1F33150C005985F6 /* Banner.swift */,
 				65E050DE1F33150C005985F6 /* BannerContent.swift */,
 			);
-			path = Banners;
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,7 +273,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				651AEDC71F16C4CE00986F05 /* CInterface.h in Headers */,
 				651AEDB21F16C49900986F05 /* Zapic.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,24 +399,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				651AEDC91F16C4CE00986F05 /* GameCenterHelper.swift in Sources */,
+				65E2B3D0202264CB0044DCA6 /* ZapicContact.swift in Sources */,
 				65E050D51F331201005985F6 /* OfflineView.swift in Sources */,
-				654E3D711F47400700FCD261 /* ZapicCore.swift in Sources */,
-				6543B5E11F96C43F00D3767A /* ZapicWebClient.swift in Sources */,
+				6543B5E11F96C43F00D3767A /* WebApp.swift in Sources */,
+				6553A3EC202242070082B7B8 /* GameCenterController.swift in Sources */,
 				65FD63181F97E40C00C5CC8D /* InjectedJS.swift in Sources */,
 				65E050DF1F33150C005985F6 /* Banner.swift in Sources */,
 				6551B0DA1FA44B44003CE65F /* StringExtensions.swift in Sources */,
 				65E050D71F331201005985F6 /* ZapicWebView.swift in Sources */,
+				65E2B3D420226B590044DCA6 /* ScriptMessageHandler.swift in Sources */,
 				651AEDCD1F16C4CE00986F05 /* Zapic.swift in Sources */,
 				65E050D41F331201005985F6 /* LoadingView.swift in Sources */,
 				65E050CB1F326DCB005985F6 /* ZLog.swift in Sources */,
-				654E3D731F4743D200FCD261 /* ContactManager.swift in Sources */,
+				65E2B3CC2022460F0044DCA6 /* MessageController.swift in Sources */,
 				65E050E01F33150C005985F6 /* BannerContent.swift in Sources */,
 				650116061F23141300CED7B2 /* ZapicUtils.swift in Sources */,
-				651AEDD01F16C4CE00986F05 /* ZapicController.swift in Sources */,
-				6543B5DF1F96C35500D3767A /* ZapicDelegate.swift in Sources */,
+				651AEDD01F16C4CE00986F05 /* ZapicViewController.swift in Sources */,
+				65E2B3D2202265060044DCA6 /* ContactsController.swift in Sources */,
+				6543B5DF1F96C35500D3767A /* ControllerProtocols.swift in Sources */,
 				65E050E41F336E0E005985F6 /* Extensions.swift in Sources */,
 				651AEDCF1F16C4CE00986F05 /* ZapicColors.swift in Sources */,
+				65E2B3CE20224B620044DCA6 /* BannerController.swift in Sources */,
 				65E050D61F331201005985F6 /* ZapicView.swift in Sources */,
 				65E050E61F33BAE4005985F6 /* Queue.swift in Sources */,
 				651AEDC81F16C4CE00986F05 /* CInterface.mm in Sources */,

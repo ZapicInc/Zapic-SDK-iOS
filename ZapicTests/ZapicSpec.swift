@@ -19,29 +19,29 @@ class ZapicSpec: QuickSpec {
     xdescribe("zapic core"){
       
       var webClient: MockWebClient!
-      var zapic:ZapicCore!
+      var zapic:ZapicViewController!
       
       beforeEach {
         webClient = MockWebClient()
-        zapic = ZapicCore(webClient:webClient)
+        zapic = ZapicViewController(webView:webClient)
       }
       
       describe("start"){
         it("should load the web client"){
-          zapic.start(version: "1")
+          zapic.start()
           
           expect(webClient.isLoaded).to(beTrue())
         }
         
         it("should only load once"){
-          zapic.start(version: "1")
-          zapic.start(version: "1")
+          zapic.start()
+          zapic.start()
           
           expect(webClient.loadedCount).to(equal(1))
         }
         
         it("should send the app started event"){
-          zapic.start(version: "1")
+          zapic.start()
           
           expect(webClient.eventTotals).to(equal(1))
         }
@@ -79,7 +79,7 @@ class ZapicSpec: QuickSpec {
   }
 }
 
-class MockWebClient: ZapicWebClient{
+class MockWebClient: ZapicWebView{
   
   var isLoaded = false
   var loadedCount = 0

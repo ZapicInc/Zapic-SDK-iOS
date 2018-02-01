@@ -30,27 +30,27 @@ enum EventType: String {
 @objc(Zapic)
 public class Zapic: NSObject {
 
-  private static let core = ZapicCore()
+  private static let controller = ZapicViewController()
 
-  @objc public static var playerId: UUID? {
-    return core.playerId
+  @objc public static var playerId: String? {
+    return controller.playerId
   }
 
-  @objc public static func start(_ version: String) {
-    core.start(version: version)
+  @objc public static func start() {
+    controller.start()
   }
 
-  @objc public static func submitEvent(json: Data) {
-    guard let params = ZapicUtils.deserialize(bodyData: json) else {
+  @objc public static func submitEvent(json: String) {
+    guard let params = ZapicUtils.deserialize(json) else {
       ZLog.error("Unable to deserialize event from json data")
       return
     }
 
-    core.submitEvent(eventType: .gameplay, params: params)
+    controller.submitEvent(eventType: .gameplay, params: params)
   }
 
   @objc public static func submitEvent(_ params: [String: Any]) {
-    core.submitEvent(eventType: .gameplay, params: params)
+    controller.submitEvent(eventType: .gameplay, params: params)
   }
 
   @objc public static func show(viewName: String) {
@@ -62,6 +62,6 @@ public class Zapic: NSObject {
   }
 
   public static func show(view: ZapicViews) {
-    core.show(view: view)
+    controller.show(view)
   }
 }

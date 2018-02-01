@@ -8,10 +8,12 @@
 
 import Foundation
 
-internal let injectedScript = """
+internal func injectedScript(ios: String) -> String {
+  return """
 window.zapic = {
   environment: 'webview',
   version: 1,
+  iosVersion: '\(ios)',
   onLoaded: function(action$, publishAction) {
     window.zapic.dispatch = function(action) {
       publishAction(action)
@@ -23,3 +25,4 @@ window.zapic = {
   }
 }
 """
+}

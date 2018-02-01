@@ -1,39 +1,28 @@
 //
-//  ContactManager.swift
+//  ContactsController.swift
 //  Zapic
 //
-//  Created by Daniel Sarfati on 8/18/17.
-//  Copyright © 2017 zapic. All rights reserved.
+//  Created by Daniel Sarfati on 1/31/18.
+//  Copyright © 2018 zapic. All rights reserved.
 //
 
 import Foundation
 import Contacts
 
-struct ZapicContact {
-  let firstName: String
-  let lastName: String
-  var phoneNumbers = [String]()
-  var emailAddresses = [String]()
+extension ZapicViewController: ContactsController {
 
-  init(_ contact: CNContact) {
-    self.firstName = contact.givenName
-    self.lastName = contact.familyName
+  func getContacts() {
+    getContacts {contacts in
 
-    for phone in contact.phoneNumbers {
-      phoneNumbers.append(phone.value.stringValue)
-    }
-
-    for email in contact.emailAddresses {
-      emailAddresses.append(String(email.value))
+      if let contacts = contacts {
+        self.send(type: .setContacts, payload: contacts)
+      } else {
+        self.send(type: .setContacts, payload: "Unable to get contacts", isError: true)
+      }
     }
   }
-}
 
-class ContactManager {
-
-  let contactStore = CNContactStore()
-
-  func getContacts(completionHandler: @escaping (_ contacts: [[String: Any]]?) -> Void) {
+  private func getContacts(completionHandler: @escaping (_ contacts: [[String: Any]]?) -> Void) {
 
     requestForAccess { (accessGranted) -> Void in
       if accessGranted {
@@ -124,10 +113,10 @@ class ContactManager {
       }
 
       let dict: [String: Any] =
-                 ["first": contact.givenName,
-                  "last": contact.familyName,
-                  "emails": emailAddresses,
-                  "phones": phoneNumbers]
+        ["first": contact.givenName,
+         "last": contact.familyName,
+         "emails": emailAddresses,
+         "phones": phoneNumbers]
 
       contacts.append(dict)
     }

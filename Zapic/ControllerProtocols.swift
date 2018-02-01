@@ -24,9 +24,34 @@ protocol ZapicDelegate: class {
   /// Trigger when a banner should be shown
   func showBanner(title: String, subTitle: String?, icon: UIImage?)
 
-  /// Triggers retrieving all contacts from the device
-  func getContacts()
-
   /// Trigger when the player id is received for the user
   func setPlayerId(playerId: UUID)
+}
+
+protocol GameCenterController {
+  /// Triggers the generation of the
+  /// Game Center verification signature
+  func getVerificationSignature()
+}
+
+protocol MessageController {
+
+  /// Attempt to resend all events that we unable to be sent
+  func resendFailedEvents()
+
+  func submitEvent(eventType: EventType, params: [String: Any])
+
+  func send(type: WebFunction, payload: Any)
+
+  func send(type: WebFunction, payload: Any, isError: Bool)
+}
+
+protocol BannerController {
+  func showBanner(title: String, subTitle: String?, icon: UIImage?)
+}
+
+protocol ContactsController {
+
+  /// Retrieve all contacts from the device and send them
+  func getContacts()
 }

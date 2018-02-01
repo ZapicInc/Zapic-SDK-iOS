@@ -1,20 +1,33 @@
 //
-//  GameCenterHelper.swift
+//  GameCenterController.swift
 //  Zapic
 //
-//  Created by Daniel Sarfati on 6/30/17.
-//  Copyright © 2017 Zapic. All rights reserved.
+//  Created by Daniel Sarfati on 1/31/18.
+//  Copyright © 2018 zapic. All rights reserved.
 //
 
 import Foundation
 import GameKit
 
-class GameCenterHelper {
+extension ZapicViewController: GameCenterController {
+  func getVerificationSignature() {
+
+    ZLog.info("Getting verification signature")
+
+    generateSignature { (signature, _) in
+
+      if let sig = signature {
+        self.send(type: .setSignature, payload: sig)
+      } else {
+        self.send(type: .setSignature, payload: "Error with Game Center", isError: true)
+      }
+    }
+  }
 
   ///  Generates the current player's GameCenter signature
   ///
   /// - Parameter completionHandler: Callback when the signature has been generated
-  static func generateSignature(completionHandler: @escaping ([String: Any]?, Error?) -> Void) {
+  private func generateSignature(completionHandler: @escaping ([String: Any]?, Error?) -> Void) {
     gameCenterAuthenticate { (player, error) in
       guard error == nil else {
         ZLog.error("Error authenticaing player")
@@ -29,7 +42,7 @@ class GameCenterHelper {
       }
 
       //Generate the identity info once the player is authenticated with GameCenter
-      generateIdentityInfo(player: localPlayer) { (signature, error) in
+      self.generateIdentityInfo(player: localPlayer) { (signature, error) in
 
         guard error == nil else {
           completionHandler(nil, error)
@@ -46,7 +59,7 @@ class GameCenterHelper {
     }
   }
 
-  private static func gameCenterAuthenticate(completionHandler:@escaping (GKLocalPlayer?, Error?) -> Void) {
+  private func gameCenterAuthenticate(completionHandler:@escaping (GKLocalPlayer?, Error?) -> Void) {
 
     let localPlayer = GKLocalPlayer.localPlayer()
 
@@ -76,7 +89,7 @@ class GameCenterHelper {
     }
   }
 
-  private static func generateIdentityInfo(player: GKLocalPlayer, completionHandler: @escaping ([String: Any]?, Error?) -> Void) {
+  private func generateIdentityInfo(player: GKLocalPlayer, completionHandler: @escaping ([String: Any]?, Error?) -> Void) {
     ZLog.info("Generating identity signature")
 
     player.generateIdentityVerificationSignature { (publicKeyUrl: URL!, signature: Data!, salt: Data!, timestamp: UInt64, error: Error!) -> Void in

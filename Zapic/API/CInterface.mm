@@ -32,8 +32,8 @@ char* MakeStringCopy (const char* string)
 
 extern "C" {
   
-  void z_start(char* version){
-    [Zapic start:CreateNSString(version)];
+  void z_start(){
+    [Zapic start];
   }
   
   void z_show(char* viewName){
@@ -41,17 +41,17 @@ extern "C" {
   }
   
   void z_submitEventWithParams(char* data){
-    [Zapic submitEventWithJson:[CreateNSString(data) dataUsingEncoding:NSUTF8StringEncoding]];
+    [Zapic submitEventWithJson:CreateNSString(data)];
   }
   
   /// Returns the unique player id
   const char* z_playerId(){
     
-    NSUUID* uid = [Zapic playerId];
+    NSString* uid = [Zapic playerId];
     
     if(uid == NULL)
       return NULL;
     
-    return MakeStringCopy([[uid UUIDString] UTF8String]);
+    return MakeStringCopy([uid UTF8String]);
   }
 }

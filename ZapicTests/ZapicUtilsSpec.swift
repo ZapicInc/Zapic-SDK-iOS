@@ -22,11 +22,15 @@ class ZapicUtilsSpec: QuickSpec {
           
           // Arrange
           let message = ["a":2]
-          let json = ZapicUtils.serialize(data: message);
-          let data = (json?.data(using:.utf8))!
+          let jsonData = ZapicUtils.serialize(data: message);
+          
+          guard let json = jsonData else{
+            fail("Failed to serialize data")
+            return
+          }
           
           // Act
-          let result = ZapicUtils.deserialize(bodyData: data)
+          let result = ZapicUtils.deserialize(json)
           
           // Assert
           expect(result).toNot(beNil())
@@ -36,11 +40,15 @@ class ZapicUtilsSpec: QuickSpec {
           
           // Arrange
           let message = ["a":["a1":1]]
-          let json = ZapicUtils.serialize(data: message);
-          let data = (json?.data(using:.utf8))!
+          let jsonData = ZapicUtils.serialize(data: message);
+         
+          guard let json = jsonData else{
+            fail("Failed to serialize data")
+            return
+          }
           
           // Act
-          let result = ZapicUtils.deserialize(bodyData: data)
+          let result = ZapicUtils.deserialize(json)
           
           // Assert
           expect(result).toNot(beNil())

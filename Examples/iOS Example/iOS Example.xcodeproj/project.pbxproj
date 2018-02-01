@@ -69,6 +69,7 @@
 		651624451F16DA9F00932E26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		651624471F16DA9F00932E26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6576C55C1F1949240075E226 /* Zapic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Zapic.xcodeproj; path = ../../Zapic.xcodeproj; sourceTree = "<group>"; };
+		65946B91201FD5F300408656 /* iOS Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Example.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +105,7 @@
 		651624341F16DA9F00932E26 /* iOS Example */ = {
 			isa = PBXGroup;
 			children = (
+				65946B91201FD5F300408656 /* iOS Example.entitlements */,
 				651624351F16DA9F00932E26 /* AppDelegate.swift */,
 				651624371F16DA9F00932E26 /* GameScene.sks */,
 				651624391F16DA9F00932E26 /* Actions.sks */,
@@ -170,6 +172,11 @@
 						DevelopmentTeam = 24QXGCES3E;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
