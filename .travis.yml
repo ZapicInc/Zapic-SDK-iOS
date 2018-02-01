@@ -34,7 +34,7 @@ script:
 #- xcodebuild -workspace Zapic.xcworkspace -scheme Zapic -destination 'OS=10.3.1,name=iPhone 7'  ENABLE_TESTABILITY=YES test | xcpretty
 #- xcodebuild -workspace Zapic.xcworkspace -scheme Zapic -destination 'OS=10.3.1,name=iPhone 7' build | xcpretty
 - xcodebuild -workspace Zapic.xcworkspace -scheme Zapic archive | xcpretty
-- zip -r Zapic.framework.zip zapic.framework
+- zip -r Zapic.framework.zip Zapic.framework
 
 deploy:
   provider: releases
