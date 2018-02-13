@@ -15,7 +15,7 @@ class ZapicView: UIView {
   let title = UILabel()
   let colorBar = ColorBar()
 
-  init(text: String) {
+  init(text: String, showSpinner: Bool = false) {
 
     super.init(frame: .zero)
 
@@ -38,6 +38,22 @@ class ZapicView: UIView {
     icon.heightAnchor.constraint(equalToConstant: iconSize).isActive = true
     icon.widthAnchor.constraint(equalToConstant: iconSize).isActive = true
 
+    var lastAnchor = icon.bottomAnchor
+
+    if showSpinner {
+      //Spinner
+      let spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+      self.addSubview(spinner)
+      spinner.translatesAutoresizingMaskIntoConstraints = false
+      spinner.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 15).isActive = true
+      spinner.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//      spinner.heightAnchor.constraint(equalToConstant: iconSize).isActive = true
+//      spinner.widthAnchor.constraint(equalToConstant: iconSize).isActive = true
+      spinner.startAnimating()
+
+      lastAnchor = spinner.bottomAnchor
+    }
+
     //Text label
     title.font = UIFont.systemFont(ofSize: 22)
     title.text = text
@@ -48,7 +64,7 @@ class ZapicView: UIView {
 
     title.translatesAutoresizingMaskIntoConstraints = false
     title.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-    title.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 10).isActive = true
+    title.topAnchor.constraint(equalTo: lastAnchor, constant: 15).isActive = true
 
     //Close button
     let closeButton = UIButton()
