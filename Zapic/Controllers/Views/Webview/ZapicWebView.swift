@@ -157,6 +157,13 @@ extension ZapicWebView: WKNavigationDelegate {
 
   /// Handle errors loading web application
   func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+
+    let error = error as NSError
+    if error.domain == "WebKitErrorDomain" && error.code == 102 {
+      ZLog.info("Skipping known error message loading a url")
+      return
+    }
+
     ZLog.warn("Error loading Zapic webview")
 
     retryAfterDelay()
