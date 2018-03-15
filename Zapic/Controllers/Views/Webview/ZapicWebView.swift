@@ -57,10 +57,10 @@ enum WebClientStatus {
 
 internal class ZapicWebView: WKWebView, UIScrollViewDelegate {
 
-  //  private let appUrl: String = ZapicUtils.appUrl()
-
   // Current retry attempt number. Resets when load is sucessful
   private var retryAttempt = 0
+  
+  private var loadSuccessful = false
 
   private var urlRequest: URLRequest?
 
@@ -129,7 +129,12 @@ internal class ZapicWebView: WKWebView, UIScrollViewDelegate {
   }
 
   private func retryAfterDelay() {
-
+    
+    //Dont retry if the load has been successful
+    if loadSuccessful{
+      return
+    }
+    
     let base: Double = 5
 
     //Max delay (s)
@@ -153,6 +158,7 @@ extension ZapicWebView: WKNavigationDelegate {
   func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
     ZLog.info("Finished loading webview content")
     retryAttempt = 0
+    loadSuccessful = true
   }
 
   /// Handle errors loading web application
