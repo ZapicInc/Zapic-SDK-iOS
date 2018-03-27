@@ -12,7 +12,7 @@ internal func injectedScript(ios: String) -> String {
   return """
 window.zapic = {
   environment: 'webview',
-  version: 1,
+  version: 2,
   iosVersion: '\(ios)',
   onLoaded: function(action$, publishAction) {
     window.zapic.dispatch = function(action) {
