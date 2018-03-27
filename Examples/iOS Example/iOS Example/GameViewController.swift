@@ -38,7 +38,7 @@ class GameViewController: UIViewController {
     let ac = UIAlertController(title: "Enter Web Client URL", message: nil, preferredStyle: .alert)
     ac.addTextField(configurationHandler: nil)
     
-    ac.addAction(UIAlertAction(title: "OK", style: .default) { [unowned self, ac] _ in
+    ac.addAction(UIAlertAction(title: "OK", style: .default) { (alert: UIAlertAction!) in
       let url = ac.textFields![0]
       UserDefaults.standard.set(url.text, forKey: "ZAPIC_URL")
       

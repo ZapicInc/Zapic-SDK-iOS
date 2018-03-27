@@ -28,20 +28,6 @@ extension ZapicViewController: BannerController {
     showBanner(title: title, subTitle: subTitle, icon: icon)
   }
 
-  private func decode(base64: String?) -> UIImage? {
-
-    guard let string = base64 else {
-      return nil
-    }
-
-    if let dataDecoded = Data(base64Encoded: string, options: NSData.Base64DecodingOptions(rawValue: 0)) {
-      return UIImage(data: dataDecoded)
-    } else {
-      ZLog.warn("Invalid base64 string")
-      return nil
-    }
-  }
-
   /// Trigger when a banner should be shown
   func showBanner(title: String, subTitle: String?, icon: UIImage?) {
 

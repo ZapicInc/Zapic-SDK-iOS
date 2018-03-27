@@ -11,7 +11,7 @@ import Foundation
 public enum ZapicViews: String {
   case main
   case profile
-  case achievements
+  case challenges
 }
 
 enum ZapicError: Error {

@@ -103,8 +103,8 @@ extension ZapicViewController: WKScriptMessageHandler {
       receiveBanner(json)
     case .closePageRequest:
       closePage()
-    default:
-      ZLog.warn("Unhandled message type \(type)")
+    case .showShare:
+      showShareMenu(json)
     }
   }
 }

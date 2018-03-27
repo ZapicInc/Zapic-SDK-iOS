@@ -15,6 +15,7 @@ enum WebEvent: String {
   //case appLoaded = "APP_LOADED"
   case appStarted = "APP_STARTED"
   case showBanner = "SHOW_BANNER"
+  case showShare = "SHOW_SHARE_MENU"
   case pageReady = "PAGE_READY"
   case closePageRequest = "CLOSE_PAGE_REQUESTED"
   case getContacts = "GET_CONTACTS"
@@ -59,7 +60,7 @@ internal class ZapicWebView: WKWebView, UIScrollViewDelegate {
 
   // Current retry attempt number. Resets when load is sucessful
   private var retryAttempt = 0
-  
+
   private var loadSuccessful = false
 
   private var urlRequest: URLRequest?
@@ -129,12 +130,12 @@ internal class ZapicWebView: WKWebView, UIScrollViewDelegate {
   }
 
   private func retryAfterDelay() {
-    
+
     //Dont retry if the load has been successful
-    if loadSuccessful{
+    if loadSuccessful {
       return
     }
-    
+
     let base: Double = 5
 
     //Max delay (s)

@@ -33,7 +33,7 @@ extension ZapicViewController: MessageController {
         eventQueue.enqueue(event)
 
         if eventQueue.count > 1000 {
-          eventQueue.dequeue()
+          _ = eventQueue.dequeue()
         }
       } else if type == .openPage {
         //Overried the previous open page event

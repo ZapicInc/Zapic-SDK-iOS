@@ -156,6 +156,20 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
     self.playerId = userId
   }
 
+  internal func decode(base64: String?) -> UIImage? {
+
+    guard let string = base64 else {
+      return nil
+    }
+
+    if let dataDecoded = Data(base64Encoded: string, options: NSData.Base64DecodingOptions(rawValue: 0)) {
+      return UIImage(data: dataDecoded)
+    } else {
+      ZLog.warn("Invalid base64 string")
+      return nil
+    }
+  }
+
   override var prefersStatusBarHidden: Bool {
     return true
   }

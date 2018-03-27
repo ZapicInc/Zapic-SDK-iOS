@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		650116061F23141300CED7B2 /* ZapicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650116051F23141300CED7B2 /* ZapicUtils.swift */; };
+		6506AA992069B8F3002D7171 /* ShareMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506AA982069B8F3002D7171 /* ShareMenuController.swift */; };
 		651AEDB21F16C49900986F05 /* Zapic.h in Headers */ = {isa = PBXBuildFile; fileRef = 651AEDA41F16C49900986F05 /* Zapic.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		651AEDC81F16C4CE00986F05 /* CInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDBD1F16C4CE00986F05 /* CInterface.mm */; };
 		651AEDCD1F16C4CE00986F05 /* Zapic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDC21F16C4CE00986F05 /* Zapic.swift */; };
@@ -70,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		650116051F23141300CED7B2 /* ZapicUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicUtils.swift; sourceTree = "<group>"; };
+		6506AA982069B8F3002D7171 /* ShareMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMenuController.swift; sourceTree = "<group>"; };
 		651AEDA11F16C49900986F05 /* Zapic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zapic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		651AEDA41F16C49900986F05 /* Zapic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zapic.h; sourceTree = "<group>"; };
 		651AEDA51F16C49900986F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				6553A3EB202242070082B7B8 /* GameCenterController.swift */,
 				65E2B3CB2022460F0044DCA6 /* MessageController.swift */,
 				65E2B3D320226B590044DCA6 /* ScriptMessageHandler.swift */,
+				6506AA982069B8F3002D7171 /* ShareMenuController.swift */,
 				651AEDC51F16C4CE00986F05 /* ZapicViewController.swift */,
 				65E2B3DD202278170044DCA6 /* Components */,
 				6553A3E6202148EF0082B7B8 /* Views */,
@@ -401,6 +404,7 @@
 			files = (
 				65E2B3D0202264CB0044DCA6 /* ZapicContact.swift in Sources */,
 				65E050D51F331201005985F6 /* OfflineView.swift in Sources */,
+				6506AA992069B8F3002D7171 /* ShareMenuController.swift in Sources */,
 				6543B5E11F96C43F00D3767A /* WebApp.swift in Sources */,
 				6553A3EC202242070082B7B8 /* GameCenterController.swift in Sources */,
 				65FD63181F97E40C00C5CC8D /* InjectedJS.swift in Sources */,
