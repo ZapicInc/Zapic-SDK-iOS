@@ -1,6 +1,6 @@
 # Zapic SDK for iOS
 
-[![Build Status](https://travis-ci.org/ZapicInc/Zapic-SDK-iOS.svg?branch=master)](https://travis-ci.org/ZapicInc/Zapic-SDK-iOS) [![CodeFactor](https://www.codefactor.io/repository/github/zapicinc/zapic-sdk-ios/badge)](https://www.codefactor.io/repository/github/zapicinc/zapic-sdk-ios) [![MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
+[![Build Status](https://travis-ci.org/ZapicInc/Zapic-SDK-iOS.svg?branch=master)](https://travis-ci.org/ZapicInc/Zapic-SDK-iOS) [![CodeFactor](https://www.codefactor.io/repository/github/zapicinc/zapic-sdk-ios/badge)](https://www.codefactor.io/repository/github/zapicinc/zapic-sdk-ios) [![MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage) [![Chat on Slack](https://slack.zapic.com/badge.svg)](https://slack.zapic.com)
 
 Copyright (c) 2017-2018 Zapic, Inc.
 
@@ -16,7 +16,7 @@ Learn more about integrating the SDK and configuring your iOS game in the Zapic 
 
 Ask questions on [Stack Overflow](https://stackoverflow.com/questions/ask?tags=zapic). Be sure to include the `zapic` tag with your question.
 
-Chat on Slack. (_Coming Soon!_)
+Chat on [Slack](https://slack.zapic.com).
 
 Follow [@ZapicInc](https://twitter.com/ZapicInc) on Twitter for important announcements.
 
