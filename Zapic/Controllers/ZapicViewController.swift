@@ -10,8 +10,25 @@ import Foundation
 import UIKit
 import WebKit
 import Contacts
+import SafariServices
 
-internal class ZapicViewController: UIViewController, ZapicViewControllerDelegate {
+internal class ZapicViewController: UIViewController, ZapicViewControllerDelegate, SFSafariViewControllerDelegate {
+  
+  /**
+   Opens a link in an embedded safari view
+   **/
+  func openLink(url: URL) {
+    let svc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+    svc.delegate = self
+    self.present(svc, animated: true, completion: nil)
+  }
+
+  /**
+   Callback when the embedded safari view is complete
+  **/
+  func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+    controller.dismiss(animated: true, completion: nil)
+  }
 
   ///Queue of gameplay events
   internal var eventQueue = Queue<Event>()
