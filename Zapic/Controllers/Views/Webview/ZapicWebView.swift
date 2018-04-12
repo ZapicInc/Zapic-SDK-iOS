@@ -12,13 +12,11 @@ import WebKit
 // Events sent from the web client to the SDK
 enum WebEvent: String {
   case login = "LOGIN"
-  //case appLoaded = "APP_LOADED"
   case appStarted = "APP_STARTED"
   case showBanner = "SHOW_BANNER"
   case showShare = "SHOW_SHARE_MENU"
   case pageReady = "PAGE_READY"
   case closePageRequest = "CLOSE_PAGE_REQUESTED"
-  case getContacts = "GET_CONTACTS"
   case loggedIn = "LOGGED_IN"
 }
 
