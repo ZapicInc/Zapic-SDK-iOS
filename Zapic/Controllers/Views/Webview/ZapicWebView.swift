@@ -44,6 +44,10 @@ struct Event {
 protocol ZapicViewControllerDelegate: class {
   func onAppError(error: Error)
   func closePage()
+  /**
+   Opens the given link in a safari view
+ **/
+  func openLink(url: URL)
 }
 
 enum WebClientStatus {
@@ -62,6 +66,8 @@ internal class ZapicWebView: WKWebView, UIScrollViewDelegate {
   private var loadSuccessful = false
 
   private var urlRequest: URLRequest?
+
+  private var appUrl: String?
 
   private let events: [String] = ["dispatch", "console"]
 
@@ -116,6 +122,8 @@ internal class ZapicWebView: WKWebView, UIScrollViewDelegate {
       }
       urlRequest = URLRequest(url: url, timeoutInterval: 30)
     }
+
+    self.appUrl = appUrl
 
     guard let appRequest = urlRequest else {
       ZLog.error("Invalid URL Request. Ensure a valid URL was set prior to a retry")
@@ -177,17 +185,40 @@ extension ZapicWebView: WKNavigationDelegate {
   }
 
   func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+
+    guard let url = navigationAction.request.url else {
+      decisionHandler(.cancel)
+      return
+    }
+
+    guard let rootUrl = appUrl else {
+      decisionHandler(.cancel)
+      return
+    }
+
+    //Allow the webview to open other links that are within our web app.
+    if url.absoluteString.starts(with: rootUrl) {
+      decisionHandler(.allow)
+      return
+    }
+
+    //Gets the scheme (http, https, itms-*, ...)
     guard let scheme = navigationAction.request.url?.scheme else {
       decisionHandler(.cancel)
       return
     }
 
+    //Allow the OS to open the itms links directly into the app store
     if scheme.starts(with: "itms") {
       UIApplication.shared.openURL(navigationAction.request.url!)
       decisionHandler(.cancel)
       return
     }
 
-    decisionHandler(.allow)
+    //Show the link in a safari window
+    controllerDelegate?.openLink(url: url)
+    
+    //Tell the webview not to open the link
+    decisionHandler(.cancel)
   }
 }
