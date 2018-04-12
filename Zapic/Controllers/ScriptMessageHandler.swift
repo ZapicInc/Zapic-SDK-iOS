@@ -89,8 +89,6 @@ extension ZapicViewController: WKScriptMessageHandler {
     switch type {
     case .login:
       self.getVerificationSignature()
-    case .getContacts:
-      getContacts()
     case .appStarted:
       status = .appReady
       onAppReady()
