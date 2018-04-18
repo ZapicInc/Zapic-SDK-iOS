@@ -17,6 +17,11 @@
 		651624461F16DA9F00932E26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651624441F16DA9F00932E26 /* LaunchScreen.storyboard */; };
 		6576C5651F1949760075E226 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6576C5621F1949240075E226 /* Zapic.framework */; };
 		6576C5661F1949760075E226 /* Zapic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6576C5621F1949240075E226 /* Zapic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		659841BE2087B6C400177CBE /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659841BC2087B6C400177CBE /* OneSignal.framework */; };
+		659841BF2087B6C400177CBE /* OneSignal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 659841BC2087B6C400177CBE /* OneSignal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		659841C02087B6D600177CBE /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 659841BC2087B6C400177CBE /* OneSignal.framework */; };
+		65C2A1A02087B55A004AF9DC /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C2A19F2087B55A004AF9DC /* NotificationService.swift */; };
+		65C2A1A42087B55A004AF9DC /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 65C2A19D2087B55A004AF9DC /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +46,13 @@
 			remoteGlobalIDString = 651AEDA01F16C49900986F05;
 			remoteInfo = Zapic;
 		};
+		65C2A1A22087B55A004AF9DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6516242A1F16DA9F00932E26 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65C2A19C2087B55A004AF9DC;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,8 +63,20 @@
 			dstSubfolderSpec = 10;
 			files = (
 				6576C5661F1949760075E226 /* Zapic.framework in Embed Frameworks */,
+				659841BF2087B6C400177CBE /* OneSignal.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65C2A1A92087B55A004AF9DC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				65C2A1A42087B55A004AF9DC /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -70,6 +94,10 @@
 		651624471F16DA9F00932E26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6576C55C1F1949240075E226 /* Zapic.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Zapic.xcodeproj; path = ../../Zapic.xcodeproj; sourceTree = "<group>"; };
 		65946B91201FD5F300408656 /* iOS Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Example.entitlements"; sourceTree = "<group>"; };
+		659841BC2087B6C400177CBE /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = Carthage/Build/iOS/OneSignal.framework; sourceTree = "<group>"; };
+		65C2A19D2087B55A004AF9DC /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		65C2A19F2087B55A004AF9DC /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		65C2A1A12087B55A004AF9DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +106,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6576C5651F1949760075E226 /* Zapic.framework in Frameworks */,
+				659841BE2087B6C400177CBE /* OneSignal.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		65C2A19A2087B55A004AF9DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				659841C02087B6D600177CBE /* OneSignal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,8 +124,10 @@
 		651624291F16DA9F00932E26 = {
 			isa = PBXGroup;
 			children = (
+				659841BC2087B6C400177CBE /* OneSignal.framework */,
 				6576C55C1F1949240075E226 /* Zapic.xcodeproj */,
 				651624341F16DA9F00932E26 /* iOS Example */,
+				65C2A19E2087B55A004AF9DC /* OneSignalNotificationServiceExtension */,
 				651624331F16DA9F00932E26 /* Products */,
 				6576C56A1F1949DD0075E226 /* Frameworks */,
 			);
@@ -98,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				651624321F16DA9F00932E26 /* iOS Example.app */,
+				65C2A19D2087B55A004AF9DC /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,6 +175,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		65C2A19E2087B55A004AF9DC /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				65C2A19F2087B55A004AF9DC /* NotificationService.swift */,
+				65C2A1A12087B55A004AF9DC /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,16 +195,36 @@
 				6516242F1F16DA9F00932E26 /* Frameworks */,
 				651624301F16DA9F00932E26 /* Resources */,
 				6576C5691F1949760075E226 /* Embed Frameworks */,
+				65C2A1A92087B55A004AF9DC /* Embed App Extensions */,
+				659841C12087B6E500177CBE /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				6576C5681F1949760075E226 /* PBXTargetDependency */,
+				65C2A1A32087B55A004AF9DC /* PBXTargetDependency */,
 			);
 			name = "iOS Example";
 			productName = "iOS Example";
 			productReference = 651624321F16DA9F00932E26 /* iOS Example.app */;
 			productType = "com.apple.product-type.application";
+		};
+		65C2A19C2087B55A004AF9DC /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 65C2A1A82087B55A004AF9DC /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				65C2A1992087B55A004AF9DC /* Sources */,
+				65C2A19A2087B55A004AF9DC /* Frameworks */,
+				65C2A19B2087B55A004AF9DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 65C2A19D2087B55A004AF9DC /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -163,7 +232,7 @@
 		6516242A1F16DA9F00932E26 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = zapic;
 				TargetAttributes = {
@@ -173,10 +242,21 @@
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.SafariKeychain = {
 								enabled = 0;
 							};
 						};
+					};
+					65C2A19C2087B55A004AF9DC = {
+						CreatedOnToolsVersion = 9.3;
+						DevelopmentTeam = 24QXGCES3E;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -200,6 +280,7 @@
 			projectRoot = "";
 			targets = (
 				651624311F16DA9F00932E26 /* iOS Example */,
+				65C2A19C2087B55A004AF9DC /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -234,7 +315,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		65C2A19B2087B55A004AF9DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		659841C12087B6E500177CBE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/OneSignal.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6516242E1F16DA9F00932E26 /* Sources */ = {
@@ -247,6 +352,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		65C2A1992087B55A004AF9DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65C2A1A02087B55A004AF9DC /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -254,6 +367,11 @@
 			isa = PBXTargetDependency;
 			name = Zapic;
 			targetProxy = 6576C5671F1949760075E226 /* PBXContainerItemProxy */;
+		};
+		65C2A1A32087B55A004AF9DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65C2A19C2087B55A004AF9DC /* OneSignalNotificationServiceExtension */;
+			targetProxy = 65C2A1A22087B55A004AF9DC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -393,8 +511,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "iOS Example/iOS Example.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 24QXGCES3E;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../../Carthage/Build/iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "iOS Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -410,8 +533,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "iOS Example/iOS Example.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = 24QXGCES3E;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../../Carthage/Build/iOS";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "iOS Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -419,6 +547,56 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		65C2A1A52087B55A004AF9DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 24QXGCES3E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zapic.iOS-Example.OneSignalNotificationServiceExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		65C2A1A62087B55A004AF9DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 24QXGCES3E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.zapic.iOS-Example.OneSignalNotificationServiceExtension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -439,6 +617,15 @@
 			buildConfigurations = (
 				6516244B1F16DA9F00932E26 /* Debug */,
 				6516244C1F16DA9F00932E26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		65C2A1A82087B55A004AF9DC /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65C2A1A52087B55A004AF9DC /* Debug */,
+				65C2A1A62087B55A004AF9DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -14,6 +14,7 @@ enum WebEvent: String {
   case login = "LOGIN"
   case appStarted = "APP_STARTED"
   case showBanner = "SHOW_BANNER"
+  case showPage = "SHOW_PAGE"
   case showShare = "SHOW_SHARE_MENU"
   case pageReady = "PAGE_READY"
   case closePageRequest = "CLOSE_PAGE_REQUESTED"
@@ -27,6 +28,7 @@ enum WebFunction: String {
   case openPage = "OPEN_PAGE"
   case closePage = "CLOSE_PAGE"
   case setContacts = "SET_CONTACTS"
+  case handleData = "HANDLE_DATA"
 }
 
 struct Event {
@@ -217,7 +219,7 @@ extension ZapicWebView: WKNavigationDelegate {
 
     //Show the link in a safari window
     controllerDelegate?.openLink(url: url)
-    
+
     //Tell the webview not to open the link
     decisionHandler(.cancel)
   }

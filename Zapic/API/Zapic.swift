@@ -32,12 +32,34 @@ public class Zapic: NSObject {
 
   private static let controller = ZapicViewController()
 
+  /**
+  The unique player id, if authenticated
+   */
   @objc public static var playerId: String? {
     return controller.playerId
   }
 
+  /**
+   Callback when the player has authenticated. Passes the unique player id.
+   */
+  @objc public static var authenticateHandler: ((String?) -> Void)? {
+    didSet {
+        controller.authenticateHandler = authenticateHandler
+    }
+  }
+
   @objc public static func start() {
     controller.start()
+  }
+
+  @objc public static func handleData(_ dict: [AnyHashable: Any]?) {
+    guard let data = dict as NSDictionary? as? [String: String] else {
+      ZLog.warn("Unable to process 'loadData', incorrect format")
+      return
+    }
+    let zData = data["zapic"]
+
+    controller.handleData(zData)
   }
 
   @objc public static func submitEvent(json: String) {
