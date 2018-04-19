@@ -9,7 +9,9 @@
 import Foundation
 
 public enum ZapicViews: String {
-  case main
+  case main = "default"
+  //Open Zapic without changing the page
+  case current
   case profile
   case challenges
 }

@@ -148,19 +148,19 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
     //Trigger the web to update
     self.send(type: .openPage, payload: zapicView.rawValue)
 
-    showPage()
-  }
-
-  /**
-   Shows the Zapic UIView
-   */
-  func showPage() {
     if view != webView {
       view.addSubview(self.webView)
     }
 
     //Show the ui
     self.mainController.present(self, animated: true, completion: nil)
+  }
+
+  /**
+   Shows the Zapic UIView
+   */
+  func onShowPage() {
+    show(.current)
   }
 
   func closePage() {

@@ -57,11 +57,11 @@ extension ZapicViewController: MessageController {
       return
     }
 
-    let js = "zapic.dispatch(\(json))"
+    let jsScript = "zapic.dispatch(\(json))"
 
-    ZLog.info("Dispatching \(js)")
+    ZLog.info("Dispatching \(jsScript)")
 
-    webView.evaluateJavaScript(js) { (result, error) in
+    webView.evaluateJavaScript(jsScript) { (result, error) in
       if let error = error {
         ZLog.error("JS Error \(error)")
       } else if let result = result {
