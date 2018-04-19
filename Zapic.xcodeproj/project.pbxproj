@@ -16,7 +16,6 @@
 		651AEDCF1F16C4CE00986F05 /* ZapicColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDC41F16C4CE00986F05 /* ZapicColors.swift */; };
 		651AEDD01F16C4CE00986F05 /* ZapicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDC51F16C4CE00986F05 /* ZapicViewController.swift */; };
 		6543B5DF1F96C35500D3767A /* ControllerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543B5DE1F96C35500D3767A /* ControllerProtocols.swift */; };
-		6543B5E11F96C43F00D3767A /* WebApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543B5E01F96C43F00D3767A /* WebApp.swift */; };
 		654BF0B41F27F48700E0B9BC /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651AEDA11F16C49900986F05 /* Zapic.framework */; };
 		654BF0E61F27FA6E00E0B9BC /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0E41F27FA6E00E0B9BC /* Nimble.framework */; };
 		654BF0E71F27FA6E00E0B9BC /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0E51F27FA6E00E0B9BC /* Quick.framework */; };
@@ -82,7 +81,6 @@
 		651AEDC41F16C4CE00986F05 /* ZapicColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicColors.swift; sourceTree = "<group>"; };
 		651AEDC51F16C4CE00986F05 /* ZapicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicViewController.swift; sourceTree = "<group>"; };
 		6543B5DE1F96C35500D3767A /* ControllerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerProtocols.swift; sourceTree = "<group>"; };
-		6543B5E01F96C43F00D3767A /* WebApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebApp.swift; sourceTree = "<group>"; };
 		654BF0AF1F27F48700E0B9BC /* ZapicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		654BF0E41F27FA6E00E0B9BC /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		654BF0E51F27FA6E00E0B9BC /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 			children = (
 				651AEDA51F16C49900986F05 /* Info.plist */,
 				6543B5DE1F96C35500D3767A /* ControllerProtocols.swift */,
-				6543B5E01F96C43F00D3767A /* WebApp.swift */,
 				651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */,
 				6553A3E4202142720082B7B8 /* API */,
 				6553A3E32021418F0082B7B8 /* Common */,
@@ -405,7 +402,6 @@
 				65E2B3D0202264CB0044DCA6 /* ZapicContact.swift in Sources */,
 				65E050D51F331201005985F6 /* OfflineView.swift in Sources */,
 				6506AA992069B8F3002D7171 /* ShareMenuController.swift in Sources */,
-				6543B5E11F96C43F00D3767A /* WebApp.swift in Sources */,
 				6553A3EC202242070082B7B8 /* GameCenterController.swift in Sources */,
 				65FD63181F97E40C00C5CC8D /* InjectedJS.swift in Sources */,
 				65E050DF1F33150C005985F6 /* Banner.swift in Sources */,

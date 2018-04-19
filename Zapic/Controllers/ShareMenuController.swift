@@ -38,7 +38,7 @@ extension ZapicViewController: ShareMenuController {
 
     //This assumes that the ZapicViewController is being displayed when the share message is sent.
     //Otherwise this will fail
-    let vc = UIActivityViewController(activityItems: items, applicationActivities: [])
-       present(vc, animated: true)
+    let viewCtrl = UIActivityViewController(activityItems: items, applicationActivities: [])
+       present(viewCtrl, animated: true)
   }
 }

@@ -44,12 +44,13 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
   let appVersion: String
   internal var status = WebClientStatus.none
 
-  var playerId: String?
+  var player: ZapicPlayer?
 
-  /**
-   Callback when the player has authenticated and they have a unique id
-   */
-  var authenticateHandler: ((String?) -> Void)?
+  /// Callback when the player has logged into Zapic.
+  var onLoginHandler: ((ZapicPlayer) -> Void)?
+
+  /// Callback when the player has logged out of Zapic.
+  var onLogoutHandler: ((ZapicPlayer) -> Void)?
 
   convenience init() {
     self.init(webView: ZapicWebView())
@@ -190,8 +191,18 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
       return
     }
 
-    self.playerId = playerId
-    self.authenticateHandler?(playerId)
+    guard let notificationToken = msg["notificationToken"] as? String else {
+      ZLog.warn("Invalid/missing value for notification token, must be a string")
+      return
+    }
+
+    //If there is an existing player, log out
+    if self.player != nil {
+      self.onLogoutHandler?(self.player!)
+    }
+
+    self.player = ZapicPlayer(playerId, notificationToken: notificationToken)
+    self.onLoginHandler?(player!)
   }
 
   internal func decode(base64: String?) -> UIImage? {

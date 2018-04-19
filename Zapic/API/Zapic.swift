@@ -27,32 +27,60 @@ enum EventType: String {
   case gameplay = "Gameplay"
 }
 
+@objc public class ZapicPlayer: NSObject {
+  /// The unique id for this player
+  @objc public let playerId: String
+
+  /// The push notification token used to id a player
+  @objc public let notificationToken: String
+
+  init(_ playerId: String, notificationToken: String!) {
+    self.playerId = playerId
+    self.notificationToken = notificationToken
+  }
+}
+
 @objc(Zapic)
 public class Zapic: NSObject {
 
   private static let controller = ZapicViewController()
 
+  /// The tag key used to identity the notification token
+  @objc public static let notificationTag: String = "zapic_player_token"
+
   /**
-  The unique player id, if authenticated
+  The unique player, if authenticated
    */
-  @objc public static var playerId: String? {
-    return controller.playerId
+  @objc public static var player: ZapicPlayer? {
+    return controller.player
   }
 
   /**
-   Callback when the player has authenticated. Passes the unique player id.
+   Callback when the player logs in
    */
-  @objc public static var authenticateHandler: ((String?) -> Void)? {
+  @objc public static var onLoginHandler: ((ZapicPlayer) -> Void)? {
     didSet {
-        controller.authenticateHandler = authenticateHandler
+        controller.onLoginHandler = onLoginHandler
     }
   }
 
-  @objc public static func start() {
+  /**
+   Callback when the player logs in
+   */
+  @objc
+  public static var onLogoutHandler: ((ZapicPlayer) -> Void)? {
+    didSet {
+      controller.onLogoutHandler = onLogoutHandler
+    }
+  }
+
+  @objc
+  public static func start() {
     controller.start()
   }
 
-  @objc public static func handleData(_ dict: [AnyHashable: Any]?) {
+  @objc
+  public static func handleData(_ dict: [AnyHashable: Any]?) {
     guard let data = dict as NSDictionary? as? [String: String] else {
       ZLog.warn("Unable to process 'loadData', incorrect format")
       return
@@ -62,20 +90,20 @@ public class Zapic: NSObject {
     controller.handleData(zData)
   }
 
-  @objc public static func submitEvent(json: String) {
-    guard let params = ZapicUtils.deserialize(json) else {
-      ZLog.error("Unable to deserialize event from json data")
-      return
-    }
-
+  /**
+   Submit a gameplay event. These parameters should match those defined in
+   the developer portal.
+   */
+  @objc
+  public static func submitEvent(_ params: [String: Any]) {
     controller.submitEvent(eventType: .gameplay, params: params)
   }
 
-  @objc public static func submitEvent(_ params: [String: Any]) {
-    controller.submitEvent(eventType: .gameplay, params: params)
-  }
-
-  @objc public static func show(viewName: String) {
+  /**
+   Show a Zapic window.
+   */
+  @objc
+  public static func show(viewName: String) {
     guard let view = ZapicViews(rawValue: viewName) else {
       ZLog.error("Invalid view name \(viewName)")
       return

@@ -17,10 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
-    //Update OneSignal when the player is logged into Zapic
-    Zapic.authenticateHandler = {(zPlayerId: String!) -> Void in
-      OneSignal.sendTag("zapic_user_id", value:zPlayerId);
+    //Update OneSignal when the player is logs into Zapic
+    Zapic.onLoginHandler = {(player: ZapicPlayer) -> Void in
+      OneSignal.sendTag(Zapic.notificationTag, value:player.notificationToken);
     }
+    
+    //Remove the previousPlayer from OneSignal when the player is logs out of Zapic
+    Zapic.onLogoutHandler = {(prevPlayer: ZapicPlayer) -> Void in
+      OneSignal.deleteTag(Zapic.notificationTag);
+    }
+    
 
     let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
     
@@ -28,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     OneSignal.initWithLaunchOptions(launchOptions,
                                     appId: "cd7f9dc7-0fe6-435b-84ec-6534c2a6b361",
                                     handleNotificationAction: { (result) in
+                                      
                                       let data = result?.notification.payload.additionalData
                                       
                                       Zapic.handleData(data)
@@ -36,8 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
     
-    // Recommend moving the below line to prompt for push after informing the user about
-    //   how your app will use them.
     OneSignal.promptForPushNotifications(userResponse: { accepted in
       print("User accepted notifications: \(accepted)")
     })
