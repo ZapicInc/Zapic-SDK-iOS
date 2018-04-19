@@ -101,6 +101,7 @@ internal class ZapicWebView: WKWebView, UIScrollViewDelegate {
 
     self.navigationDelegate = self
     self.scrollView.delegate = self
+    self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
   }
 
   // Disable zooming in webView
