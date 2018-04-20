@@ -32,10 +32,10 @@ class GameScene: SKScene {
         }
       Zapic.submitEvent(["Event123": 34,"Score":22])
       
-      guard let idString = Zapic.playerId else {
+      guard let player = Zapic.player else {
         return
       }
       //Update the label to show the player's id
-      self.label?.text = "Hello player \(idString)"
+      self.label?.text = "Hello player \(player.playerId)"
     }
 }

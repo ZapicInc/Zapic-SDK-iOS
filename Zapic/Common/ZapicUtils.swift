@@ -8,9 +8,11 @@
 
 import Foundation
 
-class ZapicUtils {
+@objc(ZapicUtils)
+public class ZapicUtils: NSObject {
 
-  static func serialize(data: Any) -> String? {
+  @objc
+  public static func serialize(data: Any) -> String? {
 
     switch data {
     case is [String: Any]:
@@ -24,7 +26,8 @@ class ZapicUtils {
     return nil
   }
 
-  static func deserialize(_ bodyData: String) -> [String: Any]? {
+  @objc
+  public static func deserialize(_ bodyData: String) -> [String: Any]? {
     let data = bodyData.data(using: .utf8)!
     guard let json = try? JSONSerialization.jsonObject(with: data, options: []),
       let payload = json as? [String: Any] else {
@@ -50,7 +53,7 @@ class ZapicUtils {
     if let clientUrl = UserDefaults.standard.string(forKey: "ZAPIC_URL"), !clientUrl.isEmpty {
       return clientUrl
     } else {
-      return "https://app.zapic.net"
+      return "http://localhost:8001/";//"https://app.zapic.net"
     }
   }
 }

@@ -13,7 +13,7 @@ import Contacts
 import SafariServices
 
 internal class ZapicViewController: UIViewController, ZapicViewControllerDelegate, SFSafariViewControllerDelegate {
-  
+
   /**
    Opens a link in an embedded safari view
    **/
@@ -44,7 +44,13 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
   let appVersion: String
   internal var status = WebClientStatus.none
 
-  var playerId: String = ""
+  var player: ZapicPlayer?
+
+  /// Callback when the player has logged into Zapic.
+  var onLoginHandler: ((ZapicPlayer) -> Void)?
+
+  /// Callback when the player has logged out of Zapic.
+  var onLogoutHandler: ((ZapicPlayer) -> Void)?
 
   convenience init() {
     self.init(webView: ZapicWebView())
@@ -100,6 +106,14 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
     submitEvent(eventType: .appStarted, params: ["version": appVersion])
   }
 
+  func handleData(_ dataIn: String?) {
+    guard let data = dataIn else {
+      return
+    }
+
+    self.send(type: .handleData, payload: data)
+  }
+
   private func loadWebApp() {
     if status == .appReady || status == .pageReady {
       ZLog.info("Web application is already ready")
@@ -134,6 +148,13 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
     //Trigger the web to update
     self.send(type: .openPage, payload: zapicView.rawValue)
 
+    showPage()
+  }
+
+  /**
+   Shows the Zapic UIView
+   */
+  func showPage() {
     if view != webView {
       view.addSubview(self.webView)
     }
@@ -165,12 +186,23 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
       return
     }
 
-    guard let userId = msg["userId"] as? String else {
+    guard let playerId = msg["userId"] as? String else {
       ZLog.warn("Invalid/missing value for userId, must be a string")
       return
     }
 
-    self.playerId = userId
+    guard let notificationToken = msg["notificationToken"] as? String else {
+      ZLog.warn("Invalid/missing value for notification token, must be a string")
+      return
+    }
+
+    //If there is an existing player, log out
+    if self.player != nil {
+      self.onLogoutHandler?(self.player!)
+    }
+
+    self.player = ZapicPlayer(playerId, notificationToken: notificationToken)
+    self.onLoginHandler?(player!)
   }
 
   internal func decode(base64: String?) -> UIImage? {

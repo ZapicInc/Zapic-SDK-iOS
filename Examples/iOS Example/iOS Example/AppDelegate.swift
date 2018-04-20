@@ -8,16 +8,47 @@
 
 import UIKit
 import Zapic
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   
-  
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    
+    //Update OneSignal when the player is logs into Zapic
+    Zapic.onLoginHandler = {(player: ZapicPlayer) -> Void in
+      OneSignal.sendTag(Zapic.notificationTag, value:player.notificationToken);
+    }
+    
+    //Remove the previousPlayer from OneSignal when the player is logs out of Zapic
+    Zapic.onLogoutHandler = {(prevPlayer: ZapicPlayer) -> Void in
+      OneSignal.deleteTag(Zapic.notificationTag);
+    }
+    
+
+    let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
+    
+    // Replace 'YOUR_APP_ID' with your OneSignal App ID.
+    OneSignal.initWithLaunchOptions(launchOptions,
+                                    appId: "cd7f9dc7-0fe6-435b-84ec-6534c2a6b361",
+                                    handleNotificationAction: { (result) in
+                                      
+                                      let data = result?.notification.payload.additionalData
+                                      
+                                      Zapic.handleData(data)
+                                    },
+                                    settings: onesignalInitSettings)
+    
+    OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
+    
+    OneSignal.promptForPushNotifications(userResponse: { accepted in
+      print("User accepted notifications: \(accepted)")
+    })
+    
     ZLog.isEnabled = true
-    Zapic.start()
+    Zapic.start()   
     
     return true
   }

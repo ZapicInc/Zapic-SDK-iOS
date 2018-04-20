@@ -41,17 +41,40 @@ extern "C" {
   }
   
   void z_submitEventWithParams(char* data){
-    [Zapic submitEventWithJson:CreateNSString(data)];
+    //Convert the data to a string
+    NSString* json = CreateNSString(data);
+    
+    //Deserialize the string into a dictionary
+    NSDictionary* dict = [ZapicUtils deserialize: json];
+
+    //Sumbit the event
+    [Zapic submitEvent:dict];
   }
   
-  /// Returns the unique player id
-  const char* z_playerId(){
+  /// Returns the unique player as json
+  const char* z_player(){
     
-    NSString* uid = [Zapic playerId];
-    
-    if(uid == NULL)
+    ZapicPlayer* player = [Zapic player];
+   
+    if(player == NULL)
       return NULL;
     
-    return MakeStringCopy([uid UTF8String]);
+    NSString* json = [ZapicUtils serializeWithData:player];
+    
+    return MakeStringCopy([json UTF8String]);
   }
+  
+  /// Handle data provided by Zapic to an external source (push notification, deep link...)
+  void z_handleData(char* data){
+    //Convert the data to a string
+    NSString* json = CreateNSString(data);
+    
+    //Deserialize the string into a dictionary
+    NSDictionary* dict = [ZapicUtils deserialize: json];
+    
+    [Zapic handleData:dict];
+  }
+  
+  //TODO:DRS Login Handler
+  //TODO:DRS Logout handler
 }
