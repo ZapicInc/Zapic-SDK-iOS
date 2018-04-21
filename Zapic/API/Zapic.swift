@@ -29,7 +29,7 @@ enum EventType: String {
   case gameplay = "Gameplay"
 }
 
-@objc public class ZapicPlayer: NSObject {
+@objc public class ZapicPlayer: NSObject, Codable {
   /// The unique id for this player
   @objc public let playerId: String
 
@@ -81,6 +81,9 @@ public class Zapic: NSObject {
     controller.start()
   }
 
+  /**
+   Handle Zapic data. Usually from an integration like push notifications.
+   */
   @objc
   public static func handleData(_ dict: [AnyHashable: Any]?) {
     guard let data = dict as NSDictionary? as? [String: String] else {
@@ -102,7 +105,7 @@ public class Zapic: NSObject {
   }
 
   /**
-   Show a Zapic window.
+   Show a Zapic view.
    */
   @objc
   public static func show(viewName: String) {
@@ -113,6 +116,9 @@ public class Zapic: NSObject {
     show(view: view)
   }
 
+  /**
+   Show a Zapic view.
+   */
   public static func show(view: ZapicViews) {
     controller.show(view)
   }

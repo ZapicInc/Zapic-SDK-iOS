@@ -12,6 +12,15 @@ import Foundation
 public class ZapicUtils: NSObject {
 
   @objc
+  public static func encodePlayer(object: ZapicPlayer) -> String? {
+    do {
+      let data = try JSONEncoder().encode(object)
+      return String(data: data, encoding: .utf8)
+    } catch {
+      return nil
+    }
+  }
+
   public static func serialize(data: Any) -> String? {
 
     switch data {
