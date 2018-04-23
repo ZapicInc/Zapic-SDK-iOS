@@ -100,7 +100,7 @@ extension ZapicViewController: WKScriptMessageHandler {
     case .showBanner:
       receiveBanner(json)
     case .showPage:
-      showPage()
+      onShowPage()
     case .closePageRequest:
       closePage()
     case .showShare:

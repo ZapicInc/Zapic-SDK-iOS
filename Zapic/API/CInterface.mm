@@ -30,7 +30,27 @@ char* MakeStringCopy (const char* string)
   return res;
 }
 
+char* serializePlayer(ZapicPlayer* player)
+{
+  if(player == NULL)
+    return NULL;
+  
+  NSString* json =  [ZapicUtils encodePlayerWithObject:player];
+  
+  return MakeStringCopy([json UTF8String]);
+}
+
 extern "C" {
+  
+  /// Player call back type
+  typedef void (*ZAPIC_LOGIN_CALLBACK)(const char *);
+  typedef void (*ZAPIC_LOGOUT_CALLBACK)(const char *);
+  
+  /// Callback when the player logs in
+  static ZAPIC_LOGIN_CALLBACK z_loginCallback;
+  
+  /// Callback when the player logs out
+  static ZAPIC_LOGOUT_CALLBACK z_logoutCallback;
   
   void z_start(){
     [Zapic start];
@@ -53,15 +73,21 @@ extern "C" {
   
   /// Returns the unique player as json
   const char* z_player(){
-    
-    ZapicPlayer* player = [Zapic player];
-   
-    if(player == NULL)
-      return NULL;
-    
-    NSString* json = [ZapicUtils serializeWithData:player];
-    
-    return MakeStringCopy([json UTF8String]);
+    return serializePlayer([Zapic player]);
+  }
+  
+  /// Sets the login handler
+  void z_setLoginHandler(ZAPIC_LOGIN_CALLBACK callback){
+    [Zapic setOnLoginHandler:^(ZapicPlayer * p){
+      callback(serializePlayer(p));
+    }];
+  }
+  
+  /// Sets the logout handler
+  void z_setLogoutHandler(ZAPIC_LOGOUT_CALLBACK callback){
+    [Zapic setOnLogoutHandler:^(ZapicPlayer * p){
+      callback(serializePlayer(p));
+    }];
   }
   
   /// Handle data provided by Zapic to an external source (push notification, deep link...)
@@ -74,7 +100,4 @@ extern "C" {
     
     [Zapic handleData:dict];
   }
-  
-  //TODO:DRS Login Handler
-  //TODO:DRS Logout handler
 }
