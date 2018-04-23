@@ -44,7 +44,6 @@ class Banner: UIView {
     }
 
     return root?.view
-//    return UIApplication.shared.delegate?.window??.rootViewController?.presentedViewController.view
   }
 
   /// How long the slide down animation should last.
@@ -164,12 +163,18 @@ class Banner: UIView {
 
   private func initializeSubviews() {
 
+    var extraPadding: CGFloat = 0
+
+    if UIDevice.current.iPhoneX && UIDevice.current.orientation == .portrait {
+      extraPadding = 30
+    }
+
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.heightAnchor.constraint(equalToConstant: bannerHeight).isActive = true
+    self.heightAnchor.constraint(equalToConstant: bannerHeight + extraPadding).isActive = true
 
     addSubview(bannerContent)
 
-    bannerContent.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+    bannerContent.heightAnchor.constraint(equalToConstant: bannerHeight).isActive = true
     bannerContent.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     bannerContent.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
   }

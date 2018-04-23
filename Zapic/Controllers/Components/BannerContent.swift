@@ -20,9 +20,9 @@ class ZapicBanner: UIView {
     backgroundColor = UIColor.white
 
     self.translatesAutoresizingMaskIntoConstraints = false
-    self.widthAnchor.constraint(equalToConstant: 320).isActive = true
 
-    self.layer.cornerRadius = 5
+    let bannerWidth = min(375, UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+    self.widthAnchor.constraint(equalToConstant: bannerWidth).isActive = true
 
     let colorBar = ColorBar()
 
