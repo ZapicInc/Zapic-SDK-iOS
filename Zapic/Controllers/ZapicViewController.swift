@@ -220,7 +220,7 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
   }
 
   override var prefersStatusBarHidden: Bool {
-    return true
+    return !UIDevice.current.iPhoneX
   }
 
   override func dismiss(animated flag: Bool, completion: (() -> Void)?) {
