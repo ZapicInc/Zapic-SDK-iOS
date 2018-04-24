@@ -152,6 +152,12 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
       view.addSubview(self.webView)
     }
 
+    if self.viewIfLoaded?.window != nil {
+      // viewController is visible
+      ZLog.warn("Already visible")
+      return
+    }
+
     //Show the ui
     self.mainController.present(self, animated: true, completion: nil)
   }
