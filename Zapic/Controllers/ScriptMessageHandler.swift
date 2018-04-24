@@ -94,6 +94,8 @@ extension ZapicViewController: WKScriptMessageHandler {
       onAppReady()
     case .loggedIn:
       loggedIn(json)
+    case .loggedOut:
+      loggedOut()
     case .pageReady:
       status = .pageReady
       onPageReady()
