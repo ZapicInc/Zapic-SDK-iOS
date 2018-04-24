@@ -32,6 +32,15 @@ extension String {
 
 extension UIDevice {
   var iPhoneX: Bool {
-    return UIScreen.main.nativeBounds.height == 2436
+    return Int(UIScreen.main.nativeBounds.height) == 2436
+  }
+
+  var isPortrait: Bool {
+    let size = UIScreen.main.bounds.size
+    if size.width < size.height {
+      return true
+    } else {
+      return false
+    }
   }
 }
