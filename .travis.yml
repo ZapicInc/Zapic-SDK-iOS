@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode9 
+osx_image: xcode9
 
 branches:
   only:
@@ -30,7 +30,7 @@ script:
 - if [ $POD_LINT == "YES" ]; then
       pod lib lint;
   fi
-    
+
 #- xcodebuild -workspace Zapic.xcworkspace -scheme Zapic -destination 'OS=10.3.1,name=iPhone 7'  ENABLE_TESTABILITY=YES test | xcpretty
 #- xcodebuild -workspace Zapic.xcworkspace -scheme Zapic -destination 'OS=10.3.1,name=iPhone 7' build | xcpretty
 - xcodebuild -workspace Zapic.xcworkspace -scheme Zapic archive | xcpretty
@@ -39,7 +39,7 @@ script:
 deploy:
   provider: releases
   skip_cleanup: true
-  api_key: $GITHUB 
+  api_key: $GITHUB
   file: Zapic.framework.zip
   on:
     repo: ZapicInc/Zapic-SDK-iOS
