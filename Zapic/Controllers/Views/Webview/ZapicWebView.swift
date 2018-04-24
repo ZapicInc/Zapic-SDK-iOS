@@ -19,6 +19,7 @@ enum WebEvent: String {
   case pageReady = "PAGE_READY"
   case closePageRequest = "CLOSE_PAGE_REQUESTED"
   case loggedIn = "LOGGED_IN"
+  case loggedOut = "LOGGED_OUT"
 }
 
 // Events sent from the SDK to the web client

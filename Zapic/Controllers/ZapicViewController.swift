@@ -205,6 +205,15 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
     self.onLoginHandler?(player!)
   }
 
+  func loggedOut() {
+
+    if self.player != nil {
+      self.onLogoutHandler?(self.player!)
+    }
+
+    self.player = nil
+  }
+
   internal func decode(base64: String?) -> UIImage? {
 
     guard let string = base64 else {
