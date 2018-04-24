@@ -165,7 +165,7 @@ class Banner: UIView {
 
     var extraPadding: CGFloat = 0
 
-    if UIDevice.current.iPhoneX && UIDevice.current.orientation == .portrait {
+    if UIDevice.current.iPhoneX &&  UIDevice.current.isPortrait {
       extraPadding = 30
     }
 

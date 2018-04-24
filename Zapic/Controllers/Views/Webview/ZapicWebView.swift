@@ -118,9 +118,9 @@ internal class ZapicWebView: WKWebView, UIScrollViewDelegate {
     switch UIDevice.current.orientation {
     //Add extra padding on the top to avoid the notch
     case .portrait:
-      return UIEdgeInsets(top: 34, left: 0, bottom: 21, right: 0)
+      return UIEdgeInsets(top: 34.0, left: 0.0, bottom: 21.0, right: 0.0)
     case .landscapeLeft, .landscapeRight:
-      return UIEdgeInsets(top: 0, left: 44.0, bottom: 21, right: 44.0)
+      return UIEdgeInsets(top: 0, left: 44.0, bottom: 21.0, right: 44.0)
     default:
       return UIEdgeInsets.zero
     }

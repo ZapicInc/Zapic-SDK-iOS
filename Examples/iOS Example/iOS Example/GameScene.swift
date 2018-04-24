@@ -32,6 +32,8 @@ class GameScene: SKScene {
         }
       Zapic.submitEvent(["Event123": 34,"Score":22])
       
+      Zapic.handleData(["zapic": "/challenge/123"])
+      
       guard let player = Zapic.player else {
         return
       }

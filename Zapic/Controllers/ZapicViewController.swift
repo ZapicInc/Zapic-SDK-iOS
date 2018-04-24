@@ -44,6 +44,9 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
   let appVersion: String
   internal var status = WebClientStatus.none
 
+  ///Flag indicating if the view is currently visible
+  private var isVisible = false
+
   var player: ZapicPlayer?
 
   /// Callback when the player has logged into Zapic.
@@ -152,6 +155,13 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
       view.addSubview(self.webView)
     }
 
+    if isVisible {
+      ZLog.info("View is already visible, skipping.")
+      return
+    }
+
+    isVisible = true
+
     //Show the ui
     self.mainController.present(self, animated: true, completion: nil)
   }
@@ -168,6 +178,8 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
       self.send(type: .closePage, payload: "")
       self.mainController.view.addSubview(self.webView)
     }
+
+    isVisible = false
   }
 
   func onPageReady() {
@@ -236,5 +248,7 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
     if self.presentedViewController != nil {
       super.dismiss(animated: flag, completion: completion)
     }
+
+    isVisible = false
   }
 }
