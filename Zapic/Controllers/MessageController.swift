@@ -26,7 +26,13 @@ extension ZapicViewController: MessageController {
 
       let event = Event(type: type, payload: payload, isError: isError)
 
-      if type == .submitEvent {
+      if type == .openPage {
+        //Overried the previous open page event
+        self.queuedPageEvent = event
+      } else if type == .closePage {
+        //Clear the open page event
+        self.queuedPageEvent = nil
+      } else {
 
         ZLog.info("Web client is not ready to run JS. Adding to queue")
 
@@ -35,12 +41,6 @@ extension ZapicViewController: MessageController {
         if eventQueue.count > 1000 {
           _ = eventQueue.dequeue()
         }
-      } else if type == .openPage {
-        //Overried the previous open page event
-        self.queuedPageEvent = event
-      } else if type == .closePage {
-        //Clear the open page event
-        self.queuedPageEvent = nil
       }
       return
     }

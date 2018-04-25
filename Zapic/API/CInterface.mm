@@ -46,12 +46,6 @@ extern "C" {
   typedef void (*ZAPIC_LOGIN_CALLBACK)(const char *);
   typedef void (*ZAPIC_LOGOUT_CALLBACK)(const char *);
   
-  /// Callback when the player logs in
-  static ZAPIC_LOGIN_CALLBACK z_loginCallback;
-  
-  /// Callback when the player logs out
-  static ZAPIC_LOGOUT_CALLBACK z_logoutCallback;
-  
   void z_start(){
     [Zapic start];
   }

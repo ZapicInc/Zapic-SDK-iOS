@@ -86,13 +86,11 @@ public class Zapic: NSObject {
    */
   @objc
   public static func handleData(_ dict: [AnyHashable: Any]?) {
-    guard let data = dict as NSDictionary? as? [String: String] else {
-      ZLog.warn("Unable to process 'loadData', incorrect format")
-      return
+    if let val = dict?["zapic"] {
+      controller.handleData("\(val)")
+    } else {
+      ZLog.info("Skipping data, unable to find any 'zapic' data")
     }
-    let zData = data["zapic"]
-
-    controller.handleData(zData)
   }
 
   /**
