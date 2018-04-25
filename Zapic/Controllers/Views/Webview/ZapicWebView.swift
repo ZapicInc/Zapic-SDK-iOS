@@ -109,23 +109,6 @@ internal class ZapicWebView: WKWebView, UIScrollViewDelegate {
     return nil
   }
 
-  override var safeAreaInsets: UIEdgeInsets {
-    //Dont add any additional padding on non X
-    if !UIDevice.current.iPhoneX {
-      return UIEdgeInsets.zero
-    }
-
-    switch UIDevice.current.orientation {
-    //Add extra padding on the top to avoid the notch
-    case .portrait:
-      return UIEdgeInsets(top: 34.0, left: 0.0, bottom: 21.0, right: 0.0)
-    case .landscapeLeft, .landscapeRight:
-      return UIEdgeInsets(top: 0, left: 44.0, bottom: 21.0, right: 44.0)
-    default:
-      return UIEdgeInsets.zero
-    }
-  }
-
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
