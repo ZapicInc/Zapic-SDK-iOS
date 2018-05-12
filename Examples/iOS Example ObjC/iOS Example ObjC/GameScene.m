@@ -27,7 +27,6 @@
   }
   else{
     [Zapic submitEvent:@{ @"Event123": @34,@"Score":@22}];
-    [Zapic submitEventWithJson:@"{\"JSONEvent\":22,\"Value\":1234}"];
   }
 }
 
