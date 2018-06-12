@@ -28,15 +28,19 @@ class GameScene: SKScene {
         let touchLocation = touch!.location(in: self)
         // Check if the location of the touch is within the button's bounds
         if button!.contains(touchLocation) {
-            Zapic.show(view: .main)
+          Zapic.showDefaultPage();
         }
       Zapic.submitEvent(["Event123": 34,"Score":22])
       
-      Zapic.handleData(["zapic": "/challenge/123"])
+      Zapic.handleInteraction(["zapic": "/challenge/123"])
       
       guard let player = Zapic.player else {
         return
       }
+      
+      let currentPlayer = Zapic.player
+      let id = currentPlayer?.playerId
+      
       //Update the label to show the player's id
       self.label?.text = "Hello player \(player.playerId)"
     }

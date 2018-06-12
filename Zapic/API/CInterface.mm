@@ -50,8 +50,12 @@ extern "C" {
     [Zapic start];
   }
   
-  void z_show(char* viewName){
-    [Zapic showWithViewName:CreateNSString(viewName)];
+  void z_show(char* pageName){
+    [Zapic showPage:CreateNSString(pageName)];
+  }
+  
+  void z_showDefault(){
+    [Zapic showDefaultPage];
   }
   
   void z_submitEventWithParams(char* data){
@@ -85,13 +89,13 @@ extern "C" {
   }
   
   /// Handle data provided by Zapic to an external source (push notification, deep link...)
-  void z_handleData(char* data){
+  void z_handleInteraction(char* data){
     //Convert the data to a string
     NSString* json = CreateNSString(data);
     
     //Deserialize the string into a dictionary
     NSDictionary* dict = [ZapicUtils deserialize: json];
     
-    [Zapic handleData:dict];
+    [Zapic handleInteraction:dict];
   }
 }

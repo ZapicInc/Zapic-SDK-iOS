@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Queue<T> {
+struct Queue<T>: Codable where T: Codable {
   private var array = [T?]()
   private var head = 0
 

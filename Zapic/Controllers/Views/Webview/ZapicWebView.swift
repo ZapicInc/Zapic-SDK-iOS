@@ -11,7 +11,6 @@ import WebKit
 
 // Events sent from the web client to the SDK
 enum WebEvent: String {
-  case login = "LOGIN"
   case appStarted = "APP_STARTED"
   case showBanner = "SHOW_BANNER"
   case showPage = "SHOW_PAGE"
@@ -23,21 +22,18 @@ enum WebEvent: String {
 }
 
 // Events sent from the SDK to the web client
-enum WebFunction: String {
-  case setSignature = "LOGIN_WITH_GAME_CENTER"
+enum WebFunction: String, Codable {
   case submitEvent = "SUBMIT_EVENT"
   case openPage = "OPEN_PAGE"
   case closePage = "CLOSE_PAGE"
-  case setContacts = "SET_CONTACTS"
-  case handleData = "HANDLE_DATA"
 }
 
-struct Event {
+struct Event: Codable {
   let type: WebFunction
-  let payload: Any
+  let payload: String
   let isError: Bool
 
-  init(type: WebFunction, payload: Any, isError: Bool) {
+  init(type: WebFunction, payload: String, isError: Bool) {
     self.type = type
     self.payload = payload
     self.isError = isError
@@ -76,7 +72,7 @@ internal class ZapicWebView: WKWebView, UIScrollViewDelegate {
 
   private let contentController = WKUserContentController()
 
-  var controllerDelegate: ZapicViewControllerDelegate?
+  weak var controllerDelegate: ZapicViewControllerDelegate?
 
   var scriptMessageHandler: WKScriptMessageHandler? {
     didSet {
@@ -92,7 +88,13 @@ internal class ZapicWebView: WKWebView, UIScrollViewDelegate {
     let config = WKWebViewConfiguration()
     config.userContentController = contentController
 
-    let injected = injectedScript(ios: UIDevice.current.systemVersion)
+    let sdkVersion = Bundle(for: ZapicWebView.self).infoDictionary!["CFBundleShortVersionString"] as? String ?? "0.0.0"
+
+    let bundleId = Bundle.main.bundleIdentifier ?? ""
+
+    let iosVersion = UIDevice.current.systemVersion
+
+    let injected = injectedScript(iosVersion: iosVersion, bundleId: bundleId, sdkVersion: sdkVersion)
 
     let userScript = WKUserScript(source: injected, injectionTime: .atDocumentStart, forMainFrameOnly: true)
     contentController.addUserScript(userScript)

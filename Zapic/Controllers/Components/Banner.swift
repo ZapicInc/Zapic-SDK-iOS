@@ -174,6 +174,7 @@ class Banner: UIView {
 
     addSubview(bannerContent)
 
+    self.widthAnchor.constraint(equalTo: bannerContent.widthAnchor).isActive = true
     bannerContent.heightAnchor.constraint(equalToConstant: bannerHeight).isActive = true
     bannerContent.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     bannerContent.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true

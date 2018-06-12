@@ -28,12 +28,6 @@ protocol ZapicDelegate: class {
   func setPlayerId(playerId: UUID)
 }
 
-protocol GameCenterController {
-  /// Triggers the generation of the
-  /// Game Center verification signature
-  func getVerificationSignature()
-}
-
 protocol MessageController {
 
   /// Attempt to resend all events that we unable to be sent
@@ -47,7 +41,7 @@ protocol MessageController {
 }
 
 protocol BannerController {
-  func showBanner(title: String, subTitle: String?, icon: UIImage?)
+  func showBanner(title: String, subTitle: String?, icon: UIImage?, data: String?)
 }
 
 protocol ContactsController {

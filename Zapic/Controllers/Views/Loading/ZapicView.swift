@@ -10,14 +10,14 @@ import Foundation
 
 class ZapicView: UIView {
 
-  weak var controllerDelegate: ZapicViewControllerDelegate?
+  var controllerDelegate: ZapicViewControllerDelegate?
 
   let title = UILabel()
   let colorBar = ColorBar()
 
   init(text: String, showSpinner: Bool = false) {
 
-    super.init(frame: .zero)
+    super.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
 
     backgroundColor = ZapicColors.background
 
@@ -34,7 +34,7 @@ class ZapicView: UIView {
     let iconSize: CGFloat = 64
     icon.translatesAutoresizingMaskIntoConstraints = false
     icon.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-    icon.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -100).isActive = true
+    icon.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -150).isActive = true
     icon.heightAnchor.constraint(equalToConstant: iconSize).isActive = true
     icon.widthAnchor.constraint(equalToConstant: iconSize).isActive = true
 
@@ -42,7 +42,7 @@ class ZapicView: UIView {
 
     if showSpinner {
       //Spinner
-      let spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+      let spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
       self.addSubview(spinner)
       spinner.translatesAutoresizingMaskIntoConstraints = false
       spinner.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 15).isActive = true

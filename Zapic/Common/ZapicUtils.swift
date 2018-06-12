@@ -62,7 +62,7 @@ public class ZapicUtils: NSObject {
     if let clientUrl = UserDefaults.standard.string(forKey: "ZAPIC_URL"), !clientUrl.isEmpty {
       return clientUrl
     } else {
-      return "https://app.zapic.net"
+      return "https://app.zapic.netd"
     }
   }
 }

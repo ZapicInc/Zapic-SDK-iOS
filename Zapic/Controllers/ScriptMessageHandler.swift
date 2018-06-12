@@ -87,8 +87,6 @@ extension ZapicViewController: WKScriptMessageHandler {
     ZLog.info("Received from JS: \(type) ")
 
     switch type {
-    case .login:
-      self.getVerificationSignature()
     case .appStarted:
       status = .appReady
       onAppReady()

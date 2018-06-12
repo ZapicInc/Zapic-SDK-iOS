@@ -23,7 +23,10 @@
   
   // Check if the location of the touch is within the button's bounds
   if ([_button containsPoint:touchLocation]) {
-    [Zapic showWithViewName:@"main"];
+    
+    [Zapic showDefaultPage];
+    ZapicPlayer* currentPlayer = Zapic.player;
+    NSString* id = currentPlayer.playerId;
   }
   else{
     [Zapic submitEvent:@{ @"Event123": @34,@"Score":@22}];

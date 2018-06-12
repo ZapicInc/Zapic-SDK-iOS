@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                       
                                       let data = result?.notification.payload.additionalData
                                       
-                                      Zapic.handleData(data)
+                                      Zapic.handleInteraction(data)
                                     },
                                     settings: onesignalInitSettings)
     

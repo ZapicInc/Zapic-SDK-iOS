@@ -8,12 +8,14 @@
 
 import Foundation
 
-internal func injectedScript(ios: String) -> String {
+internal func injectedScript(iosVersion: String, bundleId: String, sdkVersion: String) -> String {
   return """
 window.zapic = {
   environment: 'webview',
-  version: 2,
-  iosVersion: '\(ios)',
+  version: 3,
+  iosVersion: '\(iosVersion)',
+  bundleId: '\(bundleId),
+  sdkVersion: '\(sdkVersion)',
   onLoaded: function(action$, publishAction) {
     window.zapic.dispatch = function(action) {
       publishAction(action)

@@ -8,6 +8,12 @@
 
 import Foundation
 
+internal enum EventType: String {
+  case unknown = "Unknown"
+  case gameplay = "Gameplay"
+  case interaction = "Interaction"
+}
+
 extension ZapicViewController: MessageController {
 
   func onAppReady() {
@@ -19,12 +25,11 @@ extension ZapicViewController: MessageController {
   }
 
   func send(type: WebFunction, payload: Any, isError: Bool) {
+    if !(status == .appReady || status == .pageReady) {
 
-    //Ensure setSignature is the only method that can be sent before
-    //the app is ready
-    if !(status == .appReady || status == .pageReady) && type != .setSignature {
+      let payloadStr = ZapicUtils.serialize(data: payload)!
 
-      let event = Event(type: type, payload: payload, isError: isError)
+      let event = Event(type: type, payload: payloadStr, isError: isError)
 
       if type == .openPage {
         //Overried the previous open page event
@@ -41,13 +46,15 @@ extension ZapicViewController: MessageController {
         if eventQueue.count > 1000 {
           _ = eventQueue.dequeue()
         }
+
+        Storage.store(eventQueue, to: .documents, as: eventFile)
       }
       return
     }
 
     ZLog.info("Dispatching JS event \(type.rawValue)")
 
-    var msg = ["type": type.rawValue, "payload": payload]
+    var msg: [String: Any] = ["type": type.rawValue, "payload": payload]
 
     if isError {
       msg["error"]=true
@@ -71,11 +78,15 @@ extension ZapicViewController: MessageController {
   }
 
   func submitEvent(eventType: EventType, params: [String: Any]) {
+    submitEvent(eventType: eventType, payload: params)
+  }
+
+  func submitEvent(eventType: EventType, payload: Any) {
 
     ZLog.info("Submitting event to web client")
 
     let msg: [String: Any] = ["type": eventType.rawValue,
-                              "params": params,
+                              "params": payload,
                               "timestamp": Date().iso8601]
 
     send(type: .submitEvent, payload: msg)
@@ -90,6 +101,8 @@ extension ZapicViewController: MessageController {
     }
 
     ZLog.info("Started resending \(eventQueue.count) events")
+
+    Storage.remove(eventFile, from: .documents)
 
     while eventQueue.count > 0 {
 
