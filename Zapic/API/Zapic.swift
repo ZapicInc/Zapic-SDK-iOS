@@ -8,12 +8,11 @@
 
 import Foundation
 
-public enum ZapicViews: String {
-  case main = "default"
-  //Open Zapic without changing the page
-  case current
+public enum ZapicPages: String {
   case profile
   case challenges
+  case createChallenge
+  case stats
 }
 
 enum ZapicError: Error {
@@ -21,12 +20,6 @@ enum ZapicError: Error {
   case invalidCredentials
   case invalidPlayer
   case invalidAuthSignature
-}
-
-enum EventType: String {
-  case unknown = "Unknown"
-  case appStarted = "AppStarted"
-  case gameplay = "Gameplay"
 }
 
 @objc public class ZapicPlayer: NSObject, Codable {
@@ -85,9 +78,9 @@ public class Zapic: NSObject {
    Handle Zapic data. Usually from an integration like push notifications.
    */
   @objc
-  public static func handleData(_ dict: [AnyHashable: Any]?) {
+  public static func handleInteraction(_ dict: [AnyHashable: Any]?) {
     if let val = dict?["zapic"] {
-      controller.handleData("\(val)")
+      controller.handleInteraction("\(val)")
     } else {
       ZLog.info("Skipping data, unable to find any 'zapic' data")
     }
@@ -106,18 +99,22 @@ public class Zapic: NSObject {
    Show a Zapic view.
    */
   @objc
-  public static func show(viewName: String) {
-    guard let view = ZapicViews(rawValue: viewName) else {
-      ZLog.error("Invalid view name \(viewName)")
-      return
-    }
-    show(view: view)
+  public static func showPage(_ pageName: String) {
+    controller.show(pageName)
   }
 
   /**
    Show a Zapic view.
    */
-  public static func show(view: ZapicViews) {
-    controller.show(view)
+  public static func showPage(_ view: ZapicPages) {
+    controller.show(view.rawValue)
+  }
+
+  /**
+   Show the default Zapic view.
+   */
+  @objc
+  public static func showDefaultPage() {
+    controller.showDefault()
   }
 }

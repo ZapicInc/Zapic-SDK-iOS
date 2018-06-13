@@ -13,7 +13,7 @@ class ZapicColors {
     static let blue = UIColor(red: 0.00, green: 0.87, blue: 0.68, alpha: 1.0)
     static let green = UIColor(red: 0.00, green: 0.52, blue: 0.89, alpha: 1.0)
     static let midPoint = UIColor(red: 0.00, green: 0.69, blue: 0.79, alpha: 1.0)
-    static let background = UIColor.white// UIColor(red:0.11, green:0.13, blue:0.15, alpha:1.0)
-    static let primaryText = UIColor.black
-    static let secondaryText = UIColor.black.withAlphaComponent(0.5)
+    static let background = UIColor.black.withAlphaComponent(0.8)
+    static let primaryText = UIColor.white
+    static let secondaryText = UIColor.white.withAlphaComponent(0.5)
 }

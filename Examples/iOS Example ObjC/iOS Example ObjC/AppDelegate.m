@@ -17,6 +17,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  
+  [Zapic setOnLoginHandler:^(ZapicPlayer * newPlayer){
+    //Do work
+  }];
+  
+  [Zapic setOnLogoutHandler:^(ZapicPlayer * prevPlayer){
+    //Do work
+  }];
+  
   ZLog.isEnabled = true;
   [Zapic start];
   

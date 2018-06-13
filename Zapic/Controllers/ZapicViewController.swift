@@ -36,12 +36,11 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
   ///The currently queued Open Page event
   internal var queuedPageEvent: Event?
 
-  let contactStore = CNContactStore()
+  internal let eventFile = "zapic-events.json"
   let webView: ZapicWebView
   private let loading: LoadingView
   private let offline: OfflineView
   private let mainController: UIViewController
-  let appVersion: String
   internal var status = WebClientStatus.none
 
   ///Flag indicating if the view is currently visible
@@ -70,15 +69,11 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
       fatalError("RootViewController not found, ensure this is called at the correct time")
     }
 
-    //Get the version and build number from the bundle
-    if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ,
-      let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
-      appVersion = "\(version):\(build)"
-    } else {
-      appVersion = "unknown"
-    }
-
     super.init(nibName: nil, bundle: nil)
+
+    if Storage.fileExists(eventFile, in: Storage.Directory.documents){
+        eventQueue = Storage.retrieve(eventFile, from: Storage.Directory.documents, as: Queue<Event>.self)
+    }
 
     //Subscribe to events from web app
     webView.scriptMessageHandler = self
@@ -102,19 +97,17 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
       return
     }
 
-    ZLog.info("Zapic starting. App version \(appVersion)")
+    ZLog.info("Zapic starting")
 
     loadWebApp()
-
-    submitEvent(eventType: .appStarted, params: ["version": appVersion])
   }
 
-  func handleData(_ dataIn: String?) {
+  func handleInteraction(_ dataIn: String?) {
     guard let data = dataIn else {
       return
     }
 
-    self.send(type: .handleData, payload: data)
+    self.submitEvent(eventType: .interaction, payload: data)
   }
 
   private func loadWebApp() {
@@ -135,9 +128,13 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
     webView.load(appUrl)
   }
 
-  func show(_ zapicView: ZapicViews) {
+  func showDefault() {
+    self.show("default")
+  }
 
-    ZLog.info("Show \(zapicView.rawValue)")
+  func show(_ pageName: String) {
+
+    ZLog.info("Show \(pageName)")
 
     if status == .pageReady {
       view = webView
@@ -149,20 +146,24 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
     }
 
     //Trigger the web to update
-    self.send(type: .openPage, payload: zapicView.rawValue)
+    self.send(type: .openPage, payload: pageName)
 
     if view != webView {
-      view.addSubview(self.webView)
+//      view.addSubview(self.webView)
     }
 
     if isVisible {
       ZLog.info("View is already visible, skipping.")
       return
     }
+    
+    view.topAnchor.constraint(equalTo: self.topLayoutGuide.topAnchor).isActive = true
+    view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.bottomAnchor).isActive = true
 
     isVisible = true
 
     //Show the ui
+    self.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
     self.mainController.present(self, animated: true, completion: nil)
   }
 
@@ -170,7 +171,7 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
    Shows the Zapic UIView
    */
   func onShowPage() {
-    show(.current)
+    show("current")
   }
 
   func closePage() {

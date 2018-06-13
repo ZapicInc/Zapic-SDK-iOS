@@ -25,13 +25,24 @@ extension ZapicViewController: BannerController {
 
     let subTitle = msg["subtitle"] as? String
 
-    showBanner(title: title, subTitle: subTitle, icon: icon)
+    let data = msg["data"] as? String
+
+    showBanner(title: title, subTitle: subTitle, icon: icon, data: data)
   }
 
   /// Trigger when a banner should be shown
-  func showBanner(title: String, subTitle: String?, icon: UIImage?) {
+  func showBanner(title: String, subTitle: String?, icon: UIImage?, data: String?) {
 
-    let banner = Banner(title: title, subtitle: subTitle, icon: icon)
+    var tapCallback:(() -> Void)? = nil
+
+    //If there is data attached to the banner, call the callback
+    if data != nil {
+      tapCallback = {
+        self.handleInteraction(data)
+      }
+    }
+
+    let banner = Banner(title: title, subtitle: subTitle, icon: icon, didTapBlock: tapCallback)
 
     banner.dismissesOnTap = true
     banner.show(duration: 3.0)
