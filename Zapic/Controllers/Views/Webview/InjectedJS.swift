@@ -14,7 +14,7 @@ window.zapic = {
   environment: 'webview',
   version: 3,
   iosVersion: '\(iosVersion)',
-  bundleId: '\(bundleId),
+  bundleId: '\(bundleId)',
   sdkVersion: '\(sdkVersion)',
   onLoaded: function(action$, publishAction) {
     window.zapic.dispatch = function(action) {

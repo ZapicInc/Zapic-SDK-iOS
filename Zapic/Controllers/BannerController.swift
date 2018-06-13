@@ -45,6 +45,6 @@ extension ZapicViewController: BannerController {
     let banner = Banner(title: title, subtitle: subTitle, icon: icon, didTapBlock: tapCallback)
 
     banner.dismissesOnTap = true
-    banner.show(duration: 300.0)
+    banner.show(duration: 3.0)
   }
 }

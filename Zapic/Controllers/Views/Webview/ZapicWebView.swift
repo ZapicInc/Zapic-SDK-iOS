@@ -103,6 +103,7 @@ internal class ZapicWebView: WKWebView, UIScrollViewDelegate {
 
     self.navigationDelegate = self
     self.scrollView.delegate = self
+    self.scrollView.isScrollEnabled = false
     self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
   }
 
@@ -138,6 +139,21 @@ internal class ZapicWebView: WKWebView, UIScrollViewDelegate {
     ZLog.info("Loading web application from \(appRequest.url?.absoluteString ?? "unknown")")
 
     self.load(appRequest)
+  }
+    
+  internal func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+    scrollView.pinchGestureRecognizer?.isEnabled = false
+    scrollView.panGestureRecognizer.isEnabled = false
+  }
+    
+  internal func scrollViewDidZoom(_ scrollView: UIScrollView) {
+    let curScale = scrollView.zoomScale
+        
+    if curScale == 1
+    {
+        return
+    }
+    scrollView.setZoomScale(1.0, animated: true)
   }
 
   private func retryAfterDelay() {

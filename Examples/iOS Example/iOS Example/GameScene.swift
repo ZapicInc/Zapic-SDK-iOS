@@ -32,14 +32,11 @@ class GameScene: SKScene {
         }
       Zapic.submitEvent(["Event123": 34,"Score":22])
       
-      Zapic.handleInteraction(["zapic": "/challenge/123"])
+//      Zapic.handleInteraction(["zapic": "/challenge/123"])
       
       guard let player = Zapic.player else {
         return
       }
-      
-      let currentPlayer = Zapic.player
-      let id = currentPlayer?.playerId
       
       //Update the label to show the player's id
       self.label?.text = "Hello player \(player.playerId)"

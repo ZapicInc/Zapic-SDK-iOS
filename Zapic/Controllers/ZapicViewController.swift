@@ -71,7 +71,9 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
 
     super.init(nibName: nil, bundle: nil)
 
-    eventQueue = Storage.retrieve(eventFile, from: Storage.Directory.documents, as: Queue<Event>.self)
+    if Storage.fileExists(eventFile, in: Storage.Directory.documents){
+        eventQueue = Storage.retrieve(eventFile, from: Storage.Directory.documents, as: Queue<Event>.self)
+    }
 
     //Subscribe to events from web app
     webView.scriptMessageHandler = self
@@ -154,6 +156,9 @@ internal class ZapicViewController: UIViewController, ZapicViewControllerDelegat
       ZLog.info("View is already visible, skipping.")
       return
     }
+    
+    view.topAnchor.constraint(equalTo: self.topLayoutGuide.topAnchor).isActive = true
+    view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.bottomAnchor).isActive = true
 
     isVisible = true
 

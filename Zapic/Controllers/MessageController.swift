@@ -9,9 +9,9 @@
 import Foundation
 
 internal enum EventType: String {
-  case unknown = "Unknown"
-  case gameplay = "Gameplay"
-  case interaction = "Interaction"
+  case unknown = "unknown"
+  case gameplay = "gameplay"
+  case interaction = "interaction"
 }
 
 extension ZapicViewController: MessageController {
@@ -102,6 +102,7 @@ extension ZapicViewController: MessageController {
 
     ZLog.info("Started resending \(eventQueue.count) events")
 
+    //Drops the saved event from local disk
     Storage.remove(eventFile, from: .documents)
 
     while eventQueue.count > 0 {
