@@ -2,10 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Examples/iOS Example ObjC/iOS Example ObjC.xcodeproj">
+      location = "group:ZapicExample-Swift/ZapicExample-Swift.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Examples/iOS Example/iOS Example.xcodeproj">
+      location = "group:ZapicExample-ObjC/ZapicExample-ObjC.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Zapic.xcodeproj">
