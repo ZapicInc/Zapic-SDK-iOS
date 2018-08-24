@@ -9,38 +9,16 @@ branches:
 
 env:
   global:
-  - POD_LINT = "NO"
-
-# cache:
-#   directories:
-#     - Carthage
-
-# before_install:
-  # - brew update
-  # - brew outdated carthage || brew upgrade carthage
-  # - carthage bootstrap --no-use-binaries --platform iOS --cache-builds
+    - POD_LINT = "NO"
 
 script:
-- set -o pipefail
-- xcodebuild -version
-- xcodebuild -showsdks
-- swiftlint
+  - set -o pipefail
+  - xcodebuild -version
+  - xcodebuild -showsdks
 
-# Run `pod lib lint` if specified
-- if [ $POD_LINT == "YES" ]; then
-      pod lib lint;
-  fi
+  # Run `pod lib lint` if specified
+  - if [ $POD_LINT == "YES" ]; then
+    pod lib lint;
+    fi
 
-#- xcodebuild -workspace Zapic.xcworkspace -scheme Zapic -destination 'OS=10.3.1,name=iPhone 7'  ENABLE_TESTABILITY=YES test | xcpretty
-#- xcodebuild -workspace Zapic.xcworkspace -scheme Zapic -destination 'OS=10.3.1,name=iPhone 7' build | xcpretty
-- xcodebuild -workspace Zapic.xcworkspace -scheme Zapic archive | xcpretty
-- zip -r Zapic.framework.zip Zapic.framework
-
-deploy:
-  provider: releases
-  skip_cleanup: true
-  api_key: $GITHUB
-  file: Zapic.framework.zip
-  on:
-    repo: ZapicInc/Zapic-SDK-iOS
-    tags: true
+  - xcodebuild -workspace Zapic.xcworkspace -scheme Zapic archive | xcpretty

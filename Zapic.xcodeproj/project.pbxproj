@@ -3,289 +3,318 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		650116061F23141300CED7B2 /* ZapicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650116051F23141300CED7B2 /* ZapicUtils.swift */; };
-		6506AA992069B8F3002D7171 /* ShareMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6506AA982069B8F3002D7171 /* ShareMenuController.swift */; };
-		651AEDB21F16C49900986F05 /* Zapic.h in Headers */ = {isa = PBXBuildFile; fileRef = 651AEDA41F16C49900986F05 /* Zapic.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		651AEDC81F16C4CE00986F05 /* CInterface.mm in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDBD1F16C4CE00986F05 /* CInterface.mm */; };
-		651AEDCD1F16C4CE00986F05 /* Zapic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDC21F16C4CE00986F05 /* Zapic.swift */; };
-		651AEDCE1F16C4CE00986F05 /* ZapicAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */; };
-		651AEDCF1F16C4CE00986F05 /* ZapicColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDC41F16C4CE00986F05 /* ZapicColors.swift */; };
-		651AEDD01F16C4CE00986F05 /* ZapicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651AEDC51F16C4CE00986F05 /* ZapicViewController.swift */; };
-		652D214720CBAC060097EE05 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652D214620CBAC060097EE05 /* Storage.swift */; };
-		6543B5DF1F96C35500D3767A /* ControllerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6543B5DE1F96C35500D3767A /* ControllerProtocols.swift */; };
-		654BF0B41F27F48700E0B9BC /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651AEDA11F16C49900986F05 /* Zapic.framework */; };
-		654BF0E61F27FA6E00E0B9BC /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0E41F27FA6E00E0B9BC /* Nimble.framework */; };
-		654BF0E71F27FA6E00E0B9BC /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 654BF0E51F27FA6E00E0B9BC /* Quick.framework */; };
-		654BF0E91F27FB9400E0B9BC /* ZapicSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65AC48DA1F1D40CD0026E101 /* ZapicSpec.swift */; };
-		6551B0DA1FA44B44003CE65F /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6551B0D91FA44B44003CE65F /* StringExtensions.swift */; };
-		6551B0DC1FA44BD9003CE65F /* StringExtensionsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6551B0DB1FA44BD9003CE65F /* StringExtensionsSpec.swift */; };
-		6578105D1F8F50D900684DD7 /* ZapicUtilsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6578105C1F8F50D900684DD7 /* ZapicUtilsSpec.swift */; };
-		65DA7F931F908E6F00C28025 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 654BF0E41F27FA6E00E0B9BC /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		65DA7F941F908E6F00C28025 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 654BF0E51F27FA6E00E0B9BC /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		65E050CB1F326DCB005985F6 /* ZLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050CA1F326DCB005985F6 /* ZLog.swift */; };
-		65E050D41F331201005985F6 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050D01F331201005985F6 /* LoadingView.swift */; };
-		65E050D51F331201005985F6 /* OfflineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050D11F331201005985F6 /* OfflineView.swift */; };
-		65E050D61F331201005985F6 /* ZapicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050D21F331201005985F6 /* ZapicView.swift */; };
-		65E050D71F331201005985F6 /* ZapicWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050D31F331201005985F6 /* ZapicWebView.swift */; };
-		65E050DF1F33150C005985F6 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050DD1F33150C005985F6 /* Banner.swift */; };
-		65E050E01F33150C005985F6 /* BannerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050DE1F33150C005985F6 /* BannerContent.swift */; };
-		65E050E21F331553005985F6 /* ColorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050E11F331553005985F6 /* ColorBar.swift */; };
-		65E050E41F336E0E005985F6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050E31F336E0E005985F6 /* Extensions.swift */; };
-		65E050E61F33BAE4005985F6 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E050E51F33BAE4005985F6 /* Queue.swift */; };
-		65E2B3CC2022460F0044DCA6 /* MessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2B3CB2022460F0044DCA6 /* MessageController.swift */; };
-		65E2B3CE20224B620044DCA6 /* BannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2B3CD20224B620044DCA6 /* BannerController.swift */; };
-		65E2B3D0202264CB0044DCA6 /* ZapicContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2B3CF202264CB0044DCA6 /* ZapicContact.swift */; };
-		65E2B3D420226B590044DCA6 /* ScriptMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2B3D320226B590044DCA6 /* ScriptMessageHandler.swift */; };
-		65FD63181F97E40C00C5CC8D /* InjectedJS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FD63171F97E40C00C5CC8D /* InjectedJS.swift */; };
+		651BF25C212A719900067178 /* ZQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 651BF25A212A719900067178 /* ZQueue.h */; };
+		651BF25D212A719900067178 /* ZQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 651BF25B212A719900067178 /* ZQueue.m */; };
+		651BF260212B0AE100067178 /* ZPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 651BF25E212B0AE100067178 /* ZPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		651BF261212B0AE100067178 /* ZPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 651BF25F212B0AE100067178 /* ZPlayer.m */; };
+		651BF29D212B55C100067178 /* ZPlayerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 651BF29B212B55C100067178 /* ZPlayerManager.h */; };
+		651BF29E212B55C100067178 /* ZPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 651BF29C212B55C100067178 /* ZPlayerManager.m */; };
+		651BF2AC212B6F8D00067178 /* ZSafariManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 651BF2AA212B6F8D00067178 /* ZSafariManager.h */; };
+		651BF2AD212B6F8D00067178 /* ZSafariManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 651BF2AB212B6F8D00067178 /* ZSafariManager.m */; };
+		65202DD720F7ED8C00BFF532 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65202DCD20F7ED8C00BFF532 /* Zapic.framework */; };
+		65202DDC20F7ED8C00BFF532 /* ZapicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65202DDB20F7ED8C00BFF532 /* ZapicTests.m */; };
+		65202DDE20F7ED8C00BFF532 /* Zapic.h in Headers */ = {isa = PBXBuildFile; fileRef = 65202DD020F7ED8C00BFF532 /* Zapic.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		656754642120CB2A009F8917 /* ZBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 656754622120CB2A009F8917 /* ZBanner.h */; };
+		656754652120CB2A009F8917 /* ZBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 656754632120CB2A009F8917 /* ZBanner.m */; };
+		656754682120DD17009F8917 /* ZGradientBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 656754662120DD17009F8917 /* ZGradientBar.h */; };
+		656754692120DD17009F8917 /* ZGradientBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 656754672120DD17009F8917 /* ZGradientBar.m */; };
+		656F3CE920F7F51600AB8B1A /* Zapic.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CE820F7F51600AB8B1A /* Zapic.m */; };
+		656F3CEC20F7F7A400AB8B1A /* ZLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 656F3CEA20F7F7A400AB8B1A /* ZLog.h */; };
+		656F3CED20F7F7A400AB8B1A /* ZLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CEB20F7F7A400AB8B1A /* ZLog.m */; };
+		656F3CF220F8099500AB8B1A /* ZWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 656F3CF020F8099500AB8B1A /* ZWebViewController.h */; };
+		656F3CF320F8099500AB8B1A /* ZWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CF120F8099500AB8B1A /* ZWebViewController.m */; };
+		656F3CF620F80D1B00AB8B1A /* ZWebApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 656F3CF420F80D1B00AB8B1A /* ZWebApp.h */; };
+		656F3CF720F80D1B00AB8B1A /* ZWebApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CF520F80D1B00AB8B1A /* ZWebApp.m */; };
+		656F3CFA20F8102500AB8B1A /* ZBackgroundView.h in Headers */ = {isa = PBXBuildFile; fileRef = 656F3CF820F8102500AB8B1A /* ZBackgroundView.h */; };
+		656F3CFB20F8102500AB8B1A /* ZBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CF920F8102500AB8B1A /* ZBackgroundView.m */; };
+		656F3CFE20F81AC600AB8B1A /* ZInjectedJS.h in Headers */ = {isa = PBXBuildFile; fileRef = 656F3CFC20F81AC600AB8B1A /* ZInjectedJS.h */; };
+		656F3CFF20F81AC600AB8B1A /* ZInjectedJS.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CFD20F81AC600AB8B1A /* ZInjectedJS.m */; };
+		6576A708212DC4B1000D55B4 /* ZLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6576A706212DC4B1000D55B4 /* ZLoadingView.h */; };
+		6576A709212DC4B1000D55B4 /* ZLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576A707212DC4B1000D55B4 /* ZLoadingView.m */; };
+		6576A70C212DC712000D55B4 /* ZErrorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6576A70A212DC712000D55B4 /* ZErrorView.h */; };
+		6576A70D212DC712000D55B4 /* ZErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576A70B212DC712000D55B4 /* ZErrorView.m */; };
+		6576A710212DCA29000D55B4 /* ZBaseView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6576A70E212DCA29000D55B4 /* ZBaseView.h */; };
+		6576A711212DCA29000D55B4 /* ZBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576A70F212DCA29000D55B4 /* ZBaseView.m */; };
+		6578A660212F052A00A8C4A7 /* ZShareManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6578A65E212F052A00A8C4A7 /* ZShareManager.h */; };
+		6578A661212F052A00A8C4A7 /* ZShareManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6578A65F212F052A00A8C4A7 /* ZShareManager.m */; };
+		6578A664212F0B9D00A8C4A7 /* ZStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = 6578A662212F0B9D00A8C4A7 /* ZStorage.h */; };
+		6578A665212F0B9D00A8C4A7 /* ZStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6578A663212F0B9D00A8C4A7 /* ZStorage.m */; };
+		65904514212F018400AB9D0B /* ZShareMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 65904512212F018400AB9D0B /* ZShareMessage.h */; };
+		65904515212F018400AB9D0B /* ZShareMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 65904513212F018400AB9D0B /* ZShareMessage.m */; };
+		65AB333E211BC02D00D54953 /* ZBannerManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 65AB333C211BC02D00D54953 /* ZBannerManager.h */; };
+		65AB333F211BC02D00D54953 /* ZBannerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65AB333D211BC02D00D54953 /* ZBannerManager.m */; };
+		65C05A7421272FE000BEB7EB /* ZAppStatusMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 65C05A7221272FE000BEB7EB /* ZAppStatusMessage.h */; };
+		65C05A7521272FE000BEB7EB /* ZAppStatusMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C05A7321272FE000BEB7EB /* ZAppStatusMessage.m */; };
+		65C05A7821274BC400BEB7EB /* ZUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 65C05A7621274BC400BEB7EB /* ZUtils.h */; };
+		65C05A7921274BC400BEB7EB /* ZUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C05A7721274BC400BEB7EB /* ZUtils.m */; };
+		65C05A7C2127524100BEB7EB /* ZMessageQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 65C05A7A2127524100BEB7EB /* ZMessageQueue.h */; };
+		65C05A7D2127524100BEB7EB /* ZMessageQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C05A7B2127524100BEB7EB /* ZMessageQueue.m */; };
+		65DBCECF211B448C00E04CB7 /* ZScriptMessageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DBCECD211B448C00E04CB7 /* ZScriptMessageHandler.h */; };
+		65DBCED0211B448C00E04CB7 /* ZScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DBCECE211B448C00E04CB7 /* ZScriptMessageHandler.m */; };
+		65DBCED5211B745600E04CB7 /* ZBannerMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DBCED3211B745600E04CB7 /* ZBannerMessage.h */; };
+		65DBCED6211B745600E04CB7 /* ZBannerMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DBCED4211B745600E04CB7 /* ZBannerMessage.m */; };
+		65E0921C213064D8005B9F6D /* ZImageUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 65E0921A213064D8005B9F6D /* ZImageUtils.h */; };
+		65E0921D213064D8005B9F6D /* ZImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E0921B213064D8005B9F6D /* ZImageUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		654BF0B51F27F48700E0B9BC /* PBXContainerItemProxy */ = {
+		65202DD820F7ED8C00BFF532 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 651AED981F16C49900986F05 /* Project object */;
+			containerPortal = 65202DC420F7ED8C00BFF532 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 651AEDA01F16C49900986F05;
+			remoteGlobalIDString = 65202DCC20F7ED8C00BFF532;
 			remoteInfo = Zapic;
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		65DA7F921F908E4D00C28025 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				65DA7F931F908E6F00C28025 /* Nimble.framework in CopyFiles */,
-				65DA7F941F908E6F00C28025 /* Quick.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		650116051F23141300CED7B2 /* ZapicUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicUtils.swift; sourceTree = "<group>"; };
-		6506AA982069B8F3002D7171 /* ShareMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMenuController.swift; sourceTree = "<group>"; };
-		651AEDA11F16C49900986F05 /* Zapic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zapic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		651AEDA41F16C49900986F05 /* Zapic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zapic.h; sourceTree = "<group>"; };
-		651AEDA51F16C49900986F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		651AEDB11F16C49900986F05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		651AEDBD1F16C4CE00986F05 /* CInterface.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CInterface.mm; sourceTree = "<group>"; };
-		651AEDC21F16C4CE00986F05 /* Zapic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zapic.swift; sourceTree = "<group>"; };
-		651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ZapicAssets.xcassets; sourceTree = "<group>"; };
-		651AEDC41F16C4CE00986F05 /* ZapicColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicColors.swift; sourceTree = "<group>"; };
-		651AEDC51F16C4CE00986F05 /* ZapicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicViewController.swift; sourceTree = "<group>"; };
-		652D214620CBAC060097EE05 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
-		6543B5DE1F96C35500D3767A /* ControllerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerProtocols.swift; sourceTree = "<group>"; };
-		654BF0AF1F27F48700E0B9BC /* ZapicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		654BF0E41F27FA6E00E0B9BC /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
-		654BF0E51F27FA6E00E0B9BC /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
-		6551B0D91FA44B44003CE65F /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
-		6551B0DB1FA44BD9003CE65F /* StringExtensionsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionsSpec.swift; sourceTree = "<group>"; };
-		6578105C1F8F50D900684DD7 /* ZapicUtilsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapicUtilsSpec.swift; sourceTree = "<group>"; };
-		65AC48DA1F1D40CD0026E101 /* ZapicSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicSpec.swift; sourceTree = "<group>"; };
-		65E050CA1F326DCB005985F6 /* ZLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZLog.swift; sourceTree = "<group>"; };
-		65E050D01F331201005985F6 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		65E050D11F331201005985F6 /* OfflineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfflineView.swift; sourceTree = "<group>"; };
-		65E050D21F331201005985F6 /* ZapicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicView.swift; sourceTree = "<group>"; };
-		65E050D31F331201005985F6 /* ZapicWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZapicWebView.swift; sourceTree = "<group>"; };
-		65E050DD1F33150C005985F6 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Banner.swift; path = Zapic/Controllers/Components/Banner.swift; sourceTree = SOURCE_ROOT; };
-		65E050DE1F33150C005985F6 /* BannerContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerContent.swift; path = Zapic/Controllers/Components/BannerContent.swift; sourceTree = SOURCE_ROOT; };
-		65E050E11F331553005985F6 /* ColorBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorBar.swift; sourceTree = "<group>"; };
-		65E050E31F336E0E005985F6 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		65E050E51F33BAE4005985F6 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
-		65E2B3CB2022460F0044DCA6 /* MessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageController.swift; sourceTree = "<group>"; };
-		65E2B3CD20224B620044DCA6 /* BannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerController.swift; sourceTree = "<group>"; };
-		65E2B3CF202264CB0044DCA6 /* ZapicContact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZapicContact.swift; sourceTree = "<group>"; };
-		65E2B3D320226B590044DCA6 /* ScriptMessageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptMessageHandler.swift; sourceTree = "<group>"; };
-		65FD63171F97E40C00C5CC8D /* InjectedJS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedJS.swift; sourceTree = "<group>"; };
+		651BF25A212A719900067178 /* ZQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQueue.h; sourceTree = "<group>"; };
+		651BF25B212A719900067178 /* ZQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZQueue.m; sourceTree = "<group>"; };
+		651BF25E212B0AE100067178 /* ZPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPlayer.h; sourceTree = "<group>"; };
+		651BF25F212B0AE100067178 /* ZPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPlayer.m; sourceTree = "<group>"; };
+		651BF29B212B55C100067178 /* ZPlayerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPlayerManager.h; sourceTree = "<group>"; };
+		651BF29C212B55C100067178 /* ZPlayerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPlayerManager.m; sourceTree = "<group>"; };
+		651BF2AA212B6F8D00067178 /* ZSafariManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZSafariManager.h; sourceTree = "<group>"; };
+		651BF2AB212B6F8D00067178 /* ZSafariManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZSafariManager.m; sourceTree = "<group>"; };
+		65202DCD20F7ED8C00BFF532 /* Zapic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Zapic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65202DD020F7ED8C00BFF532 /* Zapic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zapic.h; sourceTree = "<group>"; };
+		65202DD120F7ED8C00BFF532 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		65202DD620F7ED8C00BFF532 /* ZapicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		65202DDB20F7ED8C00BFF532 /* ZapicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZapicTests.m; sourceTree = "<group>"; };
+		65202DDD20F7ED8C00BFF532 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		656754622120CB2A009F8917 /* ZBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBanner.h; sourceTree = "<group>"; };
+		656754632120CB2A009F8917 /* ZBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBanner.m; sourceTree = "<group>"; };
+		656754662120DD17009F8917 /* ZGradientBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZGradientBar.h; sourceTree = "<group>"; };
+		656754672120DD17009F8917 /* ZGradientBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZGradientBar.m; sourceTree = "<group>"; };
+		656F3CE820F7F51600AB8B1A /* Zapic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Zapic.m; sourceTree = "<group>"; };
+		656F3CEA20F7F7A400AB8B1A /* ZLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLog.h; sourceTree = "<group>"; };
+		656F3CEB20F7F7A400AB8B1A /* ZLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLog.m; sourceTree = "<group>"; };
+		656F3CF020F8099500AB8B1A /* ZWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZWebViewController.h; sourceTree = "<group>"; };
+		656F3CF120F8099500AB8B1A /* ZWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZWebViewController.m; sourceTree = "<group>"; };
+		656F3CF420F80D1B00AB8B1A /* ZWebApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZWebApp.h; sourceTree = "<group>"; };
+		656F3CF520F80D1B00AB8B1A /* ZWebApp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZWebApp.m; sourceTree = "<group>"; };
+		656F3CF820F8102500AB8B1A /* ZBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBackgroundView.h; sourceTree = "<group>"; };
+		656F3CF920F8102500AB8B1A /* ZBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBackgroundView.m; sourceTree = "<group>"; };
+		656F3CFC20F81AC600AB8B1A /* ZInjectedJS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZInjectedJS.h; sourceTree = "<group>"; };
+		656F3CFD20F81AC600AB8B1A /* ZInjectedJS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZInjectedJS.m; sourceTree = "<group>"; };
+		6576A706212DC4B1000D55B4 /* ZLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLoadingView.h; sourceTree = "<group>"; };
+		6576A707212DC4B1000D55B4 /* ZLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLoadingView.m; sourceTree = "<group>"; };
+		6576A70A212DC712000D55B4 /* ZErrorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZErrorView.h; sourceTree = "<group>"; };
+		6576A70B212DC712000D55B4 /* ZErrorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZErrorView.m; sourceTree = "<group>"; };
+		6576A70E212DCA29000D55B4 /* ZBaseView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBaseView.h; sourceTree = "<group>"; };
+		6576A70F212DCA29000D55B4 /* ZBaseView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBaseView.m; sourceTree = "<group>"; };
+		6578A65E212F052A00A8C4A7 /* ZShareManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZShareManager.h; sourceTree = "<group>"; };
+		6578A65F212F052A00A8C4A7 /* ZShareManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZShareManager.m; sourceTree = "<group>"; };
+		6578A662212F0B9D00A8C4A7 /* ZStorage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZStorage.h; sourceTree = "<group>"; };
+		6578A663212F0B9D00A8C4A7 /* ZStorage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZStorage.m; sourceTree = "<group>"; };
+		65904512212F018400AB9D0B /* ZShareMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZShareMessage.h; sourceTree = "<group>"; };
+		65904513212F018400AB9D0B /* ZShareMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZShareMessage.m; sourceTree = "<group>"; };
+		65AB333C211BC02D00D54953 /* ZBannerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBannerManager.h; sourceTree = "<group>"; };
+		65AB333D211BC02D00D54953 /* ZBannerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBannerManager.m; sourceTree = "<group>"; };
+		65C05A7221272FE000BEB7EB /* ZAppStatusMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZAppStatusMessage.h; sourceTree = "<group>"; };
+		65C05A7321272FE000BEB7EB /* ZAppStatusMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZAppStatusMessage.m; sourceTree = "<group>"; };
+		65C05A7621274BC400BEB7EB /* ZUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZUtils.h; sourceTree = "<group>"; };
+		65C05A7721274BC400BEB7EB /* ZUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZUtils.m; sourceTree = "<group>"; };
+		65C05A7A2127524100BEB7EB /* ZMessageQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZMessageQueue.h; sourceTree = "<group>"; };
+		65C05A7B2127524100BEB7EB /* ZMessageQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZMessageQueue.m; sourceTree = "<group>"; };
+		65DBCECD211B448C00E04CB7 /* ZScriptMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZScriptMessageHandler.h; sourceTree = "<group>"; };
+		65DBCECE211B448C00E04CB7 /* ZScriptMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZScriptMessageHandler.m; sourceTree = "<group>"; };
+		65DBCED3211B745600E04CB7 /* ZBannerMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBannerMessage.h; sourceTree = "<group>"; };
+		65DBCED4211B745600E04CB7 /* ZBannerMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBannerMessage.m; sourceTree = "<group>"; };
+		65E0921A213064D8005B9F6D /* ZImageUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZImageUtils.h; sourceTree = "<group>"; };
+		65E0921B213064D8005B9F6D /* ZImageUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZImageUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		651AED9D1F16C49900986F05 /* Frameworks */ = {
+		65202DC920F7ED8C00BFF532 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		654BF0AC1F27F48700E0B9BC /* Frameworks */ = {
+		65202DD320F7ED8C00BFF532 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				654BF0E61F27FA6E00E0B9BC /* Nimble.framework in Frameworks */,
-				654BF0E71F27FA6E00E0B9BC /* Quick.framework in Frameworks */,
-				654BF0B41F27F48700E0B9BC /* Zapic.framework in Frameworks */,
+				65202DD720F7ED8C00BFF532 /* Zapic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		651AED971F16C49900986F05 = {
+		65202DC320F7ED8C00BFF532 = {
 			isa = PBXGroup;
 			children = (
-				651AEDA31F16C49900986F05 /* Zapic */,
-				651AEDAE1F16C49900986F05 /* ZapicTests */,
-				651AEDA21F16C49900986F05 /* Products */,
-				651AEDD11F16C7AD00986F05 /* Frameworks */,
+				65DBCED2211B739400E04CB7 /* Controllers */,
+				65DBCED1211B738100E04CB7 /* Models */,
+				65202DCE20F7ED8C00BFF532 /* Products */,
+				656F3CEE20F7F7EC00AB8B1A /* Utilities */,
+				656F3CEF20F8095900AB8B1A /* Views */,
+				65202DCF20F7ED8C00BFF532 /* Zapic */,
+				65202DDA20F7ED8C00BFF532 /* ZapicTests */,
 			);
 			sourceTree = "<group>";
 		};
-		651AEDA21F16C49900986F05 /* Products */ = {
+		65202DCE20F7ED8C00BFF532 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				651AEDA11F16C49900986F05 /* Zapic.framework */,
-				654BF0AF1F27F48700E0B9BC /* ZapicTests.xctest */,
+				65202DCD20F7ED8C00BFF532 /* Zapic.framework */,
+				65202DD620F7ED8C00BFF532 /* ZapicTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		651AEDA31F16C49900986F05 /* Zapic */ = {
+		65202DCF20F7ED8C00BFF532 /* Zapic */ = {
 			isa = PBXGroup;
 			children = (
-				651AEDA51F16C49900986F05 /* Info.plist */,
-				6543B5DE1F96C35500D3767A /* ControllerProtocols.swift */,
-				651AEDC31F16C4CE00986F05 /* ZapicAssets.xcassets */,
-				6553A3E4202142720082B7B8 /* API */,
-				6553A3E32021418F0082B7B8 /* Common */,
-				6553A3E2202141600082B7B8 /* Controllers */,
-				6553A3E120213FB40082B7B8 /* Models */,
+				65202DD020F7ED8C00BFF532 /* Zapic.h */,
+				656F3CE820F7F51600AB8B1A /* Zapic.m */,
+				65202DD120F7ED8C00BFF532 /* Info.plist */,
 			);
 			path = Zapic;
 			sourceTree = "<group>";
 		};
-		651AEDAE1F16C49900986F05 /* ZapicTests */ = {
+		65202DDA20F7ED8C00BFF532 /* ZapicTests */ = {
 			isa = PBXGroup;
 			children = (
-				65AC48DA1F1D40CD0026E101 /* ZapicSpec.swift */,
-				651AEDB11F16C49900986F05 /* Info.plist */,
-				6578105C1F8F50D900684DD7 /* ZapicUtilsSpec.swift */,
-				6551B0DB1FA44BD9003CE65F /* StringExtensionsSpec.swift */,
+				65202DDB20F7ED8C00BFF532 /* ZapicTests.m */,
+				65202DDD20F7ED8C00BFF532 /* Info.plist */,
 			);
 			path = ZapicTests;
 			sourceTree = "<group>";
 		};
-		651AEDD11F16C7AD00986F05 /* Frameworks */ = {
+		656F3CEE20F7F7EC00AB8B1A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				654BF0E41F27FA6E00E0B9BC /* Nimble.framework */,
-				654BF0E51F27FA6E00E0B9BC /* Quick.framework */,
+				656F3CEA20F7F7A400AB8B1A /* ZLog.h */,
+				656F3CEB20F7F7A400AB8B1A /* ZLog.m */,
+				656F3CFC20F81AC600AB8B1A /* ZInjectedJS.h */,
+				656F3CFD20F81AC600AB8B1A /* ZInjectedJS.m */,
+				65C05A7621274BC400BEB7EB /* ZUtils.h */,
+				65C05A7721274BC400BEB7EB /* ZUtils.m */,
+				651BF25A212A719900067178 /* ZQueue.h */,
+				651BF25B212A719900067178 /* ZQueue.m */,
+				6578A662212F0B9D00A8C4A7 /* ZStorage.h */,
+				6578A663212F0B9D00A8C4A7 /* ZStorage.m */,
+				65E0921A213064D8005B9F6D /* ZImageUtils.h */,
+				65E0921B213064D8005B9F6D /* ZImageUtils.m */,
 			);
-			name = Frameworks;
+			name = Utilities;
+			path = Zapic/Utilities;
 			sourceTree = "<group>";
 		};
-		6553A3E120213FB40082B7B8 /* Models */ = {
+		656F3CEF20F8095900AB8B1A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				65E2B3CF202264CB0044DCA6 /* ZapicContact.swift */,
+				656F3CF820F8102500AB8B1A /* ZBackgroundView.h */,
+				656F3CF920F8102500AB8B1A /* ZBackgroundView.m */,
+				656754622120CB2A009F8917 /* ZBanner.h */,
+				656754632120CB2A009F8917 /* ZBanner.m */,
+				656754662120DD17009F8917 /* ZGradientBar.h */,
+				656754672120DD17009F8917 /* ZGradientBar.m */,
+				656F3CF420F80D1B00AB8B1A /* ZWebApp.h */,
+				656F3CF520F80D1B00AB8B1A /* ZWebApp.m */,
+				6576A706212DC4B1000D55B4 /* ZLoadingView.h */,
+				6576A707212DC4B1000D55B4 /* ZLoadingView.m */,
+				6576A70A212DC712000D55B4 /* ZErrorView.h */,
+				6576A70B212DC712000D55B4 /* ZErrorView.m */,
+				6576A70E212DCA29000D55B4 /* ZBaseView.h */,
+				6576A70F212DCA29000D55B4 /* ZBaseView.m */,
 			);
-			path = Models;
+			name = Views;
+			path = Zapic/Views;
 			sourceTree = "<group>";
 		};
-		6553A3E2202141600082B7B8 /* Controllers */ = {
+		65DBCED1211B738100E04CB7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				65E2B3CD20224B620044DCA6 /* BannerController.swift */,
-				65E2B3CB2022460F0044DCA6 /* MessageController.swift */,
-				65E2B3D320226B590044DCA6 /* ScriptMessageHandler.swift */,
-				6506AA982069B8F3002D7171 /* ShareMenuController.swift */,
-				651AEDC51F16C4CE00986F05 /* ZapicViewController.swift */,
-				65E2B3DD202278170044DCA6 /* Components */,
-				6553A3E6202148EF0082B7B8 /* Views */,
+				65DBCED3211B745600E04CB7 /* ZBannerMessage.h */,
+				65DBCED4211B745600E04CB7 /* ZBannerMessage.m */,
+				65C05A7221272FE000BEB7EB /* ZAppStatusMessage.h */,
+				65C05A7321272FE000BEB7EB /* ZAppStatusMessage.m */,
+				651BF25E212B0AE100067178 /* ZPlayer.h */,
+				651BF25F212B0AE100067178 /* ZPlayer.m */,
+				65904512212F018400AB9D0B /* ZShareMessage.h */,
+				65904513212F018400AB9D0B /* ZShareMessage.m */,
 			);
-			path = Controllers;
+			name = Models;
+			path = Zapic/Models;
 			sourceTree = "<group>";
 		};
-		6553A3E32021418F0082B7B8 /* Common */ = {
+		65DBCED2211B739400E04CB7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				651AEDC41F16C4CE00986F05 /* ZapicColors.swift */,
-				650116051F23141300CED7B2 /* ZapicUtils.swift */,
-				65E050CA1F326DCB005985F6 /* ZLog.swift */,
-				65E050E31F336E0E005985F6 /* Extensions.swift */,
-				65E050E51F33BAE4005985F6 /* Queue.swift */,
-				6551B0D91FA44B44003CE65F /* StringExtensions.swift */,
-				652D214620CBAC060097EE05 /* Storage.swift */,
+				656F3CF020F8099500AB8B1A /* ZWebViewController.h */,
+				656F3CF120F8099500AB8B1A /* ZWebViewController.m */,
+				65DBCECD211B448C00E04CB7 /* ZScriptMessageHandler.h */,
+				65DBCECE211B448C00E04CB7 /* ZScriptMessageHandler.m */,
+				65AB333C211BC02D00D54953 /* ZBannerManager.h */,
+				65AB333D211BC02D00D54953 /* ZBannerManager.m */,
+				65C05A7A2127524100BEB7EB /* ZMessageQueue.h */,
+				65C05A7B2127524100BEB7EB /* ZMessageQueue.m */,
+				651BF29B212B55C100067178 /* ZPlayerManager.h */,
+				651BF29C212B55C100067178 /* ZPlayerManager.m */,
+				651BF2AA212B6F8D00067178 /* ZSafariManager.h */,
+				651BF2AB212B6F8D00067178 /* ZSafariManager.m */,
+				6578A65E212F052A00A8C4A7 /* ZShareManager.h */,
+				6578A65F212F052A00A8C4A7 /* ZShareManager.m */,
 			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		6553A3E4202142720082B7B8 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				651AEDA41F16C49900986F05 /* Zapic.h */,
-				651AEDBD1F16C4CE00986F05 /* CInterface.mm */,
-				651AEDC21F16C4CE00986F05 /* Zapic.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
-		6553A3E5202142D60082B7B8 /* Webview */ = {
-			isa = PBXGroup;
-			children = (
-				65E050D31F331201005985F6 /* ZapicWebView.swift */,
-				65FD63171F97E40C00C5CC8D /* InjectedJS.swift */,
-			);
-			path = Webview;
-			sourceTree = "<group>";
-		};
-		6553A3E6202148EF0082B7B8 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				6553A3E7202148F80082B7B8 /* Loading */,
-				6553A3E5202142D60082B7B8 /* Webview */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		6553A3E7202148F80082B7B8 /* Loading */ = {
-			isa = PBXGroup;
-			children = (
-				65E050D01F331201005985F6 /* LoadingView.swift */,
-				65E050D11F331201005985F6 /* OfflineView.swift */,
-				65E050D21F331201005985F6 /* ZapicView.swift */,
-			);
-			path = Loading;
-			sourceTree = "<group>";
-		};
-		65E2B3DD202278170044DCA6 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				65E050E11F331553005985F6 /* ColorBar.swift */,
-				65E050DD1F33150C005985F6 /* Banner.swift */,
-				65E050DE1F33150C005985F6 /* BannerContent.swift */,
-			);
-			path = Components;
+			name = Controllers;
+			path = Zapic/Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		651AED9E1F16C49900986F05 /* Headers */ = {
+		65202DCA20F7ED8C00BFF532 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				651AEDB21F16C49900986F05 /* Zapic.h in Headers */,
+				656F3CF620F80D1B00AB8B1A /* ZWebApp.h in Headers */,
+				651BF260212B0AE100067178 /* ZPlayer.h in Headers */,
+				656F3CEC20F7F7A400AB8B1A /* ZLog.h in Headers */,
+				656F3CFE20F81AC600AB8B1A /* ZInjectedJS.h in Headers */,
+				65DBCED5211B745600E04CB7 /* ZBannerMessage.h in Headers */,
+				651BF29D212B55C100067178 /* ZPlayerManager.h in Headers */,
+				65C05A7821274BC400BEB7EB /* ZUtils.h in Headers */,
+				6578A664212F0B9D00A8C4A7 /* ZStorage.h in Headers */,
+				651BF2AC212B6F8D00067178 /* ZSafariManager.h in Headers */,
+				65C05A7C2127524100BEB7EB /* ZMessageQueue.h in Headers */,
+				65904514212F018400AB9D0B /* ZShareMessage.h in Headers */,
+				6576A70C212DC712000D55B4 /* ZErrorView.h in Headers */,
+				65E0921C213064D8005B9F6D /* ZImageUtils.h in Headers */,
+				6578A660212F052A00A8C4A7 /* ZShareManager.h in Headers */,
+				656F3CFA20F8102500AB8B1A /* ZBackgroundView.h in Headers */,
+				65C05A7421272FE000BEB7EB /* ZAppStatusMessage.h in Headers */,
+				65AB333E211BC02D00D54953 /* ZBannerManager.h in Headers */,
+				65202DDE20F7ED8C00BFF532 /* Zapic.h in Headers */,
+				6576A708212DC4B1000D55B4 /* ZLoadingView.h in Headers */,
+				6576A710212DCA29000D55B4 /* ZBaseView.h in Headers */,
+				656F3CF220F8099500AB8B1A /* ZWebViewController.h in Headers */,
+				651BF25C212A719900067178 /* ZQueue.h in Headers */,
+				656754682120DD17009F8917 /* ZGradientBar.h in Headers */,
+				656754642120CB2A009F8917 /* ZBanner.h in Headers */,
+				65DBCECF211B448C00E04CB7 /* ZScriptMessageHandler.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		651AEDA01F16C49900986F05 /* Zapic */ = {
+		65202DCC20F7ED8C00BFF532 /* Zapic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 651AEDB51F16C49900986F05 /* Build configuration list for PBXNativeTarget "Zapic" */;
+			buildConfigurationList = 65202DE120F7ED8C00BFF532 /* Build configuration list for PBXNativeTarget "Zapic" */;
 			buildPhases = (
-				651AED9C1F16C49900986F05 /* Sources */,
-				651AED9D1F16C49900986F05 /* Frameworks */,
-				651AED9E1F16C49900986F05 /* Headers */,
-				651AED9F1F16C49900986F05 /* Resources */,
-				65E050CC1F327877005985F6 /* ShellScript */,
+				65202DC820F7ED8C00BFF532 /* Sources */,
+				65202DC920F7ED8C00BFF532 /* Frameworks */,
+				65202DCA20F7ED8C00BFF532 /* Headers */,
+				65202DCB20F7ED8C00BFF532 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -293,80 +322,72 @@
 			);
 			name = Zapic;
 			productName = Zapic;
-			productReference = 651AEDA11F16C49900986F05 /* Zapic.framework */;
+			productReference = 65202DCD20F7ED8C00BFF532 /* Zapic.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		654BF0AE1F27F48700E0B9BC /* ZapicTests */ = {
+		65202DD520F7ED8C00BFF532 /* ZapicTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 654BF0B71F27F48700E0B9BC /* Build configuration list for PBXNativeTarget "ZapicTests" */;
+			buildConfigurationList = 65202DE420F7ED8C00BFF532 /* Build configuration list for PBXNativeTarget "ZapicTests" */;
 			buildPhases = (
-				654BF0AB1F27F48700E0B9BC /* Sources */,
-				654BF0AC1F27F48700E0B9BC /* Frameworks */,
-				654BF0AD1F27F48700E0B9BC /* Resources */,
-				65DA7F921F908E4D00C28025 /* CopyFiles */,
+				6D4F17675DBABE55161D75CE /* [CP] Check Pods Manifest.lock */,
+				65202DD220F7ED8C00BFF532 /* Sources */,
+				65202DD320F7ED8C00BFF532 /* Frameworks */,
+				65202DD420F7ED8C00BFF532 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				654BF0B61F27F48700E0B9BC /* PBXTargetDependency */,
+				65202DD920F7ED8C00BFF532 /* PBXTargetDependency */,
 			);
 			name = ZapicTests;
 			productName = ZapicTests;
-			productReference = 654BF0AF1F27F48700E0B9BC /* ZapicTests.xctest */;
+			productReference = 65202DD620F7ED8C00BFF532 /* ZapicTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		651AED981F16C49900986F05 /* Project object */ = {
+		65202DC420F7ED8C00BFF532 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0930;
-				ORGANIZATIONNAME = zapic;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = Zapic;
 				TargetAttributes = {
-					651AEDA01F16C49900986F05 = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 24QXGCES3E;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
+					65202DCC20F7ED8C00BFF532 = {
+						CreatedOnToolsVersion = 9.4.1;
 					};
-					654BF0AE1F27F48700E0B9BC = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 24QXGCES3E;
-						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
+					65202DD520F7ED8C00BFF532 = {
+						CreatedOnToolsVersion = 9.4.1;
 					};
 				};
 			};
-			buildConfigurationList = 651AED9B1F16C49900986F05 /* Build configuration list for PBXProject "Zapic" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			buildConfigurationList = 65202DC720F7ED8C00BFF532 /* Build configuration list for PBXProject "Zapic" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = 651AED971F16C49900986F05;
-			productRefGroup = 651AEDA21F16C49900986F05 /* Products */;
+			mainGroup = 65202DC320F7ED8C00BFF532;
+			productRefGroup = 65202DCE20F7ED8C00BFF532 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				651AEDA01F16C49900986F05 /* Zapic */,
-				654BF0AE1F27F48700E0B9BC /* ZapicTests */,
+				65202DCC20F7ED8C00BFF532 /* Zapic */,
+				65202DD520F7ED8C00BFF532 /* ZapicTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		651AED9F1F16C49900986F05 /* Resources */ = {
+		65202DCB20F7ED8C00BFF532 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				651AEDCE1F16C4CE00986F05 /* ZapicAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		654BF0AD1F27F48700E0B9BC /* Resources */ = {
+		65202DD420F7ED8C00BFF532 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -376,84 +397,89 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		65E050CC1F327877005985F6 /* ShellScript */ = {
+		6D4F17675DBABE55161D75CE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZapicTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		651AED9C1F16C49900986F05 /* Sources */ = {
+		65202DC820F7ED8C00BFF532 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65E2B3D0202264CB0044DCA6 /* ZapicContact.swift in Sources */,
-				65E050D51F331201005985F6 /* OfflineView.swift in Sources */,
-				6506AA992069B8F3002D7171 /* ShareMenuController.swift in Sources */,
-				65FD63181F97E40C00C5CC8D /* InjectedJS.swift in Sources */,
-				65E050DF1F33150C005985F6 /* Banner.swift in Sources */,
-				652D214720CBAC060097EE05 /* Storage.swift in Sources */,
-				6551B0DA1FA44B44003CE65F /* StringExtensions.swift in Sources */,
-				65E050D71F331201005985F6 /* ZapicWebView.swift in Sources */,
-				65E2B3D420226B590044DCA6 /* ScriptMessageHandler.swift in Sources */,
-				651AEDCD1F16C4CE00986F05 /* Zapic.swift in Sources */,
-				65E050D41F331201005985F6 /* LoadingView.swift in Sources */,
-				65E050CB1F326DCB005985F6 /* ZLog.swift in Sources */,
-				65E2B3CC2022460F0044DCA6 /* MessageController.swift in Sources */,
-				65E050E01F33150C005985F6 /* BannerContent.swift in Sources */,
-				650116061F23141300CED7B2 /* ZapicUtils.swift in Sources */,
-				651AEDD01F16C4CE00986F05 /* ZapicViewController.swift in Sources */,
-				6543B5DF1F96C35500D3767A /* ControllerProtocols.swift in Sources */,
-				65E050E41F336E0E005985F6 /* Extensions.swift in Sources */,
-				651AEDCF1F16C4CE00986F05 /* ZapicColors.swift in Sources */,
-				65E2B3CE20224B620044DCA6 /* BannerController.swift in Sources */,
-				65E050D61F331201005985F6 /* ZapicView.swift in Sources */,
-				65E050E61F33BAE4005985F6 /* Queue.swift in Sources */,
-				651AEDC81F16C4CE00986F05 /* CInterface.mm in Sources */,
-				65E050E21F331553005985F6 /* ColorBar.swift in Sources */,
+				65DBCED6211B745600E04CB7 /* ZBannerMessage.m in Sources */,
+				656F3CF320F8099500AB8B1A /* ZWebViewController.m in Sources */,
+				65E0921D213064D8005B9F6D /* ZImageUtils.m in Sources */,
+				651BF2AD212B6F8D00067178 /* ZSafariManager.m in Sources */,
+				65C05A7521272FE000BEB7EB /* ZAppStatusMessage.m in Sources */,
+				6578A661212F052A00A8C4A7 /* ZShareManager.m in Sources */,
+				65C05A7921274BC400BEB7EB /* ZUtils.m in Sources */,
+				65C05A7D2127524100BEB7EB /* ZMessageQueue.m in Sources */,
+				65AB333F211BC02D00D54953 /* ZBannerManager.m in Sources */,
+				651BF25D212A719900067178 /* ZQueue.m in Sources */,
+				656F3CF720F80D1B00AB8B1A /* ZWebApp.m in Sources */,
+				656F3CFB20F8102500AB8B1A /* ZBackgroundView.m in Sources */,
+				6576A709212DC4B1000D55B4 /* ZLoadingView.m in Sources */,
+				65DBCED0211B448C00E04CB7 /* ZScriptMessageHandler.m in Sources */,
+				6576A711212DCA29000D55B4 /* ZBaseView.m in Sources */,
+				656754692120DD17009F8917 /* ZGradientBar.m in Sources */,
+				651BF261212B0AE100067178 /* ZPlayer.m in Sources */,
+				6576A70D212DC712000D55B4 /* ZErrorView.m in Sources */,
+				656F3CE920F7F51600AB8B1A /* Zapic.m in Sources */,
+				656F3CED20F7F7A400AB8B1A /* ZLog.m in Sources */,
+				656754652120CB2A009F8917 /* ZBanner.m in Sources */,
+				6578A665212F0B9D00A8C4A7 /* ZStorage.m in Sources */,
+				651BF29E212B55C100067178 /* ZPlayerManager.m in Sources */,
+				65904515212F018400AB9D0B /* ZShareMessage.m in Sources */,
+				656F3CFF20F81AC600AB8B1A /* ZInjectedJS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		654BF0AB1F27F48700E0B9BC /* Sources */ = {
+		65202DD220F7ED8C00BFF532 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6551B0DC1FA44BD9003CE65F /* StringExtensionsSpec.swift in Sources */,
-				6578105D1F8F50D900684DD7 /* ZapicUtilsSpec.swift in Sources */,
-				654BF0E91F27FB9400E0B9BC /* ZapicSpec.swift in Sources */,
+				65202DDC20F7ED8C00BFF532 /* ZapicTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		654BF0B61F27F48700E0B9BC /* PBXTargetDependency */ = {
+		65202DD920F7ED8C00BFF532 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 651AEDA01F16C49900986F05 /* Zapic */;
-			targetProxy = 654BF0B51F27F48700E0B9BC /* PBXContainerItemProxy */;
+			target = 65202DCC20F7ED8C00BFF532 /* Zapic */;
+			targetProxy = 65202DD820F7ED8C00BFF532 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		651AEDB31F16C49900986F05 /* Debug */ = {
+		65202DDF20F7ED8C00BFF532 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -472,15 +498,16 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -494,28 +521,26 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		651AEDB41F16C49900986F05 /* Release */ = {
+		65202DE020F7ED8C00BFF532 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -534,15 +559,16 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -550,136 +576,130 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		651AEDB61F16C49900986F05 /* Debug */ = {
+		65202DE220F7ED8C00BFF532 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 24QXGCES3E;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Zapic/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zapic.Zapic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		651AEDB71F16C49900986F05 /* Release */ = {
+		65202DE320F7ED8C00BFF532 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 24QXGCES3E;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = Zapic/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zapic.Zapic;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = NO;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		654BF0B81F27F48700E0B9BC /* Debug */ = {
+		65202DE520F7ED8C00BFF532 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24QXGCES3E;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = ZapicTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zapic.ZapicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		654BF0B91F27F48700E0B9BC /* Release */ = {
+		65202DE620F7ED8C00BFF532 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 24QXGCES3E;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SRCROOT)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = ZapicTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zapic.ZapicTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		651AED9B1F16C49900986F05 /* Build configuration list for PBXProject "Zapic" */ = {
+		65202DC720F7ED8C00BFF532 /* Build configuration list for PBXProject "Zapic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				651AEDB31F16C49900986F05 /* Debug */,
-				651AEDB41F16C49900986F05 /* Release */,
+				65202DDF20F7ED8C00BFF532 /* Debug */,
+				65202DE020F7ED8C00BFF532 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		651AEDB51F16C49900986F05 /* Build configuration list for PBXNativeTarget "Zapic" */ = {
+		65202DE120F7ED8C00BFF532 /* Build configuration list for PBXNativeTarget "Zapic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				651AEDB61F16C49900986F05 /* Debug */,
-				651AEDB71F16C49900986F05 /* Release */,
+				65202DE220F7ED8C00BFF532 /* Debug */,
+				65202DE320F7ED8C00BFF532 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		654BF0B71F27F48700E0B9BC /* Build configuration list for PBXNativeTarget "ZapicTests" */ = {
+		65202DE420F7ED8C00BFF532 /* Build configuration list for PBXNativeTarget "ZapicTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				654BF0B81F27F48700E0B9BC /* Debug */,
-				654BF0B91F27F48700E0B9BC /* Release */,
+				65202DE520F7ED8C00BFF532 /* Debug */,
+				65202DE620F7ED8C00BFF532 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 651AED981F16C49900986F05 /* Project object */;
+	rootObject = 65202DC420F7ED8C00BFF532 /* Project object */;
 }
