@@ -26,10 +26,6 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        //Bootstrap the required frameworks
-        [ZUtils loadSafariServices];
-        [ZUtils loadWebKit];
-
         _safariManager = [[ZSafariManager alloc] initWithController:self];
         _shareManager = [[ZShareManager alloc] initWithController:self];
 

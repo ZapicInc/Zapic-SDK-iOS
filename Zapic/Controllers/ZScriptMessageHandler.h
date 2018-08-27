@@ -3,10 +3,11 @@
 #import "ZBannerMessage.h"
 #import "ZPlayer.h"
 #import "ZShareMessage.h"
+@import WebKit;
 
 static NSString *const ScriptMethodName = @"dispatch";
 
-@interface ZScriptMessageHandler : NSObject
+@interface ZScriptMessageHandler : NSObject <WKScriptMessageHandler>
 - (void)userContentController:(id)userContentController didReceiveScriptMessage:(id)message;
 - (void)addAppStatusHandler:(void (^)(ZAppStatusMessage *))handler;
 - (void)addBannerHandler:(void (^)(ZBannerMessage *))handler;
