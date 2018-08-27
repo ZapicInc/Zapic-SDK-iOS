@@ -1,4 +1,4 @@
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "ZSafariManager.h"
 #import "ZScriptMessageHandler.h"
 

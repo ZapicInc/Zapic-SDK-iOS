@@ -1,4 +1,4 @@
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "ZShareMessage.h"
 
 @interface ZShareManager : NSObject

@@ -1,4 +1,4 @@
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface ZPlayer : NSObject
 @property (readonly) NSString *playerId;

@@ -1,5 +1,5 @@
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKIt.h>
+@import Foundation;
+@import UIKit;
 
 @interface ZImageUtils : NSObject
 + (UIImage *)getZapicLogo;

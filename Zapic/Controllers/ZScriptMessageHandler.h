@@ -1,9 +1,11 @@
-#import <Foundation/Foundation.h>
+@import Foundation;
+@import WebKit;
+
 #import "ZAppStatusMessage.h"
 #import "ZBannerMessage.h"
 #import "ZPlayer.h"
 #import "ZShareMessage.h"
-@import WebKit;
+
 
 static NSString *const ScriptMethodName = @"dispatch";
 

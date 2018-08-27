@@ -1,7 +1,8 @@
-#import <UIKit/UIKit.h>
 #import "ZBackgroundView.h"
 #import "ZPlayerManager.h"
 #import "ZWebApp.h"
+
+@import UIKit;
 
 typedef NS_ENUM(NSUInteger, ZWebViewStatus) {
     ZWebViewStatusNone,

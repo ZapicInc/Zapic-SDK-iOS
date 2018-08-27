@@ -1,4 +1,4 @@
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "ZPlayer.h"
 
 @interface Zapic : NSObject

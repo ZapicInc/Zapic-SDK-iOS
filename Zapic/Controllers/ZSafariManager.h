@@ -1,12 +1,4 @@
-//
-//  ZSafariManager.h
-//  Zapic
-//
-//  Created by Daniel Sarfati on 8/20/18.
-//  Copyright © 2018 Zapic. All rights reserved.
-//a
-
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface ZSafariManager : NSObject
 
