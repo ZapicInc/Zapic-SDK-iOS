@@ -12,7 +12,7 @@
 		651BF279212B127600067178 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651BF277212B127600067178 /* Main.storyboard */; };
 		651BF27B212B127700067178 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 651BF27A212B127700067178 /* Assets.xcassets */; };
 		651BF27E212B127700067178 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651BF27C212B127700067178 /* LaunchScreen.storyboard */; };
-		6578A668212F2FDE00A8C4A7 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6578A667212F2FDE00A8C4A7 /* Zapic.framework */; };
+		657132B12135A6C700F79C70 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657132B02135A6C700F79C70 /* Zapic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +23,7 @@
 		651BF27A212B127700067178 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		651BF27D212B127700067178 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		651BF27F212B127700067178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		657132B02135A6C700F79C70 /* Zapic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Zapic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6578A667212F2FDE00A8C4A7 /* Zapic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Zapic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -31,7 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6578A668212F2FDE00A8C4A7 /* Zapic.framework in Frameworks */,
+				657132B12135A6C700F79C70 /* Zapic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +72,7 @@
 		6578A666212F2FDE00A8C4A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				657132B02135A6C700F79C70 /* Zapic.framework */,
 				6578A667212F2FDE00A8C4A7 /* Zapic.framework */,
 			);
 			name = Frameworks;
