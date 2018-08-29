@@ -22,7 +22,7 @@
 
 - (void) viewDidAppear:(BOOL)animated{
   //  [Zapic performSelector:@selector(showDefaultPage) withObject:nil afterDelay:3];
-    [Zapic showDefaultPage];
+//    [Zapic showDefaultPage];
 //  [Zapic submitEvent:@{ @"Distance": @147,@"Score":@22}];
 }
 
