@@ -3,10 +3,6 @@
 #import "ZSelectorHelpers.h"
 #import "Zapic.h"
 
-@interface ZapicAppDelegate ()
-
-@end
-
 @implementation ZapicAppDelegate
 
 //Holds the UIApplicationDelegate
@@ -50,7 +46,7 @@ static NSArray *delegateSubclasses = nil;
 - (BOOL)zapicApplication:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
     [ZLog info:@"Application openedUrl: %@", url.absoluteString];
 
-    [self handleInteraction:url.absoluteString interactionType:@"deepLink" sourceApp:[options objectForKey:UIApplicationOpenURLOptionsSourceApplicationKey]];
+    [ZapicAppDelegate handleInteraction:url.absoluteString interactionType:@"deepLink" sourceApp:[options objectForKey:UIApplicationOpenURLOptionsSourceApplicationKey]];
 
     if ([self respondsToSelector:@selector(zapicApplication:openURL:options:)]) {
         return [self zapicApplication:app openURL:url options:options];
@@ -72,7 +68,7 @@ static NSArray *delegateSubclasses = nil;
     BOOL handled = NO;
 
     if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-        [self handleInteraction:userActivity.webpageURL.absoluteString interactionType:@"universalLink" sourceApp:nil];
+        [ZapicAppDelegate handleInteraction:userActivity.webpageURL.absoluteString interactionType:@"universalLink" sourceApp:nil];
         handled = YES;
     }
 
@@ -90,7 +86,7 @@ static NSArray *delegateSubclasses = nil;
  @param interactionType The type of interaction.
  @param sourceApp (Optional) The app that triggered the interaction.
  */
-- (void)handleInteraction:(nonnull NSString *)urlString interactionType:(nonnull NSString *)interactionType sourceApp:(nullable NSString *)sourceApp {
++ (void)handleInteraction:(nonnull NSString *)urlString interactionType:(nonnull NSString *)interactionType sourceApp:(nullable NSString *)sourceApp {
     NSDictionary *data = @{
         @"url": urlString,
         @"sourceApp": sourceApp,
