@@ -1,5 +1,5 @@
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@import Foundation;
+@import UIKit;
 
 @interface ZShareMessage : NSObject
 @property (readonly, strong) NSString *text;

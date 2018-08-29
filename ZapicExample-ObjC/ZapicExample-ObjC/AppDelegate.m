@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "Zapic/Zapic.h"
+@import Zapic;
 
 @interface AppDelegate ()
 

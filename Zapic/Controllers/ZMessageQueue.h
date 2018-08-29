@@ -1,4 +1,4 @@
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "ZWebApp.h"
 
 typedef NS_ENUM(NSInteger, ZWebFunction) {

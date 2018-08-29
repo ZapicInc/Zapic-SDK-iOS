@@ -1,4 +1,4 @@
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "Zapic.h"
 #import "ZLog.h"
 #import "ZWebViewController.h"

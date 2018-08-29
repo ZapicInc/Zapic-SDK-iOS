@@ -1,8 +1,10 @@
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "ZSafariManager.h"
 #import "ZScriptMessageHandler.h"
 
-@interface ZWebApp : UIView <UIScrollViewDelegate>
+@import WebKit;
+
+@interface ZWebApp : UIView <UIScrollViewDelegate, WKNavigationDelegate>
 @property ZSafariManager *safariManager;
 @property (readonly) BOOL errorLoading;
 /**

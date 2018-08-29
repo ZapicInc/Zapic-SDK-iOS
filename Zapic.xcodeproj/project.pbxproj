@@ -33,6 +33,7 @@
 		656F3CFB20F8102500AB8B1A /* ZBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CF920F8102500AB8B1A /* ZBackgroundView.m */; };
 		656F3CFE20F81AC600AB8B1A /* ZInjectedJS.h in Headers */ = {isa = PBXBuildFile; fileRef = 656F3CFC20F81AC600AB8B1A /* ZInjectedJS.h */; };
 		656F3CFF20F81AC600AB8B1A /* ZInjectedJS.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CFD20F81AC600AB8B1A /* ZInjectedJS.m */; };
+		657132B32135A79C00F79C70 /* Zapic.h in Headers */ = {isa = PBXBuildFile; fileRef = 657132B22135A79C00F79C70 /* Zapic.h */; };
 		6576A708212DC4B1000D55B4 /* ZLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6576A706212DC4B1000D55B4 /* ZLoadingView.h */; };
 		6576A709212DC4B1000D55B4 /* ZLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576A707212DC4B1000D55B4 /* ZLoadingView.m */; };
 		6576A70C212DC712000D55B4 /* ZErrorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6576A70A212DC712000D55B4 /* ZErrorView.h */; };
@@ -101,6 +102,8 @@
 		656F3CF920F8102500AB8B1A /* ZBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBackgroundView.m; sourceTree = "<group>"; };
 		656F3CFC20F81AC600AB8B1A /* ZInjectedJS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZInjectedJS.h; sourceTree = "<group>"; };
 		656F3CFD20F81AC600AB8B1A /* ZInjectedJS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZInjectedJS.m; sourceTree = "<group>"; };
+		657132AF2135A67E00F79C70 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		657132B22135A79C00F79C70 /* Zapic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zapic.h; sourceTree = "<group>"; };
 		6576A706212DC4B1000D55B4 /* ZLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLoadingView.h; sourceTree = "<group>"; };
 		6576A707212DC4B1000D55B4 /* ZLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLoadingView.m; sourceTree = "<group>"; };
 		6576A70A212DC712000D55B4 /* ZErrorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZErrorView.h; sourceTree = "<group>"; };
@@ -151,6 +154,7 @@
 		65202DC320F7ED8C00BFF532 = {
 			isa = PBXGroup;
 			children = (
+				657132AE2135A66D00F79C70 /* Modules */,
 				65DBCED2211B739400E04CB7 /* Controllers */,
 				65DBCED1211B738100E04CB7 /* Models */,
 				65202DCE20F7ED8C00BFF532 /* Products */,
@@ -173,9 +177,8 @@
 		65202DCF20F7ED8C00BFF532 /* Zapic */ = {
 			isa = PBXGroup;
 			children = (
-				65202DD020F7ED8C00BFF532 /* Zapic.h */,
-				656F3CE820F7F51600AB8B1A /* Zapic.m */,
 				65202DD120F7ED8C00BFF532 /* Info.plist */,
+				657132B22135A79C00F79C70 /* Zapic.h */,
 			);
 			path = Zapic;
 			sourceTree = "<group>";
@@ -231,6 +234,14 @@
 			path = Zapic/Views;
 			sourceTree = "<group>";
 		};
+		657132AE2135A66D00F79C70 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				657132AF2135A67E00F79C70 /* module.modulemap */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		65DBCED1211B738100E04CB7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +261,8 @@
 		65DBCED2211B739400E04CB7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				65202DD020F7ED8C00BFF532 /* Zapic.h */,
+				656F3CE820F7F51600AB8B1A /* Zapic.m */,
 				656F3CF020F8099500AB8B1A /* ZWebViewController.h */,
 				656F3CF120F8099500AB8B1A /* ZWebViewController.m */,
 				65DBCECD211B448C00E04CB7 /* ZScriptMessageHandler.h */,
@@ -280,6 +293,7 @@
 				651BF260212B0AE100067178 /* ZPlayer.h in Headers */,
 				656F3CEC20F7F7A400AB8B1A /* ZLog.h in Headers */,
 				656F3CFE20F81AC600AB8B1A /* ZInjectedJS.h in Headers */,
+				657132B32135A79C00F79C70 /* Zapic.h in Headers */,
 				65DBCED5211B745600E04CB7 /* ZBannerMessage.h in Headers */,
 				651BF29D212B55C100067178 /* ZPlayerManager.h in Headers */,
 				65C05A7821274BC400BEB7EB /* ZUtils.h in Headers */,

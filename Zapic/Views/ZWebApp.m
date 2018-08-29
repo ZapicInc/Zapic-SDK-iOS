@@ -1,5 +1,4 @@
 #import "ZWebApp.h"
-#import <SafariServices/SafariServices.h>
 #import "ZInjectedJS.h"
 #import "ZLog.h"
 #import "ZUtils.h"
@@ -9,9 +8,7 @@
 @property (nonatomic, strong) NSString *appUrl;
 @property (nonatomic, assign) bool loadSuccessful;
 @property (nonatomic, assign) int retryAttempt;
-@property (readonly) UIView *webView;
-@property (nonatomic, assign) SEL evaluateJavaScriptSelector;
-@property (nonatomic, assign) void (*evaluateJavaScriptFunc)(id, SEL, NSString *, id);
+@property (readonly) WKWebView *webView;
 
 @end
 
@@ -19,57 +16,19 @@
 
 - (instancetype)initWithHandler:(nonnull ZScriptMessageHandler *)messageHandler {
     if (self = [super initWithFrame:CGRectZero]) {
-        id config = [ZWebApp getWebViewConfiguration];
-        if (config) {
-            config = [ZUtils addUserContentControllerMessageHandlers:config delegate:messageHandler handledMessages:@[ScriptMethodName]];
+        WKWebViewConfiguration *config = [ZWebApp getWebViewConfiguration];
+        [config.userContentController addScriptMessageHandler:messageHandler name:ScriptMethodName];
 
-            if (!config) {
-                return nil;
-            }
-        } else {
-            return nil;
-        }
+        _webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:config];
 
-        _webView = [ZUtils initWebView:@"WKWebView" frame:CGRectZero configuration:config];
-
-        if (_webView == NULL) {
-            return nil;
-        }
-
-        [ZLog info:@"Got WebView"];
         _webView.translatesAutoresizingMaskIntoConstraints = NO;
         _webView.backgroundColor = [UIColor clearColor];
         _webView.opaque = NO;
         _webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-
-        [_webView setValue:@NO forKeyPath:@"scrollView.scrollEnabled"];
-        [_webView setValue:@NO forKeyPath:@"scrollView.bounces"];
-        [_webView setValue:self forKeyPath:@"scrollView.delegate"];
-
-        //Sets the navigation delegate
-        SEL setNavigationDelegateSel = NSSelectorFromString(@"setNavigationDelegate:");
-
-        if ([_webView respondsToSelector:setNavigationDelegateSel]) {
-            IMP setNavigationDelegateImp = [_webView methodForSelector:setNavigationDelegateSel];
-            if (setNavigationDelegateImp) {
-                void (*setNavigationDelegateFunc)(id, SEL, id) = (void *)setNavigationDelegateImp;
-                setNavigationDelegateFunc(_webView, setNavigationDelegateSel, self);
-            }
-        }
-
-        //Gets the evaluateJavaScript method for the webview
-        _evaluateJavaScriptSelector = NSSelectorFromString(@"evaluateJavaScript:completionHandler:");
-        if ([_webView respondsToSelector:_evaluateJavaScriptSelector]) {
-            IMP evaluateJavaScriptImp = [_webView methodForSelector:_evaluateJavaScriptSelector];
-            if (evaluateJavaScriptImp) {
-                _evaluateJavaScriptFunc = (void *)evaluateJavaScriptImp;
-                [ZLog info:@"Cached selector and function for evaluateJavaScript"];
-            } else {
-                return nil;
-            }
-        } else {
-            return nil;
-        }
+        _webView.scrollView.scrollEnabled = NO;
+        _webView.scrollView.bounces = NO;
+        _webView.scrollView.delegate = self;
+        _webView.navigationDelegate = self;
 
         [self addSubview:_webView];
         [_webView.topAnchor constraintEqualToAnchor:self.topAnchor].active = YES;
@@ -84,9 +43,19 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [ZLog info:@"Dispatching %@", jsString];
 
-        if (self.webView && self.evaluateJavaScriptFunc && self.evaluateJavaScriptSelector) {
-            self.evaluateJavaScriptFunc(self.webView, self.evaluateJavaScriptSelector, jsString, nil);
+        if (!self.webView) {
+            [ZLog error:@"Webview has not been set, unable to send"];
+            return;
         }
+
+        [self.webView evaluateJavaScript:jsString
+                       completionHandler:^(id _Nullable result, NSError *_Nullable error) {
+                           if (error) {
+                               [ZLog error:@"JS Error: %@", error];
+                           } else if (result) {
+                               [ZLog info:@"JS Result: %@", result];
+                           }
+                       }];
     });
 }
 
@@ -98,20 +67,11 @@
 - (void)load {
     NSURLRequest *appRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:_appUrl]];
 
-    SEL loadFileUrlSelector = NSSelectorFromString(@"loadRequest:");
-    if ([_webView respondsToSelector:loadFileUrlSelector]) {
-        [ZLog info:@"WebView responds to loadFileURL selector"];
-        IMP loadFileUrlImp = [_webView methodForSelector:loadFileUrlSelector];
-        if (loadFileUrlImp) {
-            [ZLog info:@"Got loadFileURL implementation: %@", _appUrl];
-            void (*loadFileUrlFunc)(id, SEL, NSURLRequest *) = (void *)loadFileUrlImp;
-            loadFileUrlFunc(_webView, loadFileUrlSelector, appRequest);
-        }
-    }
+    [_webView loadRequest:appRequest];
 }
 
-+ (id)getWebViewConfiguration {
-    id config = [ZUtils getObjectFromClass:@"WKWebViewConfiguration"];
++ (WKWebViewConfiguration *)getWebViewConfiguration {
+    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
 
     //Gets the info to be injected
     NSString *sdkVersion = ([NSBundle bundleForClass:[self class]].infoDictionary)[@"CFBundleShortVersionString"];
@@ -121,24 +81,9 @@
     //Gets the JS code to be injected
     NSString *injected = [ZInjectedJS getInjectedScript:iosVersion bundleId:bundleId sdkVersion:sdkVersion];
 
-    id script;
+    WKUserScript *script = [[WKUserScript alloc] initWithSource:injected injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES];
 
-    id userScriptClass = NSClassFromString(@"WKUserScript");
-    if (userScriptClass) {
-        id userScriptAlloc = [userScriptClass alloc];
-        SEL initSelector = NSSelectorFromString(@"initWithSource:injectionTime:forMainFrameOnly:");
-        if ([userScriptAlloc respondsToSelector:initSelector]) {
-            [ZLog info:@"WKUserScript responds to init selector"];
-            IMP initImp = [userScriptAlloc methodForSelector:initSelector];
-            if (initImp) {
-                [ZLog info:@"Got init implementation"];
-                id (*initFunc)(id, SEL, NSString *, id, BOOL) = (void *)initImp;
-                script = initFunc(userScriptAlloc, initSelector, injected, 0, YES);
-            }
-        }
-    }
-
-    config = [ZUtils addWKUserScript:config script:script];
+    [config.userContentController addUserScript:script];
 
     return config;
 }
@@ -165,7 +110,7 @@
 
 #pragma mark - WKNavigationDelegate
 
-- (void)webView:(id)webView didFinishNavigation:(id)navigation {
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     [ZLog info:@"Finished loading web app"];
     _retryAttempt = 0;
     _loadSuccessful = YES;
@@ -179,7 +124,7 @@
    @param navigation The navigation object that started to load a page.
    @param error The error that occurred.
    */
-- (void)webView:(id)webView didFailProvisionalNavigation:(id)navigation withError:(NSError *)error {
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     if ([error.domain isEqual:@"WebKitErrorDomain"] && error.code == 102) {
         [ZLog info:@"Skipping known error message loading url"];
         return;
@@ -196,7 +141,7 @@
     }
 }
 
-- (void)webView:(id)webView decidePolicyForNavigationAction:(id)navigationAction decisionHandler:(void (^)(int))decisionHandler {
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     NSURL *url = [navigationAction valueForKeyPath:@"request.URL"];
 
     int const cancel = 0;

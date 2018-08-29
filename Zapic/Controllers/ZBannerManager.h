@@ -1,4 +1,4 @@
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import "ZScriptMessageHandler.h"
 
 @interface ZBannerManager : NSObject

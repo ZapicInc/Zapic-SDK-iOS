@@ -1,6 +1,8 @@
 #import "ZSafariManager.h"
 #import "ZLog.h"
 
+@import SafariServices;
+
 @interface ZSafariManager ()
 @property (readonly) UIViewController *viewController;
 @end
@@ -22,7 +24,7 @@
 
     [ZLog info:@"Opening url %@ in safari", url.absoluteString];
 
-    UIViewController *svc = [ZSafariManager createSafariViewController:url];
+    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url];
 
     if (!svc) {
         [ZLog error:@"Unable to create SFSafariViewController"];
@@ -30,27 +32,7 @@
     }
 
     [svc setValue:self forKey:@"delegate"];
-    //    SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:url entersReaderIfAvailable:YES];
-    //    svc.delegate = self;
     [_viewController presentViewController:svc animated:YES completion:nil];
-}
-
-+ (UIViewController *)createSafariViewController:(NSURL *)url {
-    id viewControllerClass = NSClassFromString(@"SFSafariViewController");
-    if (viewControllerClass) {
-        id viewControllerAlloc = [viewControllerClass alloc];
-        SEL initSelector = NSSelectorFromString(@"initWithURL:entersReaderIfAvailable:");
-        if ([viewControllerAlloc respondsToSelector:initSelector]) {
-            [ZLog info:@"SFSafariViewController responds to init selector"];
-            IMP initImp = [viewControllerAlloc methodForSelector:initSelector];
-            if (initImp) {
-                [ZLog info:@"Got init implementation"];
-                id (*initFunc)(id, SEL, NSURL *, BOOL) = (void *)initImp;
-                return initFunc(viewControllerAlloc, initSelector, url, YES);
-            }
-        }
-    }
-    return nil;
 }
 
 /**

@@ -1,4 +1,4 @@
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "ZWebViewController.h"
 
 @interface ZBaseView : UIView
