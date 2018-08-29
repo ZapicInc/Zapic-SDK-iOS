@@ -34,6 +34,10 @@
 		656F3CFE20F81AC600AB8B1A /* ZInjectedJS.h in Headers */ = {isa = PBXBuildFile; fileRef = 656F3CFC20F81AC600AB8B1A /* ZInjectedJS.h */; };
 		656F3CFF20F81AC600AB8B1A /* ZInjectedJS.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CFD20F81AC600AB8B1A /* ZInjectedJS.m */; };
 		657132B32135A79C00F79C70 /* Zapic.h in Headers */ = {isa = PBXBuildFile; fileRef = 657132B22135A79C00F79C70 /* Zapic.h */; };
+		657132B62136223D00F79C70 /* ZSelectorHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 657132B42136223D00F79C70 /* ZSelectorHelpers.h */; };
+		657132B72136223D00F79C70 /* ZSelectorHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 657132B52136223D00F79C70 /* ZSelectorHelpers.m */; };
+		657132BE213624B200F79C70 /* ZapicAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 657132BC213624B200F79C70 /* ZapicAppDelegate.h */; };
+		657132BF213624B200F79C70 /* ZapicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 657132BD213624B200F79C70 /* ZapicAppDelegate.m */; };
 		6576A708212DC4B1000D55B4 /* ZLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6576A706212DC4B1000D55B4 /* ZLoadingView.h */; };
 		6576A709212DC4B1000D55B4 /* ZLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6576A707212DC4B1000D55B4 /* ZLoadingView.m */; };
 		6576A70C212DC712000D55B4 /* ZErrorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6576A70A212DC712000D55B4 /* ZErrorView.h */; };
@@ -104,6 +108,10 @@
 		656F3CFD20F81AC600AB8B1A /* ZInjectedJS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZInjectedJS.m; sourceTree = "<group>"; };
 		657132AF2135A67E00F79C70 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		657132B22135A79C00F79C70 /* Zapic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zapic.h; sourceTree = "<group>"; };
+		657132B42136223D00F79C70 /* ZSelectorHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZSelectorHelpers.h; sourceTree = "<group>"; };
+		657132B52136223D00F79C70 /* ZSelectorHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZSelectorHelpers.m; sourceTree = "<group>"; };
+		657132BC213624B200F79C70 /* ZapicAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZapicAppDelegate.h; sourceTree = "<group>"; };
+		657132BD213624B200F79C70 /* ZapicAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZapicAppDelegate.m; sourceTree = "<group>"; };
 		6576A706212DC4B1000D55B4 /* ZLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZLoadingView.h; sourceTree = "<group>"; };
 		6576A707212DC4B1000D55B4 /* ZLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZLoadingView.m; sourceTree = "<group>"; };
 		6576A70A212DC712000D55B4 /* ZErrorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZErrorView.h; sourceTree = "<group>"; };
@@ -207,6 +215,8 @@
 				6578A663212F0B9D00A8C4A7 /* ZStorage.m */,
 				65E0921A213064D8005B9F6D /* ZImageUtils.h */,
 				65E0921B213064D8005B9F6D /* ZImageUtils.m */,
+				657132B42136223D00F79C70 /* ZSelectorHelpers.h */,
+				657132B52136223D00F79C70 /* ZSelectorHelpers.m */,
 			);
 			name = Utilities;
 			path = Zapic/Utilities;
@@ -277,6 +287,8 @@
 				651BF2AB212B6F8D00067178 /* ZSafariManager.m */,
 				6578A65E212F052A00A8C4A7 /* ZShareManager.h */,
 				6578A65F212F052A00A8C4A7 /* ZShareManager.m */,
+				657132BC213624B200F79C70 /* ZapicAppDelegate.h */,
+				657132BD213624B200F79C70 /* ZapicAppDelegate.m */,
 			);
 			name = Controllers;
 			path = Zapic/Controllers;
@@ -308,9 +320,11 @@
 				65C05A7421272FE000BEB7EB /* ZAppStatusMessage.h in Headers */,
 				65AB333E211BC02D00D54953 /* ZBannerManager.h in Headers */,
 				65202DDE20F7ED8C00BFF532 /* Zapic.h in Headers */,
+				657132BE213624B200F79C70 /* ZapicAppDelegate.h in Headers */,
 				6576A708212DC4B1000D55B4 /* ZLoadingView.h in Headers */,
 				6576A710212DCA29000D55B4 /* ZBaseView.h in Headers */,
 				656F3CF220F8099500AB8B1A /* ZWebViewController.h in Headers */,
+				657132B62136223D00F79C70 /* ZSelectorHelpers.h in Headers */,
 				651BF25C212A719900067178 /* ZQueue.h in Headers */,
 				656754682120DD17009F8917 /* ZGradientBar.h in Headers */,
 				656754642120CB2A009F8917 /* ZBanner.h in Headers */,
@@ -441,6 +455,7 @@
 				65E0921D213064D8005B9F6D /* ZImageUtils.m in Sources */,
 				651BF2AD212B6F8D00067178 /* ZSafariManager.m in Sources */,
 				65C05A7521272FE000BEB7EB /* ZAppStatusMessage.m in Sources */,
+				657132B72136223D00F79C70 /* ZSelectorHelpers.m in Sources */,
 				6578A661212F052A00A8C4A7 /* ZShareManager.m in Sources */,
 				65C05A7921274BC400BEB7EB /* ZUtils.m in Sources */,
 				65C05A7D2127524100BEB7EB /* ZMessageQueue.m in Sources */,
@@ -456,6 +471,7 @@
 				6576A70D212DC712000D55B4 /* ZErrorView.m in Sources */,
 				656F3CE920F7F51600AB8B1A /* Zapic.m in Sources */,
 				656F3CED20F7F7A400AB8B1A /* ZLog.m in Sources */,
+				657132BF213624B200F79C70 /* ZapicAppDelegate.m in Sources */,
 				656754652120CB2A009F8917 /* ZBanner.m in Sources */,
 				6578A665212F0B9D00A8C4A7 /* ZStorage.m in Sources */,
 				651BF29E212B55C100067178 /* ZPlayerManager.m in Sources */,

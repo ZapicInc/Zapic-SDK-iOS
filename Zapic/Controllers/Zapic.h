@@ -6,27 +6,24 @@
 /**
  The current Zapic player.
  */
-@property (class, readonly) ZPlayer* player;
-
+@property (class, readonly) ZPlayer *player;
 
 /**
  The handler when a player logs in to Zapic.
  */
-@property (class, nonatomic, copy, nullable) void (^loginHandler)(ZPlayer*);
-
+@property (class, nonatomic, copy, nullable) void (^loginHandler)(ZPlayer *);
 
 /**
  The handler when a player logs out of Zapic.
  */
-@property (class, nonatomic, copy, nullable) void (^logoutHandler)(ZPlayer*);
+@property (class, nonatomic, copy, nullable) void (^logoutHandler)(ZPlayer *);
 
 /**
  Starts Zapic.
  @discussion This should be called once from the AppDelegate.
  Subsequent calls to this method will be ignored.
  */
-+ (void) start;
-
++ (void)start;
 
 /**
  Shows the specific Zapic UI page. Please check with https://www.zapic.com/docs
@@ -34,14 +31,13 @@
 
  @param pageName The page to display.
  */
-+ (void) showPage:(NSString*) pageName;
-
++ (void)showPage:(NSString *)pageName;
 
 /**
  Show the default Zapic UI page. This should be called
  from the Z button on your main menu.
  */
-+ (void) showDefaultPage;
++ (void)showDefaultPage;
 
 /**
  Handles an interaction event. Depending on the event parameters, Zapic may open and show
@@ -49,8 +45,7 @@
 
  @param data Dictionary that that contains a "zapic" key.
  */
-+ (void) handleInteraction:(NSDictionary*) data;
-
++ (void)handleInteraction:(NSDictionary *)data;
 
 /**
  Handles an interaction event. Depending on the event parameters, Zapic may open and show
@@ -58,14 +53,13 @@
 
  @param json JSON string that contains a "zapic" key
  */
-+ (void) handleInteractionString:(NSString*) json;
-
++ (void)handleInteractionString:(NSString *)json;
 
 /**
  Handles a gameplay event with 1-N parameters.
 
  @param parameters Parameters
  */
-+ (void) submitEvent:(NSDictionary*) parameters;
++ (void)submitEvent:(NSDictionary *)parameters;
 
 @end

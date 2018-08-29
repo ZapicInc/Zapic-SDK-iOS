@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		651BF2A6212B65C400067178 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651BF2A5212B65C400067178 /* Zapic.framework */; };
-		651BF2A8212B65DF00067178 /* Zapic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 651BF2A5212B65C400067178 /* Zapic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		656F3CC920F7F43300AB8B1A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CC820F7F43300AB8B1A /* AppDelegate.m */; };
 		656F3CCC20F7F43300AB8B1A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CCB20F7F43300AB8B1A /* ViewController.m */; };
 		656F3CCF20F7F43300AB8B1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656F3CCD20F7F43300AB8B1A /* Main.storyboard */; };
 		656F3CD120F7F43400AB8B1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 656F3CD020F7F43400AB8B1A /* Assets.xcassets */; };
 		656F3CD420F7F43400AB8B1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656F3CD220F7F43400AB8B1A /* LaunchScreen.storyboard */; };
 		656F3CD720F7F43400AB8B1A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CD620F7F43400AB8B1A /* main.m */; };
+		657132C02136260F00F79C70 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651BF2A5212B65C400067178 /* Zapic.framework */; };
+		657132C12136260F00F79C70 /* Zapic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 651BF2A5212B65C400067178 /* Zapic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				651BF2A8212B65DF00067178 /* Zapic.framework in Embed Frameworks */,
+				657132C12136260F00F79C70 /* Zapic.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				651BF2A6212B65C400067178 /* Zapic.framework in Frameworks */,
+				657132C02136260F00F79C70 /* Zapic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

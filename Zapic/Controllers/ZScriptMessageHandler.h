@@ -6,7 +6,6 @@
 #import "ZPlayer.h"
 #import "ZShareMessage.h"
 
-
 static NSString *const ScriptMethodName = @"dispatch";
 
 @interface ZScriptMessageHandler : NSObject <WKScriptMessageHandler>
