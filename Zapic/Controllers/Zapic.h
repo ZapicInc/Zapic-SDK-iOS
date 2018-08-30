@@ -62,4 +62,10 @@
  */
 + (void)submitEvent:(NSDictionary *)parameters;
 
+/**
+ Attempts to register the device for push notifications.
+ @note This will be called automatically.
+ */
++ (void)registerForPushNotification;
+
 @end

@@ -5,7 +5,7 @@
 #import "ZWebViewController.h"
 #import "ZapicAppDelegate.h"
 
-static bool started = false;
+static BOOL started = NO;
 static ZWebViewController *_viewController;
 static void (^_loginHandler)(ZPlayer *);
 static void (^_logoutHandler)(ZPlayer *);
@@ -100,6 +100,10 @@ static void (^_logoutHandler)(ZPlayer *);
     [_viewController submitEvent:ZEventTypeGameplay withPayload:parameters];
 }
 
++ (void)registerForPushNotification {
+    [ZNotificationManager registerForPushNotifications];
+}
+
 @end
 
 // Swizzles UIApplication class to swizzling the following:
@@ -107,15 +111,11 @@ static void (^_logoutHandler)(ZPlayer *);
 //      - setDelegate:
 //        - Used to swizzle all UIApplicationDelegate selectors on the passed in class.
 //        - Almost always this is the AppDelegate class but since UIApplicationDelegate is an "interface" this could be any class.
-//   - UNUserNotificationCenter
-//     - setDelegate:
-//        - For iOS 10 only, swizzle all UNUserNotificationCenterDelegate selectors on the passed in class.
-//         -  This may or may not be set so we set our own now in registerAsUNNotificationCenterDelegate to an empty class.
 //
-//  Note1: Do NOT move this category to it's own file. This is required so when the app developer calls OneSignal.initWithLaunchOptions this load+
+//  Note1: Do NOT move this category to it's own file. This is required so when the app developer calls Zapic.start() this +load
 //            will fire along with it. This is due to how iOS loads .m files into memory instead of classes.
 //  Note2: Do NOT directly add swizzled selectors to this category as if this class is loaded into the runtime twice unexpected results will occur.
-//            The oneSignalLoadedTagSelector: selector is used a flag to prevent double swizzling if this library is loaded twice.
+//            The zapicLoadedTagSelector: selector is used a flag to prevent double swizzling if this library is loaded twice.
 @implementation UIApplication (Zapic)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 + (void)load {
@@ -128,7 +128,7 @@ static void (^_logoutHandler)(ZPlayer *);
         return;
 
     // Double loading of class detection.
-    BOOL existing = injectSelector([ZapicAppDelegate class], @selector(oneSignalLoadedTagSelector), self, @selector(oneSignalLoadedTagSelector));
+    BOOL existing = injectSelector([ZapicAppDelegate class], @selector(zapicLoadedTagSelector), self, @selector(zapicLoadedTagSelector));
 
     if (existing) {
         [ZLog warn:@"Already swizzled UIApplication.setDelegate. Make sure the Zapic library wasn't loaded into the runtime twice!"];
@@ -137,14 +137,9 @@ static void (^_logoutHandler)(ZPlayer *);
 
     // Swizzle - UIApplication delegate
     injectToProperClass(@selector(setZapicDelegate:), @selector(setDelegate:), @[], [ZapicAppDelegate class], [UIApplication class]);
-
-    //TODO
-    //  injectToProperClass(@selector(onesignalSetApplicationIconBadgeNumber:), @selector(setApplicationIconBadgeNumber:), @[], [OneSignalAppDelegate class], [UIApplication class]);
-    //
-    //  [self setupUNUserNotificationCenterDelegate];
 }
 
-+ (void)oneSignalLoadedTagSelector {
++ (void)zapicLoadedTagSelector {
 }
 
 @end

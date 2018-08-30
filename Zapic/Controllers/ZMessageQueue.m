@@ -35,10 +35,13 @@
 
     [ZLog info:@"Dispatching JS event type %@", functionName];
 
-    NSDictionary *msg = @{
-        @"type": functionName,
-        @"payload": payload
-    };
+    NSMutableDictionary *msg = [[NSMutableDictionary alloc] init];
+    msg[@"type"] = functionName;
+    msg[@"payload"] = payload;
+
+    if (isError) {
+        msg[@"error"] = @true;
+    }
 
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:msg options:0 error:nil];
     NSString *json = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
@@ -107,6 +110,12 @@
         return @"CLOSE_PAGE";
     } else if (function == ZWebFunctionSubmitEvent) {
         return @"SUBMIT_EVENT";
+    } else if (function == ZWebFunctionSetDeviceToken) {
+        return @"DEVICE_TOKEN";
+    } else if (function == ZWebFunctionNotificationOpened) {
+        return @"NOTIFICATION_OPENED";
+    } else if (function == ZWebFunctionNotificationData) {
+        return @"NOTIFICATION_RECEIVED";
     } else {
         [ZLog error:@"Unknown ZWebFunction %ld", (long)function];
         return @"";

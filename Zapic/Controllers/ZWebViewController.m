@@ -37,6 +37,9 @@
         _messageHandler = [[ZScriptMessageHandler alloc] init];
         _messageQueue = [[ZMessageQueue alloc] init];
 
+        //Update the notifications so they can send content to the web app
+        ZNotificationManager.messageQueue = _messageQueue;
+
         //Initialize the loading view
         _loadingView = [[ZLoadingView alloc] init];
         _loadingView.viewController = self;
