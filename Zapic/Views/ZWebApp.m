@@ -73,13 +73,8 @@
 + (WKWebViewConfiguration *)getWebViewConfiguration {
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
 
-    //Gets the info to be injected
-    NSString *sdkVersion = ([NSBundle bundleForClass:[self class]].infoDictionary)[@"CFBundleShortVersionString"];
-    NSString *bundleId = NSBundle.mainBundle.bundleIdentifier;
-    NSString *iosVersion = UIDevice.currentDevice.systemVersion;
-
     //Gets the JS code to be injected
-    NSString *injected = [ZInjectedJS getInjectedScript:iosVersion bundleId:bundleId sdkVersion:sdkVersion];
+    NSString *injected = [ZInjectedJS getInjectedScript];
 
     WKUserScript *script = [[WKUserScript alloc] initWithSource:injected injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES];
 
