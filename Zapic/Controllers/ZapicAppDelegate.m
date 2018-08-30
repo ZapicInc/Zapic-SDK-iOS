@@ -1,5 +1,6 @@
 #import "ZapicAppDelegate.h"
 #import "ZLog.h"
+#import "ZNotificationManager.h"
 #import "ZSelectorHelpers.h"
 #import "Zapic.h"
 
@@ -26,13 +27,73 @@ static NSArray *delegateSubclasses = nil;
 
     delegateSubclasses = ClassGetSubclasses(delegateClass);
 
+    //Swizzle for didFinishLaunching
+    injectToProperClass(@selector(zapicApplication:didFinishLaunchingWithOptions:), @selector(application:didFinishLaunchingWithOptions:), delegateSubclasses, newClass, delegateClass);
+
+    //Swizzle for Push notification
+    injectToProperClass(@selector(zapicApplication:didReceiveRemoteNotification:), @selector(application:didReceiveRemoteNotification:), delegateSubclasses, newClass, delegateClass);
+
+    //Swizzle for Push notification
+    injectToProperClass(@selector(zapicApplication:didReceiveRemoteNotification:fetchCompletionHandler:), @selector(application:didReceiveRemoteNotification:fetchCompletionHandler:), delegateSubclasses, newClass, delegateClass);
+
     //Swizzle for deep links
     injectToProperClass(@selector(zapicApplication:openURL:options:), @selector(application:openURL:options:), delegateSubclasses, newClass, delegateClass);
 
     //Swizzle for universal links
     injectToProperClass(@selector(zapicApplication:continueUserActivity:restorationHandler:), @selector(application:continueUserActivity:restorationHandler:), delegateSubclasses, newClass, delegateClass);
 
+    //Swizzle for push notification registration - success
+    injectToProperClass(@selector(zapicApplication:didRegisterForRemoteNotificationsWithDeviceToken:), @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:), delegateSubclasses, newClass, delegateClass);
+
+    //Swizzle for push notification registration - failed
+    injectToProperClass(@selector(zapicApplication:didFailToRegisterForRemoteNotificationsWithError:), @selector(application:didFailToRegisterForRemoteNotificationsWithError:), delegateSubclasses, newClass, delegateClass);
+
     [self setZapicDelegate:delegate];
+}
+
+/**
+ Called when the app opens
+
+ @param application The main application.
+ @param launchOptions Launch options
+ @return True if this was processed
+ */
+- (BOOL)zapicApplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [Zapic registerForPushNotification];
+
+    if ([self respondsToSelector:@selector(zapicApplication:didFinishLaunchingWithOptions:)]) {
+        return [self zapicApplication:application didFinishLaunchingWithOptions:launchOptions];
+    }
+    return YES;
+}
+
+/**
+ Receives a push notification in background mode.
+ 
+ @param application The main application.
+ @param userInfo Push notification info.
+ */
+- (void)zapicApplication:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [ZNotificationManager receivedNotification:application notificationInfo:userInfo];
+
+    if ([self respondsToSelector:@selector(zapicApplication:didReceiveRemoteNotification:)]) {
+        return [self zapicApplication:application didReceiveRemoteNotification:userInfo];
+    }
+}
+
+/**
+ Receives a push notification in background mode.
+
+ @param application The main application.
+ @param userInfo Push notification info.
+ */
+- (void)zapicApplication:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+          fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+    [ZNotificationManager receivedNotification:application notificationInfo:userInfo];
+
+    if ([self respondsToSelector:@selector(zapicApplication:didReceiveRemoteNotification:fetchCompletionHandler:)]) {
+        return [self zapicApplication:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+    }
 }
 
 /**
@@ -77,6 +138,24 @@ static NSArray *delegateSubclasses = nil;
     }
 
     return handled;
+}
+
+- (void)zapicApplication:(UIApplication *)application
+    didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [ZNotificationManager setDeviceToken:deviceToken];
+
+    if ([self respondsToSelector:@selector(zapicApplication:didRegisterForRemoteNotificationsWithDeviceToken:)]) {
+        [self zapicApplication:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+    }
+}
+
+- (void)zapicApplication:(UIApplication *)application
+    didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    [ZNotificationManager setDeviceTokenError:error.localizedDescription];
+
+    if ([self respondsToSelector:@selector(zapicApplication:didFailToRegisterForRemoteNotificationsWithError:)]) {
+        [self zapicApplication:application didFailToRegisterForRemoteNotificationsWithError:error];
+    }
 }
 
 /**

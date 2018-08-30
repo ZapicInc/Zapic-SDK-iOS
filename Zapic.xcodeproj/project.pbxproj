@@ -62,6 +62,8 @@
 		65DBCED0211B448C00E04CB7 /* ZScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DBCECE211B448C00E04CB7 /* ZScriptMessageHandler.m */; };
 		65DBCED5211B745600E04CB7 /* ZBannerMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DBCED3211B745600E04CB7 /* ZBannerMessage.h */; };
 		65DBCED6211B745600E04CB7 /* ZBannerMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DBCED4211B745600E04CB7 /* ZBannerMessage.m */; };
+		65DE749B213685DE0075CF59 /* ZNotificationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DE7499213685DE0075CF59 /* ZNotificationManager.h */; };
+		65DE749C213685DE0075CF59 /* ZNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DE749A213685DE0075CF59 /* ZNotificationManager.m */; };
 		65E0921C213064D8005B9F6D /* ZImageUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 65E0921A213064D8005B9F6D /* ZImageUtils.h */; };
 		65E0921D213064D8005B9F6D /* ZImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E0921B213064D8005B9F6D /* ZImageUtils.m */; };
 /* End PBXBuildFile section */
@@ -136,6 +138,8 @@
 		65DBCECE211B448C00E04CB7 /* ZScriptMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZScriptMessageHandler.m; sourceTree = "<group>"; };
 		65DBCED3211B745600E04CB7 /* ZBannerMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBannerMessage.h; sourceTree = "<group>"; };
 		65DBCED4211B745600E04CB7 /* ZBannerMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBannerMessage.m; sourceTree = "<group>"; };
+		65DE7499213685DE0075CF59 /* ZNotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZNotificationManager.h; sourceTree = "<group>"; };
+		65DE749A213685DE0075CF59 /* ZNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZNotificationManager.m; sourceTree = "<group>"; };
 		65E0921A213064D8005B9F6D /* ZImageUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZImageUtils.h; sourceTree = "<group>"; };
 		65E0921B213064D8005B9F6D /* ZImageUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZImageUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -289,6 +293,8 @@
 				6578A65F212F052A00A8C4A7 /* ZShareManager.m */,
 				657132BC213624B200F79C70 /* ZapicAppDelegate.h */,
 				657132BD213624B200F79C70 /* ZapicAppDelegate.m */,
+				65DE7499213685DE0075CF59 /* ZNotificationManager.h */,
+				65DE749A213685DE0075CF59 /* ZNotificationManager.m */,
 			);
 			name = Controllers;
 			path = Zapic/Controllers;
@@ -307,6 +313,7 @@
 				656F3CFE20F81AC600AB8B1A /* ZInjectedJS.h in Headers */,
 				657132B32135A79C00F79C70 /* Zapic.h in Headers */,
 				65DBCED5211B745600E04CB7 /* ZBannerMessage.h in Headers */,
+				65DE749B213685DE0075CF59 /* ZNotificationManager.h in Headers */,
 				651BF29D212B55C100067178 /* ZPlayerManager.h in Headers */,
 				65C05A7821274BC400BEB7EB /* ZUtils.h in Headers */,
 				6578A664212F0B9D00A8C4A7 /* ZStorage.h in Headers */,
@@ -451,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65DBCED6211B745600E04CB7 /* ZBannerMessage.m in Sources */,
+				65DE749C213685DE0075CF59 /* ZNotificationManager.m in Sources */,
 				656F3CF320F8099500AB8B1A /* ZWebViewController.m in Sources */,
 				65E0921D213064D8005B9F6D /* ZImageUtils.m in Sources */,
 				651BF2AD212B6F8D00067178 /* ZSafariManager.m in Sources */,
