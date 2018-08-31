@@ -7,7 +7,7 @@ typedef NS_ENUM(NSInteger, ZWebFunction) {
     ZWebFunctionClosePage,
     ZWebFunctionSetDeviceToken,
     ZWebFunctionNotificationOpened,
-    ZWebFunctionNotificationData
+    ZWebFunctionNotificationReceived
 };
 
 @interface ZMessageQueue : NSObject
