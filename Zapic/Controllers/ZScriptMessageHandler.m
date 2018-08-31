@@ -46,7 +46,7 @@ static NSString *const LoggedOut = @"LOGGED_OUT";
     }
 
     NSDictionary *json = [message valueForKey:@"body"];
-
+ 
     if (json == nil || ![json isKindOfClass:[NSDictionary class]]) {
         [ZLog warn:@"Received invalid message format"];
         return;
