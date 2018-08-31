@@ -99,7 +99,7 @@ static ZMessageQueue *_messageQueue;
         [_messageQueue sendMessage:ZWebFunctionNotificationOpened withPayload:aps];
     } else {
         // App is in UIApplicationStateActive (running in foreground)
-        [_messageQueue sendMessage:ZWebFunctionNotificationData withPayload:aps];
+        [_messageQueue sendMessage:ZWebFunctionNotificationReceived withPayload:aps];
     }
 }
 

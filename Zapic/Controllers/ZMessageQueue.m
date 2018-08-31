@@ -114,7 +114,7 @@
         return @"DEVICE_TOKEN";
     } else if (function == ZWebFunctionNotificationOpened) {
         return @"NOTIFICATION_OPENED";
-    } else if (function == ZWebFunctionNotificationData) {
+    } else if (function == ZWebFunctionNotificationReceived) {
         return @"NOTIFICATION_RECEIVED";
     } else {
         [ZLog error:@"Unknown ZWebFunction %ld", (long)function];
