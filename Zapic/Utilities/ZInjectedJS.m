@@ -16,7 +16,7 @@
     return [NSString stringWithFormat:
                          @"window.zapic = {"
                           "environment: 'webview',"
-                          "version: 4,"
+                          "version: 3,"
                           "iosVersion: '%@',"
                           "bundleId: '%@',"
                           "sdkVersion: '%@',"

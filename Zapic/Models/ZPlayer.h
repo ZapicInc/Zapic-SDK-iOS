@@ -1,7 +1,9 @@
 @import Foundation;
 
 @interface ZPlayer : NSObject
-@property (readonly) NSString *playerId;
+@property (readonly) NSString *identifier;
 @property (readonly) NSString *notificationToken;
-- (instancetype)initWithId:(NSString *)playerId withToken:(NSString *)notificationToken;
+@property (readonly) NSString *name;
+@property (readonly) NSURL *iconUrl;
+- (instancetype)initWithId:(NSString *)identifier token:(NSString *)notificationToken name:(NSString *)name iconUrl:(NSURL*)iconUrl;
 @end
