@@ -1,4 +1,5 @@
 @import UIKit;
+#import "ZPCCompetition.h"
 #import "ZPlayer.h"
 
 @interface Zapic : NSObject
@@ -67,5 +68,12 @@
  @note This will be called automatically.
  */
 + (void)registerForPushNotification;
+
+/**
+ Gets the competitions
+
+ @param completionHandler The block to be called when the competitions are retrieved
+ */
++ (void)getCompetitions:(void (^)(NSArray<ZPCCompetition *> *competitions, NSError *error))completionHandler;
 
 @end

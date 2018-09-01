@@ -104,6 +104,10 @@ static void (^_logoutHandler)(ZPlayer *);
     [ZNotificationManager registerForPushNotifications];
 }
 
++ (void)getCompetitions:(void (^)(NSArray<ZPCCompetition *> *competitions, NSError *error))completionHandler {
+    [_viewController.queryManager getCompetitions:completionHandler];
+}
+
 @end
 
 // Swizzles UIApplication class to swizzling the following:

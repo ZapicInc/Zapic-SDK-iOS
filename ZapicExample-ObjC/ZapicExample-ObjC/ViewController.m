@@ -24,6 +24,13 @@
   //  [Zapic performSelector:@selector(showDefaultPage) withObject:nil afterDelay:3];
 //    [Zapic showDefaultPage];
 //  [Zapic submitEvent:@{ @"Distance": @147,@"Score":@22}];
+  [Zapic getCompetitions:^(NSArray<ZPCCompetition *> *competitions, NSError *error) {
+    if(error){
+      NSLog(@"Error getting competitions");
+    }else{
+      NSLog(@"Got %lu challenges",(unsigned long)competitions.count);
+    }
+  }];
 }
 
 

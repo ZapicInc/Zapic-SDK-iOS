@@ -52,7 +52,6 @@
                        completionHandler:^(id _Nullable result, NSError *_Nullable error) {
                            if (error) {
                                [ZLog error:@"JS Error: %@", error];
-                             //TODO: Trigger a failed response
                            } else if (result) {
                                [ZLog info:@"JS Result: %@", result];
                            }
@@ -111,10 +110,6 @@
     _retryAttempt = 0;
     _loadSuccessful = YES;
     _errorLoading = NO;
-}
-
-- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView{
-  //TODO: Close out all existing requests as failed
 }
 
 /**

@@ -26,17 +26,15 @@
     return self;
 }
 
-- (void)sendMessage:(ZWebFunction)function withPayload:(NSObject *)payload {
+- (void)sendMessage:(NSString *)function withPayload:(NSObject *)payload {
     [self sendMessage:function withPayload:payload isError:NO];
 }
 
-- (void)sendMessage:(ZWebFunction)function withPayload:(NSObject *)payload isError:(BOOL)isError {
-    NSString *functionName = [ZMessageQueue getFunctionName:function];
-
-    [ZLog info:@"Dispatching JS event type %@", functionName];
+- (void)sendMessage:(NSString *)function withPayload:(NSObject *)payload isError:(BOOL)isError {
+    [ZLog info:@"Dispatching JS event type %@", function];
 
     NSMutableDictionary *msg = [[NSMutableDictionary alloc] init];
-    msg[@"type"] = functionName;
+    msg[@"type"] = function;
     msg[@"payload"] = payload;
 
     if (isError) {
@@ -101,25 +99,6 @@
         return;
     }
     [_webApp evaluateJavaScript:js];
-}
-
-+ (NSString *)getFunctionName:(ZWebFunction)function {
-    if (function == ZWebFunctionOpenPage) {
-        return @"OPEN_PAGE";
-    } else if (function == ZWebFunctionClosePage) {
-        return @"CLOSE_PAGE";
-    } else if (function == ZWebFunctionSubmitEvent) {
-        return @"SUBMIT_EVENT";
-    } else if (function == ZWebFunctionSetDeviceToken) {
-        return @"DEVICE_TOKEN";
-    } else if (function == ZWebFunctionNotificationOpened) {
-        return @"NOTIFICATION_OPENED";
-    } else if (function == ZWebFunctionNotificationReceived) {
-        return @"NOTIFICATION_RECEIVED";
-    } else {
-        [ZLog error:@"Unknown ZWebFunction %ld", (long)function];
-        return @"";
-    }
 }
 
 @end

@@ -1,5 +1,6 @@
 #import "ZBackgroundView.h"
 #import "ZNotificationManager.h"
+#import "ZPCQueryManager.h"
 #import "ZPlayerManager.h"
 #import "ZWebApp.h"
 
@@ -19,8 +20,9 @@ typedef NS_ENUM(NSUInteger, ZEventType) {
 };
 
 @interface ZWebViewController : UIViewController
-@property ZPlayerManager *playerManager;
-@property ZNotificationManager *notificationManager;
+@property (readonly) ZPlayerManager *playerManager;
+@property (readonly) ZNotificationManager *notificationManager;
+@property (nonnull, readonly) ZPCQueryManager *queryManager;
 
 - (void)showPage:(NSString *)pageName;
 - (void)submitEvent:(ZEventType)eventType withPayload:(NSObject *)payload;
