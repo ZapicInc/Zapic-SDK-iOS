@@ -1,6 +1,5 @@
 #import "ZapicAppDelegate.h"
 #import "ZLog.h"
-#import "ZNotificationManager.h"
 #import "ZSelectorHelpers.h"
 #import "Zapic.h"
 
@@ -59,7 +58,7 @@ static NSArray *delegateSubclasses = nil;
  @return True if this was processed
  */
 - (BOOL)zapicApplication:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [Zapic registerForPushNotification];
+    [Zapic didFinishLaunchingWithOptions:launchOptions];
 
     if ([self respondsToSelector:@selector(zapicApplication:didFinishLaunchingWithOptions:)]) {
         return [self zapicApplication:application didFinishLaunchingWithOptions:launchOptions];
@@ -74,7 +73,7 @@ static NSArray *delegateSubclasses = nil;
  @param userInfo Push notification info.
  */
 - (void)zapicApplication:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [ZNotificationManager receivedNotification:application notificationInfo:userInfo];
+    [Zapic didReceiveRemoteNotification:userInfo];
 
     if ([self respondsToSelector:@selector(zapicApplication:didReceiveRemoteNotification:)]) {
         return [self zapicApplication:application didReceiveRemoteNotification:userInfo];
@@ -89,7 +88,7 @@ static NSArray *delegateSubclasses = nil;
  */
 - (void)zapicApplication:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
           fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
-    [ZNotificationManager receivedNotification:application notificationInfo:userInfo];
+    [Zapic didReceiveRemoteNotification:userInfo];
 
     if ([self respondsToSelector:@selector(zapicApplication:didReceiveRemoteNotification:fetchCompletionHandler:)]) {
         return [self zapicApplication:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
@@ -105,9 +104,7 @@ static NSArray *delegateSubclasses = nil;
  @return True if the link was processed.
  */
 - (BOOL)zapicApplication:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
-    [ZLog info:@"Application openedUrl: %@", url.absoluteString];
-
-    [ZapicAppDelegate handleInteraction:url.absoluteString interactionType:@"deepLink" sourceApp:[options objectForKey:UIApplicationOpenURLOptionsSourceApplicationKey]];
+    [Zapic openURL:url options:options];
 
     if ([self respondsToSelector:@selector(zapicApplication:openURL:options:)]) {
         return [self zapicApplication:app openURL:url options:options];
@@ -124,55 +121,43 @@ static NSArray *delegateSubclasses = nil;
  @return True if the activity was processed.
  */
 - (BOOL)zapicApplication:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *_Nullable))restorationHandler {
-    [ZLog info:@"Application continueUserActivity: %@", userActivity.activityType];
-
-    BOOL handled = NO;
-
-    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-        [ZapicAppDelegate handleInteraction:userActivity.webpageURL.absoluteString interactionType:@"universalLink" sourceApp:nil];
-        handled = YES;
-    }
+    [Zapic continueUserActivity:userActivity];
 
     if ([self respondsToSelector:@selector(zapicApplication:continueUserActivity:restorationHandler:)]) {
         return [self zapicApplication:application continueUserActivity:userActivity restorationHandler:restorationHandler];
     }
 
-    return handled;
+    return YES;
 }
 
+/**
+ Receives the push notification device token.
+
+ @param application The main application.
+ @param deviceToken The device token.
+ */
 - (void)zapicApplication:(UIApplication *)application
     didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [ZNotificationManager setDeviceToken:deviceToken];
+    [Zapic didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 
     if ([self respondsToSelector:@selector(zapicApplication:didRegisterForRemoteNotificationsWithDeviceToken:)]) {
         [self zapicApplication:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
     }
 }
 
+/**
+ Failed to get the push notification device token
+
+ @param application The main application
+ @param error The error
+ */
 - (void)zapicApplication:(UIApplication *)application
     didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    [ZNotificationManager setDeviceTokenError:error.localizedDescription];
+    [Zapic didFailToRegisterForRemoteNotificationsWithError:error];
 
     if ([self respondsToSelector:@selector(zapicApplication:didFailToRegisterForRemoteNotificationsWithError:)]) {
         [self zapicApplication:application didFailToRegisterForRemoteNotificationsWithError:error];
     }
-}
-
-/**
- Triggers 'handleInteraction' in Zapic
-
- @param urlString The URL for the interaction.
- @param interactionType The type of interaction.
- @param sourceApp (Optional) The app that triggered the interaction.
- */
-+ (void)handleInteraction:(nonnull NSString *)urlString interactionType:(nonnull NSString *)interactionType sourceApp:(nullable NSString *)sourceApp {
-    NSDictionary *data = @{
-        @"url": urlString,
-        @"sourceApp": sourceApp,
-        @"interactionType": interactionType,
-    };
-
-    [Zapic handleInteraction:data];
 }
 
 @end

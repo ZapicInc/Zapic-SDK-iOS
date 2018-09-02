@@ -100,8 +100,54 @@ static void (^_logoutHandler)(ZPlayer *);
     [_viewController submitEvent:ZEventTypeGameplay withPayload:parameters];
 }
 
-+ (void)registerForPushNotification {
-    [ZNotificationManager registerForPushNotifications];
++ (void)didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [_viewController.notificationManager registerForPushNotifications];
+}
+
++ (void)continueUserActivity:(NSUserActivity *)userActivity {
+    [ZLog info:@"Application continueUserActivity: %@", userActivity.activityType];
+
+    BOOL handled = NO;
+
+    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
+        [Zapic handleInteraction:userActivity.webpageURL.absoluteString interactionType:@"universalLink" sourceApp:nil];
+        handled = YES;
+    }
+}
+
++ (void)openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
+    [ZLog info:@"Application openedUrl: %@", url.absoluteString];
+
+    [Zapic handleInteraction:url.absoluteString interactionType:@"deepLink" sourceApp:[options objectForKey:UIApplicationOpenURLOptionsSourceApplicationKey]];
+}
+
++ (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [_viewController.notificationManager setDeviceToken:deviceToken];
+}
+
++ (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    [_viewController.notificationManager setDeviceTokenError:error];
+}
+
++ (void)didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [_viewController.notificationManager receivedNotification:userInfo];
+}
+
+/**
+ Triggers 'handleInteraction' in Zapic
+ 
+ @param urlString The URL for the interaction.
+ @param interactionType The type of interaction.
+ @param sourceApp (Optional) The app that triggered the interaction.
+ */
++ (void)handleInteraction:(nonnull NSString *)urlString interactionType:(nonnull NSString *)interactionType sourceApp:(nullable NSString *)sourceApp {
+    NSDictionary *data = @{
+        @"url": urlString,
+        @"sourceApp": sourceApp,
+        @"interactionType": interactionType,
+    };
+
+    [Zapic handleInteraction:data];
 }
 
 @end
