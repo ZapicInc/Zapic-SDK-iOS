@@ -21,4 +21,6 @@ script:
     pod lib lint;
     fi
 
+  - brew install clang-format
+
   - xcodebuild -workspace Zapic.xcworkspace -scheme Zapic archive | xcpretty

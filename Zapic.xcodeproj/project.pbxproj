@@ -350,6 +350,7 @@
 				65202DC920F7ED8C00BFF532 /* Frameworks */,
 				65202DCA20F7ED8C00BFF532 /* Headers */,
 				65202DCB20F7ED8C00BFF532 /* Resources */,
+				6558126F213B9ABB00E855A9 /* Format Code */,
 			);
 			buildRules = (
 			);
@@ -432,6 +433,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6558126F213B9ABB00E855A9 /* Format Code */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Format Code";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "chmod u+x $SRCROOT/Scripts/format-code.sh\nsleep 0.6 ### during save Xcode stops listening for file changes\n$SRCROOT/Scripts/format-code.sh";
+		};
 		6D4F17675DBABE55161D75CE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
