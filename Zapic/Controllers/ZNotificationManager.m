@@ -7,17 +7,20 @@
 static BOOL registered = NO;
 static ZMessageQueue *_messageQueue;
 
+@interface ZNotificationManager ()
+@property (readonly) ZMessageQueue *messageQueue;
+@end
+
 @implementation ZNotificationManager
 
-+ (ZMessageQueue *)messageQueue {
-    return _messageQueue;
+- (instancetype)initWithMessageQueue:(ZMessageQueue *)messageQueue {
+    if (self = [super init]) {
+        _messageQueue = messageQueue;
+    }
+    return self;
 }
 
-+ (void)setMessageQueue:(ZMessageQueue *)messageQueue {
-    _messageQueue = messageQueue;
-}
-
-+ (void)registerForPushNotifications {
+- (void)registerForPushNotifications {
     if (registered) {
         [ZLog warn:@"Already registered for push notifications, ignoring"];
         return;
@@ -66,11 +69,11 @@ static ZMessageQueue *_messageQueue;
     }
 }
 
-+ (void)setDeviceTokenError:(NSString *)error {
-    [_messageQueue sendMessage:ZWebFunctionSetDeviceToken withPayload:error isError:YES];
+- (void)setDeviceTokenError:(NSError *)error {
+    [_messageQueue sendMessage:ZWebFunctionSetDeviceToken withPayload:error.localizedDescription isError:YES];
 }
 
-+ (void)setDeviceToken:(NSData *)deviceToken {
+- (void)setDeviceToken:(NSData *)deviceToken {
     if (!_messageQueue) {
         [ZLog error:@"No message queue, unable to update the device token"];
         return;
@@ -90,8 +93,8 @@ static ZMessageQueue *_messageQueue;
     [_messageQueue sendMessage:ZWebFunctionSetDeviceToken withPayload:msg];
 }
 
-+ (void)receivedNotification:(UIApplication *)application notificationInfo:(NSDictionary *)userInfo {
-    UIApplicationState state = [application applicationState];
+- (void)receivedNotification:(NSDictionary *)userInfo {
+    UIApplicationState state = UIApplication.sharedApplication.applicationState;
     NSDictionary *aps = [userInfo objectForKey:@"aps"];
 
     // user tapped notification while app was in background or closed
