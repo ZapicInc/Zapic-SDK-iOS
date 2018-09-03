@@ -1,5 +1,6 @@
 #import "ZPCInjectedJS.h"
 @import UIKit;
+@import AdSupport;
 
 @implementation ZPCInjectedJS
 
@@ -13,6 +14,13 @@
     NSString *deviceId = UIDevice.currentDevice.identifierForVendor.UUIDString;
     NSString *iosVersion = UIDevice.currentDevice.systemVersion;
     NSString *installId = [self installId];
+
+    NSString *adId = @"";
+
+    if (ASIdentifierManager.sharedManager.isAdvertisingTrackingEnabled) {
+        adId = ASIdentifierManager.sharedManager.advertisingIdentifier.UUIDString;
+    }
+
     return [NSString stringWithFormat:
                          @"window.zapic = {"
                           "environment: 'webview',"
@@ -24,6 +32,7 @@
                           "deviceId: '%@',"
                           "appVersion: '%@',"
                           "appBuild: '%@',"
+                          "adId:'%@',"
                           "onLoaded: function(action$, publishAction) {"
                           "window.zapic.dispatch = function(action) {"
                           "publishAction(action)"
@@ -33,7 +42,7 @@
                           "});"
                           "}"
                           "}",
-                         iosVersion, bundleId, sdkVersion, installId, deviceId, appBuild, appVersion];
+                         iosVersion, bundleId, sdkVersion, installId, deviceId, appBuild, appVersion,adId];
 }
 
 + (NSString *)installId {
