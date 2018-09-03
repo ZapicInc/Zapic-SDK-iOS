@@ -1,18 +1,18 @@
 #import "ZPCQueryManager.h"
-#import "ZLog.h"
+#import "ZPCLog.h"
 
 typedef void (^ResponseBlock)(id response, NSError *error);
 
 @interface ZPCQueryManager ()
-@property (readonly) ZScriptMessageHandler *messageHandler;
-@property (readonly) ZMessageQueue *messageQueue;
+@property (readonly) ZPCScriptMessageHandler *messageHandler;
+@property (readonly) ZPCMessageQueue *messageQueue;
 @property (nonnull, readonly) NSMutableDictionary<NSString *, ResponseBlock> *requests;
 @end
 @implementation ZPCQueryManager
 
 static NSString *const ZPCCompetitionList = @"competitionList";
 
-- (instancetype)initWithMessageHandler:(ZScriptMessageHandler *)messageHandler messageQueue:(ZMessageQueue *)messageQueue {
+- (instancetype)initWithMessageHandler:(ZPCScriptMessageHandler *)messageHandler messageQueue:(ZPCMessageQueue *)messageQueue {
     if (self = [super init]) {
         _messageQueue = messageQueue;
         _messageHandler = messageHandler;
@@ -36,7 +36,7 @@ static NSString *const ZPCCompetitionList = @"competitionList";
     ResponseBlock handler = [_requests objectForKey:requestId];
 
     if (!handler) {
-        [ZLog warn:@"Unable to find handler for requestId: %@", requestId];
+        [ZPCLog warn:@"Unable to find handler for requestId: %@", requestId];
         return;
     }
 
@@ -70,7 +70,7 @@ static NSString *const ZPCCompetitionList = @"competitionList";
     };
 
     //Send the query to JS
-    [_messageQueue sendMessage:ZWebFunctionQuery withPayload:msg];
+    [_messageQueue sendMessage:ZPCWebFunctionQuery withPayload:msg];
 }
 
 - (void)getCompetitions:(void (^)(NSArray<ZPCCompetition *> *competitions, NSError *error))completionHandler {

@@ -1,5 +1,5 @@
 #import "ZPCCompetition.h"
-#import "ZUtils.h"
+#import "ZPCUtils.h"
 
 @implementation ZPCCompetition
 
@@ -51,8 +51,8 @@
                                          text:data[@"description"]
                                      metadata:data[@"metadata"]
                                        active:[data[@"active"] boolValue]
-                                        start:[ZUtils parseDateIso:data[@"start"]]
-                                          end:[ZUtils parseDateIso:data[@"end"]]
+                                        start:[ZPCUtils parseDateIso:data[@"start"]]
+                                          end:[ZPCUtils parseDateIso:data[@"end"]]
                                    totalUsers:@([data[@"totalUsers"] longValue])
                                        status:data[@"status"]
                                formattedScore:data[@"formattedScore"]

@@ -1,10 +1,10 @@
 #import <Foundation/Foundation.h>
-#import "ZMessageQueue.h"
 #import "ZPCCompetition.h"
-#import "ZScriptMessageHandler.h"
+#import "ZPCMessageQueue.h"
+#import "ZPCScriptMessageHandler.h"
 
 @interface ZPCQueryManager : NSObject
-- (instancetype)initWithMessageHandler:(ZScriptMessageHandler *)messageHandler messageQueue:(ZMessageQueue *)messageQueue;
+- (instancetype)initWithMessageHandler:(ZPCScriptMessageHandler *)messageHandler messageQueue:(ZPCMessageQueue *)messageQueue;
 
 - (void)getCompetitions:(void (^)(NSArray<ZPCCompetition *> *competitions, NSError *error))completionHandler;
 @end
