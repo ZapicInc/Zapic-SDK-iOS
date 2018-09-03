@@ -1,48 +1,48 @@
 @import Foundation;
 #import "Zapic.h"
-#import "ZLog.h"
-#import "ZSelectorHelpers.h"
-#import "ZWebViewController.h"
-#import "ZapicAppDelegate.h"
+#import "ZPCAppDelegate.h"
+#import "ZPCLog.h"
+#import "ZPCSelectorHelpers.h"
+#import "ZPCWebViewController.h"
 
 static BOOL started = NO;
-static ZWebViewController *_viewController;
-static void (^_loginHandler)(ZPlayer *);
-static void (^_logoutHandler)(ZPlayer *);
+static ZPCWebViewController *_viewController;
+static void (^_loginHandler)(ZPCPlayer *);
+static void (^_logoutHandler)(ZPCPlayer *);
 
 @implementation Zapic : NSObject
 
-+ (ZPlayer *)player {
++ (ZPCPlayer *)player {
     return _viewController.playerManager.player;
 }
 
-+ (void (^)(ZPlayer *))loginHandler {
++ (void (^)(ZPCPlayer *))loginHandler {
     return _loginHandler;
 }
 
-+ (void (^)(ZPlayer *))logoutHandler {
++ (void (^)(ZPCPlayer *))logoutHandler {
     return _logoutHandler;
 }
 
-+ (void)setLoginHandler:(void (^)(ZPlayer *))loginHandler {
++ (void)setLoginHandler:(void (^)(ZPCPlayer *))loginHandler {
     _loginHandler = loginHandler;
 }
 
-+ (void)setLogoutHandler:(void (^)(ZPlayer *))logoutHandler {
++ (void)setLogoutHandler:(void (^)(ZPCPlayer *))logoutHandler {
     _logoutHandler = logoutHandler;
 }
 
 + (void)initialize {
     if (self == [Zapic self]) {
-        _viewController = [[ZWebViewController alloc] init];
+        _viewController = [[ZPCWebViewController alloc] init];
 
-        [_viewController.playerManager addLoginHandler:^(ZPlayer *player) {
+        [_viewController.playerManager addLoginHandler:^(ZPCPlayer *player) {
             if (_loginHandler) {
                 _loginHandler(player);
             }
         }];
 
-        [_viewController.playerManager addLogoutHandler:^(ZPlayer *player) {
+        [_viewController.playerManager addLogoutHandler:^(ZPCPlayer *player) {
             if (_logoutHandler) {
                 _logoutHandler(player);
             }
@@ -52,12 +52,12 @@ static void (^_logoutHandler)(ZPlayer *);
 
 + (void)start {
     if (started) {
-        [ZLog info:@"Zapic is already started. Start should only be called once"];
+        [ZPCLog info:@"Zapic is already started. Start should only be called once"];
         return;
     }
     started = true;
 
-    [ZLog info:@"Starting Zapic"];
+    [ZPCLog info:@"Starting Zapic"];
 }
 
 + (void)showPage:(NSString *)pageName {
@@ -70,16 +70,16 @@ static void (^_logoutHandler)(ZPlayer *);
 
 + (void)handleInteraction:(NSDictionary *)data {
     if (!data) {
-        [ZLog warn:@"Missing data, unable to handleInteraction"];
+        [ZPCLog warn:@"Missing data, unable to handleInteraction"];
         return;
     }
 
-    [_viewController submitEvent:ZEventTypeInteraction withPayload:data];
+    [_viewController submitEvent:ZPCEventTypeInteraction withPayload:data];
 }
 
 + (void)handleInteractionString:(NSString *)json {
     if (!json) {
-        [ZLog warn:@"Missing handleInteraction string"];
+        [ZPCLog warn:@"Missing handleInteraction string"];
         return;
     }
 
@@ -89,7 +89,7 @@ static void (^_logoutHandler)(ZPlayer *);
                                                                  options:kNilOptions
                                                                    error:&error];
     if (!jsonResponse) {
-        [ZLog warn:@"Interaction string must be valid json"];
+        [ZPCLog warn:@"Interaction string must be valid json"];
         return;
     }
 
@@ -97,7 +97,7 @@ static void (^_logoutHandler)(ZPlayer *);
 }
 
 + (void)submitEvent:(NSDictionary *)parameters {
-    [_viewController submitEvent:ZEventTypeGameplay withPayload:parameters];
+    [_viewController submitEvent:ZPCEventTypeGameplay withPayload:parameters];
 }
 
 + (void)didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -105,7 +105,7 @@ static void (^_logoutHandler)(ZPlayer *);
 }
 
 + (void)continueUserActivity:(NSUserActivity *)userActivity {
-    [ZLog info:@"Application continueUserActivity: %@", userActivity.activityType];
+    [ZPCLog info:@"Application continueUserActivity: %@", userActivity.activityType];
 
     BOOL handled = NO;
 
@@ -116,7 +116,7 @@ static void (^_logoutHandler)(ZPlayer *);
 }
 
 + (void)openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
-    [ZLog info:@"Application openedUrl: %@", url.absoluteString];
+    [ZPCLog info:@"Application openedUrl: %@", url.absoluteString];
 
     [Zapic handleInteraction:url.absoluteString interactionType:@"deepLink" sourceApp:[options objectForKey:UIApplicationOpenURLOptionsSourceApplicationKey]];
 }
@@ -169,7 +169,7 @@ static void (^_logoutHandler)(ZPlayer *);
 @implementation UIApplication (Zapic)
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 + (void)load {
-    [ZLog info:@"UIApplication(Zapic) load"];
+    [ZPCLog info:@"UIApplication(Zapic) load"];
 
     // Prevent Xcode storyboard rendering process from crashing with custom IBDesignable Views
     // https://github.com/OneSignal/OneSignal-iOS-SDK/issues/160
@@ -178,15 +178,15 @@ static void (^_logoutHandler)(ZPlayer *);
         return;
 
     // Double loading of class detection.
-    BOOL existing = injectSelector([ZapicAppDelegate class], @selector(zapicLoadedTagSelector), self, @selector(zapicLoadedTagSelector));
+    BOOL existing = injectSelector([ZPCAppDelegate class], @selector(zapicLoadedTagSelector), self, @selector(zapicLoadedTagSelector));
 
     if (existing) {
-        [ZLog warn:@"Already swizzled UIApplication.setDelegate. Make sure the Zapic library wasn't loaded into the runtime twice!"];
+        [ZPCLog warn:@"Already swizzled UIApplication.setDelegate. Make sure the Zapic library wasn't loaded into the runtime twice!"];
         return;
     }
 
     // Swizzle - UIApplication delegate
-    injectToProperClass(@selector(setZapicDelegate:), @selector(setDelegate:), @[], [ZapicAppDelegate class], [UIApplication class]);
+    injectToProperClass(@selector(setZapicDelegate:), @selector(setDelegate:), @[], [ZPCAppDelegate class], [UIApplication class]);
 }
 
 + (void)zapicLoadedTagSelector {

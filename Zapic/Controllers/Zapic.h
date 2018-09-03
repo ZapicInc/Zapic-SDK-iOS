@@ -1,23 +1,23 @@
 @import UIKit;
 #import "ZPCCompetition.h"
-#import "ZPlayer.h"
+#import "ZPCPlayer.h"
 
 @interface Zapic : NSObject
 
 /**
  The current Zapic player.
  */
-@property (class, readonly) ZPlayer *player;
+@property (class, readonly) ZPCPlayer *player;
 
 /**
  The handler when a player logs in to Zapic.
  */
-@property (class, nonatomic, copy, nullable) void (^loginHandler)(ZPlayer *);
+@property (class, nonatomic, copy, nullable) void (^loginHandler)(ZPCPlayer *);
 
 /**
  The handler when a player logs out of Zapic.
  */
-@property (class, nonatomic, copy, nullable) void (^logoutHandler)(ZPlayer *);
+@property (class, nonatomic, copy, nullable) void (^logoutHandler)(ZPCPlayer *);
 
 /**
  Starts Zapic.

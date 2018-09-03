@@ -18,12 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   
-  Zapic.logoutHandler = ^(ZPlayer* p) {
+  Zapic.logoutHandler = ^(ZPCPlayer* p) {
     NSLog(@"Player logged out");
     //Do stuff here
   };
   
-  Zapic.loginHandler = ^(ZPlayer* p) {
+  Zapic.loginHandler = ^(ZPCPlayer* p) {
     NSLog(@"Player logged in");
     //Do stuff here
   };
@@ -34,7 +34,7 @@
    Get the current player, this will very likely be nil since
    Zapic is still loading the player at this point.
    */
-  ZPlayer* currentPlayer = Zapic.player;
+  ZPCPlayer* currentPlayer = Zapic.player;
   NSLog(@"Current player: %@", currentPlayer);
 
   // Override point for customization after application launch.
