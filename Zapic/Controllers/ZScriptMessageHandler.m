@@ -165,11 +165,12 @@ static NSString *const LoggedOut = @"LOGGED_OUT";
 
 - (void)handleLogin:(nonnull NSDictionary *)data {
     NSDictionary *msg = data[@"payload"];
-    NSString *userId = msg[@"userId"];
+    NSString *identifier = msg[@"userId"];
+    NSString *name =msg[@"name"];
     NSString *notificationToken = msg[@"notificationToken"];
+    NSURL *iconUrl = [NSURL URLWithString:msg[@"iconUrl"]];
 
-    ZPlayer *player = [[ZPlayer alloc] initWithId:userId withToken:notificationToken];
-
+    ZPlayer *player = [[ZPlayer alloc]initWithId:identifier token:notificationToken name:name iconUrl:iconUrl];
     for (id (^handler)(ZPlayer *) in _loginHandlers) {
         handler(player);
     }
