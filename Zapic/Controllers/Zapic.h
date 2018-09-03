@@ -1,4 +1,5 @@
 @import UIKit;
+#import "ZPCCompetition.h"
 #import "ZPlayer.h"
 
 @interface Zapic : NSObject
@@ -109,5 +110,12 @@
  @param error The registration error
  */
 + (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
+
+/**
+ Gets the competitions
+
+ @param completionHandler The block to be called when the competitions are retrieved
+ */
++ (void)getCompetitions:(void (^)(NSArray<ZPCCompetition *> *competitions, NSError *error))completionHandler;
 
 @end

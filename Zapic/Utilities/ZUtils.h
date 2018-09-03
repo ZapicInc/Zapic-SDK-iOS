@@ -5,4 +5,5 @@
 + (UIViewController *)getTopViewController;
 + (UIView *)getTopView;
 + (NSString *)getIsoNow;
++ (NSDate *)parseDateIso:(NSString *)dateString;
 @end

@@ -19,14 +19,24 @@
     return root.view;
 }
 
-+ (NSString *)getIsoNow {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-    [dateFormatter setLocale:enUSPOSIXLocale];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
++ (NSDateFormatter *)getIsoFormatter{
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+  [dateFormatter setLocale:enUSPOSIXLocale];
+  [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+  return dateFormatter;
+}
 
++ (NSString *)getIsoNow {
+
+  NSDateFormatter *dateFormatter = [ZUtils getIsoFormatter];
     NSDate *now = [NSDate date];
     return [dateFormatter stringFromDate:now];
+}
+
++ (NSDate *)parseDateIso:(NSString *)dateString{
+  NSDateFormatter *dateFormatter = [ZUtils getIsoFormatter];
+  return [dateFormatter dateFromString:dateString];
 }
 
 + (BOOL)isClassPresent:(NSString *)className {

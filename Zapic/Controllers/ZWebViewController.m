@@ -55,6 +55,9 @@
 
         _messageQueue.webApp = _webApp;
 
+        //Initialize the query manager
+        _queryManager = [[ZPCQueryManager alloc] initWithMessageHandler:_messageHandler messageQueue:_messageQueue];
+
         //Setup the banners
         _bannerManager = [[ZBannerManager alloc] init];
         _bannerManager.messageHandler = _messageHandler;

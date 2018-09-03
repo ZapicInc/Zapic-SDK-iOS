@@ -150,6 +150,10 @@ static void (^_logoutHandler)(ZPlayer *);
     [Zapic handleInteraction:data];
 }
 
++ (void)getCompetitions:(void (^)(NSArray<ZPCCompetition *> *competitions, NSError *error))completionHandler {
+    [_viewController.queryManager getCompetitions:completionHandler];
+}
+
 @end
 
 // Swizzles UIApplication class to swizzling the following:

@@ -18,6 +18,10 @@
 		65202DD720F7ED8C00BFF532 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65202DCD20F7ED8C00BFF532 /* Zapic.framework */; };
 		65202DDC20F7ED8C00BFF532 /* ZapicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65202DDB20F7ED8C00BFF532 /* ZapicTests.m */; };
 		65202DDE20F7ED8C00BFF532 /* Zapic.h in Headers */ = {isa = PBXBuildFile; fileRef = 65202DD020F7ED8C00BFF532 /* Zapic.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		655812692139C60A00E855A9 /* ZPCCompetition.h in Headers */ = {isa = PBXBuildFile; fileRef = 655812672139C60A00E855A9 /* ZPCCompetition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6558126A2139C60A00E855A9 /* ZPCCompetition.m in Sources */ = {isa = PBXBuildFile; fileRef = 655812682139C60A00E855A9 /* ZPCCompetition.m */; };
+		6558126D2139E36B00E855A9 /* ZPCQueryManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6558126B2139E36B00E855A9 /* ZPCQueryManager.h */; };
+		6558126E2139E36B00E855A9 /* ZPCQueryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6558126C2139E36B00E855A9 /* ZPCQueryManager.m */; };
 		656754642120CB2A009F8917 /* ZBanner.h in Headers */ = {isa = PBXBuildFile; fileRef = 656754622120CB2A009F8917 /* ZBanner.h */; };
 		656754652120CB2A009F8917 /* ZBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 656754632120CB2A009F8917 /* ZBanner.m */; };
 		656754682120DD17009F8917 /* ZGradientBar.h in Headers */ = {isa = PBXBuildFile; fileRef = 656754662120DD17009F8917 /* ZGradientBar.h */; };
@@ -93,6 +97,10 @@
 		65202DD620F7ED8C00BFF532 /* ZapicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65202DDB20F7ED8C00BFF532 /* ZapicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZapicTests.m; sourceTree = "<group>"; };
 		65202DDD20F7ED8C00BFF532 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		655812672139C60A00E855A9 /* ZPCCompetition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPCCompetition.h; sourceTree = "<group>"; };
+		655812682139C60A00E855A9 /* ZPCCompetition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPCCompetition.m; sourceTree = "<group>"; };
+		6558126B2139E36B00E855A9 /* ZPCQueryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPCQueryManager.h; sourceTree = "<group>"; };
+		6558126C2139E36B00E855A9 /* ZPCQueryManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPCQueryManager.m; sourceTree = "<group>"; };
 		656754622120CB2A009F8917 /* ZBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZBanner.h; sourceTree = "<group>"; };
 		656754632120CB2A009F8917 /* ZBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZBanner.m; sourceTree = "<group>"; };
 		656754662120DD17009F8917 /* ZGradientBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZGradientBar.h; sourceTree = "<group>"; };
@@ -267,6 +275,8 @@
 				651BF25F212B0AE100067178 /* ZPlayer.m */,
 				65904512212F018400AB9D0B /* ZShareMessage.h */,
 				65904513212F018400AB9D0B /* ZShareMessage.m */,
+				655812672139C60A00E855A9 /* ZPCCompetition.h */,
+				655812682139C60A00E855A9 /* ZPCCompetition.m */,
 			);
 			name = Models;
 			path = Zapic/Models;
@@ -295,6 +305,8 @@
 				657132BD213624B200F79C70 /* ZapicAppDelegate.m */,
 				65DE7499213685DE0075CF59 /* ZNotificationManager.h */,
 				65DE749A213685DE0075CF59 /* ZNotificationManager.m */,
+				6558126B2139E36B00E855A9 /* ZPCQueryManager.h */,
+				6558126C2139E36B00E855A9 /* ZPCQueryManager.m */,
 			);
 			name = Controllers;
 			path = Zapic/Controllers;
@@ -309,6 +321,7 @@
 			files = (
 				656F3CF620F80D1B00AB8B1A /* ZWebApp.h in Headers */,
 				651BF260212B0AE100067178 /* ZPlayer.h in Headers */,
+				655812692139C60A00E855A9 /* ZPCCompetition.h in Headers */,
 				656F3CEC20F7F7A400AB8B1A /* ZLog.h in Headers */,
 				656F3CFE20F81AC600AB8B1A /* ZInjectedJS.h in Headers */,
 				657132B32135A79C00F79C70 /* Zapic.h in Headers */,
@@ -321,6 +334,7 @@
 				65C05A7C2127524100BEB7EB /* ZMessageQueue.h in Headers */,
 				65904514212F018400AB9D0B /* ZShareMessage.h in Headers */,
 				6576A70C212DC712000D55B4 /* ZErrorView.h in Headers */,
+				6558126D2139E36B00E855A9 /* ZPCQueryManager.h in Headers */,
 				65E0921C213064D8005B9F6D /* ZImageUtils.h in Headers */,
 				6578A660212F052A00A8C4A7 /* ZShareManager.h in Headers */,
 				656F3CFA20F8102500AB8B1A /* ZBackgroundView.h in Headers */,
@@ -484,7 +498,9 @@
 				65C05A7D2127524100BEB7EB /* ZMessageQueue.m in Sources */,
 				65AB333F211BC02D00D54953 /* ZBannerManager.m in Sources */,
 				651BF25D212A719900067178 /* ZQueue.m in Sources */,
+				6558126E2139E36B00E855A9 /* ZPCQueryManager.m in Sources */,
 				656F3CF720F80D1B00AB8B1A /* ZWebApp.m in Sources */,
+				6558126A2139C60A00E855A9 /* ZPCCompetition.m in Sources */,
 				656F3CFB20F8102500AB8B1A /* ZBackgroundView.m in Sources */,
 				6576A709212DC4B1000D55B4 /* ZLoadingView.m in Sources */,
 				65DBCED0211B448C00E04CB7 /* ZScriptMessageHandler.m in Sources */,

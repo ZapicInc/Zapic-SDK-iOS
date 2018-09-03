@@ -18,4 +18,5 @@ static NSString *const ScriptMethodName = @"dispatch";
 - (void)addPageReadyHandler:(void (^)(void))handler;
 - (void)addShowPageHandler:(void (^)(void))handler;
 - (void)addShowShareHandler:(void (^)(ZShareMessage *))handler;
+- (void)addQueryResponseHandler:(void (^)(NSDictionary *))handler;
 @end

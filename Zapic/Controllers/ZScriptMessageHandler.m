@@ -11,6 +11,7 @@
 @property (nonatomic, strong) NSMutableArray<void (^)(void)> *pageReadyHandlers;
 @property (nonatomic, strong) NSMutableArray<void (^)(void)> *showPageHandlers;
 @property (nonatomic, strong) NSMutableArray<void (^)(ZShareMessage *)> *showShareHandlers;
+@property (nonatomic, strong) NSMutableArray<void (^)(NSDictionary *)> *queryResponseHandlers;
 @end
 
 @implementation ZScriptMessageHandler
@@ -23,6 +24,7 @@ static NSString *const PageReady = @"PAGE_READY";
 static NSString *const ClosePageRequest = @"CLOSE_PAGE_REQUESTED";
 static NSString *const LoggedIn = @"LOGGED_IN";
 static NSString *const LoggedOut = @"LOGGED_OUT";
+static NSString *const QueryResponse = @"QUERY_RESPONSE";
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -34,6 +36,7 @@ static NSString *const LoggedOut = @"LOGGED_OUT";
         _pageReadyHandlers = [[NSMutableArray<void (^)(void)> alloc] init];
         _showPageHandlers = [[NSMutableArray<void (^)(void)> alloc] init];
         _showShareHandlers = [[NSMutableArray<void (^)(ZShareMessage *)> alloc] init];
+        _queryResponseHandlers = [[NSMutableArray<void (^)(NSDictionary *)> alloc] init];
     }
     return self;
 }
@@ -94,6 +97,10 @@ static NSString *const LoggedOut = @"LOGGED_OUT";
     [_showShareHandlers addObject:handler];
 }
 
+- (void)addQueryResponseHandler:(void (^)(NSDictionary *))handler {
+    [_queryResponseHandlers addObject:handler];
+}
+
 - (void)handleMessage:(nonnull NSString *)type
              withData:(nonnull NSDictionary *)data {
     [ZLog info:@"Received %@ from JS", type];
@@ -114,6 +121,8 @@ static NSString *const LoggedOut = @"LOGGED_OUT";
         [self handleShowPage];
     } else if ([type isEqualToString:ShowShare]) {
         [self handleShowShare:data];
+    } else if ([type isEqualToString:QueryResponse]) {
+        [self handleQueryResponse:data];
     } else {
         [ZLog info:@"Recevied unhandled message type: %@", type];
     }
@@ -199,6 +208,12 @@ static NSString *const LoggedOut = @"LOGGED_OUT";
 - (void)handlePageReady {
     for (id (^handler)(void) in _pageReadyHandlers) {
         handler();
+    }
+}
+
+- (void)handleQueryResponse:(nonnull NSDictionary *)data {
+    for (id (^handler)(NSDictionary *) in _queryResponseHandlers) {
+        handler(data);
     }
 }
 
