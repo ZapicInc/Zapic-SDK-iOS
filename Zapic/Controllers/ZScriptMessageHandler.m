@@ -165,7 +165,7 @@ static NSString *const LoggedOut = @"LOGGED_OUT";
 
 - (void)handleLogin:(nonnull NSDictionary *)data {
     NSDictionary *msg = data[@"payload"];
-    NSString *identifier = msg[@"id"];
+    NSString *identifier = msg[@"userd"];
     NSString *name =msg[@"name"];
     NSString *notificationToken = msg[@"notificationToken"];
     NSURL *iconUrl = [NSURL URLWithString:msg[@"iconUrl"]];
