@@ -16,7 +16,6 @@
 @property (readonly, strong) ZPCBannerManager *bannerManager;
 @property (readonly, strong) ZPCSafariManager *safariManager;
 @property (readonly, strong) ZPCShareManager *shareManager;
-@property (readonly, strong) ZPCScriptMessageHandler *messageHandler;
 @property (readonly, strong) ZPCMessageQueue *messageQueue;
 @property (nonatomic, strong) ZPCBackgroundView *backgroundView;
 @property (nonatomic, strong) ZPCWebApp *webApp;

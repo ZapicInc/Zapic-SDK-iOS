@@ -62,6 +62,8 @@
 		65C05A7921274BC400BEB7EB /* ZPCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C05A7721274BC400BEB7EB /* ZPCUtils.m */; };
 		65C05A7C2127524100BEB7EB /* ZPCMessageQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 65C05A7A2127524100BEB7EB /* ZPCMessageQueue.h */; };
 		65C05A7D2127524100BEB7EB /* ZPCMessageQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 65C05A7B2127524100BEB7EB /* ZPCMessageQueue.m */; };
+		65CE9F0C213EFE5B00B709AD /* ZPCPlayEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 65CE9F0A213EFE5B00B709AD /* ZPCPlayEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		65CE9F0D213EFE5B00B709AD /* ZPCPlayEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CE9F0B213EFE5B00B709AD /* ZPCPlayEvent.m */; };
 		65DBCECF211B448C00E04CB7 /* ZPCScriptMessageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DBCECD211B448C00E04CB7 /* ZPCScriptMessageHandler.h */; };
 		65DBCED0211B448C00E04CB7 /* ZPCScriptMessageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 65DBCECE211B448C00E04CB7 /* ZPCScriptMessageHandler.m */; };
 		65DBCED5211B745600E04CB7 /* ZPCBannerMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = 65DBCED3211B745600E04CB7 /* ZPCBannerMessage.h */; };
@@ -142,6 +144,8 @@
 		65C05A7721274BC400BEB7EB /* ZPCUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPCUtils.m; sourceTree = "<group>"; };
 		65C05A7A2127524100BEB7EB /* ZPCMessageQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPCMessageQueue.h; sourceTree = "<group>"; };
 		65C05A7B2127524100BEB7EB /* ZPCMessageQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPCMessageQueue.m; sourceTree = "<group>"; };
+		65CE9F0A213EFE5B00B709AD /* ZPCPlayEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPCPlayEvent.h; sourceTree = "<group>"; };
+		65CE9F0B213EFE5B00B709AD /* ZPCPlayEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPCPlayEvent.m; sourceTree = "<group>"; };
 		65DBCECD211B448C00E04CB7 /* ZPCScriptMessageHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPCScriptMessageHandler.h; sourceTree = "<group>"; };
 		65DBCECE211B448C00E04CB7 /* ZPCScriptMessageHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPCScriptMessageHandler.m; sourceTree = "<group>"; };
 		65DBCED3211B745600E04CB7 /* ZPCBannerMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPCBannerMessage.h; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 				65904513212F018400AB9D0B /* ZPCShareMessage.m */,
 				655812672139C60A00E855A9 /* ZPCCompetition.h */,
 				655812682139C60A00E855A9 /* ZPCCompetition.m */,
+				65CE9F0A213EFE5B00B709AD /* ZPCPlayEvent.h */,
+				65CE9F0B213EFE5B00B709AD /* ZPCPlayEvent.m */,
 			);
 			name = Models;
 			path = Zapic/Models;
@@ -322,6 +328,7 @@
 				656F3CF620F80D1B00AB8B1A /* ZPCWebApp.h in Headers */,
 				651BF260212B0AE100067178 /* ZPCPlayer.h in Headers */,
 				655812692139C60A00E855A9 /* ZPCCompetition.h in Headers */,
+				65CE9F0C213EFE5B00B709AD /* ZPCPlayEvent.h in Headers */,
 				656F3CEC20F7F7A400AB8B1A /* ZPCLog.h in Headers */,
 				656F3CFE20F81AC600AB8B1A /* ZPCInjectedJS.h in Headers */,
 				657132B32135A79C00F79C70 /* Zapic.h in Headers */,
@@ -504,6 +511,7 @@
 				656F3CFB20F8102500AB8B1A /* ZPCBackgroundView.m in Sources */,
 				6576A709212DC4B1000D55B4 /* ZPCLoadingView.m in Sources */,
 				65DBCED0211B448C00E04CB7 /* ZPCScriptMessageHandler.m in Sources */,
+				65CE9F0D213EFE5B00B709AD /* ZPCPlayEvent.m in Sources */,
 				6576A711212DCA29000D55B4 /* ZPCBaseView.m in Sources */,
 				656754692120DD17009F8917 /* ZPCGradientBar.m in Sources */,
 				651BF261212B0AE100067178 /* ZPCPlayer.m in Sources */,

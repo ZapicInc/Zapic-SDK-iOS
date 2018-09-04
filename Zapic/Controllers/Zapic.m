@@ -9,6 +9,7 @@ static BOOL started = NO;
 static ZPCWebViewController *_viewController;
 static void (^_loginHandler)(ZPCPlayer *);
 static void (^_logoutHandler)(ZPCPlayer *);
+static void (^_playEventHandler)(ZPCPlayEvent *);
 
 @implementation Zapic : NSObject
 
@@ -35,12 +36,20 @@ NSString *const ZPCPageStats = @"stats";
     return _logoutHandler;
 }
 
++ (void (^)(ZPCPlayEvent *))playEventHandler {
+    return _playEventHandler;
+}
+
 + (void)setLoginHandler:(void (^)(ZPCPlayer *))loginHandler {
     _loginHandler = loginHandler;
 }
 
 + (void)setLogoutHandler:(void (^)(ZPCPlayer *))logoutHandler {
     _logoutHandler = logoutHandler;
+}
+
++ (void)setPlayEventHandler:(void (^)(ZPCPlayEvent *))playEventHandler {
+    _playEventHandler = playEventHandler;
 }
 
 + (void)initialize {
@@ -56,6 +65,12 @@ NSString *const ZPCPageStats = @"stats";
         [_viewController.playerManager addLogoutHandler:^(ZPCPlayer *player) {
             if (_logoutHandler) {
                 _logoutHandler(player);
+            }
+        }];
+
+        [_viewController.messageHandler addPlayEventHandler:^(ZPCPlayEvent *playEvent) {
+            if (_playEventHandler) {
+                _playEventHandler(playEvent);
             }
         }];
     }
