@@ -4,6 +4,28 @@
 
 @interface Zapic : NSObject
 
+#pragma mark - Page names
+
+/// The current competition
+extern NSString *const ZPCPageCompetition;
+
+/// The challenges page with a list of all the player's challenges
+extern NSString *const ZPCPageChallenges;
+
+/// The page that allows a player to create a new challenge
+extern NSString *const ZPCPageCreateChallenge;
+
+/// A login and registration page
+extern NSString *const ZPCPageLogin;
+
+/// The user's profile page
+extern NSString *const ZPCPageProfile;
+
+/// The list of all the player's stats
+extern NSString *const ZPCPageStats;
+
+#pragma mark - API Methods
+
 /**
  The current Zapic player.
  */

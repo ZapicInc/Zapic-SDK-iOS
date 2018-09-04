@@ -12,6 +12,17 @@ static void (^_logoutHandler)(ZPCPlayer *);
 
 @implementation Zapic : NSObject
 
+#pragma mark - Page names
+
+NSString *const ZPCPageChallenges = @"challenges";
+NSString *const ZPCPageCompetition = @"competition";
+NSString *const ZPCPageCreateChallenge = @"createChallenge";
+NSString *const ZPCPageLogin = @"login";
+NSString *const ZPCPageProfile = @"profile";
+NSString *const ZPCPageStats = @"stats";
+
+#pragma mark - API Methods
+
 + (ZPCPlayer *)player {
     return _viewController.playerManager.player;
 }

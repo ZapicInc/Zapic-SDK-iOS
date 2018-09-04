@@ -42,7 +42,7 @@
                           "});"
                           "}"
                           "}",
-                         iosVersion, bundleId, sdkVersion, installId, deviceId, appBuild, appVersion,adId];
+                         iosVersion, bundleId, sdkVersion, installId, deviceId, appBuild, appVersion, adId];
 }
 
 + (NSString *)installId {
