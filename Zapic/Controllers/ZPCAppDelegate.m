@@ -44,9 +44,6 @@ static NSArray *delegateSubclasses = nil;
     //Swizzle for push notification registration - success
     injectToProperClass(@selector(zapicApplication:didRegisterForRemoteNotificationsWithDeviceToken:), @selector(application:didRegisterForRemoteNotificationsWithDeviceToken:), delegateSubclasses, newClass, delegateClass);
 
-    //Swizzle for push notification registration - failed
-    injectToProperClass(@selector(zapicApplication:didFailToRegisterForRemoteNotificationsWithError:), @selector(application:didFailToRegisterForRemoteNotificationsWithError:), delegateSubclasses, newClass, delegateClass);
-
     [self setZapicDelegate:delegate];
 }
 
@@ -142,21 +139,6 @@ static NSArray *delegateSubclasses = nil;
 
     if ([self respondsToSelector:@selector(zapicApplication:didRegisterForRemoteNotificationsWithDeviceToken:)]) {
         [self zapicApplication:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-    }
-}
-
-/**
- Failed to get the push notification device token
-
- @param application The main application
- @param error The error
- */
-- (void)zapicApplication:(UIApplication *)application
-    didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    [Zapic didFailToRegisterForRemoteNotificationsWithError:error];
-
-    if ([self respondsToSelector:@selector(zapicApplication:didFailToRegisterForRemoteNotificationsWithError:)]) {
-        [self zapicApplication:application didFailToRegisterForRemoteNotificationsWithError:error];
     }
 }
 

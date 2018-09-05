@@ -151,10 +151,6 @@ NSString *const ZPCPageStats = @"stats";
     [_viewController.notificationManager setDeviceToken:deviceToken];
 }
 
-+ (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    [_viewController.notificationManager setDeviceTokenError:error];
-}
-
 + (void)didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [_viewController.notificationManager receivedNotification:userInfo];
 }

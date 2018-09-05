@@ -69,10 +69,6 @@ static ZPCMessageQueue *_messageQueue;
     }
 }
 
-- (void)setDeviceTokenError:(NSError *)error {
-    [_messageQueue sendMessage:ZPCWebFunctionSetDeviceToken withPayload:error.localizedDescription isError:YES];
-}
-
 - (void)setDeviceToken:(NSData *)deviceToken {
     if (!_messageQueue) {
         [ZPCLog error:@"No message queue, unable to update the device token"];

@@ -132,14 +132,6 @@ extern NSString *const ZPCPageStats;
 + (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 
 /**
- Called from the AppDelegate's application:didFailToRegisterForRemoteNotificationsWithError:
- @note This will be called automatically via the Zapic swizzle
-
- @param error The registration error
- */
-+ (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
-
-/**
  Gets the competitions
 
  @param completionHandler The block to be called when the competitions are retrieved
