@@ -1,7 +1,8 @@
 @import UIKit;
+@import MessageUI;
 #import "ZPCShareMessage.h"
 
-@interface ZPCShareManager : NSObject
+@interface ZPCShareManager : NSObject <MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
 
 /**
  Initialize and configure the manager with the root view controller.
