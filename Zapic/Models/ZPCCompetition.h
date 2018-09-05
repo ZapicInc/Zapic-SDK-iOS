@@ -61,7 +61,7 @@ static NSString *const ZPCCompetitionStatusAccepted = @"accepted";
 @property (nullable, readonly) NSString *formattedScore;
 
 /**
- The current player's score, formatted as defined in the portal.
+ The current player's score.
  */
 @property (nullable, readonly) NSNumber *score;
 

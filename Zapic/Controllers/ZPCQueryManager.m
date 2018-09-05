@@ -11,6 +11,7 @@ typedef void (^ResponseBlock)(id response, NSError *error);
 @implementation ZPCQueryManager
 
 static NSString *const ZPCCompetitionList = @"competitionList";
+static NSString *const ZPCStatistics = @"statistics";
 
 - (instancetype)initWithMessageHandler:(ZPCScriptMessageHandler *)messageHandler messageQueue:(ZPCMessageQueue *)messageQueue {
     if (self = [super init]) {
@@ -47,9 +48,12 @@ static NSString *const ZPCCompetitionList = @"competitionList";
 
     id response = nil;
     NSString *dataType = payload[@"dataType"];
+    id responseData = payload[@"response"];
 
     if ([dataType isEqualToString:ZPCCompetitionList]) {
-        response = [ZPCCompetition decodeCompetitionList:payload[@"response"]];
+        response = [ZPCCompetition decodeCompetitionList:responseData];
+    } else if ([dataType isEqualToString:ZPCStatistics]) {
+        response = [ZPCStatistic decodeStatistics:responseData];
     }
 
     //Trigger the callback with the reponse data
@@ -75,6 +79,10 @@ static NSString *const ZPCCompetitionList = @"competitionList";
 
 - (void)getCompetitions:(void (^)(NSArray<ZPCCompetition *> *competitions, NSError *error))completionHandler {
     [self sendQuery:ZPCCompetitionList withCompletionHandler:completionHandler];
+}
+
+- (void)getStatistics:(void (^)(NSArray<ZPCStatistic *> *statistics, NSError *error))completionHandler {
+    [self sendQuery:ZPCStatistics withCompletionHandler:completionHandler];
 }
 
 @end

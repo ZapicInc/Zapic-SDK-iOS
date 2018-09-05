@@ -2,6 +2,7 @@
 #import "ZPCCompetition.h"
 #import "ZPCPlayEvent.h"
 #import "ZPCPlayer.h"
+#import "ZPCStatistic.h"
 
 @interface Zapic : NSObject
 
@@ -25,7 +26,7 @@ extern NSString *const ZPCPageProfile;
 /// The list of all the player's stats
 extern NSString *const ZPCPageStats;
 
-#pragma mark - API Methods
+#pragma mark - Event callbacks
 
 /**
  The current Zapic player.
@@ -46,6 +47,8 @@ extern NSString *const ZPCPageStats;
  The handler when a player clicks "Play" within a Zapic UI
  */
 @property (class, nonatomic, copy, nullable) void (^playEventHandler)(ZPCPlayEvent *);
+
+#pragma mark - Zapic Methods
 
 /**
  Starts Zapic.
@@ -91,6 +94,8 @@ extern NSString *const ZPCPageStats;
  */
 + (void)submitEvent:(NSDictionary *)parameters;
 
+#pragma mark - AppDelegate Methods
+
 /**
  Called from the AppDelegate's application:didFinishingLaunchingWithOptions: method
  @note This will be called automatically via the Zapic swizzle
@@ -131,11 +136,20 @@ extern NSString *const ZPCPageStats;
  */
 + (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 
+#pragma mark - Data Queries
+
 /**
- Gets the competitions
+ Gets the list of competitions.
 
  @param completionHandler The block to be called when the competitions are retrieved
  */
 + (void)getCompetitions:(void (^)(NSArray<ZPCCompetition *> *competitions, NSError *error))completionHandler;
+
+/**
+ Gets the list of statistics.
+ 
+ @param completionHandler The block to be called when the statistics are retrieved
+ */
++ (void)getStatistics:(void (^)(NSArray<ZPCStatistic *> *statistics, NSError *error))completionHandler;
 
 @end
