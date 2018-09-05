@@ -22,7 +22,7 @@ NSString *const ZPCPageLogin = @"login";
 NSString *const ZPCPageProfile = @"profile";
 NSString *const ZPCPageStats = @"stats";
 
-#pragma mark - API Methods
+#pragma mark - Event callbacks
 
 + (ZPCPlayer *)player {
     return _viewController.playerManager.player;
@@ -76,6 +76,8 @@ NSString *const ZPCPageStats = @"stats";
     }
 }
 
+#pragma mark - Zapic Methods
+
 + (void)start {
     if (started) {
         [ZPCLog info:@"Zapic is already started. Start should only be called once"];
@@ -126,6 +128,8 @@ NSString *const ZPCPageStats = @"stats";
     [_viewController submitEvent:ZPCEventTypeGameplay withPayload:parameters];
 }
 
+#pragma mark - AppDelegate Methods
+
 + (void)didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [_viewController.notificationManager registerForPushNotifications];
 }
@@ -136,7 +140,7 @@ NSString *const ZPCPageStats = @"stats";
     BOOL handled = NO;
 
     if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-        [Zapic handleInteraction:userActivity.webpageURL.absoluteString interactionType:@"universalLink" sourceApp:nil];
+        [Zapic handleLinkInteraction:userActivity.webpageURL.absoluteString linkType:@"universalLink" sourceApp:nil];
         handled = YES;
     }
 }
@@ -144,7 +148,7 @@ NSString *const ZPCPageStats = @"stats";
 + (void)openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
     [ZPCLog info:@"Application openedUrl: %@", url.absoluteString];
 
-    [Zapic handleInteraction:url.absoluteString interactionType:@"deepLink" sourceApp:[options objectForKey:UIApplicationOpenURLOptionsSourceApplicationKey]];
+    [Zapic handleLinkInteraction:url.absoluteString linkType:@"deepLink" sourceApp:[options objectForKey:UIApplicationOpenURLOptionsSourceApplicationKey]];
 }
 
 + (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
@@ -159,25 +163,32 @@ NSString *const ZPCPageStats = @"stats";
  Triggers 'handleInteraction' in Zapic
  
  @param urlString The URL for the interaction.
- @param interactionType The type of interaction.
+ @param linkType The type of interaction.
  @param sourceApp (Optional) The app that triggered the interaction.
  */
-+ (void)handleInteraction:(nonnull NSString *)urlString interactionType:(nonnull NSString *)interactionType sourceApp:(nullable NSString *)sourceApp {
++ (void)handleLinkInteraction:(nonnull NSString *)urlString linkType:(nonnull NSString *)linkType sourceApp:(nullable NSString *)sourceApp {
     NSDictionary *data = @{
         @"url": urlString,
         @"sourceApp": sourceApp,
-        @"interactionType": interactionType,
+        @"linkType": linkType,
     };
 
     [Zapic handleInteraction:data];
 }
 
+#pragma mark - Data Queries
+
 + (void)getCompetitions:(void (^)(NSArray<ZPCCompetition *> *competitions, NSError *error))completionHandler {
     [_viewController.queryManager getCompetitions:completionHandler];
 }
 
++ (void)getStatistics:(void (^)(NSArray<ZPCStatistic *> *statistics, NSError *error))completionHandler {
+    [_viewController.queryManager getStatistics:completionHandler];
+}
+
 @end
 
+#pragma mark - Swizzle
 // Swizzles UIApplication class to swizzling the following:
 //   - UIApplication
 //      - setDelegate:

@@ -18,6 +18,8 @@
 		65202DD720F7ED8C00BFF532 /* Zapic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65202DCD20F7ED8C00BFF532 /* Zapic.framework */; };
 		65202DDC20F7ED8C00BFF532 /* ZapicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65202DDB20F7ED8C00BFF532 /* ZapicTests.m */; };
 		65202DDE20F7ED8C00BFF532 /* Zapic.h in Headers */ = {isa = PBXBuildFile; fileRef = 65202DD020F7ED8C00BFF532 /* Zapic.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6527F3AB2140724400DB41AA /* ZPCStatistic.h in Headers */ = {isa = PBXBuildFile; fileRef = 6527F3A92140724400DB41AA /* ZPCStatistic.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6527F3AC2140724400DB41AA /* ZPCStatistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 6527F3AA2140724400DB41AA /* ZPCStatistic.m */; };
 		655812692139C60A00E855A9 /* ZPCCompetition.h in Headers */ = {isa = PBXBuildFile; fileRef = 655812672139C60A00E855A9 /* ZPCCompetition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6558126A2139C60A00E855A9 /* ZPCCompetition.m in Sources */ = {isa = PBXBuildFile; fileRef = 655812682139C60A00E855A9 /* ZPCCompetition.m */; };
 		6558126D2139E36B00E855A9 /* ZPCQueryManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 6558126B2139E36B00E855A9 /* ZPCQueryManager.h */; };
@@ -99,6 +101,8 @@
 		65202DD620F7ED8C00BFF532 /* ZapicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZapicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65202DDB20F7ED8C00BFF532 /* ZapicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZapicTests.m; sourceTree = "<group>"; };
 		65202DDD20F7ED8C00BFF532 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6527F3A92140724400DB41AA /* ZPCStatistic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPCStatistic.h; sourceTree = "<group>"; };
+		6527F3AA2140724400DB41AA /* ZPCStatistic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPCStatistic.m; sourceTree = "<group>"; };
 		655812672139C60A00E855A9 /* ZPCCompetition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPCCompetition.h; sourceTree = "<group>"; };
 		655812682139C60A00E855A9 /* ZPCCompetition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPCCompetition.m; sourceTree = "<group>"; };
 		6558126B2139E36B00E855A9 /* ZPCQueryManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPCQueryManager.h; sourceTree = "<group>"; };
@@ -283,6 +287,8 @@
 				655812682139C60A00E855A9 /* ZPCCompetition.m */,
 				65CE9F0A213EFE5B00B709AD /* ZPCPlayEvent.h */,
 				65CE9F0B213EFE5B00B709AD /* ZPCPlayEvent.m */,
+				6527F3A92140724400DB41AA /* ZPCStatistic.h */,
+				6527F3AA2140724400DB41AA /* ZPCStatistic.m */,
 			);
 			name = Models;
 			path = Zapic/Models;
@@ -329,6 +335,7 @@
 				651BF260212B0AE100067178 /* ZPCPlayer.h in Headers */,
 				655812692139C60A00E855A9 /* ZPCCompetition.h in Headers */,
 				65CE9F0C213EFE5B00B709AD /* ZPCPlayEvent.h in Headers */,
+				6527F3AB2140724400DB41AA /* ZPCStatistic.h in Headers */,
 				656F3CEC20F7F7A400AB8B1A /* ZPCLog.h in Headers */,
 				656F3CFE20F81AC600AB8B1A /* ZPCInjectedJS.h in Headers */,
 				657132B32135A79C00F79C70 /* Zapic.h in Headers */,
@@ -507,6 +514,7 @@
 				651BF25D212A719900067178 /* ZPCQueue.m in Sources */,
 				6558126E2139E36B00E855A9 /* ZPCQueryManager.m in Sources */,
 				656F3CF720F80D1B00AB8B1A /* ZPCWebApp.m in Sources */,
+				6527F3AC2140724400DB41AA /* ZPCStatistic.m in Sources */,
 				6558126A2139C60A00E855A9 /* ZPCCompetition.m in Sources */,
 				656F3CFB20F8102500AB8B1A /* ZPCBackgroundView.m in Sources */,
 				6576A709212DC4B1000D55B4 /* ZPCLoadingView.m in Sources */,
