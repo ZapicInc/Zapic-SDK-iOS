@@ -12,6 +12,7 @@
 @property (nonatomic, strong) NSMutableArray<void (^)(void)> *showPageHandlers;
 @property (nonatomic, strong) NSMutableArray<void (^)(ZPCShareMessage *)> *showShareHandlers;
 @property (nonatomic, strong) NSMutableArray<void (^)(NSDictionary *)> *queryResponseHandlers;
+@property (nonatomic, strong) NSMutableArray<void (^)(ZPCPlayEvent *)> *playEventHandlers;
 @end
 
 @implementation ZPCScriptMessageHandler
@@ -25,6 +26,7 @@ static NSString *const ClosePageRequest = @"CLOSE_PAGE_REQUESTED";
 static NSString *const LoggedIn = @"LOGGED_IN";
 static NSString *const LoggedOut = @"LOGGED_OUT";
 static NSString *const QueryResponse = @"QUERY_RESPONSE";
+static NSString *const PlayEvent = @"PLAY";
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -37,6 +39,7 @@ static NSString *const QueryResponse = @"QUERY_RESPONSE";
         _showPageHandlers = [[NSMutableArray<void (^)(void)> alloc] init];
         _showShareHandlers = [[NSMutableArray<void (^)(ZPCShareMessage *)> alloc] init];
         _queryResponseHandlers = [[NSMutableArray<void (^)(NSDictionary *)> alloc] init];
+        _playEventHandlers = [[NSMutableArray<void (^)(ZPCPlayEvent *)> alloc] init];
     }
     return self;
 }
@@ -55,7 +58,7 @@ static NSString *const QueryResponse = @"QUERY_RESPONSE";
         return;
     }
 
-    NSString *type = [json valueForKey:@"type"];
+    NSString *type = [[json valueForKey:@"type"] uppercaseString];
 
     if (!type.length) {
         [ZPCLog warn:@"Received a message with a missing message type"];
@@ -101,6 +104,10 @@ static NSString *const QueryResponse = @"QUERY_RESPONSE";
     [_queryResponseHandlers addObject:handler];
 }
 
+- (void)addPlayEventHandler:(void (^)(ZPCPlayEvent *))handler {
+    [_playEventHandlers addObject:handler];
+}
+
 - (void)handleMessage:(nonnull NSString *)type
              withData:(nonnull NSDictionary *)data {
     [ZPCLog info:@"Received %@ from JS", type];
@@ -123,6 +130,8 @@ static NSString *const QueryResponse = @"QUERY_RESPONSE";
         [self handleShowShare:data];
     } else if ([type isEqualToString:QueryResponse]) {
         [self handleQueryResponse:data];
+    } else if ([type isEqualToString:PlayEvent]) {
+        [self handlePlayEvent:data];
     } else {
         [ZPCLog info:@"Recevied unhandled message type: %@", type];
     }
@@ -214,6 +223,16 @@ static NSString *const QueryResponse = @"QUERY_RESPONSE";
 - (void)handleQueryResponse:(nonnull NSDictionary *)data {
     for (id (^handler)(NSDictionary *) in _queryResponseHandlers) {
         handler(data);
+    }
+}
+
+- (void)handlePlayEvent:(nonnull NSDictionary *)data {
+    NSDictionary *msg = data[@"payload"];
+
+    ZPCPlayEvent *playEvent = [[ZPCPlayEvent alloc] initWithPayload:msg];
+
+    for (id (^handler)(ZPCPlayEvent *) in _playEventHandlers) {
+        handler(playEvent);
     }
 }
 

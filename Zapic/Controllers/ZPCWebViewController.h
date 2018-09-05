@@ -6,14 +6,6 @@
 
 @import UIKit;
 
-typedef NS_ENUM(NSUInteger, ZPCWebViewStatus) {
-    ZPCWebViewStatusNone,
-    ZPCWebViewStatusLoading,
-    ZPCWebViewStatusAppReady,
-    ZPCWebViewStatusPageReady,
-    ZPCWebViewStatusError,
-};
-
 typedef NS_ENUM(NSUInteger, ZPCEventType) {
     ZPCEventTypeGameplay,
     ZPCEventTypeInteraction,
@@ -22,6 +14,7 @@ typedef NS_ENUM(NSUInteger, ZPCEventType) {
 @interface ZPCWebViewController : UIViewController
 @property (readonly) ZPCPlayerManager *playerManager;
 @property (readonly) ZPCNotificationManager *notificationManager;
+@property (readonly, strong) ZPCScriptMessageHandler *messageHandler;
 @property (nonnull, readonly) ZPCQueryManager *queryManager;
 
 - (void)showPage:(NSString *)pageName;

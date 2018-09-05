@@ -1,5 +1,6 @@
 @import UIKit;
 #import "ZPCCompetition.h"
+#import "ZPCPlayEvent.h"
 #import "ZPCPlayer.h"
 
 @interface Zapic : NSObject
@@ -40,6 +41,11 @@ extern NSString *const ZPCPageStats;
  The handler when a player logs out of Zapic.
  */
 @property (class, nonatomic, copy, nullable) void (^logoutHandler)(ZPCPlayer *);
+
+/**
+ The handler when a player clicks "Play" within a Zapic UI
+ */
+@property (class, nonatomic, copy, nullable) void (^playEventHandler)(ZPCPlayEvent *);
 
 /**
  Starts Zapic.
@@ -97,7 +103,7 @@ extern NSString *const ZPCPageStats;
  Called from the AppDelegate's application:continueUserActivity: method
  @note This will be called automatically via the Zapic swizzle.
 
- @param userActivity <#userActivity description#>
+ @param userActivity The user activity.
  */
 + (void)continueUserActivity:(NSUserActivity *)userActivity;
 

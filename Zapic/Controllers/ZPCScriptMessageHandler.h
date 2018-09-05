@@ -3,6 +3,7 @@
 
 #import "ZPCAppStatusMessage.h"
 #import "ZPCBannerMessage.h"
+#import "ZPCPlayEvent.h"
 #import "ZPCPlayer.h"
 #import "ZPCShareMessage.h"
 
@@ -19,4 +20,5 @@ static NSString *const ZPCScriptMethodName = @"dispatch";
 - (void)addShowPageHandler:(void (^)(void))handler;
 - (void)addShowShareHandler:(void (^)(ZPCShareMessage *))handler;
 - (void)addQueryResponseHandler:(void (^)(NSDictionary *))handler;
+- (void)addPlayEventHandler:(void (^)(ZPCPlayEvent *))handler;
 @end
