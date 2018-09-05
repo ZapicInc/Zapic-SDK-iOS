@@ -7,14 +7,14 @@
         _identifier = data[@"id"];
         _title = data[@"title"];
         _formattedScore = data[@"formattedScore"];
-        _score = @([data[@"totalUsers"] doubleValue]);
+        _score = @([data[@"score"] doubleValue]);
         _rank = @([data[@"rank"] longValue]);
-        _percentile = @([data[@"totalUsers"] floatValue]);
+        _percentile = @([data[@"percentile"] floatValue]);
     }
     return self;
 }
 
-+ (NSArray<ZPCStatistic *> *)decodeStatistics:(nonnull NSArray *)data {
++ (NSArray<ZPCStatistic *> *)decodeList:(nonnull NSArray *)data {
     NSMutableArray<ZPCStatistic *> *stats = [NSMutableArray arrayWithCapacity:data.count];
 
     for (id compData in data) {

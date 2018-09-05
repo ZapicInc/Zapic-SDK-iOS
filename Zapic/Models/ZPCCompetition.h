@@ -97,7 +97,7 @@ static NSString *const ZPCCompetitionStatusAccepted = @"accepted";
  @param data Array of competition data
  @return Array of competitions
  */
-+ (NSArray<ZPCCompetition *> *)decodeCompetitionList:(NSArray<NSDictionary *> *)data;
++ (NSArray<ZPCCompetition *> *)decodeList:(NSArray<NSDictionary *> *)data;
 
 /**
  Decodes a single competition

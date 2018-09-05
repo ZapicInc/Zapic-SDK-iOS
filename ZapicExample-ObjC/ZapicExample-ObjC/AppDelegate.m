@@ -26,6 +26,19 @@
   Zapic.loginHandler = ^(ZPCPlayer* p) {
     NSLog(@"Player logged in");
     //Do stuff here
+    
+    [Zapic getChallenges:^(NSArray<ZPCChallenge *> *challenges, NSError *error) {
+      NSLog(@"Found %lu challenges!",(unsigned long)challenges.count);
+    }];
+    
+    [Zapic getStatistics:^(NSArray<ZPCStatistic *> *statistics, NSError *error) {
+       NSLog(@"Found %lu stats!",(unsigned long)statistics.count);
+    }];
+    
+    [Zapic getCompetitions:^(NSArray<ZPCCompetition *> *competitions, NSError *error) {
+      NSLog(@"Found %lu competitions!",(unsigned long)competitions.count);
+    }];
+    
   };
   
   [Zapic start];

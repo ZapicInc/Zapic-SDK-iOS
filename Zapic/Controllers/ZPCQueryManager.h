@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import "ZPCChallenge.h"
 #import "ZPCCompetition.h"
 #import "ZPCMessageQueue.h"
 #import "ZPCScriptMessageHandler.h"
@@ -21,4 +22,11 @@
  @param completionHandler Callback handler.
  */
 - (void)getStatistics:(void (^)(NSArray<ZPCStatistic *> *statistics, NSError *error))completionHandler;
+
+/**
+ Gets the list of challenges.
+ 
+ @param completionHandler Callback handler.
+ */
+- (void)getChallenges:(void (^)(NSArray<ZPCChallenge *> *statistics, NSError *error))completionHandler;
 @end

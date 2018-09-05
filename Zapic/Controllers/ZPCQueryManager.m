@@ -10,8 +10,9 @@ typedef void (^ResponseBlock)(id response, NSError *error);
 @end
 @implementation ZPCQueryManager
 
-static NSString *const ZPCCompetitionList = @"competitionList";
+static NSString *const ZPCCompetitions = @"competitions";
 static NSString *const ZPCStatistics = @"statistics";
+static NSString *const ZPCChallenges = @"challenges";
 
 - (instancetype)initWithMessageHandler:(ZPCScriptMessageHandler *)messageHandler messageQueue:(ZPCMessageQueue *)messageQueue {
     if (self = [super init]) {
@@ -50,10 +51,12 @@ static NSString *const ZPCStatistics = @"statistics";
     NSString *dataType = payload[@"dataType"];
     id responseData = payload[@"response"];
 
-    if ([dataType isEqualToString:ZPCCompetitionList]) {
-        response = [ZPCCompetition decodeCompetitionList:responseData];
+    if ([dataType isEqualToString:ZPCCompetitions]) {
+        response = [ZPCCompetition decodeList:responseData];
     } else if ([dataType isEqualToString:ZPCStatistics]) {
-        response = [ZPCStatistic decodeStatistics:responseData];
+        response = [ZPCStatistic decodeList:responseData];
+    } else if ([dataType isEqualToString:ZPCChallenges]) {
+        response = [ZPCChallenge decodeList:responseData];
     }
 
     //Trigger the callback with the reponse data
@@ -78,11 +81,15 @@ static NSString *const ZPCStatistics = @"statistics";
 }
 
 - (void)getCompetitions:(void (^)(NSArray<ZPCCompetition *> *competitions, NSError *error))completionHandler {
-    [self sendQuery:ZPCCompetitionList withCompletionHandler:completionHandler];
+    [self sendQuery:ZPCCompetitions withCompletionHandler:completionHandler];
 }
 
 - (void)getStatistics:(void (^)(NSArray<ZPCStatistic *> *statistics, NSError *error))completionHandler {
     [self sendQuery:ZPCStatistics withCompletionHandler:completionHandler];
+}
+
+- (void)getChallenges:(void (^)(NSArray<ZPCChallenge *> *statistics, NSError *error))completionHandler {
+    [self sendQuery:ZPCChallenges withCompletionHandler:completionHandler];
 }
 
 @end

@@ -10,3 +10,4 @@ FOUNDATION_EXPORT const unsigned char ZapicVersionString[];
 #import <Zapic/ZPCCompetition.h>
 #import <Zapic/ZPCPlayEvent.h>
 #import <Zapic/ZPCStatistic.h>
+#import <Zapic/ZPCChallenge.h>
