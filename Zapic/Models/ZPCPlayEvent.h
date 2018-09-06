@@ -1,16 +1,22 @@
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, ZPCPlayType) {
+    ZPCPlayTypeUnknown,
+    ZPCPlayTypeChallenge,
+    ZPCPlayTypeCompetition,
+};
+
 @interface ZPCPlayEvent : NSObject
 
 /**
- The type of Zapic feature (ex. "challenge", "competition"...)
+ The type of Zapic feature
  */
-@property (nonnull, readonly) NSString *dataType;
+@property (readonly) ZPCPlayType playType;
 
 /**
  The developer defined metdata.
  */
-@property (nullable, readonly) NSString *metadata;
+@property (readonly) id data;
 
 /**
  Creates a new play event from the JS payload

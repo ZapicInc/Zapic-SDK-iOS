@@ -93,6 +93,8 @@ typedef NS_ENUM(NSUInteger, ZPCCompetitionStatus) {
            leaderboardRank:(nullable NSNumber *)leaderboardRank
                 leagueRank:(nullable NSNumber *)leagueRank;
 
+- (instancetype)initWithData:(NSDictionary *)data;
+
 /**
  Decodes a collection of competitions
 
@@ -100,14 +102,6 @@ typedef NS_ENUM(NSUInteger, ZPCCompetitionStatus) {
  @return Array of competitions
  */
 + (NSArray<ZPCCompetition *> *)decodeList:(NSArray<NSDictionary *> *)data;
-
-/**
- Decodes a single competition
-
- @param data Competition data
- @return The competition
- */
-+ (ZPCCompetition *)decodeCompetition:(NSDictionary *)data;
 
 /**
  Converts the status to a string.

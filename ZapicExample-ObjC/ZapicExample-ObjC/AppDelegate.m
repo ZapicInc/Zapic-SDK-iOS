@@ -38,7 +38,10 @@
     [Zapic getCompetitions:^(NSArray<ZPCCompetition *> *competitions, NSError *error) {
       NSLog(@"Found %lu competitions!",(unsigned long)competitions.count);
     }];
-    
+  };
+  
+  Zapic.playEventHandler = ^(ZPCPlayEvent *playEvent) {
+    NSLog(@"Received a play event");
   };
   
   [Zapic start];
