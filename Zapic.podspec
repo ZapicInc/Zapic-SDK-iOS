@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = 'Zapic'
-    s.version      = '1.2.1'
+    s.version      = '1.3.0'
     s.license      = "MIT"
     s.homepage     = 'https://www.zapic.com'
     s.summary      = 'Client SDK to connect iOS apps to the Zapic platform.'
