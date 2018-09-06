@@ -22,8 +22,6 @@
         _webView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:config];
 
         _webView.translatesAutoresizingMaskIntoConstraints = NO;
-        _webView.backgroundColor = [UIColor clearColor];
-        _webView.opaque = NO;
         _webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
         _webView.scrollView.scrollEnabled = NO;
         _webView.scrollView.bounces = NO;
