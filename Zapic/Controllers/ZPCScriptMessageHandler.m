@@ -167,6 +167,10 @@ static NSString *const QueryResponse = @"QUERY_RESPONSE";
         img = [self decodeBase64ToImage:imgStr];
     }
 
+    if (!text) {
+        text = msg[@"body"];
+    }
+
     ZPCShareMessage *shareMsg = [[ZPCShareMessage alloc] initWithText:text target:target subject:subject withImage:img withURL:url];
 
     for (id (^handler)(ZPCShareMessage *) in _showShareHandlers) {

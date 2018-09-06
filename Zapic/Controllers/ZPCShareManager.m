@@ -1,20 +1,15 @@
 #import "ZPCShareManager.h"
+#import "ZPCLog.h"
+#import "ZPCUtils.h"
 
 @interface ZPCShareManager ()
-@property (readonly) UIViewController *viewController;
 @end
 
 @implementation ZPCShareManager
 
-- (instancetype)initWithController:(UIViewController *)viewController {
-    if (self = [super init]) {
-        _viewController = viewController;
-    }
-    return self;
-}
-
 - (void)share:(ZPCShareMessage *)message {
     NSString *target = message.target;
+    UIViewController *viewController = [ZPCUtils getTopViewController];
 
     if (!target || [target isEqual:@"sheet"]) {
         NSMutableArray *objectsToShare = [NSMutableArray array];
@@ -33,36 +28,46 @@
 
         UIActivityViewController *shareController = [[UIActivityViewController alloc] initWithActivityItems:objectsToShare applicationActivities:nil];
 
-        [_viewController presentViewController:shareController animated:YES completion:nil];
+        [viewController presentViewController:shareController animated:YES completion:nil];
 
     } else if ([target isEqual:@"sms"]) {
         if (![MFMessageComposeViewController canSendText]) {
-            NSLog(@"Message services are not available.");
+            [ZPCLog error:@"Message services are not available."];
         } else {
             MFMessageComposeViewController *composeVC = [[MFMessageComposeViewController alloc] init];
             composeVC.messageComposeDelegate = self;
 
-            composeVC.body = [NSString stringWithFormat:@"%@\r%@", message.text, message.url.absoluteString];
+            NSString *body = message.text;
+
+            if (message.url) {
+                body = [body stringByAppendingString:[NSString stringWithFormat:@"\n%@", message.url.absoluteString]];
+            }
+
+            composeVC.body = body;
             composeVC.subject = message.subject;
 
             // Present the view controller modally.
-            [_viewController presentViewController:composeVC animated:YES completion:nil];
+            [viewController presentViewController:composeVC animated:YES completion:nil];
         }
     } else if ([target isEqual:@"email"]) {
         if (![MFMailComposeViewController canSendMail]) {
-            NSLog(@"Mail services are not available.");
+            [ZPCLog error:@"Mail services are not available."];
             return;
         } else {
             MFMailComposeViewController *composeVC = [[MFMailComposeViewController alloc] init];
             composeVC.mailComposeDelegate = self;
 
-            NSString *body = [NSString stringWithFormat:@"%@\r%@", message.text, message.url];
+            NSString *body = message.text;
+
+            if (message.url) {
+                body = [body stringByAppendingString:[NSString stringWithFormat:@"\n%@", message.url.absoluteString]];
+            }
 
             [composeVC setSubject:message.subject];
-            [composeVC setMessageBody:body isHTML:NO];
+            [composeVC setMessageBody:body isHTML:YES];
 
             // Present the view controller modally.
-            [_viewController presentViewController:composeVC animated:YES completion:nil];
+            [viewController presentViewController:composeVC animated:YES completion:nil];
         }
     }
 }
@@ -76,8 +81,6 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller
           didFinishWithResult:(MFMailComposeResult)result
                         error:(NSError *)error {
-    // Check the result or perform other tasks.
-
     // Dismiss the mail compose view controller.
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
