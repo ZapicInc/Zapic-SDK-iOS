@@ -98,6 +98,11 @@
     return self;
 }
 
+- (BOOL)prefersStatusBarHidden {
+    //Only show the status bar on iPhoneX
+    return UIScreen.mainScreen.nativeBounds.size.height != 2436;
+}
+
 - (void)closePage {
     [super dismissViewControllerAnimated:YES
                               completion:^{
