@@ -35,31 +35,31 @@
     return self;
 }
 
+- (instancetype)initWithData:(NSDictionary *)data {
+    return [self initWithId:data[@"id"]
+                      title:data[@"title"]
+                       text:data[@"description"]
+                   metadata:data[@"metadata"]
+                     active:[data[@"active"] boolValue]
+                      start:[ZPCUtils parseDateIso:data[@"start"]]
+                        end:[ZPCUtils parseDateIso:data[@"end"]]
+                 totalUsers:@([data[@"totalUsers"] longValue])
+                     status:[ZPCCompetition stringToStatus:data[@"status"]]
+             formattedScore:data[@"formattedScore"]
+                      score:@([data[@"score"] doubleValue])
+            leaderboardRank:@([data[@"leaderboardRank"] longValue])
+                 leagueRank:@([data[@"leagueRank"] longValue])];
+}
+
 + (NSArray<ZPCCompetition *> *)decodeList:(NSArray<NSDictionary *> *)data {
     NSMutableArray<ZPCCompetition *> *competitions = [NSMutableArray arrayWithCapacity:data.count];
 
     for (id compData in data) {
-        ZPCCompetition *competition = [ZPCCompetition decodeCompetition:compData];
+        ZPCCompetition *competition = [[ZPCCompetition alloc] initWithData:compData];
         [competitions addObject:competition];
     }
 
     return competitions;
-}
-
-+ (ZPCCompetition *)decodeCompetition:(NSDictionary *)data {
-    return [[ZPCCompetition alloc] initWithId:data[@"id"]
-                                        title:data[@"title"]
-                                         text:data[@"description"]
-                                     metadata:data[@"metadata"]
-                                       active:[data[@"active"] boolValue]
-                                        start:[ZPCUtils parseDateIso:data[@"start"]]
-                                          end:[ZPCUtils parseDateIso:data[@"end"]]
-                                   totalUsers:@([data[@"totalUsers"] longValue])
-                                       status:[ZPCCompetition stringToStatus:data[@"status"]]
-                               formattedScore:data[@"formattedScore"]
-                                        score:@([data[@"score"] doubleValue])
-                              leaderboardRank:@([data[@"leaderboardRank"] longValue])
-                                   leagueRank:@([data[@"leagueRank"] longValue])];
 }
 
 + (NSString *)statusToString:(ZPCCompetitionStatus)status {
