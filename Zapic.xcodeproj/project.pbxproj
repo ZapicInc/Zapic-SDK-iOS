@@ -41,7 +41,6 @@
 		656F3CFB20F8102500AB8B1A /* ZPCBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CF920F8102500AB8B1A /* ZPCBackgroundView.m */; };
 		656F3CFE20F81AC600AB8B1A /* ZPCInjectedJS.h in Headers */ = {isa = PBXBuildFile; fileRef = 656F3CFC20F81AC600AB8B1A /* ZPCInjectedJS.h */; };
 		656F3CFF20F81AC600AB8B1A /* ZPCInjectedJS.m in Sources */ = {isa = PBXBuildFile; fileRef = 656F3CFD20F81AC600AB8B1A /* ZPCInjectedJS.m */; };
-		657132B32135A79C00F79C70 /* Zapic.h in Headers */ = {isa = PBXBuildFile; fileRef = 657132B22135A79C00F79C70 /* Zapic.h */; };
 		657132B62136223D00F79C70 /* ZPCSelectorHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 657132B42136223D00F79C70 /* ZPCSelectorHelpers.h */; };
 		657132B72136223D00F79C70 /* ZPCSelectorHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 657132B52136223D00F79C70 /* ZPCSelectorHelpers.m */; };
 		657132BE213624B200F79C70 /* ZPCAppDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 657132BC213624B200F79C70 /* ZPCAppDelegate.h */; };
@@ -127,7 +126,6 @@
 		656F3CFC20F81AC600AB8B1A /* ZPCInjectedJS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPCInjectedJS.h; sourceTree = "<group>"; };
 		656F3CFD20F81AC600AB8B1A /* ZPCInjectedJS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPCInjectedJS.m; sourceTree = "<group>"; };
 		657132AF2135A67E00F79C70 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
-		657132B22135A79C00F79C70 /* Zapic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Zapic.h; sourceTree = "<group>"; };
 		657132B42136223D00F79C70 /* ZPCSelectorHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPCSelectorHelpers.h; sourceTree = "<group>"; };
 		657132B52136223D00F79C70 /* ZPCSelectorHelpers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZPCSelectorHelpers.m; sourceTree = "<group>"; };
 		657132BC213624B200F79C70 /* ZPCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZPCAppDelegate.h; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				65202DD120F7ED8C00BFF532 /* Info.plist */,
-				657132B22135A79C00F79C70 /* Zapic.h */,
 			);
 			path = Zapic;
 			sourceTree = "<group>";
@@ -345,7 +342,6 @@
 				6527F3AF21408F3100DB41AA /* ZPCChallenge.h in Headers */,
 				656F3CEC20F7F7A400AB8B1A /* ZPCLog.h in Headers */,
 				656F3CFE20F81AC600AB8B1A /* ZPCInjectedJS.h in Headers */,
-				657132B32135A79C00F79C70 /* Zapic.h in Headers */,
 				65DBCED5211B745600E04CB7 /* ZPCBannerMessage.h in Headers */,
 				65DE749B213685DE0075CF59 /* ZPCNotificationManager.h in Headers */,
 				651BF29D212B55C100067178 /* ZPCPlayerManager.h in Headers */,
