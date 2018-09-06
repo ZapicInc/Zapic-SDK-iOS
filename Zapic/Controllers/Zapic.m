@@ -186,6 +186,10 @@ NSString *const ZPCPageStats = @"stats";
     [_viewController.queryManager getStatistics:completionHandler];
 }
 
++ (void)getChallenges:(void (^)(NSArray<ZPCChallenge *> *challenges, NSError *error))completionHandler {
+    [_viewController.queryManager getChallenges:completionHandler];
+}
+
 @end
 
 #pragma mark - Swizzle

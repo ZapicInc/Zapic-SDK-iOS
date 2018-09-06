@@ -46,6 +46,6 @@
  @param data Array of statistic data.
  @return The new statistics.
  */
-+ (NSArray<ZPCStatistic *> *)decodeStatistics:(nonnull NSArray *)data;
++ (NSArray<ZPCStatistic *> *)decodeList:(nonnull NSArray *)data;
 
 @end

@@ -1,4 +1,5 @@
 @import UIKit;
+#import "ZPCChallenge.h"
 #import "ZPCCompetition.h"
 #import "ZPCPlayEvent.h"
 #import "ZPCPlayer.h"
@@ -151,5 +152,12 @@ extern NSString *const ZPCPageStats;
  @param completionHandler The block to be called when the statistics are retrieved
  */
 + (void)getStatistics:(void (^)(NSArray<ZPCStatistic *> *statistics, NSError *error))completionHandler;
+
+/**
+ Gets the list of challenges.
+ 
+ @param completionHandler The block to be called when the statistics are retrieved
+ */
++ (void)getChallenges:(void (^)(NSArray<ZPCChallenge *> *challenges, NSError *error))completionHandler;
 
 @end

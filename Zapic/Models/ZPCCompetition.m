@@ -34,7 +34,7 @@
     return self;
 }
 
-+ (NSArray<ZPCCompetition *> *)decodeCompetitionList:(NSArray<NSDictionary *> *)data {
++ (NSArray<ZPCCompetition *> *)decodeList:(NSArray<NSDictionary *> *)data {
     NSMutableArray<ZPCCompetition *> *competitions = [NSMutableArray arrayWithCapacity:data.count];
 
     for (id compData in data) {
