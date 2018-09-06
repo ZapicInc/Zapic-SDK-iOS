@@ -162,6 +162,8 @@ static NSString *const PlayEvent = @"PLAY";
     NSString *text = msg[@"text"];
     NSString *urlStr = msg[@"url"];
     NSString *imgStr = msg[@"image"];
+    NSString *target = msg[@"target"];
+    NSString *subject = msg[@"subject"];
 
     NSURL *url;
     UIImage *img;
@@ -174,7 +176,11 @@ static NSString *const PlayEvent = @"PLAY";
         img = [self decodeBase64ToImage:imgStr];
     }
 
-    ZPCShareMessage *shareMsg = [[ZPCShareMessage alloc] initWithText:text withImage:img withURL:url];
+    if (!text) {
+        text = msg[@"body"];
+    }
+
+    ZPCShareMessage *shareMsg = [[ZPCShareMessage alloc] initWithText:text target:target subject:subject withImage:img withURL:url];
 
     for (id (^handler)(ZPCShareMessage *) in _showShareHandlers) {
         handler(shareMsg);

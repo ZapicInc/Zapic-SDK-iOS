@@ -26,7 +26,7 @@
 - (instancetype)init {
     if (self = [super init]) {
         _safariManager = [[ZPCSafariManager alloc] initWithController:self];
-        _shareManager = [[ZPCShareManager alloc] initWithController:self];
+        _shareManager = [[ZPCShareManager alloc] init];
 
         //Initialize the background view that will hold onto the webview
         _backgroundView = [[ZPCBackgroundView alloc] init];
