@@ -6,7 +6,7 @@
 
 + (NSString *)getInjectedScript {
     //Gets the info to be injected
-    NSString *sdkVersion = ([NSBundle bundleForClass:[self class]].infoDictionary)[@"CFBundleShortVersionString"];
+    NSString *sdkVersion = @"1.3.0";
     NSDictionary *appInfo = NSBundle.mainBundle.infoDictionary;
     NSString *appVersion = appInfo[@"CFBundleShortVersionString"];
     NSString *appBuild = appInfo[@"CFBundleVersion"];
