@@ -85,7 +85,20 @@ The total number of players in the challenge.
  */
 + (NSArray<ZPCChallenge *> *)decodeList:(nonnull NSArray *)data;
 
+/**
+ Converts the status to a string.
+
+ @param status The status.
+ @return The string.
+ */
 + (NSString *)statusToString:(ZPCChallengeStatus)status;
+
+/**
+ Parse a status string
+
+ @param string The string.
+ @return The status.
+ */
 + (ZPCChallengeStatus)stringToStatus:(NSString *)string;
 
 @end

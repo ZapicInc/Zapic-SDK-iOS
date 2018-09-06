@@ -1,8 +1,10 @@
 #import <Foundation/Foundation.h>
 
-static NSString *const ZPCCompetitionStatusInvited = @"invited";
-static NSString *const ZPCCompetitionStatusIgnored = @"ignored";
-static NSString *const ZPCCompetitionStatusAccepted = @"accepted";
+typedef NS_ENUM(NSUInteger, ZPCCompetitionStatus) {
+    ZPCCompetitionStatusInvited,
+    ZPCCompetitionStatusIgnored,
+    ZPCCompetitionStatusAccepted,
+};
 
 @interface ZPCCompetition : NSObject
 
@@ -53,7 +55,7 @@ static NSString *const ZPCCompetitionStatusAccepted = @"accepted";
 /**
  The current player's score, formatted as defined in the portal.
  */
-@property (nullable, readonly) NSString *status;
+@property (readonly) ZPCCompetitionStatus status;
 
 /**
  The current player's score, formatted as defined in the portal.
@@ -85,7 +87,7 @@ static NSString *const ZPCCompetitionStatusAccepted = @"accepted";
                      start:(nullable NSDate *)start
                        end:(nullable NSDate *)end
                 totalUsers:(nullable NSNumber *)totalUsers
-                    status:(nullable NSString *)status
+                    status:(ZPCCompetitionStatus)status
             formattedScore:(nullable NSString *)formattedScore
                      score:(nullable NSNumber *)score
            leaderboardRank:(nullable NSNumber *)leaderboardRank
@@ -106,4 +108,20 @@ static NSString *const ZPCCompetitionStatusAccepted = @"accepted";
  @return The competition
  */
 + (ZPCCompetition *)decodeCompetition:(NSDictionary *)data;
+
+/**
+ Converts the status to a string.
+ 
+ @param status The status.
+ @return The string.
+ */
++ (NSString *)statusToString:(ZPCCompetitionStatus)status;
+
+/**
+ Parse a status string
+ 
+ @param string The string.
+ @return The status.
+ */
++ (ZPCCompetitionStatus)stringToStatus:(NSString *)string;
 @end
