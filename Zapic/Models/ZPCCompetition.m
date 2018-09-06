@@ -1,4 +1,5 @@
 #import "ZPCCompetition.h"
+#import "ZPCLog.h"
 #import "ZPCUtils.h"
 
 @implementation ZPCCompetition
@@ -11,7 +12,7 @@
                      start:(nullable NSDate *)start
                        end:(nullable NSDate *)end
                 totalUsers:(nullable NSNumber *)totalUsers
-                    status:(nullable NSString *)status
+                    status:(ZPCCompetitionStatus)status
             formattedScore:(nullable NSString *)formattedScore
                      score:(nullable NSNumber *)score
            leaderboardRank:(nullable NSNumber *)leaderboardRank
@@ -54,11 +55,34 @@
                                         start:[ZPCUtils parseDateIso:data[@"start"]]
                                           end:[ZPCUtils parseDateIso:data[@"end"]]
                                    totalUsers:@([data[@"totalUsers"] longValue])
-                                       status:data[@"status"]
+                                       status:[ZPCCompetition stringToStatus:data[@"status"]]
                                formattedScore:data[@"formattedScore"]
                                         score:@([data[@"score"] doubleValue])
                               leaderboardRank:@([data[@"leaderboardRank"] longValue])
                                    leagueRank:@([data[@"leagueRank"] longValue])];
+}
+
++ (NSString *)statusToString:(ZPCCompetitionStatus)status {
+    switch (status) {
+        case ZPCCompetitionStatusIgnored:
+            return @"ignored";
+        case ZPCCompetitionStatusAccepted:
+            return @"ignored";
+        default:
+            return @"invited";
+    }
+}
++ (ZPCCompetitionStatus)stringToStatus:(NSString *)string {
+    if ([string isEqualToString:@"invited"]) {
+        return ZPCCompetitionStatusInvited;
+    } else if ([string isEqualToString:@"accepted"]) {
+        return ZPCCompetitionStatusAccepted;
+    } else if ([string isEqualToString:@"ignored"]) {
+        return ZPCCompetitionStatusIgnored;
+    } else {
+        [ZPCLog error:@"Unknown competition status %@", string];
+        return ZPCCompetitionStatusInvited;
+    }
 }
 
 @end
