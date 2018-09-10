@@ -18,6 +18,7 @@
 @implementation ZPCScriptMessageHandler
 
 static NSString *const AppStarted = @"APP_STARTED";
+static NSString *const AppFailed = @"APP_FAILED";
 static NSString *const ShowBanner = @"SHOW_BANNER";
 static NSString *const ShowPage = @"SHOW_PAGE";
 static NSString *const ShowShare = @"SHOW_SHARE_MENU";
@@ -114,6 +115,8 @@ static NSString *const PlayEvent = @"PLAY";
 
     if ([type isEqualToString:AppStarted]) {
         [self handleStatusUpdated:ZPCAppStatusReady];
+    } else if ([type isEqualToString:AppFailed]) {
+        [self handleStatusUpdated:ZPCAppStatusFailed];
     } else if ([type isEqualToString:ClosePageRequest]) {
         [self handleClosePageRequested];
     } else if ([type isEqualToString:LoggedIn]) {

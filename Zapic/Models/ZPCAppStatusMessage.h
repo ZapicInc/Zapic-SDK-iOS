@@ -3,6 +3,7 @@
 typedef NS_ENUM(NSInteger, ZPCAppStatus) {
     ZPCAppStatusNone,
     ZPCAppStatusReady,
+    ZPCAppStatusFailed,
 };
 
 @interface ZPCAppStatusMessage : NSObject

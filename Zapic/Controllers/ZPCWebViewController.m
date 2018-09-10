@@ -69,6 +69,9 @@
             if (msg.status == ZPCAppStatusReady) {
                 [weakSelf.messageQueue sendQueuedMessages];
                 self->_pageReady = YES;
+            } else if (msg.status == ZPCAppStatusFailed) {
+                //Notify the query manager that things are broken
+                weakSelf.queryManager.isReady = NO;
             }
         }];
 
@@ -89,7 +92,10 @@
         }];
 
         _webApp.loadErrorHandler = ^{
+            //Show the error page
             weakSelf.view = weakSelf.errorView;
+            //Notify the query manager that things are broken
+            weakSelf.queryManager.isReady = NO;
         };
 
         //Start loading the Zapic web app
