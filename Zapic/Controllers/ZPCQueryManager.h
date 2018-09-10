@@ -7,6 +7,8 @@
 
 @interface ZPCQueryManager : NSObject
 
+@property (nonatomic) BOOL isReady;
+
 - (instancetype)initWithMessageHandler:(ZPCScriptMessageHandler *)messageHandler messageQueue:(ZPCMessageQueue *)messageQueue;
 
 /**

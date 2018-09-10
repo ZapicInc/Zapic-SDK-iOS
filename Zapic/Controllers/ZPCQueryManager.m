@@ -8,17 +8,36 @@ typedef void (^ResponseBlock)(id response, NSError *error);
 @property (readonly) ZPCMessageQueue *messageQueue;
 @property (nonnull, readonly) NSMutableDictionary<NSString *, ResponseBlock> *requests;
 @end
+
 @implementation ZPCQueryManager
 
 static NSString *const ZPCCompetitions = @"competitions";
 static NSString *const ZPCStatistics = @"statistics";
 static NSString *const ZPCChallenges = @"challenges";
 
+static NSString *const ZPCErrorDomain = @"com.Zapic";
+static NSInteger const ZPCErrorUnavailable = 2600;
+static NSInteger const ZPCErrorClient = 2601;
+
+- (void)setIsReady:(BOOL)isReady {
+    if (isReady == _isReady) {
+        return;
+    }
+
+    _isReady = isReady;
+
+    //If the manager is not available, close all pending queries
+    if (!_isReady) {
+        [self failAllQueries];
+    }
+}
+
 - (instancetype)initWithMessageHandler:(ZPCScriptMessageHandler *)messageHandler messageQueue:(ZPCMessageQueue *)messageQueue {
     if (self = [super init]) {
         _messageQueue = messageQueue;
         _messageHandler = messageHandler;
         _requests = [[NSMutableDictionary alloc] init];
+        _isReady = YES;
 
         __weak typeof(self) weakSelf = self;
 
@@ -44,7 +63,7 @@ static NSString *const ZPCChallenges = @"challenges";
 
     //If this is an error response, trigger the callback right away
     if (error) {
-        handler(nil, [NSError errorWithDomain:@"Zapic" code:0 userInfo:payload]);
+        handler(nil, [NSError errorWithDomain:ZPCErrorDomain code:ZPCErrorClient userInfo:@{@"errorMsg": payload}]);
     }
 
     id response = nil;
@@ -61,9 +80,21 @@ static NSString *const ZPCChallenges = @"challenges";
 
     //Trigger the callback with the reponse data
     handler(response, nil);
+
+    [_requests removeObjectForKey:requestId];
 }
 
 - (void)sendQuery:(NSString *)dataType withCompletionHandler:(ResponseBlock)completionHandler {
+    //If requests cant be processed now, cancel immediately
+    if (!_isReady) {
+        NSError *error = [NSError errorWithDomain:ZPCErrorDomain
+                                             code:ZPCErrorUnavailable
+                                         userInfo:nil];
+
+        completionHandler(nil, error);
+        return;
+    }
+
     //Generate a new unique id
     NSString *requestId = [NSUUID UUID].UUIDString;
 
@@ -78,6 +109,22 @@ static NSString *const ZPCChallenges = @"challenges";
 
     //Send the query to JS
     [_messageQueue sendMessage:ZPCWebFunctionQuery withPayload:msg];
+}
+
+- (void)failAllQueries {
+    for (NSString *requestId in _requests) {
+        NSError *error = [NSError errorWithDomain:ZPCErrorDomain
+                                             code:ZPCErrorUnavailable
+                                         userInfo:nil];
+
+        //Gets the handler
+        ResponseBlock handler = [_requests objectForKey:requestId];
+
+        //Trigger the handler with the error
+        handler(nil, error);
+    }
+
+    [_requests removeAllObjects];
 }
 
 - (void)getCompetitions:(void (^)(NSArray<ZPCCompetition *> *competitions, NSError *error))completionHandler {

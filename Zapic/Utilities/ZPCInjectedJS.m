@@ -14,6 +14,8 @@
     NSString *deviceId = UIDevice.currentDevice.identifierForVendor.UUIDString;
     NSString *iosVersion = UIDevice.currentDevice.systemVersion;
     NSString *installId = [self installId];
+    const int sdkApiVersion = 3;
+    const int loadTimeout = 10000;
 
     NSString *adId = @"";
 
@@ -22,9 +24,12 @@
     }
 
     return [NSString stringWithFormat:
-                         @"window.zapic = {"
+                         @"window.iosWebViewWatchdog = window.setTimeout(function () {"
+                         @"  window.webkit.messageHandlers.dispatch.postMessage({\"type\":\"APP_FAILED\"});"
+                          "}, %d);"
+                          "window.zapic = {"
                           "environment: 'webview',"
-                          "version: 3,"
+                          "version: %d,"
                           "iosVersion: '%@',"
                           "bundleId: '%@',"
                           "sdkVersion: '%@',"
@@ -34,6 +39,8 @@
                           "appBuild: '%@',"
                           "adId:'%@',"
                           "onLoaded: function(action$, publishAction) {"
+                          "window.clearTimeout(window.iosWebViewWatchdog);"
+                          "delete window.iosWebViewWatchdog;"
                           "window.zapic.dispatch = function(action) {"
                           "publishAction(action)"
                           "};"
@@ -42,7 +49,16 @@
                           "});"
                           "}"
                           "}",
-                         iosVersion, bundleId, sdkVersion, installId, deviceId, appBuild, appVersion, adId];
+                         loadTimeout,
+                         sdkApiVersion,
+                         iosVersion,
+                         bundleId,
+                         sdkVersion,
+                         installId,
+                         deviceId,
+                         appBuild,
+                         appVersion,
+                         adId];
 }
 
 + (NSString *)installId {
