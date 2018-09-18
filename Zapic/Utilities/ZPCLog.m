@@ -38,12 +38,10 @@ bool isEnabled = true;
 }
 
 + (void)writeLog:(NSString *)message withSymbol:(NSString *)symbol {
-#if DEBUG
     if (!isEnabled)
         return;
 
     NSLog(@"[Zapic][%@]-%@", symbol, message);
-#endif
 }
 
 @end

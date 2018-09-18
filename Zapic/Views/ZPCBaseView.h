@@ -1,8 +1,8 @@
 @import UIKit;
-#import "ZPCWebViewController.h"
+#import "ZPCCore.h"
 
 @interface ZPCBaseView : UIView
-@property (weak) ZPCWebViewController *viewController;
+@property (weak) ZPCCore *viewController;
 - (instancetype)initWithSpinner;
 - (instancetype)initWithText:(NSString *)text subText:(NSString *)subText showSpinner:(BOOL)showSpinner;
 @end

@@ -1,15 +1,12 @@
 @import Foundation;
 #import "Zapic.h"
-#import "ZPCAppDelegate.h"
+#import "ZPCCore.h"
 #import "ZPCLog.h"
 #import "ZPCSelectorHelpers.h"
-#import "ZPCWebViewController.h"
 
-static BOOL started = NO;
-static ZPCWebViewController *_viewController;
+static ZPCCore *_core;
 static void (^_loginHandler)(ZPCPlayer *);
 static void (^_logoutHandler)(ZPCPlayer *);
-static void (^_playEventHandler)(ZPCPlayEvent *);
 
 @implementation Zapic : NSObject
 
@@ -22,11 +19,7 @@ NSString *const ZPCPageLogin = @"login";
 NSString *const ZPCPageProfile = @"profile";
 NSString *const ZPCPageStats = @"stats";
 
-#pragma mark - Event callbacks
-
-+ (ZPCPlayer *)player {
-    return _viewController.playerManager.player;
-}
+#pragma mark - Login callbacks
 
 + (void (^)(ZPCPlayer *))loginHandler {
     return _loginHandler;
@@ -34,10 +27,6 @@ NSString *const ZPCPageStats = @"stats";
 
 + (void (^)(ZPCPlayer *))logoutHandler {
     return _logoutHandler;
-}
-
-+ (void (^)(ZPCPlayEvent *))playEventHandler {
-    return _playEventHandler;
 }
 
 + (void)setLoginHandler:(void (^)(ZPCPlayer *))loginHandler {
@@ -48,29 +37,19 @@ NSString *const ZPCPageStats = @"stats";
     _logoutHandler = logoutHandler;
 }
 
-+ (void)setPlayEventHandler:(void (^)(ZPCPlayEvent *))playEventHandler {
-    _playEventHandler = playEventHandler;
-}
-
 + (void)initialize {
     if (self == [Zapic self]) {
-        _viewController = [[ZPCWebViewController alloc] init];
+        _core = [[ZPCCore alloc] init];
 
-        [_viewController.playerManager addLoginHandler:^(ZPCPlayer *player) {
+        [_core.playerManager addLoginHandler:^(ZPCPlayer *player) {
             if (_loginHandler) {
                 _loginHandler(player);
             }
         }];
 
-        [_viewController.playerManager addLogoutHandler:^(ZPCPlayer *player) {
+        [_core.playerManager addLogoutHandler:^(ZPCPlayer *player) {
             if (_logoutHandler) {
                 _logoutHandler(player);
-            }
-        }];
-
-        [_viewController.messageHandler addPlayEventHandler:^(ZPCPlayEvent *playEvent) {
-            if (_playEventHandler) {
-                _playEventHandler(playEvent);
             }
         }];
     }
@@ -79,154 +58,57 @@ NSString *const ZPCPageStats = @"stats";
 #pragma mark - Zapic Methods
 
 + (void)start {
-    if (started) {
-        [ZPCLog info:@"Zapic is already started. Start should only be called once"];
-        return;
-    }
-    started = true;
-
-    [ZPCLog info:@"Starting Zapic"];
+    [_core start];
 }
 
 + (void)showPage:(NSString *)pageName {
-    [_viewController showPage:pageName];
+    [_core showPage:pageName];
 }
 
 + (void)showDefaultPage {
-    [self showPage:@"default"];
+    [_core showDefaultPage];
 }
 
-+ (void)handleInteraction:(NSDictionary *)data {
++ (void)handleInteractionData:(NSDictionary<NSString *, NSString *> *)data {
     if (!data) {
         [ZPCLog warn:@"Missing data, unable to handleInteraction"];
         return;
     }
 
-    [_viewController submitEvent:ZPCEventTypeInteraction withPayload:data];
+    NSString *zapic = [data objectForKey:@"zapic"];
+
+    [self handleInteraction:zapic];
 }
 
-+ (void)handleInteractionString:(NSString *)json {
-    if (!json) {
-        [ZPCLog warn:@"Missing handleInteraction string"];
++ (void)handleInteraction:(NSString *)string {
+    if (!string) {
+        [ZPCLog warn:@"Interaction string must be valid string"];
         return;
     }
 
-    NSError *error;
-    NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data
-                                                                 options:kNilOptions
-                                                                   error:&error];
-    if (!jsonResponse) {
-        [ZPCLog warn:@"Interaction string must be valid json"];
-        return;
-    }
-
-    [self handleInteraction:jsonResponse];
+    [_core submitEvent:ZPCEventTypeInteraction withPayload:string];
 }
 
 + (void)submitEvent:(NSDictionary *)parameters {
-    [_viewController submitEvent:ZPCEventTypeGameplay withPayload:parameters];
-}
-
-#pragma mark - AppDelegate Methods
-
-+ (void)didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [_viewController.notificationManager registerForPushNotifications];
-}
-
-+ (void)continueUserActivity:(NSUserActivity *)userActivity {
-    [ZPCLog info:@"Application continueUserActivity: %@", userActivity.activityType];
-
-    BOOL handled = NO;
-
-    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
-        [Zapic handleLinkInteraction:userActivity.webpageURL.absoluteString linkType:@"universalLink" sourceApp:nil];
-        handled = YES;
-    }
-}
-
-+ (void)openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
-    [ZPCLog info:@"Application openedUrl: %@", url.absoluteString];
-
-    [Zapic handleLinkInteraction:url.absoluteString linkType:@"deepLink" sourceApp:[options objectForKey:UIApplicationOpenURLOptionsSourceApplicationKey]];
-}
-
-+ (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    [_viewController.notificationManager setDeviceToken:deviceToken];
-}
-
-+ (void)didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [_viewController.notificationManager receivedNotification:userInfo];
-}
-
-/**
- Triggers 'handleInteraction' in Zapic
- 
- @param urlString The URL for the interaction.
- @param linkType The type of interaction.
- @param sourceApp (Optional) The app that triggered the interaction.
- */
-+ (void)handleLinkInteraction:(nonnull NSString *)urlString linkType:(nonnull NSString *)linkType sourceApp:(nullable NSString *)sourceApp {
-    NSDictionary *data = @{
-        @"url": urlString,
-        @"sourceApp": sourceApp,
-        @"linkType": linkType,
-    };
-
-    [Zapic handleInteraction:data];
+    [_core submitEvent:ZPCEventTypeGameplay withPayload:parameters];
 }
 
 #pragma mark - Data Queries
 
++ (void)getPlayer:(void (^)(ZPCPlayer *, NSError *))completionHandler {
+    [_core.queryManager getPlayer:completionHandler];
+}
+
 + (void)getCompetitions:(void (^)(NSArray<ZPCCompetition *> *competitions, NSError *error))completionHandler {
-    [_viewController.queryManager getCompetitions:completionHandler];
+    [_core.queryManager getCompetitions:completionHandler];
 }
 
 + (void)getStatistics:(void (^)(NSArray<ZPCStatistic *> *statistics, NSError *error))completionHandler {
-    [_viewController.queryManager getStatistics:completionHandler];
+    [_core.queryManager getStatistics:completionHandler];
 }
 
 + (void)getChallenges:(void (^)(NSArray<ZPCChallenge *> *challenges, NSError *error))completionHandler {
-    [_viewController.queryManager getChallenges:completionHandler];
-}
-
-@end
-
-#pragma mark - Swizzle
-// Swizzles UIApplication class to swizzling the following:
-//   - UIApplication
-//      - setDelegate:
-//        - Used to swizzle all UIApplicationDelegate selectors on the passed in class.
-//        - Almost always this is the AppDelegate class but since UIApplicationDelegate is an "interface" this could be any class.
-//
-//  Note1: Do NOT move this category to it's own file. This is required so when the app developer calls Zapic.start() this +load
-//            will fire along with it. This is due to how iOS loads .m files into memory instead of classes.
-//  Note2: Do NOT directly add swizzled selectors to this category as if this class is loaded into the runtime twice unexpected results will occur.
-//            The zapicLoadedTagSelector: selector is used a flag to prevent double swizzling if this library is loaded twice.
-@implementation UIApplication (Zapic)
-#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
-+ (void)load {
-    [ZPCLog info:@"UIApplication(Zapic) load"];
-
-    // Prevent Xcode storyboard rendering process from crashing with custom IBDesignable Views
-    // https://github.com/OneSignal/OneSignal-iOS-SDK/issues/160
-    NSProcessInfo *processInfo = [NSProcessInfo processInfo];
-    if ([[processInfo processName] isEqualToString:@"IBDesignablesAgentCocoaTouch"])
-        return;
-
-    // Double loading of class detection.
-    BOOL existing = injectSelector([ZPCAppDelegate class], @selector(zapicLoadedTagSelector), self, @selector(zapicLoadedTagSelector));
-
-    if (existing) {
-        [ZPCLog warn:@"Already swizzled UIApplication.setDelegate. Make sure the Zapic library wasn't loaded into the runtime twice!"];
-        return;
-    }
-
-    // Swizzle - UIApplication delegate
-    injectToProperClass(@selector(setZapicDelegate:), @selector(setDelegate:), @[], [ZPCAppDelegate class], [UIApplication class]);
-}
-
-+ (void)zapicLoadedTagSelector {
+    [_core.queryManager getChallenges:completionHandler];
 }
 
 @end

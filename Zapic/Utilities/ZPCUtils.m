@@ -1,6 +1,4 @@
 #import "ZPCUtils.h"
-#import <dlfcn.h>
-#import <objc/runtime.h>
 #import "ZPCLog.h"
 
 @implementation ZPCUtils
@@ -46,42 +44,6 @@
     }
 
     return false;
-}
-
-+ (void)loadSafariServices {
-    [self loadFramework:@"SafariServices" withClass:@"SFSafariViewController"];
-}
-
-+ (void)loadWebKit {
-    [self loadFramework:@"WebKit" withClass:@"WKWebView"];
-}
-
-+ (void)loadFramework:(NSString *)framework withClass:(NSString *)className {
-    NSString *frameworkLocation;
-    if ([ZPCUtils isClassPresent:className]) {
-        [ZPCLog info:@"%@ framework already present", framework];
-        return;
-    }
-
-    NSString *frameworkName = [NSString stringWithFormat:@"%@.framework", framework];
-
-#if TARGET_IPHONE_SIMULATOR
-    NSString *frameworkPath = [[NSProcessInfo processInfo] environment][@"DYLD_FALLBACK_FRAMEWORK_PATH"];
-    if (frameworkPath) {
-        frameworkLocation = [NSString pathWithComponents:@[frameworkPath, frameworkName, framework]];
-    }
-#else
-    frameworkLocation = [NSString stringWithFormat:@"/System/Library/Frameworks/%@/%@", frameworkName, framework];
-#endif
-
-    dlopen([frameworkLocation cStringUsingEncoding:NSUTF8StringEncoding], RTLD_LAZY);
-
-    if (![ZPCUtils isClassPresent:className]) {
-        [ZPCLog error:@"%@ still not present!", framework];
-        return;
-    } else {
-        [ZPCLog info:@"Succesfully loaded %@ framework", framework];
-    }
 }
 
 @end

@@ -31,4 +31,11 @@
  @param completionHandler Callback handler.
  */
 - (void)getChallenges:(void (^)(NSArray<ZPCChallenge *> *statistics, NSError *error))completionHandler;
+
+/**
+ Gets the player.
+ 
+ @param completionHandler Callback handler.
+ */
+- (void)getPlayer:(void (^)(ZPCPlayer *player, NSError *error))completionHandler;
 @end
