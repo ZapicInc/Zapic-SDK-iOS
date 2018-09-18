@@ -7,13 +7,14 @@ typedef void (^ResponseBlock)(id response, NSError *error);
 @property (readonly) ZPCScriptMessageHandler *messageHandler;
 @property (readonly) ZPCMessageQueue *messageQueue;
 @property (nonnull, readonly) NSMutableDictionary<NSString *, ResponseBlock> *requests;
+@property (nonnull, readonly) NSMutableDictionary<NSString *, NSString *> *requestTypes;
 @end
 
 @implementation ZPCQueryManager
-
-static NSString *const ZPCCompetitions = @"competitions";
-static NSString *const ZPCStatistics = @"statistics";
-static NSString *const ZPCChallenges = @"challenges";
+static NSString *const CompetitionQuery = @"competitions";
+static NSString *const StatisticsQuery = @"statistics";
+static NSString *const ChallengeQuery = @"challenges";
+static NSString *const PlayerQuery = @"player";
 
 static NSString *const ZPCErrorDomain = @"com.Zapic";
 static NSInteger const ZPCErrorUnavailable = 2600;
@@ -37,9 +38,10 @@ static NSInteger const ZPCErrorClient = 2601;
         _messageQueue = messageQueue;
         _messageHandler = messageHandler;
         _requests = [[NSMutableDictionary alloc] init];
+        _requestTypes = [[NSMutableDictionary alloc] init];
         _isReady = YES;
 
-        __weak typeof(self) weakSelf = self;
+        __weak ZPCQueryManager *weakSelf = self;
 
         [_messageHandler addQueryResponseHandler:^(NSDictionary *message) {
             [weakSelf handleResponse:message];
@@ -55,33 +57,37 @@ static NSInteger const ZPCErrorClient = 2601;
 
     //Gets the callback for this request
     ResponseBlock handler = [_requests objectForKey:requestId];
+    NSString *dataType = [_requestTypes objectForKey:requestId];
 
     if (!handler) {
         [ZPCLog warn:@"Unable to find handler for requestId: %@", requestId];
         return;
     }
 
+    [_requests removeObjectForKey:requestId];
+    [_requestTypes removeObjectForKey:requestId];
+
     //If this is an error response, trigger the callback right away
     if (error) {
         handler(nil, [NSError errorWithDomain:ZPCErrorDomain code:ZPCErrorClient userInfo:@{@"errorMsg": payload}]);
+        return;
     }
 
     id response = nil;
-    NSString *dataType = payload[@"dataType"];
     id responseData = payload[@"response"];
 
-    if ([dataType isEqualToString:ZPCCompetitions]) {
+    if ([dataType isEqualToString:CompetitionQuery]) {
         response = [ZPCCompetition decodeList:responseData];
-    } else if ([dataType isEqualToString:ZPCStatistics]) {
+    } else if ([dataType isEqualToString:StatisticsQuery]) {
         response = [ZPCStatistic decodeList:responseData];
-    } else if ([dataType isEqualToString:ZPCChallenges]) {
+    } else if ([dataType isEqualToString:ChallengeQuery]) {
         response = [ZPCChallenge decodeList:responseData];
+    } else if ([dataType isEqualToString:PlayerQuery]) {
+        response = [[ZPCPlayer alloc] initWithData:responseData];
     }
 
     //Trigger the callback with the reponse data
     handler(response, nil);
-
-    [_requests removeObjectForKey:requestId];
 }
 
 - (void)sendQuery:(NSString *)dataType withCompletionHandler:(ResponseBlock)completionHandler {
@@ -100,6 +106,7 @@ static NSInteger const ZPCErrorClient = 2601;
 
     //Save the callback for this request id
     [_requests setObject:completionHandler forKey:requestId];
+    [_requestTypes setObject:dataType forKey:requestId];
 
     NSDictionary *msg = @{
         @"requestId": requestId,
@@ -125,18 +132,23 @@ static NSInteger const ZPCErrorClient = 2601;
     }
 
     [_requests removeAllObjects];
+    [_requestTypes removeAllObjects];
 }
 
 - (void)getCompetitions:(void (^)(NSArray<ZPCCompetition *> *competitions, NSError *error))completionHandler {
-    [self sendQuery:ZPCCompetitions withCompletionHandler:completionHandler];
+    [self sendQuery:CompetitionQuery withCompletionHandler:completionHandler];
 }
 
 - (void)getStatistics:(void (^)(NSArray<ZPCStatistic *> *statistics, NSError *error))completionHandler {
-    [self sendQuery:ZPCStatistics withCompletionHandler:completionHandler];
+    [self sendQuery:StatisticsQuery withCompletionHandler:completionHandler];
 }
 
 - (void)getChallenges:(void (^)(NSArray<ZPCChallenge *> *statistics, NSError *error))completionHandler {
-    [self sendQuery:ZPCChallenges withCompletionHandler:completionHandler];
+    [self sendQuery:ChallengeQuery withCompletionHandler:completionHandler];
+}
+
+- (void)getPlayer:(void (^)(ZPCPlayer *player, NSError *error))completionHandler {
+    [self sendQuery:PlayerQuery withCompletionHandler:completionHandler];
 }
 
 @end

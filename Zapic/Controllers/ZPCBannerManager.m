@@ -18,7 +18,7 @@
 
         if (message.data) {
             banner.callback = ^{
-                [Zapic handleInteractionString:message.data];
+                [Zapic handleInteraction:message.data];
             };
         }
 

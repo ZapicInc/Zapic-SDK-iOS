@@ -1,4 +1,4 @@
-#import "ZPCWebViewController.h"
+#import "ZPCCore.h"
 #import "ZPCBannerManager.h"
 #import "ZPCErrorView.h"
 #import "ZPCLoadingView.h"
@@ -8,8 +8,9 @@
 #import "ZPCShareManager.h"
 #import "ZPCUtils.h"
 
-@interface ZPCWebViewController ()
+@interface ZPCCore ()
 @property BOOL isVisible;
+@property BOOL started;
 @property BOOL pageReady;
 @property (readonly) ZPCErrorView *errorView;
 @property (readonly) ZPCLoadingView *loadingView;
@@ -21,7 +22,7 @@
 @property (nonatomic, strong) ZPCWebApp *webApp;
 @end
 
-@implementation ZPCWebViewController
+@implementation ZPCCore
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -63,7 +64,7 @@
 
         _playerManager = [[ZPCPlayerManager alloc] initWithHandler:_messageHandler];
 
-        __weak ZPCWebViewController *weakSelf = self;
+        __weak ZPCCore *weakSelf = self;
 
         [_messageHandler addAppStatusHandler:^(ZPCAppStatusMessage *msg) {
             if (msg.status == ZPCAppStatusReady) {
@@ -97,11 +98,21 @@
             //Notify the query manager that things are broken
             weakSelf.queryManager.isReady = NO;
         };
-
-        //Start loading the Zapic web app
-        [_webApp loadUrl:@"https://app.zapic.net"];
     }
     return self;
+}
+
+- (void)start {
+    if (_started) {
+        [ZPCLog info:@"Zapic is already started. Start should only be called once"];
+        return;
+    }
+    _started = true;
+
+    [ZPCLog info:@"Starting Zapic"];
+
+    //Start loading the Zapic web app
+    [_webApp loadUrl:@"https://app.zapic.net"];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -116,6 +127,10 @@
                                   [self->_backgroundView addSubview:self->_webApp];
                               }];
     _isVisible = false;
+}
+
+- (void)showDefaultPage {
+    [self showPage:@"default"];
 }
 
 - (void)showPage:(NSString *)pageName {
@@ -152,7 +167,7 @@
     [ZPCLog info:@"Submitting an event to the web client"];
 
     NSDictionary *msg = @{
-        @"type": [ZPCWebViewController getEventTypeName:eventType],
+        @"type": [ZPCCore getEventTypeName:eventType],
         @"params": payload,
         @"timestamp": [ZPCUtils getIsoNow],
     };
