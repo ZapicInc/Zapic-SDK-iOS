@@ -1,7 +1,6 @@
 #import "ZPCSafariManager.h"
+#import <SafariServices/SafariServices.h>
 #import "ZPCLog.h"
-
-@import SafariServices;
 
 @interface ZPCSafariManager ()
 @property (readonly) UIViewController *viewController;

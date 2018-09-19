@@ -43,12 +43,12 @@
                      active:[data[@"active"] boolValue]
                       start:[ZPCUtils parseDateIso:data[@"start"]]
                         end:[ZPCUtils parseDateIso:data[@"end"]]
-                 totalUsers:@([data[@"totalUsers"] longValue])
+                 totalUsers:data[@"totalUsers"]
                      status:[ZPCCompetition stringToStatus:data[@"status"]]
              formattedScore:data[@"formattedScore"]
-                      score:@([data[@"score"] doubleValue])
-            leaderboardRank:@([data[@"leaderboardRank"] longValue])
-                 leagueRank:@([data[@"leagueRank"] longValue])];
+                      score:data[@"score"]
+            leaderboardRank:data[@"leaderboardRank"]
+                 leagueRank:data[@"leagueRank"]];
 }
 
 + (NSArray<ZPCCompetition *> *)decodeList:(NSArray<NSDictionary *> *)data {

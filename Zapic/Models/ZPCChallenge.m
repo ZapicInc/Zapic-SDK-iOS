@@ -13,11 +13,11 @@
         _start = [ZPCUtils parseDateIso:data[@"start"]];
         _end = [ZPCUtils parseDateIso:data[@"end"]];
         _formattedScore = data[@"formattedScore"];
-        _score = @([data[@"score"] doubleValue]);
+        _score = data[@"score"];
         _status = [ZPCChallenge stringToStatus:data[@"status"]];
         _metadata = data[@"metadata"];
-        _rank = @([data[@"rank"] longValue]);
-        _totalUsers = @([data[@"totalUsers"] longValue]);
+        _rank = data[@"rank"];
+        _totalUsers = data[@"totalUsers"];
     }
     return self;
 }

@@ -1,4 +1,4 @@
-@import Foundation;
+#import <Foundation/Foundation.h>
 
 @interface ZPCQueue : NSObject
 @property (strong) NSMutableArray *data;

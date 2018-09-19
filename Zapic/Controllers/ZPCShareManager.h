@@ -1,5 +1,5 @@
-@import UIKit;
-@import MessageUI;
+#import <MessageUI/MessageUI.h>
+#import <UIKit/UIKit.h>
 #import "ZPCShareMessage.h"
 
 @interface ZPCShareManager : NSObject <MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
