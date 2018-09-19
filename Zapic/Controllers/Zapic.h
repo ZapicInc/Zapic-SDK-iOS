@@ -1,4 +1,4 @@
-@import UIKit;
+#import <UIKit/UIKit.h>
 #import "ZPCChallenge.h"
 #import "ZPCCompetition.h"
 #import "ZPCPlayer.h"

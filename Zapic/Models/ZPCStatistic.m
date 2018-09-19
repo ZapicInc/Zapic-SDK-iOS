@@ -4,15 +4,12 @@
 
 - (instancetype)initWithData:(nonnull NSDictionary *)data {
     if (self = [super init]) {
-        id percentile = data[@"percentile"];
         _identifier = data[@"id"];
         _title = data[@"title"];
         _formattedScore = data[@"formattedScore"];
-        _score = @([data[@"score"] doubleValue]);
-        _rank = @([data[@"rank"] longValue]);
-        if (percentile != [NSNull null]) {
-            _percentile = @([percentile floatValue]);
-        }
+        _score = data[@"score"];
+        _rank = data[@"rank"];
+        _percentile = data[@"percentile"];
     }
     return self;
 }

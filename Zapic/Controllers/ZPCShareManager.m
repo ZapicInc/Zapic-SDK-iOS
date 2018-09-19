@@ -43,6 +43,12 @@
                 body = [body stringByAppendingString:[NSString stringWithFormat:@"\n%@", message.url.absoluteString]];
             }
 
+            if (message.image) {
+                //Add the image as attachment
+                NSData *dataImg = UIImagePNGRepresentation(message.image);
+                [composeVC addAttachmentData:dataImg typeIdentifier:@"public.data" filename:@"Image.png"];
+            }
+
             composeVC.body = body;
             composeVC.subject = message.subject;
 

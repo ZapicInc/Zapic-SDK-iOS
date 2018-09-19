@@ -26,9 +26,13 @@
 }
 
 + (NSString *)getIsoNow {
-    NSDateFormatter *dateFormatter = [ZPCUtils getIsoFormatter];
     NSDate *now = [NSDate date];
-    return [dateFormatter stringFromDate:now];
+    return [ZPCUtils toIsoDate:now];
+}
+
++ (NSString *)toIsoDate:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [ZPCUtils getIsoFormatter];
+    return [dateFormatter stringFromDate:date];
 }
 
 + (NSDate *)parseDateIso:(NSString *)dateString {
@@ -36,14 +40,33 @@
     return [dateFormatter dateFromString:dateString];
 }
 
-+ (BOOL)isClassPresent:(NSString *)className {
-    id nsClass = NSClassFromString(className);
++ (void)cleanDictionary:(NSDictionary *)dict {
+    NSMutableArray *keys = [NSMutableArray array];
+    for (id key in dict) {
+        id value = dict[key];
 
-    if (nsClass) {
-        return true;
+        if ([value isKindOfClass:[NSDictionary class]]) {
+            [ZPCUtils cleanDictionary:value];
+        } else if ([value isEqual:[NSNull null]]) {
+            [keys addObject:key];
+        } else if ([value isKindOfClass:[NSMutableArray class]]) {
+            [ZPCUtils cleanArray:value];
+        }
     }
 
-    return false;
+    for (id key in keys) {
+        [dict setValue:nil forKey:key];
+    }
+}
+
++ (void)cleanArray:(NSMutableArray *)array {
+    for (id value in array) {
+        if ([value isKindOfClass:[NSDictionary class]]) {
+            [ZPCUtils cleanDictionary:value];
+        } else if ([value isKindOfClass:[NSArray class]]) {
+            [ZPCUtils cleanArray:value];
+        }
+    }
 }
 
 @end

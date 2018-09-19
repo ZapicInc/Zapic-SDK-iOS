@@ -1,5 +1,6 @@
 #import "ZPCScriptMessageHandler.h"
 #import "ZPCLog.h"
+#import "ZPCUtils.h"
 
 @interface ZPCScriptMessageHandler ()
 
@@ -62,6 +63,8 @@ static NSString *const QueryResponse = @"QUERY_RESPONSE";
         [ZPCLog warn:@"Received a message with a missing message type"];
         return;
     }
+
+    [ZPCUtils cleanDictionary:json];
 
     [self handleMessage:type withData:json];
 }

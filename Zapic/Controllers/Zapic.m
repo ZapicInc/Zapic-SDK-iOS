@@ -1,5 +1,5 @@
-@import Foundation;
 #import "Zapic.h"
+#import <Foundation/Foundation.h>
 #import "ZPCCore.h"
 #import "ZPCLog.h"
 #import "ZPCSelectorHelpers.h"

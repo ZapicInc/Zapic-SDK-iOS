@@ -4,7 +4,7 @@
 #import "ZPCQueryManager.h"
 #import "ZPCWebApp.h"
 
-@import UIKit;
+#import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, ZPCEventType) {
     ZPCEventTypeGameplay,

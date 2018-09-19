@@ -1,4 +1,4 @@
-@import Foundation;
+#import <Foundation/Foundation.h>
 
 @interface ZPCStorage : NSObject
 - (void)store:(NSArray<NSString *> *)objects;

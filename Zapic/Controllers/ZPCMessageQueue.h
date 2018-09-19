@@ -1,4 +1,4 @@
-@import Foundation;
+#import <Foundation/Foundation.h>
 #import "ZPCWebApp.h"
 
 static NSString *const ZPCWebFunctionSubmitEvent = @"SUBMIT_EVENT";

@@ -1,8 +1,7 @@
-@import UIKit;
+#import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 #import "ZPCSafariManager.h"
 #import "ZPCScriptMessageHandler.h"
-
-@import WebKit;
 
 @interface ZPCWebApp : UIView <UIScrollViewDelegate, WKNavigationDelegate>
 @property ZPCSafariManager *safariManager;

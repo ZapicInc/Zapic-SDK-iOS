@@ -1,4 +1,4 @@
-@import Foundation;
+#import <Foundation/Foundation.h>
 #import "ZPCPlayer.h"
 #import "ZPCScriptMessageHandler.h"
 

@@ -1,8 +1,7 @@
 #import "ZPCNotificationManager.h"
+#import <UserNotifications/UserNotifications.h>
 #import "ZPCLog.h"
 #import "Zapic.h"
-
-@import UserNotifications;
 
 static BOOL registered = NO;
 static ZPCMessageQueue *_messageQueue;

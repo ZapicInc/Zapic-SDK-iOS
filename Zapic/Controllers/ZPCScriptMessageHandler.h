@@ -1,6 +1,5 @@
-@import Foundation;
-@import WebKit;
-
+#import <Foundation/Foundation.h>
+#import <WebKit/WebKit.h>
 #import "ZPCAppStatusMessage.h"
 #import "ZPCBannerMessage.h"
 #import "ZPCPlayer.h"

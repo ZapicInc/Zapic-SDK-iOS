@@ -1,6 +1,6 @@
 #import "ZPCInjectedJS.h"
-@import UIKit;
-@import AdSupport;
+#import <AdSupport/AdSupport.h>
+#import <UIKit/UIKit.h>
 
 @implementation ZPCInjectedJS
 
