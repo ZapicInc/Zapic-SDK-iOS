@@ -26,6 +26,13 @@ We accept contributions to the Zapic SDK for iOS. Simply fork the repository and
 
 ## Quick Links
 
-* [Zapic Documentation](https://www.zapic.com/docs)
+* [Zapic Documentation](https://docs.zapic.com)
 * [Zapic SDK for Unity](https://github.com/ZapicInc/Zapic-SDK-Unity)
 * [Zapic SDK for Android](https://github.com/ZapicInc/Zapic-SDK-Android)
+
+## How to create a release
+1. Update version number of Zapic project
+2. Update version number of podspec
+3. Check pod `pod lib lint`
+4. Create release in Github
+5. Publish release to Cocoapods repo `pod trunk push Zapic.podspec`
