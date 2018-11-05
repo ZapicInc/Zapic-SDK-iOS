@@ -1,6 +1,6 @@
 # Zapic SDK for iOS
 
-[![Build Status](https://travis-ci.org/ZapicInc/Zapic-SDK-iOS.svg?branch=master)](https://travis-ci.org/ZapicInc/Zapic-SDK-iOS) [![CodeFactor](https://www.codefactor.io/repository/github/zapicinc/zapic-sdk-ios/badge)](https://www.codefactor.io/repository/github/zapicinc/zapic-sdk-ios) [![MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage) [![Chat on Slack](https://slack.zapic.com/badge.svg)](https://slack.zapic.com)
+[![Build Status](https://travis-ci.org/ZapicInc/Zapic-SDK-iOS.svg?branch=master)](https://travis-ci.org/ZapicInc/Zapic-SDK-iOS) [![CodeFactor](https://www.codefactor.io/repository/github/zapicinc/zapic-sdk-ios/badge)](https://www.codefactor.io/repository/github/zapicinc/zapic-sdk-ios) [![MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage) ![Discord](https://img.shields.io/discord/430949891104309249.svg)
 
 Copyright (c) 2017-2018 Zapic, Inc.
 
