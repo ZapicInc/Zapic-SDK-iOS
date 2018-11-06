@@ -32,7 +32,8 @@ We accept contributions to the Zapic SDK for iOS. Simply fork the repository and
 
 ## How to create a release
 1. Update version number of Zapic project
-2. Update version number of podspec
-3. Check pod `pod lib lint`
-4. Create release in Github
-5. Publish release to Cocoapods repo `pod trunk push Zapic.podspec`
+2. Update version number in `ZPCInjectedScript.m`
+3. Update version number of podspec
+4. Check pod `pod lib lint`
+5. Create release in Github
+6. Publish release to Cocoapods repo `pod trunk push Zapic.podspec`
